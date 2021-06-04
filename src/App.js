@@ -94,13 +94,13 @@ const App = () => {
    }
 
    return (
-      <div className="h-screen grid lg:grid-cols-3 lg:gap-10 gap-2 lg:px-20 lg:py-10 px-3 pt-3 pb-10 bg-gray-100">
-         <div className="h-full overflow-auto bg-white shadow-sm rounded-md p-5 border border-gray-300 lg:col-span-2">
-            <div className="flex lg:flex-row flex-col">
+      <div className="h-95v grid md:grid-cols-3 md:gap-5 gap-2 md:px-10 md:pt-10 px-3 pt-3 pb-10">
+         <div className="h-full overflow-auto bg-white shadow-sm rounded-md p-5 border border-gray-300 md:col-span-2">
+            <div className="flex md:flex-row flex-col">
                <Radio onChange={setGeschlecht} title={titelGeschlecht} auswahl={radiosGeschlecht} />
                <Input onChange={setVorname} title={titelVorname} />
             </div>
-            <div className="flex lg:flex-row flex-col">
+            <div className="flex md:flex-row flex-col">
                <Radio onChange={setBegleitetVon} title={titelBegleitetVon} auswahl={radiosBegleitetVon} />
                <div className="flex flex-col">
                   <Radio onChange={setBlickkontakt} title={titelBlickkontakt} auswahl={radiosBlickkontakt} />
@@ -113,7 +113,7 @@ const App = () => {
                readOnly
                value={ausgabe}
                rows="5"
-               className="h-full w-full px-8 py-10 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md"
+               className="h-full w-full px-8 py-12 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md"
             ></textarea>
             <div className="absolute top-0 m-3">
                <CopyToClipboard text={ausgabe}>
