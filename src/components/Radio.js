@@ -5,7 +5,7 @@ const Radio = props => {
             props.onChange(e.target.id);
             localStorage.setItem(props.title, e.target.id);
          }}
-         className="my-3 mx-8"
+         className="my-3 mx-6"
       >
          <div>
             <legend className="text-base text-red-800 font-bold">{props.title}</legend>

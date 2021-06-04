@@ -1,6 +1,6 @@
 const Input = props => {
    return (
-      <div className="my-3 mx-8">
+      <div className="my-3 mx-6">
          <label htmlFor={props.title} className="block text-base text-red-800 font-bold">
             {props.title}
          </label>
@@ -12,7 +12,7 @@ const Input = props => {
                }}
                type="text"
                id={props.title}
-               className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md"
+               className="text-sm py-1.5 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md text-"
             />
          </div>
       </div>

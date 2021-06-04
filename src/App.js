@@ -113,7 +113,7 @@ const App = () => {
                readOnly
                value={ausgabe}
                rows="5"
-               className="h-full w-full px-8 py-12 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md"
+               className="text-sm h-full w-full px-8 py-12 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md"
             ></textarea>
             <div className="absolute top-0 m-3">
                <CopyToClipboard text={ausgabe}>
