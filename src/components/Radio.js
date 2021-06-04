@@ -1,6 +1,12 @@
 const Radio = props => {
    return (
-      <fieldset onChange={e => props.onChange(e.target.id)} className="my-3 mx-8">
+      <fieldset
+         onChange={e => {
+            props.onChange(e.target.id);
+            localStorage.setItem(props.title, e.target.id);
+         }}
+         className="my-3 mx-8"
+      >
          <div>
             <legend className="text-base text-red-800 font-bold">{props.title}</legend>
          </div>
