@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { CopyToClipboard } from "react-copy-to-clipboard";
+
 import Input from "./components/Input.js";
 import Radio from "./components/Radio.js";
 
@@ -106,12 +108,26 @@ const App = () => {
                </div>
             </div>
          </div>
-         <textarea
-            readOnly
-            value={ausgabe}
-            rows="5"
-            className="h-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md px-8 py-6"
-         ></textarea>
+         <div className="relative">
+            <textarea
+               readOnly
+               value={ausgabe}
+               rows="5"
+               className="h-full w-full px-8 py-6 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md"
+            ></textarea>
+            <CopyToClipboard text={ausgabe}>
+               <button className="absolute top-0 ml-1 p-1 mt-1 rounded-full hover:bg-red-200 ">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="text-gray-400 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                     <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                     />
+                  </svg>
+               </button>
+            </CopyToClipboard>
+         </div>
       </div>
    );
 };
