@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/fub-generator/static/css/main.b3114d5e.chunk.css",
-    "main.js": "/fub-generator/static/js/main.50c6f4d3.chunk.js",
-    "main.js.map": "/fub-generator/static/js/main.50c6f4d3.chunk.js.map",
+    "main.css": "/fub-generator/static/css/main.a17b80f5.chunk.css",
+    "main.js": "/fub-generator/static/js/main.78e07404.chunk.js",
+    "main.js.map": "/fub-generator/static/js/main.78e07404.chunk.js.map",
     "runtime-main.js": "/fub-generator/static/js/runtime-main.6e2d40aa.js",
     "runtime-main.js.map": "/fub-generator/static/js/runtime-main.6e2d40aa.js.map",
     "static/js/2.b6314c3d.chunk.js": "/fub-generator/static/js/2.b6314c3d.chunk.js",
     "static/js/2.b6314c3d.chunk.js.map": "/fub-generator/static/js/2.b6314c3d.chunk.js.map",
     "index.html": "/fub-generator/index.html",
-    "static/css/main.b3114d5e.chunk.css.map": "/fub-generator/static/css/main.b3114d5e.chunk.css.map",
+    "static/css/main.a17b80f5.chunk.css.map": "/fub-generator/static/css/main.a17b80f5.chunk.css.map",
     "static/js/2.b6314c3d.chunk.js.LICENSE.txt": "/fub-generator/static/js/2.b6314c3d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.6e2d40aa.js",
     "static/js/2.b6314c3d.chunk.js",
-    "static/css/main.b3114d5e.chunk.css",
-    "static/js/main.50c6f4d3.chunk.js"
+    "static/css/main.a17b80f5.chunk.css",
+    "static/js/main.78e07404.chunk.js"
   ]
 }
