@@ -12,9 +12,17 @@ const App = () => {
 
    let ausgabe = "";
 
+   const ueberschriftVorname = "Vorname";
+
    if (vorname) {
       ausgabe += vorname + " wurde von ";
    }
+
+   const ueberschriftGeschlecht = "Geschlecht";
+   const radiosGeschlecht = ["Mädchen", "Junge"];
+
+   const ueberschriftBegleitetVon = "Begleitet von";
+   const radiosBegleitetVon = ["Mutter", "Vater", "Eltern", "Pflegemutter", "Pflegevater", "Pflegeeltern", "Familienhelferin", "Familienhelfer", "[sonstiges]"];
 
    if (begleitetVon) {
       switch (begleitetVon) {
@@ -39,6 +47,9 @@ const App = () => {
       ausgabe += " begleitet. ";
    }
 
+   const ueberschriftBlickkontakt = "Blickkontakt";
+   const radiosBlickkontakt = ["dialogisch", "triangulär", "dialogisch und triangulär", "kein Blickkontakt"];
+
    if (blickkontakt) {
       ausgabe += geschlecht === "Junge" ? "Er " : "Sie ";
 
@@ -60,6 +71,9 @@ const App = () => {
       }
    }
 
+   const ueberschriftSpielverhalten = "Spielverhalten";
+   const radiosSpielverhalten = ["wechselhaft", "ausdauernd", "kein Spielverhalten"];
+
    if (spielverhalten) {
       switch (spielverhalten) {
          case "wechselhaft":
@@ -78,31 +92,24 @@ const App = () => {
    }
 
    return (
-      <div className="h-screen grid grid-cols-2 gap-10 px-20 py-10 bg-gray-100">
-         <div className="h-full overflow-auto bg-white shadow-sm rounded-md p-5 border-gray-300">
-            <div className="flex">
-               <Radio onChange={setGeschlecht} title="Geschlecht" auswahl={["Junge", "Mädchen"]} />
-               <Input onChange={setVorname} label="Vorname" />
+      <div className="h-screen grid lg:grid-cols-3 lg:gap-10 gap-2 lg:px-20 lg:py-10 px-3 pt-3 pb-10 bg-gray-100">
+         <div className="h-full overflow-auto bg-white shadow-sm rounded-md p-5 border border-gray-300 lg:col-span-2">
+            <div className="flex lg:flex-row flex-col">
+               <Radio onChange={setGeschlecht} title={ueberschriftGeschlecht} auswahl={radiosGeschlecht} />
+               <Input onChange={setVorname} label={ueberschriftVorname} />
             </div>
-            <div className="flex">
-               <Radio
-                  onChange={setBegleitetVon}
-                  title="Begleitet von"
-                  auswahl={["Mutter", "Vater", "Eltern", "Pflegemutter", "Pflegevater", "Pflegeeltern", "Familienhelferin", "Familienhelfer", "(sonstiges)"]}
-               />
+            <div className="flex lg:flex-row flex-col">
+               <Radio onChange={setBegleitetVon} title={ueberschriftBegleitetVon} auswahl={radiosBegleitetVon} />
                <div className="flex flex-col">
-                  <Radio
-                     onChange={setBlickkontakt}
-                     title="Blickkontakt"
-                     auswahl={["dialogisch", "triangulär", "dialogisch und triangulär", "kein Blickkontakt"]}
-                  />
-                  <Radio onChange={setSpielverhalten} title="Spielverhalten" auswahl={["wechselhaft", "ausdauernd", "kein Spielverhalten"]} />
+                  <Radio onChange={setBlickkontakt} title={ueberschriftBlickkontakt} auswahl={radiosBlickkontakt} />
+                  <Radio onChange={setSpielverhalten} title={ueberschriftSpielverhalten} auswahl={radiosSpielverhalten} />
                </div>
             </div>
          </div>
          <textarea
             readOnly
             value={ausgabe}
+            rows="5"
             className="h-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md px-8 py-6"
          ></textarea>
       </div>

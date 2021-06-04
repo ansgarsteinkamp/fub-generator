@@ -2,6 +2,7 @@
    "name": "fub-generator",
    "version": "0.1.0",
    "private": true,
+   "homepage": "https://ansgarsteinkamp.github.io/fub-generator",
    "dependencies": {
       "@craco/craco": "^6.1.2",
       "@tailwindcss/forms": "^0.3.3",
@@ -17,6 +18,8 @@
       "start": "craco start",
       "build": "craco build",
       "test": "craco test",
+      "predeploy": "npm run build",
+      "deploy": "gh-pages -d build",
       "eject": "react-scripts eject"
    },
    "eslintConfig": {
@@ -39,6 +42,7 @@
    },
    "devDependencies": {
       "autoprefixer": "^9.8.6",
+      "gh-pages": "^3.2.0",
       "postcss": "^7.0.35",
       "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.4"
    }

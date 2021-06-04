@@ -1,10 +1,8 @@
-import React from "react";
-
 const Radio = props => {
    return (
-      <fieldset onChange={e => props.onChange(e.target.id)} className="my-4 mx-8">
+      <fieldset onChange={e => props.onChange(e.target.id)} className="my-3 mx-8">
          <div>
-            <legend className="text-base font-medium text-gray-900">{props.title}</legend>
+            <legend className="text-base text-red-800 font-bold">{props.title}</legend>
          </div>
          <div className="mt-2 space-y-2">
             {props.auswahl.map(el => (
