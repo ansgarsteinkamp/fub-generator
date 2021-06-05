@@ -3,13 +3,15 @@ import { RadioGroup } from "@headlessui/react";
 
 const Radio = props => {
    useEffect(() => {
-      localStorage.setItem(props.title, props.value);
+      if (props.value) {
+         localStorage.setItem(props.title, props.value);
+      }
    }, [props.title, props.value]);
 
    return (
       <RadioGroup className="my-3 mx-6" value={props.value} onChange={props.onChange}>
          <RadioGroup.Label className="text-gray-500 text-sm font-bold">{props.title}</RadioGroup.Label>
-         <div className="mt-2 space-y-1">
+         <div className="mt-1 space-y-1">
             {props.auswahl.map(el => (
                <RadioGroup.Option key={el} value={el} className="ml-1 flex items-center">
                   {({ active, checked }) => (

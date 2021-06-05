@@ -7,17 +7,22 @@ import Ausgabebereich from "./components/Ausgabebereich.js";
 // import Checkbox from "./components/Checkbox.js";
 
 const App = () => {
-   const titelVorname = "Vorname";
-   const titelGeschlecht = "Geschlecht";
-   const titelBegleitetVon = "Begleitet von";
-   const titelBlickkontakt = "Blickkontakt";
-   const titelSpielverhalten = "Spielverhalten";
+   let i = 0;
+   const titelGeschlecht = ++i + ".) Geschlecht";
+   const titelVorname = ++i + ".) Vorname";
+   const titelBegleitetVon = ++i + ".) Begleitet von";
+   const titelBlickkontakt = ++i + ".) Blickkontakt";
+   const titelSpielverhalten = ++i + ".) Spielverhalten";
+   const titelSpielformen = ++i + ".) Spielformen";
+   const titelKonzentration = ++i + ".) Konzentrationsfähigkeit / Aufmerksamkeitslenkung";
 
-   const [vorname, setVorname] = useState(localStorage.getItem(titelVorname));
+   const [vorname, setVorname] = useState(localStorage.getItem(titelVorname) || "");
    const [geschlecht, setGeschlecht] = useState(localStorage.getItem(titelGeschlecht));
    const [begleitetVon, setBegleitetVon] = useState(localStorage.getItem(titelBegleitetVon));
    const [blickkontakt, setBlickkontakt] = useState(localStorage.getItem(titelBlickkontakt));
    const [spielverhalten, setSpielverhalten] = useState(localStorage.getItem(titelSpielverhalten));
+   const [spielformen, setSpielformen] = useState(localStorage.getItem(titelSpielformen));
+   const [konzentration, setKonzentration] = useState(localStorage.getItem(titelKonzentration));
 
    const resetAll = () => {
       setVorname("");
@@ -25,6 +30,8 @@ const App = () => {
       setBegleitetVon(null);
       setBlickkontakt(null);
       setSpielverhalten(null);
+      setSpielformen(null);
+      setKonzentration(null);
       localStorage.clear();
    };
 
@@ -65,8 +72,11 @@ const App = () => {
          case "Pflegeeltern":
             ausgabe += geschlecht === "Junge" ? "seinen " + begleitetVon : "ihren " + begleitetVon;
             break;
-         default:
+         case "[sonstiges]":
             ausgabe += "XXXX";
+            break;
+         default:
+            ausgabe += "";
       }
 
       ausgabe += " begleitet. ";
@@ -91,7 +101,7 @@ const App = () => {
             ausgabe += "nahm keinen Blickkontakt auf. ";
             break;
          default:
-            ausgabe += "zeigte einen XXXX Blickkontakt. ";
+            ausgabe += "";
       }
    }
 
@@ -110,8 +120,29 @@ const App = () => {
             ausgabe += "sich noch nicht alleine beschäftigen. ";
             break;
          default:
-            ausgabe += "Spielverhalten: XXXX ";
+            ausgabe += "";
       }
+   }
+
+   const auswahlSpielformen = ["Funktionsspiel", "Symbolspiel"];
+
+   if (spielformen) {
+      switch (spielformen) {
+         case "Funktionsspiel":
+            ausgabe += "Das Spiel war funktionsorientiert. ";
+            break;
+         case "Symbolspiel":
+            ausgabe += "Es war ein Symbolspiel zu beobachten. ";
+            break;
+         default:
+            ausgabe += "";
+      }
+   }
+
+   const auswahlKonzentration = ["angemessen", "nicht angemessen"];
+
+   if (konzentration) {
+      ausgabe += `Die Konzentrationsfähigkeit und Aufmerksamkeitslenkung waren ${konzentration === "nicht angemessen" ? "nicht " : ""}angemessen. `;
    }
 
    return (
@@ -122,6 +153,8 @@ const App = () => {
             <Radio value={begleitetVon} onChange={setBegleitetVon} title={titelBegleitetVon} auswahl={auswahlBegleitetVon} />
             <Radio value={blickkontakt} onChange={setBlickkontakt} title={titelBlickkontakt} auswahl={auswahlBlickkontakt} />
             <Radio value={spielverhalten} onChange={setSpielverhalten} title={titelSpielverhalten} auswahl={auswahlSpielverhalten} />
+            <Radio value={spielformen} onChange={setSpielformen} title={titelSpielformen} auswahl={auswahlSpielformen} />
+            <Radio value={konzentration} onChange={setKonzentration} title={titelKonzentration} auswahl={auswahlKonzentration} />
             {/* <Ueberschrift1 text="Überschrift 1" /> */}
             {/* <Ueberschrift2 text="Überschrift 2" /> */}
          </div>

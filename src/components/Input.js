@@ -2,7 +2,9 @@ import { useEffect } from "react";
 
 const Input = props => {
    useEffect(() => {
-      localStorage.setItem(props.title, props.value);
+      if (props.value) {
+         localStorage.setItem(props.title, props.value);
+      }
    }, [props.title, props.value]);
 
    return (
