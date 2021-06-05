@@ -1,34 +1,55 @@
 import { useState } from "react";
 
-import { CopyToClipboard } from "react-copy-to-clipboard";
-
 import Input from "./components/Input.js";
 import Radio from "./components/Radio.js";
-
-const titelVorname = "Vorname";
-const titelGeschlecht = "Geschlecht";
-const titelBegleitetVon = "Begleitet von";
-const titelBlickkontakt = "Blickkontakt";
-const titelSpielverhalten = "Spielverhalten";
+import Ausgabebereich from "./components/Ausgabebereich.js";
+// import { Ueberschrift1, Ueberschrift2 } from "./components/Ueberschriften.js";
+// import Checkbox from "./components/Checkbox.js";
 
 const App = () => {
+   const titelVorname = "Vorname";
+   const titelGeschlecht = "Geschlecht";
+   const titelBegleitetVon = "Begleitet von";
+   const titelBlickkontakt = "Blickkontakt";
+   const titelSpielverhalten = "Spielverhalten";
+
    const [vorname, setVorname] = useState(localStorage.getItem(titelVorname));
    const [geschlecht, setGeschlecht] = useState(localStorage.getItem(titelGeschlecht));
    const [begleitetVon, setBegleitetVon] = useState(localStorage.getItem(titelBegleitetVon));
    const [blickkontakt, setBlickkontakt] = useState(localStorage.getItem(titelBlickkontakt));
    const [spielverhalten, setSpielverhalten] = useState(localStorage.getItem(titelSpielverhalten));
 
+   const resetAll = () => {
+      setVorname("");
+      setGeschlecht(null);
+      setBegleitetVon(null);
+      setBlickkontakt(null);
+      setSpielverhalten(null);
+      localStorage.clear();
+   };
+
    let ausgabe = "";
 
    if (vorname) {
-      ausgabe += vorname + " wurde von ";
+      ausgabe += vorname;
    }
 
-   const radiosGeschlecht = ["Mädchen", "Junge"];
+   const auswahlGeschlecht = ["Junge", "Mädchen"];
 
-   const radiosBegleitetVon = ["Mutter", "Vater", "Eltern", "Pflegemutter", "Pflegevater", "Pflegeeltern", "Familienhelferin", "Familienhelfer", "[sonstiges]"];
+   const auswahlBegleitetVon = [
+      "Mutter",
+      "Vater",
+      "Eltern",
+      "Pflegemutter",
+      "Pflegevater",
+      "Pflegeeltern",
+      "Familienhelferin",
+      "Familienhelfer",
+      "[sonstiges]"
+   ];
 
    if (begleitetVon) {
+      ausgabe += " wurde von ";
       switch (begleitetVon) {
          case "Mutter":
          case "Pflegemutter":
@@ -51,7 +72,7 @@ const App = () => {
       ausgabe += " begleitet. ";
    }
 
-   const radiosBlickkontakt = ["dialogisch", "triangulär", "dialogisch und triangulär", "kein Blickkontakt"];
+   const auswahlBlickkontakt = ["dialogisch", "triangulär", "dialogisch und triangulär", "kein Blickkontakt"];
 
    if (blickkontakt) {
       ausgabe += geschlecht === "Junge" ? "Er " : "Sie ";
@@ -74,7 +95,7 @@ const App = () => {
       }
    }
 
-   const radiosSpielverhalten = ["wechselhaft", "ausdauernd", "kein Spielverhalten"];
+   const auswahlSpielverhalten = ["wechselhaft", "ausdauernd", "kein Spielverhalten"];
 
    if (spielverhalten) {
       switch (spielverhalten) {
@@ -94,62 +115,18 @@ const App = () => {
    }
 
    return (
-      <div className="h-95v grid md:grid-cols-3 md:gap-5 gap-2 md:px-10 md:pt-10 px-3 pt-3 pb-10">
-         <div className="h-full overflow-auto bg-white shadow-sm rounded-md p-5 border border-gray-300 md:col-span-2">
-            <div className="flex md:flex-row flex-col">
-               <Radio onChange={setGeschlecht} title={titelGeschlecht} auswahl={radiosGeschlecht} />
-               <Input onChange={setVorname} title={titelVorname} />
-            </div>
-            <div className="flex md:flex-row flex-col">
-               <Radio onChange={setBegleitetVon} title={titelBegleitetVon} auswahl={radiosBegleitetVon} />
-               <div className="flex flex-col">
-                  <Radio onChange={setBlickkontakt} title={titelBlickkontakt} auswahl={radiosBlickkontakt} />
-                  <Radio onChange={setSpielverhalten} title={titelSpielverhalten} auswahl={radiosSpielverhalten} />
-               </div>
-            </div>
+      <div className="h-95v grid md:grid-cols-2 md:gap-5 gap-2 md:px-10 md:pt-10 px-3 pt-3 pb-10">
+         <div className="h-full overflow-auto bg-white shadow-sm rounded-md p-5 border border-gray-300">
+            <Radio value={geschlecht} onChange={setGeschlecht} title={titelGeschlecht} auswahl={auswahlGeschlecht} />
+            <Input value={vorname} onChange={setVorname} title={titelVorname} />
+            <Radio value={begleitetVon} onChange={setBegleitetVon} title={titelBegleitetVon} auswahl={auswahlBegleitetVon} />
+            <Radio value={blickkontakt} onChange={setBlickkontakt} title={titelBlickkontakt} auswahl={auswahlBlickkontakt} />
+            <Radio value={spielverhalten} onChange={setSpielverhalten} title={titelSpielverhalten} auswahl={auswahlSpielverhalten} />
+            {/* <Ueberschrift1 text="Überschrift 1" /> */}
+            {/* <Ueberschrift2 text="Überschrift 2" /> */}
          </div>
-         <div className="relative">
-            <textarea
-               readOnly
-               value={ausgabe}
-               rows="5"
-               className="text-sm h-full w-full px-8 py-12 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md"
-            ></textarea>
-            <div className="absolute top-0 m-3">
-               <CopyToClipboard text={ausgabe}>
-                  <button className="rounded-full hover:bg-green-200 p-1">
-                     <svg xmlns="http://www.w3.org/2000/svg" className="text-gray-400 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                           strokeLinecap="round"
-                           strokeLinejoin="round"
-                           strokeWidth={2}
-                           d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-                        />
-                     </svg>
-                  </button>
-               </CopyToClipboard>
-               <button
-                  className="rounded-full hover:bg-red-200 p-1"
-                  onClick={() => {
-                     setVorname(null);
-                     setGeschlecht(null);
-                     setBegleitetVon(null);
-                     setBlickkontakt(null);
-                     setSpielverhalten(null);
-                     localStorage.clear();
-                  }}
-               >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="text-gray-400 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                     <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                     />
-                  </svg>
-               </button>
-            </div>
-         </div>
+
+         <Ausgabebereich ausgabe={ausgabe} resetAll={resetAll} />
       </div>
    );
 };
