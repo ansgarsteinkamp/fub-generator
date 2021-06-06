@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import Input from "./components/Input.js";
+import InputFreitext from "./components/InputFreitext.js";
 import Radio from "./components/Radio.js";
 import Ausgabebereich from "./components/Ausgabebereich.js";
 import { Ueberschrift1 } from "./components/Ueberschriften.js";
@@ -12,11 +13,16 @@ const App = () => {
    const titelBlickkontakt = "Blickkontakt";
    const titelSpielverhalten = "Spielverhalten";
    const titelSpielformen = "Spielformen";
-   const titelKonzentration = "Konzentrationsfähigkeit / Aufmerksamkeitslenkung";
+   const titelKonzentration = "Konzentrationsfähigkeit und Aufmerksamkeitslenkung";
    const titelRAA = "Reaktion auf Ansprache";
    const titelRAG = "Reaktion auf Geräusche";
    const titelLUIVG = "Lokalisation und Identifikation von Geräuschen";
    const titelAMS = "Auditive Merkspanne";
+   const titelOFT = "Orofazialer Tonus";
+   const titelMundschluss = "Mundschluss";
+   const titelSpeichelfluss = "Speichelfluss";
+   const titelPusten = "Pusten";
+   const titelAnsaugen = "Ansaugen";
 
    const [vorname, setVorname] = useState(localStorage.getItem(titelVorname) || "");
    const [geschlecht, setGeschlecht] = useState(localStorage.getItem(titelGeschlecht));
@@ -29,6 +35,13 @@ const App = () => {
    const [rag, setRAG] = useState(localStorage.getItem(titelRAG));
    const [luivg, setLUIVG] = useState(localStorage.getItem(titelLUIVG));
    const [ams, setAMS] = useState(localStorage.getItem(titelAMS));
+   const [oft, setOFT] = useState(localStorage.getItem(titelOFT));
+   const [mundschluss, setMundschluss] = useState(localStorage.getItem(titelMundschluss));
+   const [speichelfluss, setSpeichelfluss] = useState(localStorage.getItem(titelSpeichelfluss));
+   const [pusten, setPusten] = useState(localStorage.getItem(titelPusten));
+   const [ansaugen, setAnsaugen] = useState(localStorage.getItem(titelAnsaugen));
+
+   const [begleitetVonFreitext, setBegleitetVonFreitext] = useState(localStorage.getItem(titelBegleitetVon + " (Freitext)") || "");
 
    const resetAll = () => {
       setVorname("");
@@ -42,6 +55,14 @@ const App = () => {
       setRAG(null);
       setLUIVG(null);
       setAMS(null);
+      setOFT(null);
+      setMundschluss(null);
+      setSpeichelfluss(null);
+      setPusten(null);
+      setAnsaugen(null);
+
+      setBegleitetVonFreitext("");
+
       localStorage.clear();
    };
 
@@ -51,6 +72,8 @@ const App = () => {
    const er_sie = geschlecht === "Junge" ? "er" : "sie";
    const Sein_Ihr = geschlecht === "Junge" ? "Sein" : "Ihr";
    const sein_ihr = geschlecht === "Junge" ? "sein" : "ihr";
+   const Seine_Ihre = geschlecht === "Junge" ? "Seine" : "Ihre";
+   const seine_ihre = geschlecht === "Junge" ? "seine" : "ihre";
    const ihm_ihr = geschlecht === "Junge" ? "ihm" : "ihr";
    const seiner_ihrer = geschlecht === "Junge" ? "seiner" : "ihrer";
    const seinem_ihrem = geschlecht === "Junge" ? "seinem" : "ihrem";
@@ -98,41 +121,38 @@ const App = () => {
             ausgabe += `${vorname} wurde von ${seinem_ihrem} Familienhelfer begleitet.`;
             break;
          case "[ Sonstiges ]":
-            ausgabe += `${vorname} wurde von XXXX begleitet.`;
+            ausgabe += `${vorname} wurde von ${begleitetVonFreitext} begleitet.`;
             break;
          default:
             ausgabe += ``;
       }
+      ausgabe += "\n\n";
    }
 
    // Blickkontakt
-   const auswahlBlickkontakt = ["dialogisch", "triangulär", "dialogisch und triangulär", "kein Blickkontakt"];
+   const auswahlBlickkontakt = ["dialogisch", "dialogisch und triangulär", "kein Blickkontakt"];
 
    if (blickkontakt) {
-      ausgabe += "\n\n";
       switch (blickkontakt) {
          case "dialogisch":
             ausgabe += `${Er_Sie} zeigte einen dialogischen Blickkontakt.`;
-            break;
-         case "triangulär":
-            ausgabe += `${Er_Sie} zeigte einen triangulären Blickkontakt.`;
             break;
          case "dialogisch und triangulär":
             ausgabe += `${Er_Sie} zeigte einen dialogischen und triangulären Blickkontakt.`;
             break;
          case "kein Blickkontakt":
-            ausgabe += `${Er_Sie} nahm keinen Blickkontakt auf.`;
+            ausgabe += `${Er_Sie} nahm noch keinen Blickkontakt auf.`;
             break;
          default:
             ausgabe += ``;
       }
+      ausgabe += ` `;
    }
 
    // Spielverhalten
    const auswahlSpielverhalten = ["wechselhaft", "ausdauernd", "kein Spielverhalten"];
 
    if (spielverhalten) {
-      ausgabe += ` `;
       switch (spielverhalten) {
          case "wechselhaft":
             ausgabe += `${Sein_Ihr} Spielverhalten war wechselhaft.`;
@@ -141,18 +161,18 @@ const App = () => {
             ausgabe += `${Sein_Ihr} Spielverhalten war ausdauernd.`;
             break;
          case "kein Spielverhalten":
-            ausgabe += `Mit dem Spielmaterial konnte ${er_sie} sich noch nicht alleine beschäftigen.`;
+            ausgabe += `Mit dem Spielmaterial konnte ${er_sie} sich noch nicht allein beschäftigen.`;
             break;
          default:
             ausgabe += ``;
       }
+      ausgabe += ` `;
    }
 
    // Spielformen
    const auswahlSpielformen = ["Funktionsspiel", "Symbolspiel"];
 
    if (spielformen) {
-      ausgabe += ` `;
       switch (spielformen) {
          case "Funktionsspiel":
             ausgabe += `Das Spiel war funktionsorientiert.`;
@@ -163,30 +183,30 @@ const App = () => {
          default:
             ausgabe += ``;
       }
+      ausgabe += ` `;
    }
 
-   // Konzentrationsfähigkeit / Aufmerksamkeitslenkung
+   // Konzentrationsfähigkeit und Aufmerksamkeitslenkung
    const auswahlKonzentration = ["angemessen", "nicht angemessen"];
 
    if (konzentration) {
-      ausgabe += ` `;
       switch (konzentration) {
          case "angemessen":
             ausgabe += `Die Konzentrationsfähigkeit und Aufmerksamkeitslenkung waren angemessen.`;
             break;
          case "nicht angemessen":
-            ausgabe += `Die Konzentrationsfähigkeit und Aufmerksamkeitslenkung waren nicht angemessen.`;
+            ausgabe += `Die Konzentrationsfähigkeit und Aufmerksamkeitslenkung waren noch nicht angemessen.`;
             break;
          default:
             ausgabe += ``;
       }
+      ausgabe += `\n\n`;
    }
 
    // Reaktion auf Ansprache
    const auswahlRAA = ["reagiert", "reagiert nicht"];
 
    if (raa) {
-      ausgabe += "\n\n";
       switch (raa) {
          case "reagiert":
             ausgabe += `Auf Ansprache reagierte ${vorname}.`;
@@ -197,13 +217,13 @@ const App = () => {
          default:
             ausgabe += ``;
       }
+      ausgabe += ` `;
    }
 
    // Reaktion auf Geräusche
    const auswahlRAG = ["reagiert", "reagiert nicht"];
 
    if (rag) {
-      ausgabe += ` `;
       switch (rag) {
          case "reagiert":
             ausgabe += `Geräusche in ${seiner_ihrer} Umgebung nahm ${er_sie} wahr.`;
@@ -214,41 +234,36 @@ const App = () => {
          default:
             ausgabe += ``;
       }
+      ausgabe += ` `;
    }
 
    // Lokalisation und Identifikation von Geräuschen
-   const auswahlLUIVG = [
-      "Lokalisation und Identifikation sicher",
-      "Lokalisation und Identifikation nicht ausreichend zu beurteilen",
-      "nur Identifikation sicher",
-      "nur Lokalisation sicher"
-   ];
+   const auswahlLUIVG = ["sicher", "nicht ausreichend zu beurteilen", "nur Identifikation sicher", "nur Lokalisation sicher"];
 
    if (luivg) {
-      ausgabe += ` `;
       switch (luivg) {
-         case "Lokalisation und Identifikation sicher":
+         case "sicher":
             ausgabe += `Die Lokalisation und Identifikation von Geräuschen gelang ${ihm_ihr} sicher.`;
             break;
-         case "Lokalisation und Identifikation nicht ausreichend zu beurteilen":
-            ausgabe += `Die Lokalisation und Identifikation von Geräuschen konnte noch nicht ausreichend beurteilt werden.`;
+         case "nicht ausreichend zu beurteilen":
+            ausgabe += `${Seine_Ihre} Fähigkeit zur Lokalisation und Identifikation von Geräuschen konnte noch nicht ausreichend beurteilt werden.`;
             break;
          case "nur Identifikation sicher":
-            ausgabe += `${vorname} identifizierte Geräusche sicher, die Lokalisation von Geräuschen war aber noch nicht ausreichend zu beurteilen.`;
+            ausgabe += `${vorname} identifizierte Geräusche sicher. ${Seine_Ihre} Fähigkeit zur Lokalisation von Geräuschen war aber noch nicht ausreichend zu beurteilen.`;
             break;
          case "nur Lokalisation sicher":
-            ausgabe += `Die Lokalisation von Geräuschen gelang ${vorname} sicher, die Identifikation von Geräuschen allerdings noch nicht.`;
+            ausgabe += `Die Lokalisation von Geräuschen gelang ${vorname} sicher. ${Seine_Ihre} Fähigkeit zur Identifikation von Geräuschen allerdings noch nicht.`;
             break;
          default:
             ausgabe += ``;
       }
+      ausgabe += ` `;
    }
 
    // Auditive Merkspanne
    const auswahlAMS = ["altersentsprechend", "nicht altersentsprechend"];
 
    if (ams) {
-      ausgabe += ` `;
       switch (ams) {
          case "altersentsprechend":
             ausgabe += `Die auditive Merkspanne war altersentsprechend.`;
@@ -259,13 +274,106 @@ const App = () => {
          default:
             ausgabe += ``;
       }
+      ausgabe += `\n\n`;
+   }
+
+   // Orofazialer Tonus
+   const auswahlOFT = ["reguliert", "nicht ausreichend reguliert"];
+
+   if (oft) {
+      switch (oft) {
+         case "reguliert":
+            ausgabe += `Der orofaziale Tonus erschien ausreichend reguliert.`;
+            break;
+         case "nicht ausreichend reguliert":
+            ausgabe += `Der orofaziale Tonus erschien noch nicht ausreichend reguliert.`;
+            break;
+         default:
+            ausgabe += ``;
+      }
       ausgabe += ` `;
    }
 
-   ausgabe += `\n
+   // Mundschluss
+   const auswahlMundschluss = ["konstant", "offen"];
+
+   if (mundschluss) {
+      switch (mundschluss) {
+         case "konstant":
+            ausgabe += `Es wurde ein konstanter Mundschluss beobachtet.`;
+            break;
+         case "offen":
+            ausgabe += `Es wurde eine offene Mundhaltung beobachtet.`;
+            break;
+         default:
+            ausgabe += ``;
+      }
+      ausgabe += ` `;
+   }
+
+   // Speichelfluss
+   const auswahlSpeichelfluss = ["vermehrter Speichelfluss", "[ keine Angabe ]"];
+
+   if (speichelfluss) {
+      switch (speichelfluss) {
+         case "vermehrter Speichelfluss":
+            ausgabe += `Es trat ein vermehrter Speichelfluss auf.`;
+            ausgabe += ` `;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   // Pusten
+   const auswahlPusten = ["möglich", "nicht möglich", "[ keine Angabe ]"];
+
+   if (pusten) {
+      switch (pusten) {
+         case "möglich":
+            ausgabe += `${vorname} pustete Seifenblasen mit dosiertem Luftstrom.`;
+            ausgabe += ` `;
+            break;
+         case "nicht möglich":
+            ausgabe += `${vorname} konnte noch keine Seifenblasen mit dosiertem Luftstrom pusten.`;
+            ausgabe += ` `;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   // Ansaugen
+   const auswahlAnsaugen = ["möglich", "nicht möglich", "[ keine Angabe ]"];
+
+   if (ansaugen) {
+      switch (ansaugen) {
+         case "möglich":
+            ausgabe += `Das Ansaugen mit einem Strohhalm gelang ${ihm_ihr}.`;
+            ausgabe += ` `;
+            break;
+         case "nicht möglich":
+            ausgabe += `Das Ansaugen mit einem Strohhalm gelang ${ihm_ihr} noch nicht.`;
+            ausgabe += ` `;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   ausgabe += `\n\n-----------------------------\n
 ${titelGeschlecht}: ${geschlecht || "---"}
 ${titelVorname}: ${vorname || "---"}
-${titelBegleitetVon}: ${begleitetVon || "---"}
+${titelBegleitetVon}: ${begleitetVon !== "[ Sonstiges ]" ? begleitetVon || "---" : begleitetVonFreitext}
 ${titelBlickkontakt}: ${blickkontakt || "---"}
 ${titelSpielverhalten}: ${spielverhalten || "---"}
 ${titelSpielformen}: ${spielformen || "---"}
@@ -273,7 +381,12 @@ ${titelKonzentration}: ${konzentration || "---"}
 ${titelRAA}: ${raa || "---"}
 ${titelRAG}: ${rag || "---"}
 ${titelLUIVG}: ${luivg || "---"}
-${titelAMS}: ${ams || "---"}`;
+${titelAMS}: ${ams || "---"}
+${titelOFT}: ${oft || "---"}
+${titelMundschluss}: ${mundschluss || "---"}
+${titelSpeichelfluss}: ${speichelfluss || "---"}
+${titelPusten}: ${pusten || "---"}
+${titelAnsaugen}: ${ansaugen || "---"}`;
 
    let i = 0;
 
@@ -284,6 +397,9 @@ ${titelAMS}: ${ams || "---"}`;
             <Radio value={geschlecht} onChange={setGeschlecht} title={titelGeschlecht} auswahl={auswahlGeschlecht} />
             <Input value={vorname} onChange={setVorname} title={titelVorname} />
             <Radio value={begleitetVon} onChange={setBegleitetVon} title={titelBegleitetVon} auswahl={auswahlBegleitetVon} />
+            {begleitetVon === "[ Sonstiges ]" && (
+               <InputFreitext value={begleitetVonFreitext} onChange={setBegleitetVonFreitext} title={titelBegleitetVon + " (Freitext)"} />
+            )}
             <Ueberschrift1 text={++i + ".) Blickkontakt, Spielentwicklung und Konzentration"} />
             <Radio value={blickkontakt} onChange={setBlickkontakt} title={titelBlickkontakt} auswahl={auswahlBlickkontakt} />
             <Radio value={spielverhalten} onChange={setSpielverhalten} title={titelSpielverhalten} auswahl={auswahlSpielverhalten} />
@@ -295,6 +411,11 @@ ${titelAMS}: ${ams || "---"}`;
             <Radio value={luivg} onChange={setLUIVG} title={titelLUIVG} auswahl={auswahlLUIVG} />
             <Radio value={ams} onChange={setAMS} title={titelAMS} auswahl={auswahlAMS} />
             <Ueberschrift1 text={++i + ".) Mundmotorik"} />
+            <Radio value={oft} onChange={setOFT} title={titelOFT} auswahl={auswahlOFT} />
+            <Radio value={mundschluss} onChange={setMundschluss} title={titelMundschluss} auswahl={auswahlMundschluss} />
+            <Radio value={speichelfluss} onChange={setSpeichelfluss} title={titelSpeichelfluss} auswahl={auswahlSpeichelfluss} />
+            <Radio value={pusten} onChange={setPusten} title={titelPusten} auswahl={auswahlPusten} />
+            <Radio value={ansaugen} onChange={setAnsaugen} title={titelAnsaugen} auswahl={auswahlAnsaugen} />
          </div>
 
          <Ausgabebereich ausgabe={ausgabe} resetAll={resetAll} />
@@ -303,8 +424,3 @@ ${titelAMS}: ${ams || "---"}`;
 };
 
 export default App;
-
-// let x = {...localStorage};
-// for (const el in x {
-//   console.log(`${el}: ${x[el]}`);
-// }

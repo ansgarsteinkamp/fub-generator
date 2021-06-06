@@ -8,7 +8,7 @@ const Input = props => {
    }, [props.title, props.value]);
 
    return (
-      <div className="my-3 mx-4">
+      <div className="mt-3 mx-4">
          <label htmlFor={props.title} className="text-gray-500 text-sm font-bold">
             {props.title}
          </label>
