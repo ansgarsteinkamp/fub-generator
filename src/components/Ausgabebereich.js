@@ -7,7 +7,7 @@ const Ausgabebereich = props => {
             readOnly
             value={props.ausgabe}
             rows="5"
-            className="text-sm h-full w-full px-8 py-14 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md"
+            className="text-xs h-full w-full pl-5 pr-3 py-14 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md"
          ></textarea>
          <div className="absolute top-4 flex justify-between w-full">
             <CopyToClipboard text={props.ausgabe}>

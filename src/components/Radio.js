@@ -9,7 +9,7 @@ const Radio = props => {
    }, [props.title, props.value]);
 
    return (
-      <RadioGroup className="my-3 mx-6" value={props.value} onChange={props.onChange}>
+      <RadioGroup className="my-3 mx-4" value={props.value} onChange={props.onChange}>
          <RadioGroup.Label className="text-gray-500 text-sm font-bold">{props.title}</RadioGroup.Label>
          <div className="mt-1 space-y-1">
             {props.auswahl.map(el => (
