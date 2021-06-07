@@ -4,36 +4,38 @@ import Input from "./components/Input.js";
 import InputFreitext from "./components/InputFreitext.js";
 import Radio from "./components/Radio.js";
 import Ausgabebereich from "./components/Ausgabebereich.js";
-import { Ueberschrift1 } from "./components/Ueberschriften.js";
+import Hauptblock from "./components/Hauptblock.js";
+
+let i = 0;
+
+const titelVorname = ++i + ".) Vorname";
+const titelGeschlecht = ++i + ".) Geschlecht";
+const titelBegleitetVon = ++i + ".) Begleitet von";
+const titelBlickkontakt = ++i + ".) Blickkontakt";
+const titelSpielverhalten = ++i + ".) Spielverhalten";
+const titelSpielformen = ++i + ".) Spielformen";
+const titelKonzentration = ++i + ".) Konzentrationsfähigkeit und Aufmerksamkeitslenkung";
+const titelRAA = ++i + ".) Reaktion auf Ansprache";
+const titelRAG = ++i + ".) Reaktion auf Geräusche";
+const titelLUIVG = ++i + ".) Lokalisation und Identifikation von Geräuschen";
+const titelAMS = ++i + ".) Auditive Merkspanne";
+const titelOFT = ++i + ".) Orofazialer Tonus";
+const titelMundschluss = ++i + ".) Mundschluss";
+const titelSpeichelfluss = ++i + ".) Speichelfluss";
+const titelPusten = ++i + ".) Pusten";
+const titelAnsaugen = ++i + ".) Ansaugen";
+const titelZungenruhelage = ++i + ".) Zungenruhelage";
+const titelZBUK = ++i + ".) Zungenbeweglichkeit und -koordination";
+const titelLBUK = ++i + ".) Lippenbeweglichkeit und -koordination";
+const titelEUTV = ++i + ".) Ess- und Trinkverhalten";
+const titelKDK = ++i + ".) Konsistenzen der Kost";
+const titelOraleHabits = ++i + ".) Orale Habits";
+const titelSchnuller = ++i + ".) Schnuller";
+const titelTMS = ++i + ".) Trinkflasche mit Sauger";
+const titelDaumenlutschen = ++i + ".) Daumenlutschen";
+const titelFNK = ++i + ".) Fingernägelkauen";
 
 const App = () => {
-   const titelVorname = "Vorname";
-   const titelGeschlecht = "Geschlecht";
-   const titelBegleitetVon = "Begleitet von";
-   const titelBlickkontakt = "Blickkontakt";
-   const titelSpielverhalten = "Spielverhalten";
-   const titelSpielformen = "Spielformen";
-   const titelKonzentration = "Konzentrationsfähigkeit und Aufmerksamkeitslenkung";
-   const titelRAA = "Reaktion auf Ansprache";
-   const titelRAG = "Reaktion auf Geräusche";
-   const titelLUIVG = "Lokalisation und Identifikation von Geräuschen";
-   const titelAMS = "Auditive Merkspanne";
-   const titelOFT = "Orofazialer Tonus";
-   const titelMundschluss = "Mundschluss";
-   const titelSpeichelfluss = "Speichelfluss";
-   const titelPusten = "Pusten";
-   const titelAnsaugen = "Ansaugen";
-   const titelZungenruhelage = "Zungenruhelage";
-   const titelZBUK = "Zungenbeweglichkeit und -koordination";
-   const titelLBUK = "Lippenbeweglichkeit und -koordination";
-   const titelEUTV = "Ess- und Trinkverhalten";
-   const titelKDK = "Konsistenzen der Kost";
-   const titelOraleHabits = "Orale Habits";
-   const titelSchnuller = "Schnuller";
-   const titelTMS = "Trinkflasche mit Sauger";
-   const titelDaumenlutschen = "Daumenlutschen";
-   const titelFNK = "Fingernägelkauen";
-
    const [vorname, setVorname] = useState(localStorage.getItem(titelVorname) || "");
    const [geschlecht, setGeschlecht] = useState(localStorage.getItem(titelGeschlecht));
    const [begleitetVon, setBegleitetVon] = useState(localStorage.getItem(titelBegleitetVon));
@@ -64,6 +66,8 @@ const App = () => {
    const [begleitetVonFreitext, setBegleitetVonFreitext] = useState(localStorage.getItem(titelBegleitetVon + " (Freitext)") || "");
    const [kdkFreitext, setKdkFreitext] = useState(localStorage.getItem(titelKDK + " (Freitext)") || "");
    const [schnullerFreitext, setSchnullerFreitext] = useState(localStorage.getItem(titelSchnuller + " (Freitext)") || "");
+
+   const [showHauptblock, setShowHauptblock] = useState(true);
 
    const resetAll = () => {
       setVorname("");
@@ -96,6 +100,8 @@ const App = () => {
       setBegleitetVonFreitext("");
       setKdkFreitext("");
       setSchnullerFreitext("");
+
+      setShowHauptblock(true);
 
       localStorage.clear();
    };
@@ -166,7 +172,7 @@ const App = () => {
    const auswahlBlickkontakt = ["dialogisch", "dialogisch und triangulär", "kein Blickkontakt"];
 
    if (blickkontakt) {
-      ausgabe += "\n\n";
+      ausgabe += `\n\n`; // Erster Block nach Hauptüberschrift => Zeilenumbruch
       switch (blickkontakt) {
          case "dialogisch":
             ausgabe += `${Er_Sie} zeigte einen dialogischen Blickkontakt.`;
@@ -186,7 +192,7 @@ const App = () => {
    const auswahlSpielverhalten = ["wechselhaft", "ausdauernd", "kein Spielverhalten"];
 
    if (spielverhalten) {
-      ausgabe += "\n\n";
+      ausgabe += `\n\n`; // Erster Block nach Hauptüberschrift => Zeilenumbruch
       switch (spielverhalten) {
          case "wechselhaft":
             ausgabe += `${Sein_Ihr} Spielverhalten war wechselhaft.`;
@@ -200,13 +206,13 @@ const App = () => {
          default:
             ausgabe += ``;
       }
-      ausgabe += ` `;
    }
 
    // Spielformen
    const auswahlSpielformen = ["Funktionsspiel", "Symbolspiel"];
 
    if (spielformen) {
+      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
       switch (spielformen) {
          case "Funktionsspiel":
             ausgabe += `Das Spiel war funktionsorientiert.`;
@@ -217,13 +223,13 @@ const App = () => {
          default:
             ausgabe += ``;
       }
-      ausgabe += ` `;
    }
 
    // Konzentrationsfähigkeit und Aufmerksamkeitslenkung
    const auswahlKonzentration = ["angemessen", "nicht angemessen"];
 
    if (konzentration) {
+      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
       switch (konzentration) {
          case "angemessen":
             ausgabe += `Die Konzentrationsfähigkeit und Aufmerksamkeitslenkung waren angemessen.`;
@@ -240,7 +246,7 @@ const App = () => {
    const auswahlRAA = ["reagiert", "reagiert nicht"];
 
    if (raa) {
-      ausgabe += `\n\n`;
+      ausgabe += `\n\n`; // Erster Block nach Hauptüberschrift => Zeilenumbruch
       switch (raa) {
          case "reagiert":
             ausgabe += `Auf Ansprache reagierte ${vorname}.`;
@@ -251,13 +257,13 @@ const App = () => {
          default:
             ausgabe += ``;
       }
-      ausgabe += ` `;
    }
 
    // Reaktion auf Geräusche
    const auswahlRAG = ["reagiert", "reagiert nicht"];
 
    if (rag) {
+      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
       switch (rag) {
          case "reagiert":
             ausgabe += `Geräusche in ${seiner_ihrer} Umgebung nahm ${er_sie} wahr.`;
@@ -268,13 +274,13 @@ const App = () => {
          default:
             ausgabe += ``;
       }
-      ausgabe += ` `;
    }
 
    // Lokalisation und Identifikation von Geräuschen
    const auswahlLUIVG = ["sicher", "nicht ausreichend zu beurteilen", "nur Identifikation sicher", "nur Lokalisation sicher"];
 
    if (luivg) {
+      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
       switch (luivg) {
          case "sicher":
             ausgabe += `Die Lokalisation und Identifikation von Geräuschen gelang ${ihm_ihr} sicher.`;
@@ -291,13 +297,13 @@ const App = () => {
          default:
             ausgabe += ``;
       }
-      ausgabe += ` `;
    }
 
    // Auditive Merkspanne
    const auswahlAMS = ["altersentsprechend", "nicht altersentsprechend"];
 
    if (ams) {
+      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
       switch (ams) {
          case "altersentsprechend":
             ausgabe += `Die auditive Merkspanne war altersentsprechend.`;
@@ -314,7 +320,7 @@ const App = () => {
    const auswahlOFT = ["reguliert", "nicht ausreichend reguliert"];
 
    if (oft) {
-      ausgabe += `\n\n`;
+      ausgabe += `\n\n`; // Erster Block nach Hauptüberschrift => Zeilenumbruch
       switch (oft) {
          case "reguliert":
             ausgabe += `Der orofaziale Tonus erschien ausreichend reguliert.`;
@@ -325,13 +331,13 @@ const App = () => {
          default:
             ausgabe += ``;
       }
-      ausgabe += ` `;
    }
 
    // Mundschluss
    const auswahlMundschluss = ["konstant", "offen"];
 
    if (mundschluss) {
+      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
       switch (mundschluss) {
          case "konstant":
             ausgabe += `Es wurde ein konstanter Mundschluss beobachtet.`;
@@ -342,7 +348,6 @@ const App = () => {
          default:
             ausgabe += ``;
       }
-      ausgabe += ` `;
    }
 
    // Speichelfluss
@@ -351,8 +356,8 @@ const App = () => {
    if (speichelfluss) {
       switch (speichelfluss) {
          case "vermehrter Speichelfluss":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
             ausgabe += `Es trat ein vermehrter Speichelfluss auf.`;
-            ausgabe += ` `;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -368,12 +373,12 @@ const App = () => {
    if (pusten) {
       switch (pusten) {
          case "möglich":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
             ausgabe += `${vorname} pustete Seifenblasen mit dosiertem Luftstrom.`;
-            ausgabe += ` `;
             break;
          case "nicht möglich":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
             ausgabe += `${vorname} konnte noch keine Seifenblasen mit dosiertem Luftstrom pusten.`;
-            ausgabe += ` `;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -389,12 +394,12 @@ const App = () => {
    if (ansaugen) {
       switch (ansaugen) {
          case "möglich":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
             ausgabe += `Das Ansaugen mit einem Strohhalm gelang ${ihm_ihr}.`;
-            ausgabe += ` `;
             break;
          case "nicht möglich":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
             ausgabe += `Das Ansaugen mit einem Strohhalm gelang ${ihm_ihr} noch nicht.`;
-            ausgabe += ` `;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -410,12 +415,12 @@ const App = () => {
    if (zungenruhelage) {
       switch (zungenruhelage) {
          case "möglich":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
             ausgabe += `${Er_Sie} konnte die Zungenruhelage einnehmen und kurz halten.`;
-            ausgabe += ` `;
             break;
          case "nicht möglich":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
             ausgabe += `${Er_Sie} konnte die Zungenruhelage noch nicht einnehmen und halten.`;
-            ausgabe += ` `;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -431,12 +436,12 @@ const App = () => {
    if (zubk) {
       switch (zubk) {
          case "unauffällig":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
             ausgabe += `Die Zungenbeweglichkeit und -koordination war unauffällig.`;
-            ausgabe += ` `;
             break;
          case "eingeschränkt":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
             ausgabe += `Die Zungenbeweglichkeit und -koordination war eingeschränkt.`;
-            ausgabe += ` `;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -452,9 +457,11 @@ const App = () => {
    if (lbuk) {
       switch (lbuk) {
          case "unauffällig":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
             ausgabe += `Eine ausreichende Lippenbeweglichkeit und -koordination war gegeben.`;
             break;
          case "eingeschränkt":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
             ausgabe += `Die Lippenbeweglichkeit und -koordination war eingeschränkt.`;
             break;
          case "[ keine Angabe ]":
@@ -469,7 +476,7 @@ const App = () => {
    const auswahlEUTV = ["unauffällig", "auffällig"];
 
    if (eutv) {
-      ausgabe += "\n\n";
+      ausgabe += `\n\n`; // Erster Block nach Hauptüberschrift => Zeilenumbruch
       switch (eutv) {
          case "unauffällig":
             ausgabe += `${Sein_Ihr} Ess- und Trinkverhalten war unauffällig.`;
@@ -480,13 +487,13 @@ const App = () => {
          default:
             ausgabe += ``;
       }
-      ausgabe += ` `;
    }
 
    // Konsistenzen der Kost
    const auswahlKDK = ["alle Konsistenzen", "v.a. weiche/breiige Kost", "v.a. harte Kost", "[ Sonstiges ]"];
 
    if (kdk) {
+      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
       switch (kdk) {
          case "alle Konsistenzen":
             ausgabe += `${vorname} esse alle Konsistenzen (harte und weiche Kost).`;
@@ -509,15 +516,13 @@ const App = () => {
    const auswahlOraleHabits = ["nicht vorhanden", "vorhanden"];
 
    if (oraleHabits) {
-      ausgabe += "\n\n";
+      ausgabe += `\n\n`; // Erster Block nach Hauptüberschrift => Zeilenumbruch
       switch (oraleHabits) {
          case "nicht vorhanden":
             ausgabe += `Orale Habits seien nicht vorhanden.`;
-            ausgabe += ` `;
             break;
          case "vorhanden":
             ausgabe += `Orale Habits seien vorhanden.`;
-            ausgabe += ` `;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -531,6 +536,7 @@ const App = () => {
    const auswahlSchnuller = ["noch nie", "bis heute", "bis zum..."];
 
    if (schnuller) {
+      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
       switch (schnuller) {
          case "noch nie":
             ausgabe += `${Er_Sie} habe noch nie einen Schnuller erhalten.`;
@@ -544,7 +550,6 @@ const App = () => {
          default:
             ausgabe += ``;
       }
-      ausgabe += ` `;
    }
 
    // Trinkflasche mit Sauger
@@ -553,8 +558,8 @@ const App = () => {
    if (tms) {
       switch (tms) {
          case "trinkt noch aus einer":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
             ausgabe += `${Er_Sie} trinke noch aus einer Trinkflasche mit Sauger.`;
-            ausgabe += ` `;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -570,8 +575,8 @@ const App = () => {
    if (daumenlutschen) {
       switch (daumenlutschen) {
          case "wird beobachtet":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
             ausgabe += `Es werde Daumenlutschen beobachtet.`;
-            ausgabe += ` `;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -587,8 +592,8 @@ const App = () => {
    if (fnk) {
       switch (fnk) {
          case "wird beobachtet":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
             ausgabe += `Es werde Fingernägelkauen beobachtet.`;
-            ausgabe += ` `;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -626,30 +631,31 @@ ${titelTMS}: ${tms || "---"}
 ${titelDaumenlutschen}: ${daumenlutschen || "---"}
 ${titelFNK}: ${fnk || "---"}`;
 
-   let i = 0;
+   const toggleHauptblockHandler = () => setShowHauptblock(v => !v);
 
    return (
       <div className="h-95v grid md:grid-cols-2 gap-2 md:gap-4 px-3 pt-3 pb-10 md:px-6 md:pt-6">
          <div className="h-full overflow-auto bg-white shadow-sm rounded-md p-3 border border-gray-300">
-            <Ueberschrift1 text={++i + ".) Allgemeines"} />
-            <Input value={vorname} onChange={setVorname} title={titelVorname} />
-            <Radio value={geschlecht} onChange={setGeschlecht} title={titelGeschlecht} auswahl={auswahlGeschlecht} />
-            <Radio value={begleitetVon} onChange={setBegleitetVon} title={titelBegleitetVon} auswahl={auswahlBegleitetVon} />
-            {begleitetVon === "begleitet von..." && (
-               <InputFreitext value={begleitetVonFreitext} onChange={setBegleitetVonFreitext} title={titelBegleitetVon + " (Freitext)"} />
-            )}
-            <Ueberschrift1 text={++i + ".) Kontaktverhalten"} />
+            <Hauptblock text="Allgemeines" show={showHauptblock} onToggle={toggleHauptblockHandler}>
+               <Input value={vorname} onChange={setVorname} title={titelVorname} />
+               <Radio value={geschlecht} onChange={setGeschlecht} title={titelGeschlecht} auswahl={auswahlGeschlecht} />
+               <Radio value={begleitetVon} onChange={setBegleitetVon} title={titelBegleitetVon} auswahl={auswahlBegleitetVon} />
+               {begleitetVon === "begleitet von..." && (
+                  <InputFreitext value={begleitetVonFreitext} onChange={setBegleitetVonFreitext} title={titelBegleitetVon + " (Freitext)"} />
+               )}
+            </Hauptblock>
+            <Hauptblock text="Kontaktverhalten" />
             <Radio value={blickkontakt} onChange={setBlickkontakt} title={titelBlickkontakt} auswahl={auswahlBlickkontakt} />
-            <Ueberschrift1 text={++i + ".) Spiel und Konzentration"} />
+            <Hauptblock text="Spiel und Konzentration" />
             <Radio value={spielverhalten} onChange={setSpielverhalten} title={titelSpielverhalten} auswahl={auswahlSpielverhalten} />
             <Radio value={spielformen} onChange={setSpielformen} title={titelSpielformen} auswahl={auswahlSpielformen} />
             <Radio value={konzentration} onChange={setKonzentration} title={titelKonzentration} auswahl={auswahlKonzentration} />
-            <Ueberschrift1 text={++i + ".) Auditive Wahrnehmung"} />
+            <Hauptblock text="Auditive Wahrnehmung" />
             <Radio value={raa} onChange={setRAA} title={titelRAA} auswahl={auswahlRAA} />
             <Radio value={rag} onChange={setRAG} title={titelRAG} auswahl={auswahlRAG} />
             <Radio value={luivg} onChange={setLUIVG} title={titelLUIVG} auswahl={auswahlLUIVG} />
             <Radio value={ams} onChange={setAMS} title={titelAMS} auswahl={auswahlAMS} />
-            <Ueberschrift1 text={++i + ".) Mundmotorik"} />
+            <Hauptblock text="Mundmotorik" />
             <Radio value={oft} onChange={setOFT} title={titelOFT} auswahl={auswahlOFT} />
             <Radio value={mundschluss} onChange={setMundschluss} title={titelMundschluss} auswahl={auswahlMundschluss} />
             <Radio value={speichelfluss} onChange={setSpeichelfluss} title={titelSpeichelfluss} auswahl={auswahlSpeichelfluss} />
@@ -658,11 +664,11 @@ ${titelFNK}: ${fnk || "---"}`;
             <Radio value={zungenruhelage} onChange={setZungenruhelage} title={titelZungenruhelage} auswahl={auswahlZungenruhelage} />
             <Radio value={zubk} onChange={setZBUK} title={titelZBUK} auswahl={auswahlZBUK} />
             <Radio value={lbuk} onChange={setLBUK} title={titelLBUK} auswahl={auswahlLBUK} />
-            <Ueberschrift1 text={++i + ".) Essen und Trinken"} />
+            <Hauptblock text="Essen und Trinken" />
             <Radio value={eutv} onChange={setEUTV} title={titelEUTV} auswahl={auswahlEUTV} />
             <Radio value={kdk} onChange={setKDK} title={titelKDK} auswahl={auswahlKDK} />
             {kdk === "[ Sonstiges ]" && <InputFreitext value={kdkFreitext} onChange={setKdkFreitext} title={titelKDK + " (Freitext)"} />}
-            <Ueberschrift1 text={++i + ".) Orale Habits"} />
+            <Hauptblock text="Orale Habits" />
             <Radio value={oraleHabits} onChange={setOraleHabits} title={titelOraleHabits} auswahl={auswahlOraleHabits} />
             <Radio value={schnuller} onChange={setSchnuller} title={titelSchnuller} auswahl={auswahlSchnuller} />
             {schnuller === "bis zum..." && <InputFreitext value={schnullerFreitext} onChange={setSchnullerFreitext} title={titelSchnuller + " (Freitext)"} />}
