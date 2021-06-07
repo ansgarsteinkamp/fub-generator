@@ -1,8 +1,5 @@
 import { Fragment } from "react";
 
-// "default: ausblenden"
-// "default: ausblenden"
-
 const Hauptblock = props => {
    return (
       <Fragment>
@@ -31,7 +28,7 @@ const Hauptblock = props => {
                </button>
             )}
          </div>
-         {props.show && props.children}
+         {(!props.onToggle || props.show) && props.children}
       </Fragment>
    );
 };

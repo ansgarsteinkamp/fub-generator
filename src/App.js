@@ -121,6 +121,8 @@ const App = () => {
 
    let ausgabe = "";
 
+   // #######  Hauptblock "Allgemeines"  #######
+
    // Begleitet von
    const auswahlBegleitetVon = [
       "Mutter",
@@ -168,11 +170,13 @@ const App = () => {
       }
    }
 
+   // #######  Hauptblock "Kontaktverhalten"  #######
+
    // Blickkontakt
    const auswahlBlickkontakt = ["dialogisch", "dialogisch und triangulär", "kein Blickkontakt"];
 
    if (blickkontakt) {
-      ausgabe += `\n\n`; // Erster Block nach Hauptüberschrift => Zeilenumbruch
+      ausgabe += `\n\n`; // Erster Teil des Hauptblocks => Zeilenumbruch
       switch (blickkontakt) {
          case "dialogisch":
             ausgabe += `${Er_Sie} zeigte einen dialogischen Blickkontakt.`;
@@ -188,11 +192,13 @@ const App = () => {
       }
    }
 
+   // #######  Hauptblock "Spiel und Konzentration"  #######
+
    // Spielverhalten
    const auswahlSpielverhalten = ["wechselhaft", "ausdauernd", "kein Spielverhalten"];
 
    if (spielverhalten) {
-      ausgabe += `\n\n`; // Erster Block nach Hauptüberschrift => Zeilenumbruch
+      ausgabe += `\n\n`; // Erster Teil des Hauptblocks => Zeilenumbruch
       switch (spielverhalten) {
          case "wechselhaft":
             ausgabe += `${Sein_Ihr} Spielverhalten war wechselhaft.`;
@@ -242,11 +248,13 @@ const App = () => {
       }
    }
 
+   // #######  Hauptblock Auditive Wahrnehmung"  #######
+
    // Reaktion auf Ansprache
    const auswahlRAA = ["reagiert", "reagiert nicht"];
 
    if (raa) {
-      ausgabe += `\n\n`; // Erster Block nach Hauptüberschrift => Zeilenumbruch
+      ausgabe += `\n\n`; // Erster Teil des Hauptblocks => Zeilenumbruch
       switch (raa) {
          case "reagiert":
             ausgabe += `Auf Ansprache reagierte ${vorname}.`;
@@ -316,11 +324,13 @@ const App = () => {
       }
    }
 
+   // #######  Hauptblock "Mundmotorik"  #######
+
    // Orofazialer Tonus
    const auswahlOFT = ["reguliert", "nicht ausreichend reguliert"];
 
    if (oft) {
-      ausgabe += `\n\n`; // Erster Block nach Hauptüberschrift => Zeilenumbruch
+      ausgabe += `\n\n`; // Erster Teil des Hauptblocks => Zeilenumbruch
       switch (oft) {
          case "reguliert":
             ausgabe += `Der orofaziale Tonus erschien ausreichend reguliert.`;
@@ -472,11 +482,13 @@ const App = () => {
       }
    }
 
+   // #######  Hauptblock "Essen und Trinken"  #######
+
    // Ess- und Trinkverhalten
    const auswahlEUTV = ["unauffällig", "auffällig"];
 
    if (eutv) {
-      ausgabe += `\n\n`; // Erster Block nach Hauptüberschrift => Zeilenumbruch
+      ausgabe += `\n\n`; // Erster Teil des Hauptblocks => Zeilenumbruch
       switch (eutv) {
          case "unauffällig":
             ausgabe += `${Sein_Ihr} Ess- und Trinkverhalten war unauffällig.`;
@@ -512,11 +524,13 @@ const App = () => {
       }
    }
 
+   // #######  Hauptblock "Orale Habits"  #######
+
    // Orale Habits
    const auswahlOraleHabits = ["nicht vorhanden", "vorhanden"];
 
    if (oraleHabits) {
-      ausgabe += `\n\n`; // Erster Block nach Hauptüberschrift => Zeilenumbruch
+      ausgabe += `\n\n`; // Erster Teil des Hauptblocks => Zeilenumbruch
       switch (oraleHabits) {
          case "nicht vorhanden":
             ausgabe += `Orale Habits seien nicht vorhanden.`;
@@ -644,37 +658,45 @@ ${titelFNK}: ${fnk || "---"}`;
                   <InputFreitext value={begleitetVonFreitext} onChange={setBegleitetVonFreitext} title={titelBegleitetVon + " (Freitext)"} />
                )}
             </Hauptblock>
-            <Hauptblock text="Kontaktverhalten" />
-            <Radio value={blickkontakt} onChange={setBlickkontakt} title={titelBlickkontakt} auswahl={auswahlBlickkontakt} />
-            <Hauptblock text="Spiel und Konzentration" />
-            <Radio value={spielverhalten} onChange={setSpielverhalten} title={titelSpielverhalten} auswahl={auswahlSpielverhalten} />
-            <Radio value={spielformen} onChange={setSpielformen} title={titelSpielformen} auswahl={auswahlSpielformen} />
-            <Radio value={konzentration} onChange={setKonzentration} title={titelKonzentration} auswahl={auswahlKonzentration} />
-            <Hauptblock text="Auditive Wahrnehmung" />
-            <Radio value={raa} onChange={setRAA} title={titelRAA} auswahl={auswahlRAA} />
-            <Radio value={rag} onChange={setRAG} title={titelRAG} auswahl={auswahlRAG} />
-            <Radio value={luivg} onChange={setLUIVG} title={titelLUIVG} auswahl={auswahlLUIVG} />
-            <Radio value={ams} onChange={setAMS} title={titelAMS} auswahl={auswahlAMS} />
-            <Hauptblock text="Mundmotorik" />
-            <Radio value={oft} onChange={setOFT} title={titelOFT} auswahl={auswahlOFT} />
-            <Radio value={mundschluss} onChange={setMundschluss} title={titelMundschluss} auswahl={auswahlMundschluss} />
-            <Radio value={speichelfluss} onChange={setSpeichelfluss} title={titelSpeichelfluss} auswahl={auswahlSpeichelfluss} />
-            <Radio value={pusten} onChange={setPusten} title={titelPusten} auswahl={auswahlPusten} />
-            <Radio value={ansaugen} onChange={setAnsaugen} title={titelAnsaugen} auswahl={auswahlAnsaugen} />
-            <Radio value={zungenruhelage} onChange={setZungenruhelage} title={titelZungenruhelage} auswahl={auswahlZungenruhelage} />
-            <Radio value={zubk} onChange={setZBUK} title={titelZBUK} auswahl={auswahlZBUK} />
-            <Radio value={lbuk} onChange={setLBUK} title={titelLBUK} auswahl={auswahlLBUK} />
-            <Hauptblock text="Essen und Trinken" />
-            <Radio value={eutv} onChange={setEUTV} title={titelEUTV} auswahl={auswahlEUTV} />
-            <Radio value={kdk} onChange={setKDK} title={titelKDK} auswahl={auswahlKDK} />
-            {kdk === "[ Sonstiges ]" && <InputFreitext value={kdkFreitext} onChange={setKdkFreitext} title={titelKDK + " (Freitext)"} />}
-            <Hauptblock text="Orale Habits" />
-            <Radio value={oraleHabits} onChange={setOraleHabits} title={titelOraleHabits} auswahl={auswahlOraleHabits} />
-            <Radio value={schnuller} onChange={setSchnuller} title={titelSchnuller} auswahl={auswahlSchnuller} />
-            {schnuller === "bis zum..." && <InputFreitext value={schnullerFreitext} onChange={setSchnullerFreitext} title={titelSchnuller + " (Freitext)"} />}
-            <Radio value={tms} onChange={setTMS} title={titelTMS} auswahl={auswahlTMS} />
-            <Radio value={daumenlutschen} onChange={setDaumenlutschen} title={titelDaumenlutschen} auswahl={auswahlDaumenlutschen} />
-            <Radio value={fnk} onChange={setFNK} title={titelFNK} auswahl={auswahlFNK} />
+            <Hauptblock text="Kontaktverhalten">
+               <Radio value={blickkontakt} onChange={setBlickkontakt} title={titelBlickkontakt} auswahl={auswahlBlickkontakt} />
+            </Hauptblock>
+            <Hauptblock text="Spiel und Konzentration">
+               <Radio value={spielverhalten} onChange={setSpielverhalten} title={titelSpielverhalten} auswahl={auswahlSpielverhalten} />
+               <Radio value={spielformen} onChange={setSpielformen} title={titelSpielformen} auswahl={auswahlSpielformen} />
+               <Radio value={konzentration} onChange={setKonzentration} title={titelKonzentration} auswahl={auswahlKonzentration} />
+            </Hauptblock>
+            <Hauptblock text="Auditive Wahrnehmung">
+               <Radio value={raa} onChange={setRAA} title={titelRAA} auswahl={auswahlRAA} />
+               <Radio value={rag} onChange={setRAG} title={titelRAG} auswahl={auswahlRAG} />
+               <Radio value={luivg} onChange={setLUIVG} title={titelLUIVG} auswahl={auswahlLUIVG} />
+               <Radio value={ams} onChange={setAMS} title={titelAMS} auswahl={auswahlAMS} />
+            </Hauptblock>
+            <Hauptblock text="Mundmotorik">
+               <Radio value={oft} onChange={setOFT} title={titelOFT} auswahl={auswahlOFT} />
+               <Radio value={mundschluss} onChange={setMundschluss} title={titelMundschluss} auswahl={auswahlMundschluss} />
+               <Radio value={speichelfluss} onChange={setSpeichelfluss} title={titelSpeichelfluss} auswahl={auswahlSpeichelfluss} />
+               <Radio value={pusten} onChange={setPusten} title={titelPusten} auswahl={auswahlPusten} />
+               <Radio value={ansaugen} onChange={setAnsaugen} title={titelAnsaugen} auswahl={auswahlAnsaugen} />
+               <Radio value={zungenruhelage} onChange={setZungenruhelage} title={titelZungenruhelage} auswahl={auswahlZungenruhelage} />
+               <Radio value={zubk} onChange={setZBUK} title={titelZBUK} auswahl={auswahlZBUK} />
+               <Radio value={lbuk} onChange={setLBUK} title={titelLBUK} auswahl={auswahlLBUK} />
+            </Hauptblock>
+            <Hauptblock text="Essen und Trinken">
+               <Radio value={eutv} onChange={setEUTV} title={titelEUTV} auswahl={auswahlEUTV} />
+               <Radio value={kdk} onChange={setKDK} title={titelKDK} auswahl={auswahlKDK} />
+               {kdk === "[ Sonstiges ]" && <InputFreitext value={kdkFreitext} onChange={setKdkFreitext} title={titelKDK + " (Freitext)"} />}
+            </Hauptblock>
+            <Hauptblock text="Orale Habits">
+               <Radio value={oraleHabits} onChange={setOraleHabits} title={titelOraleHabits} auswahl={auswahlOraleHabits} />
+               <Radio value={schnuller} onChange={setSchnuller} title={titelSchnuller} auswahl={auswahlSchnuller} />
+               {schnuller === "bis zum..." && (
+                  <InputFreitext value={schnullerFreitext} onChange={setSchnullerFreitext} title={titelSchnuller + " (Freitext)"} />
+               )}
+               <Radio value={tms} onChange={setTMS} title={titelTMS} auswahl={auswahlTMS} />
+               <Radio value={daumenlutschen} onChange={setDaumenlutschen} title={titelDaumenlutschen} auswahl={auswahlDaumenlutschen} />
+               <Radio value={fnk} onChange={setFNK} title={titelFNK} auswahl={auswahlFNK} />
+            </Hauptblock>
          </div>
 
          <Ausgabebereich ausgabe={ausgabe} resetAll={resetAll} />
