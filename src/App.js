@@ -34,6 +34,8 @@ const titelSchnuller = ++i + ".) Schnuller";
 const titelTMS = ++i + ".) Trinkflasche mit Sauger";
 const titelDaumenlutschen = ++i + ".) Daumenlutschen";
 const titelFNK = ++i + ".) Fingernägelkauen";
+const titelSUV = ++i + ".) Stillen und Flaschennahrung";
+const titelZUG = ++i + ".) Zahn- und Gebissstatus";
 
 const App = () => {
    const [vorname, setVorname] = useState(localStorage.getItem(titelVorname) || "");
@@ -62,10 +64,14 @@ const App = () => {
    const [tms, setTMS] = useState(localStorage.getItem(titelTMS));
    const [daumenlutschen, setDaumenlutschen] = useState(localStorage.getItem(titelDaumenlutschen));
    const [fnk, setFNK] = useState(localStorage.getItem(titelFNK));
+   const [suv, setSUV] = useState(localStorage.getItem(titelSUV));
+   const [zug, setZUG] = useState(localStorage.getItem(titelZUG));
 
    const [begleitetVonFreitext, setBegleitetVonFreitext] = useState(localStorage.getItem(titelBegleitetVon + " (Freitext)") || "");
    const [kdkFreitext, setKdkFreitext] = useState(localStorage.getItem(titelKDK + " (Freitext)") || "");
    const [schnullerFreitext, setSchnullerFreitext] = useState(localStorage.getItem(titelSchnuller + " (Freitext)") || "");
+   const [SUVFreitext, setSUVFreitext] = useState(localStorage.getItem(titelSUV + " (Freitext)") || "");
+   const [ZUGFreitext, setZUGFreitext] = useState(localStorage.getItem(titelZUG + " (Freitext)") || "");
 
    const [showHauptblock, setShowHauptblock] = useState(true);
 
@@ -96,10 +102,14 @@ const App = () => {
       setTMS(null);
       setDaumenlutschen(null);
       setFNK(null);
+      setSUV(null);
+      setZUG(null);
 
       setBegleitetVonFreitext("");
       setKdkFreitext("");
       setSchnullerFreitext("");
+      setSUVFreitext("");
+      setZUGFreitext("");
 
       setShowHauptblock(true);
 
@@ -502,7 +512,7 @@ const App = () => {
    }
 
    // Konsistenzen der Kost
-   const auswahlKDK = ["alle Konsistenzen", "v.a. weiche/breiige Kost", "v.a. harte Kost", "[ Sonstiges ]"];
+   const auswahlKDK = ["alle Konsistenzen", "v.a. weiche/breiige Kost", "v.a. harte Kost", "Freitext eingeben..."];
 
    if (kdk) {
       ausgabe += ` `; // Leerzeichen zum vorherigen Satz
@@ -516,7 +526,7 @@ const App = () => {
          case "v.a. harte Kost":
             ausgabe += `${vorname} bevorzuge harte Kost.`;
             break;
-         case "[ Sonstiges ]":
+         case "Freitext eingeben...":
             ausgabe += `${kdkFreitext}`;
             break;
          default:
@@ -617,6 +627,43 @@ const App = () => {
       }
    }
 
+   // Stillen und Flaschennahrung
+   const auswahlSUV = ["Stillen bis zum (s.u.)", "Flaschennahrung bis zum (s.u.)", "Stillen bis zum (s.u.), dann Flaschennahrung"];
+
+   if (suv) {
+      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      switch (suv) {
+         case "Stillen bis zum (s.u.)":
+            ausgabe += `${vorname} sei bis zum ${SUVFreitext} gestillt worden.`;
+            break;
+         case "Flaschennahrung bis zum (s.u.)":
+            ausgabe += `${vorname} habe bis zum ${SUVFreitext} Flaschennahrung erhalten.`;
+            break;
+         case "Stillen bis zum (s.u.), dann Flaschennahrung":
+            ausgabe += `${vorname} sei erst bis zum ${SUVFreitext} gestillt worden und habe danach Flaschennahrung erhalten.`;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   // Zahn- und Gebissstatus
+   const auswahlZUG = ["unauffällig", "auffällig (+ Freitext)"];
+
+   if (zug) {
+      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      switch (zug) {
+         case "unauffällig":
+            ausgabe += `${Sein_Ihr} Zahn- und Gebissstatus war unauffällig.`;
+            break;
+         case "auffällig (+ Freitext)":
+            ausgabe += `${Sein_Ihr} Zahn- und Gebissstatus war auffällig. ${ZUGFreitext}`;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
    ausgabe += `\n\n-----------------------------\n
 ${titelVorname}: ${vorname || "---"}
 ${titelGeschlecht}: ${geschlecht || "---"}
@@ -638,12 +685,14 @@ ${titelZungenruhelage}: ${zungenruhelage || "---"}
 ${titelZBUK}: ${zubk || "---"}
 ${titelLBUK}: ${lbuk || "---"}
 ${titelEUTV}: ${eutv || "---"}
-${titelKDK}: ${kdk !== "[ Sonstiges ]" ? kdk || "---" : kdkFreitext}
+${titelKDK}: ${kdk !== "Freitext eingeben..." ? kdk || "---" : kdkFreitext}
 ${titelOraleHabits}: ${oraleHabits || "---"}
 ${titelSchnuller}: ${schnuller !== "bis zum..." ? schnuller || "---" : "bis zum " + schnullerFreitext}
 ${titelTMS}: ${tms || "---"}
 ${titelDaumenlutschen}: ${daumenlutschen || "---"}
-${titelFNK}: ${fnk || "---"}`;
+${titelFNK}: ${fnk || "---"}
+${titelSUV}: ${suv ? suv.replace("(s.u.)", SUVFreitext) : "---"}
+${titelZUG}: ${zug !== "auffällig (+ Freitext)" ? zug || "---" : zug.replace("+ Freitext", ZUGFreitext)}`;
 
    const toggleHauptblockHandler = () => setShowHauptblock(v => !v);
 
@@ -690,13 +739,13 @@ ${titelFNK}: ${fnk || "---"}`;
             <Hauptblock text="Essen und Trinken">
                <Radio value={eutv} onChange={setEUTV} title={titelEUTV} auswahl={auswahlEUTV} />
                <Radio value={kdk} onChange={setKDK} title={titelKDK} auswahl={auswahlKDK} />
-               {kdk === "[ Sonstiges ]" && (
+               {kdk === "Freitext eingeben..." && (
                   <InputFreitext
                      value={kdkFreitext}
                      onChange={setKdkFreitext}
                      title={titelKDK + " (Freitext)"}
                      placeholder="Beispiel: Karl isst nur Erdnüsse."
-                     width="w-8/12"
+                     width="w-10/12"
                   />
                )}
             </Hauptblock>
@@ -714,6 +763,18 @@ ${titelFNK}: ${fnk || "---"}`;
                <Radio value={tms} onChange={setTMS} title={titelTMS} auswahl={auswahlTMS} />
                <Radio value={daumenlutschen} onChange={setDaumenlutschen} title={titelDaumenlutschen} auswahl={auswahlDaumenlutschen} />
                <Radio value={fnk} onChange={setFNK} title={titelFNK} auswahl={auswahlFNK} />
+               <Radio value={suv} onChange={setSUV} title={titelSUV} auswahl={auswahlSUV} />
+               <InputFreitext value={SUVFreitext} onChange={setSUVFreitext} title={titelSUV + " (Freitext)"} placeholder="Beispiel: zehnten Monat" />
+               <Radio value={zug} onChange={setZUG} title={titelZUG} auswahl={auswahlZUG} />
+               {zug === "auffällig (+ Freitext)" && (
+                  <InputFreitext
+                     value={ZUGFreitext}
+                     onChange={setZUGFreitext}
+                     title={titelZUG + " (Freitext)"}
+                     placeholder="Beispiel: Sein Mund war voller Goldzähne."
+                     width="w-10/12"
+                  />
+               )}
             </Hauptblock>
          </div>
 
