@@ -655,7 +655,12 @@ ${titelFNK}: ${fnk || "---"}`;
                <Radio value={geschlecht} onChange={setGeschlecht} title={titelGeschlecht} auswahl={auswahlGeschlecht} />
                <Radio value={begleitetVon} onChange={setBegleitetVon} title={titelBegleitetVon} auswahl={auswahlBegleitetVon} />
                {begleitetVon === "begleitet von..." && (
-                  <InputFreitext value={begleitetVonFreitext} onChange={setBegleitetVonFreitext} title={titelBegleitetVon + " (Freitext)"} />
+                  <InputFreitext
+                     value={begleitetVonFreitext}
+                     onChange={setBegleitetVonFreitext}
+                     title={titelBegleitetVon + " (Freitext)"}
+                     placeholder="Beispiel: seiner Oma"
+                  />
                )}
             </Hauptblock>
             <Hauptblock text="Kontaktverhalten">
@@ -685,13 +690,26 @@ ${titelFNK}: ${fnk || "---"}`;
             <Hauptblock text="Essen und Trinken">
                <Radio value={eutv} onChange={setEUTV} title={titelEUTV} auswahl={auswahlEUTV} />
                <Radio value={kdk} onChange={setKDK} title={titelKDK} auswahl={auswahlKDK} />
-               {kdk === "[ Sonstiges ]" && <InputFreitext value={kdkFreitext} onChange={setKdkFreitext} title={titelKDK + " (Freitext)"} />}
+               {kdk === "[ Sonstiges ]" && (
+                  <InputFreitext
+                     value={kdkFreitext}
+                     onChange={setKdkFreitext}
+                     title={titelKDK + " (Freitext)"}
+                     placeholder="Beispiel: Karl isst nur Erdnüsse."
+                     width="w-8/12"
+                  />
+               )}
             </Hauptblock>
             <Hauptblock text="Orale Habits">
                <Radio value={oraleHabits} onChange={setOraleHabits} title={titelOraleHabits} auswahl={auswahlOraleHabits} />
                <Radio value={schnuller} onChange={setSchnuller} title={titelSchnuller} auswahl={auswahlSchnuller} />
                {schnuller === "bis zum..." && (
-                  <InputFreitext value={schnullerFreitext} onChange={setSchnullerFreitext} title={titelSchnuller + " (Freitext)"} />
+                  <InputFreitext
+                     value={schnullerFreitext}
+                     onChange={setSchnullerFreitext}
+                     title={titelSchnuller + " (Freitext)"}
+                     placeholder="Beispiel: zehnten Monat"
+                  />
                )}
                <Radio value={tms} onChange={setTMS} title={titelTMS} auswahl={auswahlTMS} />
                <Radio value={daumenlutschen} onChange={setDaumenlutschen} title={titelDaumenlutschen} auswahl={auswahlDaumenlutschen} />
