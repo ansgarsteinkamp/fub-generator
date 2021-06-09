@@ -36,6 +36,10 @@ const titelDaumenlutschen = ++i + ".) Daumenlutschen";
 const titelFNK = ++i + ".) Fingernägelkauen";
 const titelSUV = ++i + ".) Stillen und Flaschennahrung";
 const titelZUG = ++i + ".) Zahn- und Gebissstatus";
+const titelEoM = ++i + ".) Ein- oder mehrsprachige Erziehung";
+const titelAV = ++i + ".) Aussprache: Verständlichkeit";
+const titelAAA = ++i + ".) Aussprache: Art der Abweichung";
+const titelAAN = ++i + ".) Aussprache: Altersnorm";
 
 const App = () => {
    const [vorname, setVorname] = useState(localStorage.getItem(titelVorname) || "");
@@ -66,12 +70,18 @@ const App = () => {
    const [fnk, setFNK] = useState(localStorage.getItem(titelFNK));
    const [suv, setSUV] = useState(localStorage.getItem(titelSUV));
    const [zug, setZUG] = useState(localStorage.getItem(titelZUG));
+   const [eom, setEoM] = useState(localStorage.getItem(titelEoM));
+   const [av, setAV] = useState(localStorage.getItem(titelAV));
+   const [aaa, setAAA] = useState(localStorage.getItem(titelAAA));
+   const [aan, setAAN] = useState(localStorage.getItem(titelAAN));
 
    const [begleitetVonFreitext, setBegleitetVonFreitext] = useState(localStorage.getItem(titelBegleitetVon + " (Freitext)") || "");
    const [kdkFreitext, setKdkFreitext] = useState(localStorage.getItem(titelKDK + " (Freitext)") || "");
    const [schnullerFreitext, setSchnullerFreitext] = useState(localStorage.getItem(titelSchnuller + " (Freitext)") || "");
    const [SUVFreitext, setSUVFreitext] = useState(localStorage.getItem(titelSUV + " (Freitext)") || "");
    const [ZUGFreitext, setZUGFreitext] = useState(localStorage.getItem(titelZUG + " (Freitext)") || "");
+   const [EoMFreitext, setEoMFreitext] = useState(localStorage.getItem(titelEoM + " (Freitext)") || "");
+   const [AAAFreitext, setAAAFreitext] = useState(localStorage.getItem(titelAAA + " (Freitext)") || "");
 
    const [showHauptblock, setShowHauptblock] = useState(true);
 
@@ -104,12 +114,18 @@ const App = () => {
       setFNK(null);
       setSUV(null);
       setZUG(null);
+      setEoM(null);
+      setAV(null);
+      setAAA(null);
+      setAAN(null);
 
       setBegleitetVonFreitext("");
       setKdkFreitext("");
       setSchnullerFreitext("");
       setSUVFreitext("");
       setZUGFreitext("");
+      setEoMFreitext("");
+      setAAAFreitext("");
 
       setShowHauptblock(true);
 
@@ -664,6 +680,78 @@ const App = () => {
       }
    }
 
+   // #######  Hauptblock "Sprachen"  #######
+
+   // Ein- oder mehrsprachige Erziehung
+   const auswahlEoM = ["einsprachig (Sprache s.u.)", "mehrsprachig (Sprachen s.u.)"];
+
+   if (eom) {
+      ausgabe += `\n\n`; // Erster Teil des Hauptblocks => Zeilenumbruch
+      switch (eom) {
+         case "einsprachig (Sprache s.u.)":
+            ausgabe += `${Er_Sie} wurde einsprachig (${EoMFreitext}) erzogen.`;
+            break;
+         case "mehrsprachig (Sprachen s.u.)":
+            ausgabe += `${Er_Sie} wurde mehrsprachig (${EoMFreitext}) erzogen.`;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   // #######  Hauptblock "Sprachkompetenzen in der Erstsprache (L1)"  #######
+
+   // Aussprache: Verständlichkeit
+   const auswahlAV = ["deutlich", "undeutlich"];
+
+   if (av) {
+      ausgabe += `\n\n`; // Erster Teil des Hauptblocks => Zeilenumbruch
+      switch (av) {
+         case "deutlich":
+            ausgabe += `Die Aussprache von ${vorname} ist deutlich.`;
+            break;
+         case "undeutlich":
+            ausgabe += `Die Aussprache von ${vorname} ist undeutlich.`;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   // Aussprache: Art der Abweichung
+   const auswahlAAA = ["Lautersetzungen / -auslassungen (phonologisch)", "Lautveränderungen (phonetisch)"];
+
+   if (aaa) {
+      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      switch (aaa) {
+         case "Lautersetzungen / -auslassungen (phonologisch)":
+            ausgabe += `Es werden Lautersetzungen und -auslassungen (Prozesse: ${AAAFreitext}) beobachtet.`;
+            break;
+         case "Lautveränderungen (phonetisch)":
+            ausgabe += `Es werden Lautveränderungen (betroffene Laute: ${AAAFreitext}) beobachtet.`;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   // Aussprache: Altersnorm
+   const auswahlAAN = ["altersentsprechend", "nicht altersentsprechend"];
+
+   if (aan) {
+      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      switch (aan) {
+         case "altersentsprechend":
+            ausgabe += `${Seine_Ihre} Aussprachefähigkeiten waren altersentsprechend.`;
+            break;
+         case "nicht altersentsprechend":
+            ausgabe += `${Seine_Ihre} Aussprachefähigkeiten waren noch nicht altersentsprechend.`;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
    ausgabe += `\n\n-----------------------------\n
 ${titelVorname}: ${vorname || "---"}
 ${titelGeschlecht}: ${geschlecht || "---"}
@@ -692,7 +780,11 @@ ${titelTMS}: ${tms || "---"}
 ${titelDaumenlutschen}: ${daumenlutschen || "---"}
 ${titelFNK}: ${fnk || "---"}
 ${titelSUV}: ${suv ? suv.replace("(s.u.)", SUVFreitext) : "---"}
-${titelZUG}: ${zug !== "auffällig (+ Freitext)" ? zug || "---" : zug.replace("+ Freitext", ZUGFreitext)}`;
+${titelZUG}: ${zug !== "auffällig (+ Freitext)" ? zug || "---" : zug.replace("+ Freitext", ZUGFreitext)}
+${titelEoM}: ${eom ? eom.replace("Sprachen s.u.", EoMFreitext).replace("Sprache s.u.", EoMFreitext) : "---"}
+${titelAV}: ${av || "---"}
+${titelAAA}: ${aaa ? aaa + ": " + AAAFreitext : "---"}
+${titelAAN}: ${aan || "---"}`;
 
    const toggleHauptblockHandler = () => setShowHauptblock(v => !v);
 
@@ -775,6 +867,28 @@ ${titelZUG}: ${zug !== "auffällig (+ Freitext)" ? zug || "---" : zug.replace("+
                      width="w-10/12"
                   />
                )}
+            </Hauptblock>
+            <Hauptblock text="Sprachen">
+               <Radio value={eom} onChange={setEoM} title={titelEoM} auswahl={auswahlEoM} />
+               <InputFreitext
+                  value={EoMFreitext}
+                  onChange={setEoMFreitext}
+                  title={titelEoM + " (Freitext)"}
+                  placeholder="Beispiel: deutsch, englisch"
+                  width="w-8/12"
+               />
+            </Hauptblock>
+            <Hauptblock text="Sprachkompetenzen in der Erstsprache (L1)">
+               <Radio value={av} onChange={setAV} title={titelAV} auswahl={auswahlAV} />
+               <Radio value={aaa} onChange={setAAA} title={titelAAA} auswahl={auswahlAAA} />
+               <InputFreitext
+                  value={AAAFreitext}
+                  onChange={setAAAFreitext}
+                  title={titelAAA + " (Freitext)"}
+                  placeholder={aaa === "Lautersetzungen / -auslassungen (phonologisch)" ? "Prozesse" : "betroffene Laute"}
+                  width="w-8/12"
+               />
+               <Radio value={aan} onChange={setAAN} title={titelAAN} auswahl={auswahlAAN} />
             </Hauptblock>
          </div>
 
