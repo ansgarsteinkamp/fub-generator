@@ -7,10 +7,10 @@ const Ausgabebereich = props => {
             readOnly
             value={props.ausgabe}
             rows="5"
-            className="text-xs h-full w-full pl-5 pr-3 py-14 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md"
+            className="text-xs h-full w-full pl-5 pr-3 py-14 shadow-lg focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md"
          ></textarea>
          <div className="absolute top-4 flex justify-between w-full">
-            <CopyToClipboard text={props.ausgabe}>
+            <CopyToClipboard text={props.ausgabe} options={{ format: "text/plain" }}>
                <button className="rounded-full bg-green-200 hover:bg-green-400 p-1 ml-4">
                   <svg xmlns="http://www.w3.org/2000/svg" className="text-gray-400 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                      <path

@@ -789,8 +789,8 @@ ${titelAAN}: ${aan || "---"}`;
    const toggleHauptblockHandler = () => setShowHauptblock(v => !v);
 
    return (
-      <div className="h-95v grid md:grid-cols-2 gap-2 md:gap-4 px-3 pt-3 pb-10 md:px-6 md:pt-6">
-         <div className="h-full overflow-auto bg-white shadow-sm rounded-md p-3 border border-gray-300">
+      <div className="h-screen grid md:grid-cols-2 gap-3 md:gap-5 p-4 md:p-6 max-w-screen-2xl mx-auto">
+         <div className="h-full overflow-auto bg-white shadow-lg rounded-md p-3 border border-gray-300">
             <Hauptblock text="Allgemeines" show={showHauptblock} onToggle={toggleHauptblockHandler}>
                <Input value={vorname} onChange={setVorname} title={titelVorname} />
                <Radio value={geschlecht} onChange={setGeschlecht} title={titelGeschlecht} auswahl={auswahlGeschlecht} />
