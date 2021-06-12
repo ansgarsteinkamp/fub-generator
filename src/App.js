@@ -37,9 +37,20 @@ const titelFNK = ++i + ".) Fingernägelkauen";
 const titelSUV = ++i + ".) Stillen und Flaschennahrung";
 const titelZUG = ++i + ".) Zahn- und Gebissstatus";
 const titelEoM = ++i + ".) Ein- oder mehrsprachige Erziehung";
-const titelAV = ++i + ".) Aussprache: Verständlichkeit";
-const titelAAA = ++i + ".) Aussprache: Art der Abweichung";
-const titelAAN = ++i + ".) Aussprache: Altersnorm";
+const titelAV_L1 = ++i + ".) L1 Aussprache: Verständlichkeit";
+const titelAAA_L1 = ++i + ".) L1 Aussprache: Art der Abweichung";
+const titelAAN_L1 = ++i + ".) L1 Aussprache: Altersnorm";
+const titelPIIS_L1 = ++i + ".) L1 Testergebnisse PLAKSS-II-Screening (Fox-Boyer)";
+const titelRWKA_L1 = ++i + ".) L1 Rezeptiver Wortschatz: Komplexität der Anweisungen";
+const titelRWF_L1 = ++i + ".) L1 Rezeptiver Wortschatz: Frageformen";
+const titelRWA_L1 = ++i + ".) L1 Rezeptiver Wortschatz: Altersnorm";
+const titelEWAU_L1 = ++i + ".) L1 Expressiver Wortschatz: Art und Umfang";
+const titelEWDA_L1 = ++i + ".) L1 Expressiver Wortschatz: Differenziertheit / Altersnorm";
+const titelSS_L1 = ++i + ".) L1 Syntax (Satzbau)";
+const titelMG_L1 = ++i + ".) L1 Morphologie (Wortbildung): Genus";
+const titelMN_L1 = ++i + ".) L1 Morphologie (Wortbildung): Numerus";
+const titelMK_L1 = ++i + ".) L1 Morphologie (Wortbildung): Kasus (Akkusativ, Dativ)";
+const titelMP_L1 = ++i + ".) L1 Morphologie (Wortbildung): Personalformen (Subjekt-Verb-Kongruenz, Verbflexion)";
 
 const App = () => {
    const [vorname, setVorname] = useState(localStorage.getItem(titelVorname) || "");
@@ -71,9 +82,20 @@ const App = () => {
    const [suv, setSUV] = useState(localStorage.getItem(titelSUV));
    const [zug, setZUG] = useState(localStorage.getItem(titelZUG));
    const [eom, setEoM] = useState(localStorage.getItem(titelEoM));
-   const [av, setAV] = useState(localStorage.getItem(titelAV));
-   const [aaa, setAAA] = useState(localStorage.getItem(titelAAA));
-   const [aan, setAAN] = useState(localStorage.getItem(titelAAN));
+   const [av_L1, setAV_L1] = useState(localStorage.getItem(titelAV_L1));
+   const [aaa_L1, setAAA_L1] = useState(localStorage.getItem(titelAAA_L1));
+   const [aan_L1, setAAN_L1] = useState(localStorage.getItem(titelAAN_L1));
+   const [pIIs_L1, setPIIS_L1] = useState(localStorage.getItem(titelPIIS_L1));
+   const [rwka_L1, setRWKA_L1] = useState(localStorage.getItem(titelRWKA_L1));
+   const [rwf_L1, setRWF_L1] = useState(localStorage.getItem(titelRWF_L1));
+   const [rwa_L1, setRWA_L1] = useState(localStorage.getItem(titelRWA_L1));
+   const [ewau_L1, setEWAU_L1] = useState(localStorage.getItem(titelEWAU_L1));
+   const [ewda_L1, setEWDA_L1] = useState(localStorage.getItem(titelEWDA_L1));
+   const [ss_L1, setSS_L1] = useState(localStorage.getItem(titelSS_L1));
+   const [mg_L1, setMG_L1] = useState(localStorage.getItem(titelMG_L1));
+   const [mn_L1, setMN_L1] = useState(localStorage.getItem(titelMN_L1));
+   const [mk_L1, setMK_L1] = useState(localStorage.getItem(titelMK_L1));
+   const [mp_L1, setMP_L1] = useState(localStorage.getItem(titelMP_L1));
 
    const [begleitetVonFreitext, setBegleitetVonFreitext] = useState(localStorage.getItem(titelBegleitetVon + " (Freitext)") || "");
    const [kdkFreitext, setKdkFreitext] = useState(localStorage.getItem(titelKDK + " (Freitext)") || "");
@@ -81,9 +103,10 @@ const App = () => {
    const [SUVFreitext, setSUVFreitext] = useState(localStorage.getItem(titelSUV + " (Freitext)") || "");
    const [ZUGFreitext, setZUGFreitext] = useState(localStorage.getItem(titelZUG + " (Freitext)") || "");
    const [EoMFreitext, setEoMFreitext] = useState(localStorage.getItem(titelEoM + " (Freitext)") || "");
-   const [AAAFreitext, setAAAFreitext] = useState(localStorage.getItem(titelAAA + " (Freitext)") || "");
+   const [AAA_L1_Freitext, setAAA_L1_Freitext] = useState(localStorage.getItem(titelAAA_L1 + " (Freitext)") || "");
+   const [PIIS_L1_Freitext, setPIIS_L1_Freitext] = useState(localStorage.getItem(titelPIIS_L1 + " (Freitext)") || "");
 
-   const [showHauptblock, setShowHauptblock] = useState(true);
+   const [showL2, setShowL2] = useState(true);
 
    const resetAll = () => {
       setVorname("");
@@ -115,9 +138,20 @@ const App = () => {
       setSUV(null);
       setZUG(null);
       setEoM(null);
-      setAV(null);
-      setAAA(null);
-      setAAN(null);
+      setAV_L1(null);
+      setAAA_L1(null);
+      setAAN_L1(null);
+      setPIIS_L1(null);
+      setRWKA_L1(null);
+      setRWF_L1(null);
+      setRWA_L1(null);
+      setEWAU_L1(null);
+      setEWDA_L1(null);
+      setSS_L1(null);
+      setMG_L1(null);
+      setMN_L1(null);
+      setMK_L1(null);
+      setMP_L1(null);
 
       setBegleitetVonFreitext("");
       setKdkFreitext("");
@@ -125,9 +159,10 @@ const App = () => {
       setSUVFreitext("");
       setZUGFreitext("");
       setEoMFreitext("");
-      setAAAFreitext("");
+      setAAA_L1_Freitext("");
+      setPIIS_L1_Freitext("");
 
-      setShowHauptblock(true);
+      setShowL2(true);
 
       localStorage.clear();
    };
@@ -147,7 +182,11 @@ const App = () => {
 
    let ausgabe = "";
 
-   // #######  Hauptblock "Allgemeines"  #######
+   const blockCounter = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+   let b = 0; // Zähler Hauptblöcke
+
+   // #######  Hauptblock #######
+   ausgabe += `${blockCounter[b++]}.) Allgemeines\n`;
 
    // Begleitet von
    const auswahlBegleitetVon = [
@@ -196,13 +235,13 @@ const App = () => {
       }
    }
 
-   // #######  Hauptblock "Kontaktverhalten"  #######
+   // #######  Hauptblock  #######
+   ausgabe += `\n${blockCounter[b++]}.) Kontaktverhalten\n`;
 
    // Blickkontakt
    const auswahlBlickkontakt = ["dialogisch", "dialogisch und triangulär", "kein Blickkontakt"];
 
    if (blickkontakt) {
-      ausgabe += `\n\n`; // Erster Teil des Hauptblocks => Zeilenumbruch
       switch (blickkontakt) {
          case "dialogisch":
             ausgabe += `${Er_Sie} zeigte einen dialogischen Blickkontakt.`;
@@ -218,13 +257,13 @@ const App = () => {
       }
    }
 
-   // #######  Hauptblock "Spiel und Konzentration"  #######
+   // #######  Hauptblock #######
+   ausgabe += `\n${blockCounter[b++]}.) Spiel und Konzentration\n`;
 
    // Spielverhalten
    const auswahlSpielverhalten = ["wechselhaft", "ausdauernd", "kein Spielverhalten"];
 
    if (spielverhalten) {
-      ausgabe += `\n\n`; // Erster Teil des Hauptblocks => Zeilenumbruch
       switch (spielverhalten) {
          case "wechselhaft":
             ausgabe += `${Sein_Ihr} Spielverhalten war wechselhaft.`;
@@ -274,13 +313,13 @@ const App = () => {
       }
    }
 
-   // #######  Hauptblock Auditive Wahrnehmung"  #######
+   // #######  Hauptblock  #######
+   ausgabe += `\n${blockCounter[b++]}.) Auditive Wahrnehmung\n`;
 
    // Reaktion auf Ansprache
    const auswahlRAA = ["reagiert", "reagiert nicht"];
 
    if (raa) {
-      ausgabe += `\n\n`; // Erster Teil des Hauptblocks => Zeilenumbruch
       switch (raa) {
          case "reagiert":
             ausgabe += `Auf Ansprache reagierte ${vorname}.`;
@@ -350,13 +389,13 @@ const App = () => {
       }
    }
 
-   // #######  Hauptblock "Mundmotorik"  #######
+   // #######  Hauptblock  #######
+   ausgabe += `\n${blockCounter[b++]}.) Mundmotorik\n`;
 
    // Orofazialer Tonus
    const auswahlOFT = ["reguliert", "nicht ausreichend reguliert"];
 
    if (oft) {
-      ausgabe += `\n\n`; // Erster Teil des Hauptblocks => Zeilenumbruch
       switch (oft) {
          case "reguliert":
             ausgabe += `Der orofaziale Tonus erschien ausreichend reguliert.`;
@@ -508,13 +547,13 @@ const App = () => {
       }
    }
 
-   // #######  Hauptblock "Essen und Trinken"  #######
+   // #######  Hauptblock  #######
+   ausgabe += `\n${blockCounter[b++]}.) Essen und Trinken\n`;
 
    // Ess- und Trinkverhalten
    const auswahlEUTV = ["unauffällig", "auffällig"];
 
    if (eutv) {
-      ausgabe += `\n\n`; // Erster Teil des Hauptblocks => Zeilenumbruch
       switch (eutv) {
          case "unauffällig":
             ausgabe += `${Sein_Ihr} Ess- und Trinkverhalten war unauffällig.`;
@@ -550,13 +589,13 @@ const App = () => {
       }
    }
 
-   // #######  Hauptblock "Orale Habits"  #######
+   // #######  Hauptblock  #######
+   ausgabe += `\n${blockCounter[b++]}.) Orale Habits\n`;
 
    // Orale Habits
    const auswahlOraleHabits = ["nicht vorhanden", "vorhanden"];
 
    if (oraleHabits) {
-      ausgabe += `\n\n`; // Erster Teil des Hauptblocks => Zeilenumbruch
       switch (oraleHabits) {
          case "nicht vorhanden":
             ausgabe += `Orale Habits seien nicht vorhanden.`;
@@ -680,13 +719,13 @@ const App = () => {
       }
    }
 
-   // #######  Hauptblock "Sprachen"  #######
+   // #######  Hauptblock  #######
+   ausgabe += `\n${blockCounter[b++]}.) Sprachen\n`;
 
    // Ein- oder mehrsprachige Erziehung
    const auswahlEoM = ["einsprachig (Sprache s.u.)", "mehrsprachig (Sprachen s.u.)"];
 
    if (eom) {
-      ausgabe += `\n\n`; // Erster Teil des Hauptblocks => Zeilenumbruch
       switch (eom) {
          case "einsprachig (Sprache s.u.)":
             ausgabe += `${Er_Sie} wurde einsprachig (${EoMFreitext}) erzogen.`;
@@ -699,14 +738,14 @@ const App = () => {
       }
    }
 
-   // #######  Hauptblock "Sprachkompetenzen in der Erstsprache (L1)"  #######
+   // #######  Hauptblock  #######
+   ausgabe += `\n${blockCounter[b++]}.) Sprachkompetenzen in der Erstsprache (L1)\n`;
 
    // Aussprache: Verständlichkeit
-   const auswahlAV = ["deutlich", "undeutlich"];
+   const auswahlAV_L1 = ["deutlich", "undeutlich"];
 
-   if (av) {
-      ausgabe += `\n\n`; // Erster Teil des Hauptblocks => Zeilenumbruch
-      switch (av) {
+   if (av_L1) {
+      switch (av_L1) {
          case "deutlich":
             ausgabe += `Die Aussprache von ${vorname} ist deutlich.`;
             break;
@@ -719,16 +758,16 @@ const App = () => {
    }
 
    // Aussprache: Art der Abweichung
-   const auswahlAAA = ["Lautersetzungen / -auslassungen (phonologisch)", "Lautveränderungen (phonetisch)"];
+   const auswahlAAA_L1 = ["Lautersetzungen / -auslassungen (phonologisch)", "Lautveränderungen (phonetisch)"];
 
-   if (aaa) {
+   if (aaa_L1) {
       ausgabe += ` `; // Leerzeichen zum vorherigen Satz
-      switch (aaa) {
+      switch (aaa_L1) {
          case "Lautersetzungen / -auslassungen (phonologisch)":
-            ausgabe += `Es werden Lautersetzungen und -auslassungen (Prozesse: ${AAAFreitext}) beobachtet.`;
+            ausgabe += `Es werden Lautersetzungen und -auslassungen (Prozesse: ${AAA_L1_Freitext}) beobachtet.`;
             break;
          case "Lautveränderungen (phonetisch)":
-            ausgabe += `Es werden Lautveränderungen (betroffene Laute: ${AAAFreitext}) beobachtet.`;
+            ausgabe += `Es werden Lautveränderungen (betroffene Laute: ${AAA_L1_Freitext}) beobachtet.`;
             break;
          default:
             ausgabe += ``;
@@ -736,11 +775,11 @@ const App = () => {
    }
 
    // Aussprache: Altersnorm
-   const auswahlAAN = ["altersentsprechend", "nicht altersentsprechend"];
+   const auswahlAAN_L1 = ["altersentsprechend", "nicht altersentsprechend"];
 
-   if (aan) {
+   if (aan_L1) {
       ausgabe += ` `; // Leerzeichen zum vorherigen Satz
-      switch (aan) {
+      switch (aan_L1) {
          case "altersentsprechend":
             ausgabe += `${Seine_Ihre} Aussprachefähigkeiten waren altersentsprechend.`;
             break;
@@ -751,6 +790,295 @@ const App = () => {
             ausgabe += ``;
       }
    }
+
+   // Testergebnisse PLAKSS-II-Screening (Fox-Boyer)
+   const auswahlPIIS_L1 = ["Phonetisch / Phonologische Abweichungen (Prozesse s.u.)", "[ keine Angabe ]"];
+
+   if (pIIs_L1) {
+      switch (pIIs_L1) {
+         case "Phonetisch / Phonologische Abweichungen (Prozesse s.u.)":
+            ausgabe += `\n`; // Zeilenumbruch
+            ausgabe += `Testergebnisse PLAKSS-II-Screening (Fox-Boyer)\nEs wurden folgende Phonetisch / Phonologische Abweichungen (Prozesse) beobachtet: ${PIIS_L1_Freitext}.`;
+            ausgabe += `\n`; // Zeilenumbruch
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   // Rezeptiver Wortschatz: Komplexität der Anweisungen
+   const auswahlRWKA_L1 = ["komplexere Anweisungen", "kurze Anweisungen", "Schlüsselwörter", "kein Sprachverständnis"];
+   if (rwka_L1) {
+      switch (rwka_L1) {
+         case "komplexere Anweisungen":
+            ausgabe += `${Er_Sie} zeigte ein sicheres Verständnis für komplexere Anweisungen.`;
+            break;
+         case "kurze Anweisungen":
+            ausgabe += `${Er_Sie} reagierte auf kurze Anweisungen. Ein Verständnis für komplexere Anweisungen war noch nicht zu beobachten.`;
+            break;
+         case "Schlüsselwörter":
+            ausgabe += `${Er_Sie} zeigte ein Verständnis für Schlüsselwörter (d.h. bekannter Wörter in einem Satz). Das Satzverständnis war noch eingeschränkt.`;
+            break;
+         case "kein Sprachverständnis":
+            ausgabe += `Es erfolgte noch keine entsprechende Reaktion auf einzelne Wörter, kurze Anweisungen und / oder Fragestellungen.`;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   // L1 Rezeptiver Wortschatz: Frageformen
+   const auswahlRWF_L1 = ["W-Fragen", "Alternativfragen", "Ja- / Nein-Fragen", "[ keine Angabe ]"];
+   if (rwf_L1) {
+      switch (rwf_L1) {
+         case "W-Fragen":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `W-Fragen wurden von ${vorname} verstanden.`;
+            break;
+         case "Alternativfragen":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `Alternativfragen wurden von ${vorname} verstanden. Ein Verständnis von W-Fragen war allerdings noch nicht zu beobachten.`;
+            break;
+         case "Ja- / Nein-Fragen":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `${vorname} antwortete auf Ja- / Nein-Fragen. Eine Reaktion auf weitere Frageformen zeigte ${er_sie} noch nicht.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   // L1 Rezeptiver Wortschatz: Altersnorm
+   const auswahlRWA_L1 = ["altersentsprechend", "nicht altersentsprechend"];
+   if (rwa_L1) {
+      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      switch (rwa_L1) {
+         case "altersentsprechend":
+            ausgabe += `Das Sprachverständnis war altersentsprechend.`;
+            break;
+         case "nicht altersentsprechend":
+            ausgabe += `Das Sprachverständnis war noch nicht altersentsprechend.`;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   // L1 Expressiver Wortschatz: Art und Umfang
+   const auswahlEWAU_L1 = [
+      "Mehrwortäußerungen",
+      "Zweiwortäußerungen",
+      "einzelne Wörter",
+      "keine 50 Wörter / keine Zweiwortkombinationen",
+      "Lautmalereien und einzelne Wörter",
+      "Laute / Lautmalereien",
+      "eigene Sprache"
+   ];
+
+   if (ewau_L1) {
+      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      switch (ewau_L1) {
+         case "Mehrwortäußerungen":
+            ausgabe += `${Er_Sie} verwendete Mehrwortäußerungen.`;
+            break;
+         case "Zweiwortäußerungen":
+            ausgabe += `${Er_Sie} verwendete Zweiwortäußerungen.`;
+            break;
+         case "einzelne Wörter":
+            ausgabe += `${vorname} äußerte einzelne Wörter.`;
+            break;
+         case "keine 50 Wörter / keine Zweiwortkombinationen":
+            ausgabe += `${Er_Sie} äußerte einzelne Wörter, aber noch keine Zweiwortkombinationen.`;
+            break;
+         case "Lautmalereien und einzelne Wörter":
+            ausgabe += `${Er_Sie} äußerte Lautmalereien und einzelne Wörter.`;
+            break;
+         case "Laute / Lautmalereien":
+            ausgabe += `${Er_Sie} äußerte Laute / Lautmalereien.`;
+            break;
+         case "eigene Sprache":
+            ausgabe += `${vorname} verwendete ${seine_ihre} "eigene Sprache", die für Außenstehende nicht zu verstehen war.`;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   // L1 Expressiver Wortschatz: Differenziertheit / Altersnorm
+   const auswahlEWDA_L1 = ["altersentsprechend / ausreichend differenziert", "nicht altersentsprechend / gering / wenig differenziert"];
+
+   if (ewda_L1) {
+      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      switch (ewda_L1) {
+         case "altersentsprechend / ausreichend differenziert":
+            ausgabe += `Der expressive Wortschatz von ${vorname} war altersentsprechend und ausreichend differenziert.`;
+            break;
+         case "nicht altersentsprechend / gering / wenig differenziert":
+            ausgabe += `Der expressive Wortschatz von ${vorname} war nicht altersentsprechend. Er war noch gering und wenig differenziert.`;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   // L1 Syntax (Satzbau)
+   const auswahlSS_L1 = [
+      "Satzbau korrekt (Verbzweitstellung und Verbendstellung)",
+      "Satzbau korrekt (Verbzweitstellung)",
+      "Satzbau korrekt / unflexible Satzstrukturen",
+      "Satzbau nicht korrekt (Verbendstellung)",
+      "[ keine Angabe ]"
+   ];
+
+   if (ss_L1) {
+      switch (ss_L1) {
+         case "Satzbau korrekt (Verbzweitstellung und Verbendstellung)":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz, sowie die Verbendstellung im Nebensatz wurden von ${ihm_ihr} beachtet.`;
+            break;
+         case "Satzbau korrekt (Verbzweitstellung)":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz wurde von ${ihm_ihr} beachtet.`;
+            break;
+         case "Satzbau korrekt / unflexible Satzstrukturen":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `${vorname} beachtete zwar die Verbzweitstellung im Hauptsatz, allerdings waren die Satzstrukturen insgesamt noch wenig flexibel.`;
+            break;
+         case "Satzbau nicht korrekt (Verbendstellung)":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `Der Satzbau war nicht korrekt. ${vorname} verwendete noch die Verbendstellung im Hauptsatz.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   // L1 Morphologie (Wortbildung): Genus
+   const auswahlMG_L1 = ["sicher", "unsicher", "keine Artikelverwendung", "[ keine Angabe ]"];
+
+   if (mg_L1) {
+      switch (mg_L1) {
+         case "sicher":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `Die Artikelverwendung war sicher.`;
+            break;
+         case "unsicher":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `Die Artikelverwendung war noch unsicher.`;
+            break;
+         case "keine Artikelverwendung":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `${vorname} verwendete noch gar keine Artikel.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   // L1 Morphologie (Wortbildung): Numerus
+   const auswahlMN_L1 = ["erworben", "unsicher", "nicht erworben", "[ keine Angabe ]"];
+
+   if (mn_L1) {
+      switch (mn_L1) {
+         case "erworben":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `${vorname} konnte Pluralformen regelgeleitet bilden.`;
+            break;
+         case "unsicher":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `${vorname} zeigte eine noch unsichere Bildung des Plurals.`;
+            break;
+         case "nicht erworben":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `${vorname} bildete noch gar keine Pluralformen.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   // L1 Morphologie (Wortbildung): Kasus (Akkusativ, Dativ)
+   const auswahlMK_L1 = [
+      "vollständig erworben",
+      "Akkusativ erworben / Dativ unsicher (nicht markiert)",
+      "Akkusativ unsicher",
+      "Dativ unsicher",
+      "nicht erworben",
+      "[ keine Angabe ]"
+   ];
+
+   if (mk_L1) {
+      switch (mk_L1) {
+         case "vollständig erworben":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `${Er_Sie} war in der Lage, die Kasus Akkusativ und Dativ korrekt zu markieren.`;
+            break;
+         case "Akkusativ erworben / Dativ unsicher (nicht markiert)":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `${Er_Sie} hatte den Akkusativ bereits sicher erworben. Der Dativ wurde noch nicht (sicher) markiert.`;
+            break;
+         case "Akkusativ unsicher":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `${Er_Sie} zeigte noch Unsicherheiten in der Verwendung des Akkusativ.`;
+            break;
+         case "Dativ unsicher":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `${Er_Sie} zeigte noch Unsicherheiten in der Verwendung des Dativ.`;
+            break;
+         case "nicht erworben":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `${Er_Sie} hatte das Kasussystem (Akkusativ und / oder Dativ) noch gar nicht erworben.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   // L1 Morphologie (Wortbildung): Personalformen (Subjekt-Verb-Kongruenz, Verbflexion)
+   const auswahlMP_L1 = ["erworben (-st)", "nur Infinitivform", "unsicher", "[ keine Angabe ]"];
+
+   if (mp_L1) {
+      switch (mp_L1) {
+         case "erworben (-st)":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `Die Subjekt-Verb-Kongruenz wurde durchgängig von ${ihm_ihr} beachtet.`;
+            break;
+         case "nur Infinitivform":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `${vorname} verwendete noch aussschließlich die Infinitivform des Verbs.`;
+            break;
+         case "unsicher":
+            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += `Im Ansatz war zu beobachten, dass ${vorname} die Subjekt-Verb-Kongruenz beachtete. ${Seine_Ihre} diesbezüglichen morphologischen Fähigkeiten waren allerdings noch sehr unsicher.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+         default:
+            ausgabe += ``;
+      }
+   }
+
+   // #######  Hauptblock  #######
+   ausgabe += `\n${blockCounter[b++]}.) Sprachkompetenzen in der Zweitsprache (L2)\n`;
 
    ausgabe += `\n\n-----------------------------\n
 ${titelVorname}: ${vorname || "---"}
@@ -782,16 +1110,29 @@ ${titelFNK}: ${fnk || "---"}
 ${titelSUV}: ${suv ? suv.replace("(s.u.)", SUVFreitext) : "---"}
 ${titelZUG}: ${zug !== "auffällig (+ Freitext)" ? zug || "---" : zug.replace("+ Freitext", ZUGFreitext)}
 ${titelEoM}: ${eom ? eom.replace("Sprachen s.u.", EoMFreitext).replace("Sprache s.u.", EoMFreitext) : "---"}
-${titelAV}: ${av || "---"}
-${titelAAA}: ${aaa ? aaa + ": " + AAAFreitext : "---"}
-${titelAAN}: ${aan || "---"}`;
+${titelAV_L1}: ${av_L1 || "---"}
+${titelAAA_L1}: ${aaa_L1 ? aaa_L1 + ": " + AAA_L1_Freitext : "---"}
+${titelAAN_L1}: ${aan_L1 || "---"}
+${titelPIIS_L1}: ${
+      pIIs_L1 === "Phonetisch / Phonologische Abweichungen (Prozesse s.u.)" ? pIIs_L1.replace("Prozesse s.u.", PIIS_L1_Freitext) : pIIs_L1 || "---"
+   }
+${titelRWKA_L1}: ${rwka_L1 || "---"}
+${titelRWF_L1}: ${rwf_L1 || "---"}
+${titelRWA_L1}: ${rwa_L1 || "---"}
+${titelEWAU_L1}: ${ewau_L1 || "---"}
+${titelEWDA_L1}: ${ewda_L1 || "---"}
+${titelSS_L1}: ${ss_L1 || "---"}
+${titelMG_L1}: ${mg_L1 || "---"}
+${titelMN_L1}: ${mn_L1 || "---"}
+${titelMK_L1}: ${mk_L1 || "---"}
+${titelMP_L1}: ${mp_L1 || "---"}`;
 
-   const toggleHauptblockHandler = () => setShowHauptblock(v => !v);
+   const toggleL2Handler = () => setShowL2(v => !v);
 
    return (
       <div className="h-screen grid md:grid-cols-2 gap-3 md:gap-5 p-4 md:p-6 max-w-screen-2xl mx-auto">
          <div className="h-full overflow-auto bg-white shadow-lg rounded-md p-3 border border-gray-300">
-            <Hauptblock text="Allgemeines" show={showHauptblock} onToggle={toggleHauptblockHandler}>
+            <Hauptblock text="Allgemeines">
                <Input value={vorname} onChange={setVorname} title={titelVorname} />
                <Radio value={geschlecht} onChange={setGeschlecht} title={titelGeschlecht} auswahl={auswahlGeschlecht} />
                <Radio value={begleitetVon} onChange={setBegleitetVon} title={titelBegleitetVon} auswahl={auswahlBegleitetVon} />
@@ -879,17 +1220,38 @@ ${titelAAN}: ${aan || "---"}`;
                />
             </Hauptblock>
             <Hauptblock text="Sprachkompetenzen in der Erstsprache (L1)">
-               <Radio value={av} onChange={setAV} title={titelAV} auswahl={auswahlAV} />
-               <Radio value={aaa} onChange={setAAA} title={titelAAA} auswahl={auswahlAAA} />
+               <Radio value={av_L1} onChange={setAV_L1} title={titelAV_L1} auswahl={auswahlAV_L1} />
+               <Radio value={aaa_L1} onChange={setAAA_L1} title={titelAAA_L1} auswahl={auswahlAAA_L1} />
                <InputFreitext
-                  value={AAAFreitext}
-                  onChange={setAAAFreitext}
-                  title={titelAAA + " (Freitext)"}
-                  placeholder={aaa === "Lautersetzungen / -auslassungen (phonologisch)" ? "Prozesse" : "betroffene Laute"}
+                  value={AAA_L1_Freitext}
+                  onChange={setAAA_L1_Freitext}
+                  title={titelAAA_L1 + " (Freitext)"}
+                  placeholder={aaa_L1 === "Lautersetzungen / -auslassungen (phonologisch)" ? "Prozesse" : "betroffene Laute"}
                   width="w-8/12"
                />
-               <Radio value={aan} onChange={setAAN} title={titelAAN} auswahl={auswahlAAN} />
+               <Radio value={aan_L1} onChange={setAAN_L1} title={titelAAN_L1} auswahl={auswahlAAN_L1} />
+               <Radio value={pIIs_L1} onChange={setPIIS_L1} title={titelPIIS_L1} auswahl={auswahlPIIS_L1} />
+               {pIIs_L1 === "Phonetisch / Phonologische Abweichungen (Prozesse s.u.)" && (
+                  <InputFreitext
+                     value={PIIS_L1_Freitext}
+                     onChange={setPIIS_L1_Freitext}
+                     title={titelPIIS_L1 + " (Freitext)"}
+                     placeholder="Beispiel: Vorverlagerung /sch/ (phonologische Störung)"
+                     width="w-8/12"
+                  />
+               )}
+               <Radio value={rwka_L1} onChange={setRWKA_L1} title={titelRWKA_L1} auswahl={auswahlRWKA_L1} />
+               <Radio value={rwf_L1} onChange={setRWF_L1} title={titelRWF_L1} auswahl={auswahlRWF_L1} />
+               <Radio value={rwa_L1} onChange={setRWA_L1} title={titelRWA_L1} auswahl={auswahlRWA_L1} />
+               <Radio value={ewau_L1} onChange={setEWAU_L1} title={titelEWAU_L1} auswahl={auswahlEWAU_L1} />
+               <Radio value={ewda_L1} onChange={setEWDA_L1} title={titelEWDA_L1} auswahl={auswahlEWDA_L1} />
+               <Radio value={ss_L1} onChange={setSS_L1} title={titelSS_L1} auswahl={auswahlSS_L1} />
+               <Radio value={mg_L1} onChange={setMG_L1} title={titelMG_L1} auswahl={auswahlMG_L1} />
+               <Radio value={mn_L1} onChange={setMN_L1} title={titelMN_L1} auswahl={auswahlMN_L1} />
+               <Radio value={mk_L1} onChange={setMK_L1} title={titelMK_L1} auswahl={auswahlMK_L1} />
+               <Radio value={mp_L1} onChange={setMP_L1} title={titelMP_L1} auswahl={auswahlMP_L1} />
             </Hauptblock>
+            <Hauptblock text="Sprachkompetenzen in der Zweitsprache (L2)" show={showL2} onToggle={toggleL2Handler}></Hauptblock>
          </div>
 
          <Ausgabebereich ausgabe={ausgabe} resetAll={resetAll} />
