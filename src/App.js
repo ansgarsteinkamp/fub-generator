@@ -225,17 +225,18 @@ const App = () => {
    const seinem_ihrem = geschlecht === "Junge" ? "seinem" : "ihrem";
    const seinen_ihren = geschlecht === "Junge" ? "seinen" : "ihren";
 
-   // ########################
-   // ########################
-   // ###
-   // ###   Ausgabe füllen
-   // ###
+   // ########################################################################################################################
+   // ########################################################################################################################
+   // ########################################################################################################################
+   // ######
+   // ######   Start Ausgabe füllen
+   // ######
 
    // Ganz am Anfang ist die Ausgabe leer.
    let ausgabe = ``;
 
    // Überschrift hinzufügen
-   ausgabe += `Allgemeines\n`;
+   ausgabe += `Allgemeines / Kontaktverhalten\n`;
 
    // Begleitet von
    const auswahlBegleitetVon = [
@@ -284,13 +285,11 @@ const App = () => {
       }
    }
 
-   // Überschrift hinzufügen
-   ausgabe += `\nKontaktverhalten\n`;
-
    // Blickkontakt
    const auswahlBlickkontakt = ["dialogisch", "dialogisch und triangulär", "kein Blickkontakt"];
 
    if (blickkontakt) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (blickkontakt) {
          case "dialogisch":
             ausgabe += `${Er_Sie} zeigte einen dialogischen Blickkontakt.`;
@@ -306,13 +305,11 @@ const App = () => {
       }
    }
 
-   // Überschrift hinzufügen
-   ausgabe += `\nSpiel und Konzentration\n`;
-
    // Spielverhalten
    const auswahlSpielverhalten = ["wechselhaft", "ausdauernd", "kein Spielverhalten"];
 
    if (spielverhalten) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (spielverhalten) {
          case "wechselhaft":
             ausgabe += `${Sein_Ihr} Spielverhalten war wechselhaft.`;
@@ -596,13 +593,11 @@ const App = () => {
       }
    }
 
-   // Überschrift hinzufügen
-   ausgabe += `\nEssen und Trinken\n`;
-
    // Ess- und Trinkverhalten
    const auswahlEUTV = ["unauffällig", "auffällig"];
 
    if (eutv) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (eutv) {
          case "unauffällig":
             ausgabe += `${Sein_Ihr} Ess- und Trinkverhalten war unauffällig.`;
@@ -638,18 +633,17 @@ const App = () => {
       }
    }
 
-   // Überschrift hinzufügen
-   ausgabe += `\nOrale Habits\n`;
-
    // Orale Habits
    const auswahlOraleHabits = ["nicht vorhanden", "vorhanden"];
 
    if (oraleHabits) {
       switch (oraleHabits) {
          case "nicht vorhanden":
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Orale Habits seien nicht vorhanden.`;
             break;
          case "vorhanden":
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Orale Habits seien vorhanden.`;
             break;
          case "[ keine Angabe ]":
@@ -791,7 +785,7 @@ const App = () => {
    ausgabe += `\nSprachkompetenzen in der Erstsprache (L1)\n`;
 
    // Überschrift hinzufügen
-   ausgabe += `\nAussprache\n`;
+   ausgabe += `Aussprache\n`;
 
    // Aussprache: Verständlichkeit
    const auswahlAV_L1 = ["deutlich", "undeutlich"];
@@ -851,15 +845,17 @@ const App = () => {
          case "Phonetisch / Phonologische Abweichungen (Prozesse s.u.)":
             ausgabe += `\nTestergebnisse PLAKSS-II-Screening (Fox-Boyer)\n`; // Überschrift hinzufügen
             ausgabe += `Es wurden folgende phonetisch / phonologische Abweichungen beobachtet: ${PIIS_L1_Freitext}.`;
-            ausgabe += `\n`; // Zeilenumbruch
             break;
          case "[ keine Angabe ]":
-            ausgabe += ` `; // Leerzeichen hinzufügen
+            ausgabe += ``;
             break;
          default:
             ausgabe += ``;
       }
    }
+
+   // Überschrift hinzufügen
+   ausgabe += `\nRezeptiver und expressiver Wortschatz\n`;
 
    // Rezeptiver Wortschatz: Komplexität der Anweisungen
    const auswahlRWKA_L1 = ["komplexere Anweisungen", "kurze Anweisungen", "Schlüsselwörter", "kein Sprachverständnis"];
@@ -979,6 +975,9 @@ const App = () => {
       }
    }
 
+   // Überschrift hinzufügen
+   ausgabe += `\nSatzbau und Wortbildung\n`;
+
    // L1 Syntax (Satzbau)
    const auswahlSS_L1 = [
       "Satzbau korrekt (Verbzweitstellung und Verbendstellung)",
@@ -991,19 +990,15 @@ const App = () => {
    if (ss_L1) {
       switch (ss_L1) {
          case "Satzbau korrekt (Verbzweitstellung und Verbendstellung)":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz, sowie die Verbendstellung im Nebensatz wurden von ${ihm_ihr} beachtet.`;
             break;
          case "Satzbau korrekt (Verbzweitstellung)":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz wurde von ${ihm_ihr} beachtet.`;
             break;
          case "Satzbau korrekt / unflexible Satzstrukturen":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} beachtete zwar die Verbzweitstellung im Hauptsatz, allerdings waren die Satzstrukturen insgesamt noch wenig flexibel.`;
             break;
          case "Satzbau nicht korrekt (Verbendstellung)":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Der Satzbau war nicht korrekt. ${vorname} verwendete noch die Verbendstellung im Hauptsatz.`;
             break;
          case "[ keine Angabe ]":
@@ -1131,6 +1126,13 @@ const App = () => {
 
    // Überschrift hinzufügen
    // ausgabe += `\nSprachkompetenzen in der Zweitsprache (L2)\n`;
+
+   // ######
+   // ######   Ende Ausgabe füllen
+   // ######
+   // ########################################################################################################################
+   // ########################################################################################################################
+   // ########################################################################################################################
 
    // ###############################################
    // ###############################################

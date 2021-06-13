@@ -1,3 +1,6 @@
+// Überschrift hinzufügen
+ausgabe += `\nTestergebnisse PDSS (Kauschke & Siegmüller)\n`;
+
 // Testergebnisse PDSS (Kauschke & Siegmüller)
 if (XXXXXXX) {
    switch (XXXXXXX) {
