@@ -1,3 +1,9 @@
+// ################################
+// ################################
+// ###
+// ###   Import von Komponenten
+// ###
+
 import { useState } from "react";
 import Input from "./components/Input.js";
 import InputFreitext from "./components/InputFreitext.js";
@@ -5,7 +11,14 @@ import Radio from "./components/Radio.js";
 import Ausgabebereich from "./components/Ausgabebereich.js";
 import Hauptblock from "./components/Hauptblock.js";
 
-let i = 0;
+// ##############################################
+// ##############################################
+// ###
+// ###   Titel der Unterblöcke
+// ###   = Überschriften auf der linken Seite
+// ###
+
+let i = 0; // Zähler der Unterblöcke
 
 const titelVorname = ++i + ".) Vorname";
 const titelGeschlecht = ++i + ".) Geschlecht";
@@ -52,6 +65,13 @@ const titelMK_L1 = ++i + ".) L1 Morphologie (Wortbildung): Kasus (Akkusativ, Dat
 const titelMP_L1 = ++i + ".) L1 Morphologie (Wortbildung): Personalformen (Subjekt-Verb-Kongruenz, Verbflexion)";
 
 const App = () => {
+   // ######################################################
+   // ######################################################
+   // ###
+   // ###   1. Variablen zum Speichern der Nutzerauswahl
+   // ###   2. Funktionen zum Ändern dieser Variablen
+   // ###
+
    const [vorname, setVorname] = useState(localStorage.getItem(titelVorname) || "");
    const [geschlecht, setGeschlecht] = useState(localStorage.getItem(titelGeschlecht));
    const [begleitetVon, setBegleitetVon] = useState(localStorage.getItem(titelBegleitetVon));
@@ -96,6 +116,13 @@ const App = () => {
    const [mk_L1, setMK_L1] = useState(localStorage.getItem(titelMK_L1));
    const [mp_L1, setMP_L1] = useState(localStorage.getItem(titelMP_L1));
 
+   // ###################################################
+   // ###################################################
+   // ###
+   // ###   1. Variablen zum Speichern der Freitexte
+   // ###   2. Funktionen zum Ändern dieser Freitexte
+   // ###
+
    const [begleitetVonFreitext, setBegleitetVonFreitext] = useState(localStorage.getItem(titelBegleitetVon + " (Freitext)") || "");
    const [kdkFreitext, setKdkFreitext] = useState(localStorage.getItem(titelKDK + " (Freitext)") || "");
    const [schnullerFreitext, setSchnullerFreitext] = useState(localStorage.getItem(titelSchnuller + " (Freitext)") || "");
@@ -105,8 +132,21 @@ const App = () => {
    const [AAA_L1_Freitext, setAAA_L1_Freitext] = useState(localStorage.getItem(titelAAA_L1 + " (Freitext)") || "");
    const [PIIS_L1_Freitext, setPIIS_L1_Freitext] = useState(localStorage.getItem(titelPIIS_L1 + " (Freitext)") || "");
 
+   // #################################################################################################
+   // #################################################################################################
+   // ###
+   // ###   1. Variablen zum Speichern des "Aufklapp-Status": Hauptblock auf- oder zugeklappt?
+   // ###   2. Funktionen zum Ändern dieses Status
+   // ###   3. Funktionen zum "Toggeln" des Status (wird aufgerufen beim Klick auf die Überschrift)
+   // ###
    const [showL2, setShowL2] = useState(true);
+   const toggleL2Handler = () => setShowL2(v => !v);
 
+   // ###############################################################
+   // ###############################################################
+   // ###
+   // ###   Klick auf den Mülleimer: Zurücksetzen aller Variablen
+   // ###
    const resetAll = () => {
       setVorname("");
       setGeschlecht(null);
@@ -166,6 +206,12 @@ const App = () => {
       localStorage.clear();
    };
 
+   // ################################################
+   // ################################################
+   // ###
+   // ###   Variablen, die vom Geschlecht abhängen
+   // ###
+
    const auswahlGeschlecht = ["Junge", "Mädchen"];
 
    const Er_Sie = geschlecht === "Junge" ? "Er" : "Sie";
@@ -179,13 +225,17 @@ const App = () => {
    const seinem_ihrem = geschlecht === "Junge" ? "seinem" : "ihrem";
    const seinen_ihren = geschlecht === "Junge" ? "seinen" : "ihren";
 
-   let ausgabe = "";
+   // ########################
+   // ########################
+   // ###
+   // ###   Ausgabe füllen
+   // ###
 
-   const blockCounter = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-   let b = 0; // Zähler Hauptblöcke
+   // Ganz am Anfang ist die Ausgabe leer.
+   let ausgabe = ``;
 
-   // #######  Hauptblock #######
-   ausgabe += `${blockCounter[b++]}.) Allgemeines\n`;
+   // Überschrift hinzufügen
+   ausgabe += `Allgemeines\n`;
 
    // Begleitet von
    const auswahlBegleitetVon = [
@@ -234,8 +284,8 @@ const App = () => {
       }
    }
 
-   // #######  Hauptblock  #######
-   ausgabe += `\n${blockCounter[b++]}.) Kontaktverhalten\n`;
+   // Überschrift hinzufügen
+   ausgabe += `\nKontaktverhalten\n`;
 
    // Blickkontakt
    const auswahlBlickkontakt = ["dialogisch", "dialogisch und triangulär", "kein Blickkontakt"];
@@ -256,8 +306,8 @@ const App = () => {
       }
    }
 
-   // #######  Hauptblock #######
-   ausgabe += `\n${blockCounter[b++]}.) Spiel und Konzentration\n`;
+   // Überschrift hinzufügen
+   ausgabe += `\nSpiel und Konzentration\n`;
 
    // Spielverhalten
    const auswahlSpielverhalten = ["wechselhaft", "ausdauernd", "kein Spielverhalten"];
@@ -282,7 +332,7 @@ const App = () => {
    const auswahlSpielformen = ["Funktionsspiel", "Symbolspiel"];
 
    if (spielformen) {
-      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (spielformen) {
          case "Funktionsspiel":
             ausgabe += `Das Spiel war funktionsorientiert.`;
@@ -299,7 +349,7 @@ const App = () => {
    const auswahlKonzentration = ["angemessen", "nicht angemessen"];
 
    if (konzentration) {
-      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (konzentration) {
          case "angemessen":
             ausgabe += `Die Konzentrationsfähigkeit und Aufmerksamkeitslenkung waren angemessen.`;
@@ -312,8 +362,8 @@ const App = () => {
       }
    }
 
-   // #######  Hauptblock  #######
-   ausgabe += `\n${blockCounter[b++]}.) Auditive Wahrnehmung\n`;
+   // Überschrift hinzufügen
+   ausgabe += `\nAuditive Wahrnehmung\n`;
 
    // Reaktion auf Ansprache
    const auswahlRAA = ["reagiert", "reagiert nicht"];
@@ -335,7 +385,7 @@ const App = () => {
    const auswahlRAG = ["reagiert", "reagiert nicht"];
 
    if (rag) {
-      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (rag) {
          case "reagiert":
             ausgabe += `Geräusche in ${seiner_ihrer} Umgebung nahm ${er_sie} wahr.`;
@@ -352,7 +402,7 @@ const App = () => {
    const auswahlLUIVG = ["sicher", "nicht ausreichend zu beurteilen", "nur Identifikation sicher", "nur Lokalisation sicher"];
 
    if (luivg) {
-      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (luivg) {
          case "sicher":
             ausgabe += `Die Lokalisation und Identifikation von Geräuschen gelang ${ihm_ihr} sicher.`;
@@ -375,7 +425,7 @@ const App = () => {
    const auswahlAMS = ["altersentsprechend", "nicht altersentsprechend"];
 
    if (ams) {
-      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (ams) {
          case "altersentsprechend":
             ausgabe += `Die auditive Merkspanne war altersentsprechend.`;
@@ -388,8 +438,8 @@ const App = () => {
       }
    }
 
-   // #######  Hauptblock  #######
-   ausgabe += `\n${blockCounter[b++]}.) Mundmotorik\n`;
+   // Überschrift hinzufügen
+   ausgabe += `\nMundmotorik\n`;
 
    // Orofazialer Tonus
    const auswahlOFT = ["reguliert", "nicht ausreichend reguliert"];
@@ -411,7 +461,7 @@ const App = () => {
    const auswahlMundschluss = ["konstant", "offen"];
 
    if (mundschluss) {
-      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (mundschluss) {
          case "konstant":
             ausgabe += `Es wurde ein konstanter Mundschluss beobachtet.`;
@@ -430,7 +480,7 @@ const App = () => {
    if (speichelfluss) {
       switch (speichelfluss) {
          case "vermehrter Speichelfluss":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Es trat ein vermehrter Speichelfluss auf.`;
             break;
          case "[ keine Angabe ]":
@@ -447,11 +497,11 @@ const App = () => {
    if (pusten) {
       switch (pusten) {
          case "möglich":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} pustete Seifenblasen mit dosiertem Luftstrom.`;
             break;
          case "nicht möglich":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} konnte noch keine Seifenblasen mit dosiertem Luftstrom pusten.`;
             break;
          case "[ keine Angabe ]":
@@ -468,11 +518,11 @@ const App = () => {
    if (ansaugen) {
       switch (ansaugen) {
          case "möglich":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Das Ansaugen mit einem Strohhalm gelang ${ihm_ihr}.`;
             break;
          case "nicht möglich":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Das Ansaugen mit einem Strohhalm gelang ${ihm_ihr} noch nicht.`;
             break;
          case "[ keine Angabe ]":
@@ -489,11 +539,11 @@ const App = () => {
    if (zungenruhelage) {
       switch (zungenruhelage) {
          case "möglich":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${Er_Sie} konnte die Zungenruhelage einnehmen und kurz halten.`;
             break;
          case "nicht möglich":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${Er_Sie} konnte die Zungenruhelage noch nicht einnehmen und halten.`;
             break;
          case "[ keine Angabe ]":
@@ -510,11 +560,11 @@ const App = () => {
    if (zubk) {
       switch (zubk) {
          case "unauffällig":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Die Zungenbeweglichkeit und -koordination war unauffällig.`;
             break;
          case "eingeschränkt":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Die Zungenbeweglichkeit und -koordination war eingeschränkt.`;
             break;
          case "[ keine Angabe ]":
@@ -531,11 +581,11 @@ const App = () => {
    if (lbuk) {
       switch (lbuk) {
          case "unauffällig":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Eine ausreichende Lippenbeweglichkeit und -koordination war gegeben.`;
             break;
          case "eingeschränkt":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Die Lippenbeweglichkeit und -koordination war eingeschränkt.`;
             break;
          case "[ keine Angabe ]":
@@ -546,8 +596,8 @@ const App = () => {
       }
    }
 
-   // #######  Hauptblock  #######
-   ausgabe += `\n${blockCounter[b++]}.) Essen und Trinken\n`;
+   // Überschrift hinzufügen
+   ausgabe += `\nEssen und Trinken\n`;
 
    // Ess- und Trinkverhalten
    const auswahlEUTV = ["unauffällig", "auffällig"];
@@ -569,7 +619,7 @@ const App = () => {
    const auswahlKDK = ["alle Konsistenzen", "v.a. weiche/breiige Kost", "v.a. harte Kost", "Freitext eingeben..."];
 
    if (kdk) {
-      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (kdk) {
          case "alle Konsistenzen":
             ausgabe += `${vorname} esse alle Konsistenzen (harte und weiche Kost).`;
@@ -588,8 +638,8 @@ const App = () => {
       }
    }
 
-   // #######  Hauptblock  #######
-   ausgabe += `\n${blockCounter[b++]}.) Orale Habits\n`;
+   // Überschrift hinzufügen
+   ausgabe += `\nOrale Habits\n`;
 
    // Orale Habits
    const auswahlOraleHabits = ["nicht vorhanden", "vorhanden"];
@@ -614,7 +664,7 @@ const App = () => {
    const auswahlSchnuller = ["noch nie", "bis heute", "bis zum..."];
 
    if (schnuller) {
-      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (schnuller) {
          case "noch nie":
             ausgabe += `${Er_Sie} habe noch nie einen Schnuller erhalten.`;
@@ -636,7 +686,7 @@ const App = () => {
    if (tms) {
       switch (tms) {
          case "trinkt noch aus einer":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${Er_Sie} trinke noch aus einer Trinkflasche mit Sauger.`;
             break;
          case "[ keine Angabe ]":
@@ -653,7 +703,7 @@ const App = () => {
    if (daumenlutschen) {
       switch (daumenlutschen) {
          case "wird beobachtet":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Es werde Daumenlutschen beobachtet.`;
             break;
          case "[ keine Angabe ]":
@@ -670,7 +720,7 @@ const App = () => {
    if (fnk) {
       switch (fnk) {
          case "wird beobachtet":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Es werde Fingernägelkauen beobachtet.`;
             break;
          case "[ keine Angabe ]":
@@ -685,7 +735,7 @@ const App = () => {
    const auswahlSUV = ["Stillen bis zum (s.u.)", "Flaschennahrung bis zum (s.u.)", "Stillen bis zum (s.u.), dann Flaschennahrung"];
 
    if (suv) {
-      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (suv) {
          case "Stillen bis zum (s.u.)":
             ausgabe += `${vorname} sei bis zum ${SUVFreitext} gestillt worden.`;
@@ -705,7 +755,7 @@ const App = () => {
    const auswahlZUG = ["unauffällig", "auffällig (+ Freitext)"];
 
    if (zug) {
-      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (zug) {
          case "unauffällig":
             ausgabe += `${Sein_Ihr} Zahn- und Gebissstatus war unauffällig.`;
@@ -718,8 +768,8 @@ const App = () => {
       }
    }
 
-   // #######  Hauptblock  #######
-   ausgabe += `\n${blockCounter[b++]}.) Sprachen\n`;
+   // Überschrift hinzufügen
+   ausgabe += `\nSprachen\n`;
 
    // Ein- oder mehrsprachige Erziehung
    const auswahlEoM = ["einsprachig (Sprache s.u.)", "mehrsprachig (Sprachen s.u.)"];
@@ -737,13 +787,15 @@ const App = () => {
       }
    }
 
-   // #######  Hauptblock  #######
-   ausgabe += `\n${blockCounter[b++]}.) Sprachkompetenzen in der Erstsprache (L1)\n`;
+   // Überschrift hinzufügen
+   ausgabe += `\nSprachkompetenzen in der Erstsprache (L1)\n`;
+
+   // Überschrift hinzufügen
+   ausgabe += `\nAussprache\n`;
 
    // Aussprache: Verständlichkeit
    const auswahlAV_L1 = ["deutlich", "undeutlich"];
 
-   ausgabe += `\nAussprache\n`; // Zwischenüberschrift mit Zeilenumbruch
    if (av_L1) {
       switch (av_L1) {
          case "deutlich":
@@ -761,7 +813,7 @@ const App = () => {
    const auswahlAAA_L1 = ["Lautersetzungen / -auslassungen (phonologisch)", "Lautveränderungen (phonetisch)"];
 
    if (aaa_L1) {
-      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (aaa_L1) {
          case "Lautersetzungen / -auslassungen (phonologisch)":
             ausgabe += `Es werden Lautersetzungen und -auslassungen (Prozesse: ${AAA_L1_Freitext}) beobachtet.`;
@@ -778,7 +830,7 @@ const App = () => {
    const auswahlAAN_L1 = ["altersentsprechend", "nicht altersentsprechend"];
 
    if (aan_L1) {
-      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (aan_L1) {
          case "altersentsprechend":
             ausgabe += `${Seine_Ihre} Aussprachefähigkeiten waren altersentsprechend.`;
@@ -797,12 +849,12 @@ const App = () => {
    if (pIIs_L1) {
       switch (pIIs_L1) {
          case "Phonetisch / Phonologische Abweichungen (Prozesse s.u.)":
-            ausgabe += `\nTestergebnisse PLAKSS-II-Screening (Fox-Boyer)\n`; // Zwischenüberschrift mit Zeilenumbruch
+            ausgabe += `\nTestergebnisse PLAKSS-II-Screening (Fox-Boyer)\n`; // Überschrift hinzufügen
             ausgabe += `Es wurden folgende phonetisch / phonologische Abweichungen beobachtet: ${PIIS_L1_Freitext}.`;
             ausgabe += `\n`; // Zeilenumbruch
             break;
          case "[ keine Angabe ]":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             break;
          default:
             ausgabe += ``;
@@ -835,15 +887,15 @@ const App = () => {
    if (rwf_L1) {
       switch (rwf_L1) {
          case "W-Fragen":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `W-Fragen wurden von ${vorname} verstanden.`;
             break;
          case "Alternativfragen":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Alternativfragen wurden von ${vorname} verstanden. Ein Verständnis von W-Fragen war allerdings noch nicht zu beobachten.`;
             break;
          case "Ja- / Nein-Fragen":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} antwortete auf Ja- / Nein-Fragen. Eine Reaktion auf weitere Frageformen zeigte ${er_sie} noch nicht.`;
             break;
          case "[ keine Angabe ]":
@@ -857,7 +909,7 @@ const App = () => {
    // L1 Rezeptiver Wortschatz: Altersnorm
    const auswahlRWA_L1 = ["altersentsprechend", "nicht altersentsprechend"];
    if (rwa_L1) {
-      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (rwa_L1) {
          case "altersentsprechend":
             ausgabe += `Das Sprachverständnis war altersentsprechend.`;
@@ -882,7 +934,7 @@ const App = () => {
    ];
 
    if (ewau_L1) {
-      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (ewau_L1) {
          case "Mehrwortäußerungen":
             ausgabe += `${Er_Sie} verwendete Mehrwortäußerungen.`;
@@ -914,7 +966,7 @@ const App = () => {
    const auswahlEWDA_L1 = ["altersentsprechend / ausreichend differenziert", "nicht altersentsprechend / gering / wenig differenziert"];
 
    if (ewda_L1) {
-      ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (ewda_L1) {
          case "altersentsprechend / ausreichend differenziert":
             ausgabe += `Der expressive Wortschatz von ${vorname} war altersentsprechend und ausreichend differenziert.`;
@@ -939,19 +991,19 @@ const App = () => {
    if (ss_L1) {
       switch (ss_L1) {
          case "Satzbau korrekt (Verbzweitstellung und Verbendstellung)":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz, sowie die Verbendstellung im Nebensatz wurden von ${ihm_ihr} beachtet.`;
             break;
          case "Satzbau korrekt (Verbzweitstellung)":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz wurde von ${ihm_ihr} beachtet.`;
             break;
          case "Satzbau korrekt / unflexible Satzstrukturen":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} beachtete zwar die Verbzweitstellung im Hauptsatz, allerdings waren die Satzstrukturen insgesamt noch wenig flexibel.`;
             break;
          case "Satzbau nicht korrekt (Verbendstellung)":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Der Satzbau war nicht korrekt. ${vorname} verwendete noch die Verbendstellung im Hauptsatz.`;
             break;
          case "[ keine Angabe ]":
@@ -968,15 +1020,15 @@ const App = () => {
    if (mg_L1) {
       switch (mg_L1) {
          case "sicher":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Die Artikelverwendung war sicher.`;
             break;
          case "unsicher":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Die Artikelverwendung war noch unsicher.`;
             break;
          case "keine Artikelverwendung":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} verwendete noch gar keine Artikel.`;
             break;
          case "[ keine Angabe ]":
@@ -993,15 +1045,15 @@ const App = () => {
    if (mn_L1) {
       switch (mn_L1) {
          case "erworben":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} konnte Pluralformen regelgeleitet bilden.`;
             break;
          case "unsicher":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} zeigte eine noch unsichere Bildung des Plurals.`;
             break;
          case "nicht erworben":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} bildete noch gar keine Pluralformen.`;
             break;
          case "[ keine Angabe ]":
@@ -1025,23 +1077,23 @@ const App = () => {
    if (mk_L1) {
       switch (mk_L1) {
          case "vollständig erworben":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${Er_Sie} war in der Lage, die Kasus Akkusativ und Dativ korrekt zu markieren.`;
             break;
          case "Akkusativ erworben / Dativ unsicher (nicht markiert)":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${Er_Sie} hatte den Akkusativ bereits sicher erworben. Der Dativ wurde noch nicht (sicher) markiert.`;
             break;
          case "Akkusativ unsicher":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${Er_Sie} zeigte noch Unsicherheiten in der Verwendung des Akkusativ.`;
             break;
          case "Dativ unsicher":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${Er_Sie} zeigte noch Unsicherheiten in der Verwendung des Dativ.`;
             break;
          case "nicht erworben":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${Er_Sie} hatte das Kasussystem (Akkusativ und / oder Dativ) noch gar nicht erworben.`;
             break;
          case "[ keine Angabe ]":
@@ -1058,15 +1110,15 @@ const App = () => {
    if (mp_L1) {
       switch (mp_L1) {
          case "erworben (-st)":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Die Subjekt-Verb-Kongruenz wurde durchgängig von ${ihm_ihr} beachtet.`;
             break;
          case "nur Infinitivform":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} verwendete noch aussschließlich die Infinitivform des Verbs.`;
             break;
          case "unsicher":
-            ausgabe += ` `; // Leerzeichen zum vorherigen Satz
+            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Im Ansatz war zu beobachten, dass ${vorname} die Subjekt-Verb-Kongruenz beachtete. ${Seine_Ihre} diesbezüglichen morphologischen Fähigkeiten waren allerdings noch sehr unsicher.`;
             break;
          case "[ keine Angabe ]":
@@ -1077,8 +1129,14 @@ const App = () => {
       }
    }
 
-   // #######  Hauptblock  #######
-   ausgabe += `\n${blockCounter[b++]}.) Sprachkompetenzen in der Zweitsprache (L2)\n`;
+   // Überschrift hinzufügen
+   ausgabe += `\nSprachkompetenzen in der Zweitsprache (L2)\n`;
+
+   // ###############################################
+   // ###############################################
+   // ###
+   // ###   Stichpunteliste unterhalb der Ausgabe
+   // ###
 
    ausgabe += `\n\n-----------------------------\n
 ${titelVorname}: ${vorname || "---"}
@@ -1127,7 +1185,11 @@ ${titelMN_L1}: ${mn_L1 || "---"}
 ${titelMK_L1}: ${mk_L1 || "---"}
 ${titelMP_L1}: ${mp_L1 || "---"}`;
 
-   const toggleL2Handler = () => setShowL2(v => !v);
+   // #################################################
+   // #################################################
+   // ###
+   // ###   Endergebnis auf dem Bildschirm anzeigen
+   // ###
 
    return (
       <div className="h-screen grid md:grid-cols-2 gap-3 md:gap-5 p-4 md:p-6 max-w-screen-2xl mx-auto">
