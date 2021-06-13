@@ -1130,7 +1130,7 @@ const App = () => {
    }
 
    // Überschrift hinzufügen
-   ausgabe += `\nSprachkompetenzen in der Zweitsprache (L2)\n`;
+   // ausgabe += `\nSprachkompetenzen in der Zweitsprache (L2)\n`;
 
    // ###############################################
    // ###############################################
