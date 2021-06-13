@@ -11,11 +11,11 @@ import Radio from "./components/Radio.js";
 import Ausgabebereich from "./components/Ausgabebereich.js";
 import Hauptblock from "./components/Hauptblock.js";
 
-// ##############################################
-// ##############################################
+// ######################################################
+// ######################################################
 // ###
 // ###   Titel der Unterblöcke
-// ###   = Überschriften auf der linken Seite
+// ###   = Überschriften auf der linken Seite der GUI
 // ###
 
 let i = 0; // Zähler der Unterblöcke
@@ -132,10 +132,10 @@ const App = () => {
    const [AAA_L1_Freitext, setAAA_L1_Freitext] = useState(localStorage.getItem(titelAAA_L1 + " (Freitext)") || "");
    const [PIIS_L1_Freitext, setPIIS_L1_Freitext] = useState(localStorage.getItem(titelPIIS_L1 + " (Freitext)") || "");
 
-   // #################################################################################################
-   // #################################################################################################
+   // ####################################################################################################
+   // ####################################################################################################
    // ###
-   // ###   1. Variablen zum Speichern des "Aufklapp-Status": Hauptblock auf- oder zugeklappt?
+   // ###   1. Variablen zum Speichern des "Aufklapp-Status" eines Hauptblocks (auf- oder zugeklappt?)
    // ###   2. Funktionen zum Ändern dieses Status
    // ###   3. Funktionen zum "Toggeln" des Status (wird aufgerufen beim Klick auf die Überschrift)
    // ###
