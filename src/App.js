@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import Input from "./components/Input.js";
 import InputFreitext from "./components/InputFreitext.js";
 import Radio from "./components/Radio.js";
@@ -744,6 +743,7 @@ const App = () => {
    // Aussprache: Verständlichkeit
    const auswahlAV_L1 = ["deutlich", "undeutlich"];
 
+   ausgabe += `\nAussprache\n`; // Zwischenüberschrift mit Zeilenumbruch
    if (av_L1) {
       switch (av_L1) {
          case "deutlich":
@@ -797,8 +797,8 @@ const App = () => {
    if (pIIs_L1) {
       switch (pIIs_L1) {
          case "Phonetisch / Phonologische Abweichungen (Prozesse s.u.)":
-            ausgabe += `\n`; // Zeilenumbruch
-            ausgabe += `Testergebnisse PLAKSS-II-Screening (Fox-Boyer)\nEs wurden folgende Phonetisch / Phonologische Abweichungen (Prozesse) beobachtet: ${PIIS_L1_Freitext}.`;
+            ausgabe += `\nTestergebnisse PLAKSS-II-Screening (Fox-Boyer)\n`; // Zwischenüberschrift mit Zeilenumbruch
+            ausgabe += `Es wurden folgende phonetisch / phonologische Abweichungen beobachtet: ${PIIS_L1_Freitext}.`;
             ausgabe += `\n`; // Zeilenumbruch
             break;
          case "[ keine Angabe ]":
