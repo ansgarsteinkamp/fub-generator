@@ -250,9 +250,9 @@ const App = () => {
       "Familienhelfer",
       "begleitet von..."
    ];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (begleitetVon && vorname) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (begleitetVon) {
          case "Mutter":
             ausgabe += `${vorname} wurde von ${seiner_ihrer} Mutter begleitet.`;
@@ -286,9 +286,9 @@ const App = () => {
 
    // Blickkontakt
    const auswahlBlickkontakt = ["dialogisch", "dialogisch und triangulär", "kein Blickkontakt"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (blickkontakt) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (blickkontakt) {
          case "dialogisch":
             ausgabe += `${Er_Sie} zeigte einen dialogischen Blickkontakt.`;
@@ -304,9 +304,9 @@ const App = () => {
 
    // Spielverhalten
    const auswahlSpielverhalten = ["wechselhaft", "ausdauernd", "kein Spielverhalten"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (spielverhalten) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (spielverhalten) {
          case "wechselhaft":
             ausgabe += `${Sein_Ihr} Spielverhalten war wechselhaft.`;
@@ -322,9 +322,9 @@ const App = () => {
 
    // Spielformen
    const auswahlSpielformen = ["Funktionsspiel", "Symbolspiel"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (spielformen) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (spielformen) {
          case "Funktionsspiel":
             ausgabe += `Das Spiel war funktionsorientiert.`;
@@ -337,9 +337,9 @@ const App = () => {
 
    // Konzentrationsfähigkeit und Aufmerksamkeitslenkung
    const auswahlKonzentration = ["angemessen", "nicht angemessen"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (konzentration) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (konzentration) {
          case "angemessen":
             ausgabe += `Die Konzentrationsfähigkeit und Aufmerksamkeitslenkung waren angemessen.`;
@@ -355,9 +355,9 @@ const App = () => {
 
    // Reaktion auf Ansprache
    const auswahlRAA = ["reagiert", "reagiert nicht"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (raa) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (raa) {
          case "reagiert":
             ausgabe += `Auf Ansprache reagierte ${vorname}.`;
@@ -370,9 +370,9 @@ const App = () => {
 
    // Reaktion auf Geräusche
    const auswahlRAG = ["reagiert", "reagiert nicht"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (rag) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (rag) {
          case "reagiert":
             ausgabe += `Geräusche in ${seiner_ihrer} Umgebung nahm ${er_sie} wahr.`;
@@ -385,9 +385,9 @@ const App = () => {
 
    // Lokalisation und Identifikation von Geräuschen
    const auswahlLUIVG = ["sicher", "nicht ausreichend zu beurteilen", "nur Identifikation sicher", "nur Lokalisation sicher"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (luivg) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (luivg) {
          case "sicher":
             ausgabe += `Die Lokalisation und Identifikation von Geräuschen gelang ${ihm_ihr} sicher.`;
@@ -406,9 +406,9 @@ const App = () => {
 
    // Auditive Merkspanne
    const auswahlAMS = ["altersentsprechend", "nicht altersentsprechend"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (ams) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (ams) {
          case "altersentsprechend":
             ausgabe += `Die auditive Merkspanne war altersentsprechend.`;
@@ -424,9 +424,9 @@ const App = () => {
 
    // Orofazialer Tonus
    const auswahlOFT = ["reguliert", "nicht ausreichend reguliert"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (oft) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (oft) {
          case "reguliert":
             ausgabe += `Der orofaziale Tonus erschien ausreichend reguliert.`;
@@ -439,9 +439,9 @@ const App = () => {
 
    // Mundschluss
    const auswahlMundschluss = ["konstant", "offen"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (mundschluss) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (mundschluss) {
          case "konstant":
             ausgabe += `Es wurde ein konstanter Mundschluss beobachtet.`;
@@ -454,9 +454,9 @@ const App = () => {
 
    // Speichelfluss
    const auswahlSpeichelfluss = ["vermehrter Speichelfluss", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (speichelfluss) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (speichelfluss) {
          case "vermehrter Speichelfluss":
             ausgabe += `Es trat ein vermehrter Speichelfluss auf.`;
@@ -469,9 +469,9 @@ const App = () => {
 
    // Pusten
    const auswahlPusten = ["möglich", "nicht möglich", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (pusten) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (pusten) {
          case "möglich":
             ausgabe += `${vorname} pustete Seifenblasen mit dosiertem Luftstrom.`;
@@ -487,9 +487,9 @@ const App = () => {
 
    // Ansaugen
    const auswahlAnsaugen = ["möglich", "nicht möglich", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (ansaugen) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (ansaugen) {
          case "möglich":
             ausgabe += `Das Ansaugen mit einem Strohhalm gelang ${ihm_ihr}.`;
@@ -505,9 +505,9 @@ const App = () => {
 
    // Zungenruhelage
    const auswahlZungenruhelage = ["möglich", "nicht möglich", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (zungenruhelage) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (zungenruhelage) {
          case "möglich":
             ausgabe += `${Er_Sie} konnte die Zungenruhelage einnehmen und kurz halten.`;
@@ -523,9 +523,9 @@ const App = () => {
 
    // Zungenbeweglichkeit und -koordination
    const auswahlZBUK = ["unauffällig", "eingeschränkt", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (zubk) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (zubk) {
          case "unauffällig":
             ausgabe += `Die Zungenbeweglichkeit und -koordination war unauffällig.`;
@@ -541,9 +541,9 @@ const App = () => {
 
    // Lippenbeweglichkeit und -koordination
    const auswahlLBUK = ["unauffällig", "eingeschränkt", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (lbuk) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (lbuk) {
          case "unauffällig":
             ausgabe += `Eine ausreichende Lippenbeweglichkeit und -koordination war gegeben.`;
@@ -559,9 +559,9 @@ const App = () => {
 
    // Ess- und Trinkverhalten
    const auswahlEUTV = ["unauffällig", "auffällig"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (eutv) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (eutv) {
          case "unauffällig":
             ausgabe += `${Sein_Ihr} Ess- und Trinkverhalten war unauffällig.`;
@@ -574,9 +574,9 @@ const App = () => {
 
    // Konsistenzen der Kost
    const auswahlKDK = ["alle Konsistenzen", "v.a. weiche/breiige Kost", "v.a. harte Kost", "Freitext eingeben..."];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (kdk) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (kdk) {
          case "alle Konsistenzen":
             ausgabe += `${vorname} esse alle Konsistenzen (harte und weiche Kost).`;
@@ -595,9 +595,9 @@ const App = () => {
 
    // Orale Habits
    const auswahlOraleHabits = ["nicht vorhanden", "vorhanden"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (oraleHabits) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (oraleHabits) {
          case "nicht vorhanden":
             ausgabe += `Orale Habits seien nicht vorhanden.`;
@@ -613,9 +613,9 @@ const App = () => {
 
    // Schnuller
    const auswahlSchnuller = ["noch nie", "bis heute", "bis zum..."];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (schnuller) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (schnuller) {
          case "noch nie":
             ausgabe += `${Er_Sie} habe noch nie einen Schnuller erhalten.`;
@@ -631,9 +631,9 @@ const App = () => {
 
    // Trinkflasche mit Sauger
    const auswahlTMS = ["trinkt noch aus einer", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (tms) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (tms) {
          case "trinkt noch aus einer":
             ausgabe += `${Er_Sie} trinke noch aus einer Trinkflasche mit Sauger.`;
@@ -646,9 +646,9 @@ const App = () => {
 
    // Daumenlutschen
    const auswahlDaumenlutschen = ["wird beobachtet", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (daumenlutschen) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (daumenlutschen) {
          case "wird beobachtet":
             ausgabe += `Es werde Daumenlutschen beobachtet.`;
@@ -661,9 +661,9 @@ const App = () => {
 
    // Fingernägelkauen
    const auswahlFNK = ["wird beobachtet", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (fnk) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (fnk) {
          case "wird beobachtet":
             ausgabe += `Es werde Fingernägelkauen beobachtet.`;
@@ -676,9 +676,9 @@ const App = () => {
 
    // Stillen und Flaschennahrung
    const auswahlSUV = ["Stillen bis zum (s.u.)", "Flaschennahrung bis zum (s.u.)", "Stillen bis zum (s.u.), dann Flaschennahrung"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (suv) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (suv) {
          case "Stillen bis zum (s.u.)":
             ausgabe += `${vorname} sei bis zum ${SUVFreitext} gestillt worden.`;
@@ -694,9 +694,9 @@ const App = () => {
 
    // Zahn- und Gebissstatus
    const auswahlZUG = ["unauffällig", "auffällig (+ Freitext)"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (zug) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (zug) {
          case "unauffällig":
             ausgabe += `${Sein_Ihr} Zahn- und Gebissstatus war unauffällig.`;
@@ -712,9 +712,9 @@ const App = () => {
 
    // Ein- oder mehrsprachige Erziehung
    const auswahlEoM = ["einsprachig (Sprache s.u.)", "mehrsprachig (Sprachen s.u.)"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (eom) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (eom) {
          case "einsprachig (Sprache s.u.)":
             ausgabe += `${Er_Sie} wurde einsprachig (${EoMFreitext}) erzogen.`;
@@ -733,9 +733,9 @@ const App = () => {
 
    // Aussprache: Verständlichkeit
    const auswahlAV_L1 = ["deutlich", "undeutlich"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (av_L1) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (av_L1) {
          case "deutlich":
             ausgabe += `Die Aussprache von ${vorname} ist deutlich.`;
@@ -748,9 +748,9 @@ const App = () => {
 
    // Aussprache: Art der Abweichung
    const auswahlAAA_L1 = ["Lautersetzungen / -auslassungen (phonologisch)", "Lautveränderungen (phonetisch)"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (aaa_L1) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (aaa_L1) {
          case "Lautersetzungen / -auslassungen (phonologisch)":
             ausgabe += `Es werden Lautersetzungen und -auslassungen (Prozesse: ${AAA_L1_Freitext}) beobachtet.`;
@@ -763,9 +763,9 @@ const App = () => {
 
    // Aussprache: Altersnorm
    const auswahlAAN_L1 = ["altersentsprechend", "nicht altersentsprechend"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (aan_L1) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (aan_L1) {
          case "altersentsprechend":
             ausgabe += `${Seine_Ihre} Aussprachefähigkeiten waren altersentsprechend.`;
@@ -778,9 +778,9 @@ const App = () => {
 
    // Testergebnisse PLAKSS-II-Screening (Fox-Boyer)
    const auswahlPIIS_L1 = ["Phonetisch / Phonologische Abweichungen (Prozesse s.u.)", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (pIIs_L1) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (pIIs_L1) {
          case "Phonetisch / Phonologische Abweichungen (Prozesse s.u.)":
             ausgabe += `\nTestergebnisse PLAKSS-II-Screening (Fox-Boyer)\n`; // Überschrift hinzufügen
@@ -797,8 +797,9 @@ const App = () => {
 
    // Rezeptiver Wortschatz: Komplexität der Anweisungen
    const auswahlRWKA_L1 = ["komplexere Anweisungen", "kurze Anweisungen", "Schlüsselwörter", "kein Sprachverständnis"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
    if (rwka_L1) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (rwka_L1) {
          case "komplexere Anweisungen":
             ausgabe += `${Er_Sie} zeigte ein sicheres Verständnis für komplexere Anweisungen.`;
@@ -817,8 +818,9 @@ const App = () => {
 
    // L1 Rezeptiver Wortschatz: Frageformen
    const auswahlRWF_L1 = ["W-Fragen", "Alternativfragen", "Ja- / Nein-Fragen", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
    if (rwf_L1) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (rwf_L1) {
          case "W-Fragen":
             ausgabe += `W-Fragen wurden von ${vorname} verstanden.`;
@@ -837,8 +839,9 @@ const App = () => {
 
    // L1 Rezeptiver Wortschatz: Altersnorm
    const auswahlRWA_L1 = ["altersentsprechend", "nicht altersentsprechend"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
    if (rwa_L1) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (rwa_L1) {
          case "altersentsprechend":
             ausgabe += `Das Sprachverständnis war altersentsprechend.`;
@@ -859,9 +862,9 @@ const App = () => {
       "Laute / Lautmalereien",
       "eigene Sprache"
    ];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (ewau_L1) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (ewau_L1) {
          case "Mehrwortäußerungen":
             ausgabe += `${Er_Sie} verwendete Mehrwortäußerungen.`;
@@ -889,9 +892,9 @@ const App = () => {
 
    // L1 Expressiver Wortschatz: Differenziertheit / Altersnorm
    const auswahlEWDA_L1 = ["altersentsprechend / ausreichend differenziert", "nicht altersentsprechend / gering / wenig differenziert"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (ewda_L1) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (ewda_L1) {
          case "altersentsprechend / ausreichend differenziert":
             ausgabe += `Der expressive Wortschatz von ${vorname} war altersentsprechend und ausreichend differenziert.`;
@@ -913,9 +916,9 @@ const App = () => {
       "Satzbau nicht korrekt (Verbendstellung)",
       "[ keine Angabe ]"
    ];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (ss_L1) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (ss_L1) {
          case "Satzbau korrekt (Verbzweitstellung und Verbendstellung)":
             ausgabe += `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz, sowie die Verbendstellung im Nebensatz wurden von ${ihm_ihr} beachtet.`;
@@ -937,9 +940,9 @@ const App = () => {
 
    // L1 Morphologie (Wortbildung): Genus
    const auswahlMG_L1 = ["sicher", "unsicher", "keine Artikelverwendung", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (mg_L1) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (mg_L1) {
          case "sicher":
             ausgabe += `Die Artikelverwendung war sicher.`;
@@ -958,9 +961,9 @@ const App = () => {
 
    // L1 Morphologie (Wortbildung): Numerus
    const auswahlMN_L1 = ["erworben", "unsicher", "nicht erworben", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (mn_L1) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (mn_L1) {
          case "erworben":
             ausgabe += `${vorname} konnte Pluralformen regelgeleitet bilden.`;
@@ -986,9 +989,9 @@ const App = () => {
       "nicht erworben",
       "[ keine Angabe ]"
    ];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (mk_L1) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (mk_L1) {
          case "vollständig erworben":
             ausgabe += `${Er_Sie} war in der Lage, die Kasus Akkusativ und Dativ korrekt zu markieren.`;
@@ -1013,9 +1016,9 @@ const App = () => {
 
    // L1 Morphologie (Wortbildung): Personalformen (Subjekt-Verb-Kongruenz, Verbflexion)
    const auswahlMP_L1 = ["erworben (-st)", "nur Infinitivform", "unsicher", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (mp_L1) {
-      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (mp_L1) {
          case "erworben (-st)":
             ausgabe += `Die Subjekt-Verb-Kongruenz wurde durchgängig von ${ihm_ihr} beachtet.`;
