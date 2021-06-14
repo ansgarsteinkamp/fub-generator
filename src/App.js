@@ -281,8 +281,6 @@ const App = () => {
          case "begleitet von...":
             ausgabe += `${vorname} wurde von ${begleitetVonFreitext} begleitet.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -301,8 +299,6 @@ const App = () => {
          case "kein Blickkontakt":
             ausgabe += `${Er_Sie} nahm noch keinen Blickkontakt auf.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -321,8 +317,6 @@ const App = () => {
          case "kein Spielverhalten":
             ausgabe += `Mit dem Spielmaterial konnte ${er_sie} sich noch nicht allein beschäftigen.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -338,8 +332,6 @@ const App = () => {
          case "Symbolspiel":
             ausgabe += `Es war ein Symbolspiel zu beobachten.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -355,8 +347,6 @@ const App = () => {
          case "nicht angemessen":
             ausgabe += `Die Konzentrationsfähigkeit und Aufmerksamkeitslenkung waren noch nicht angemessen.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -375,8 +365,6 @@ const App = () => {
          case "reagiert nicht":
             ausgabe += `Auf Ansprache reagierte ${vorname} nicht.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -392,8 +380,6 @@ const App = () => {
          case "reagiert nicht":
             ausgabe += `Geräusche in ${seiner_ihrer} Umgebung nahm ${er_sie} nicht wahr.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -415,8 +401,6 @@ const App = () => {
          case "nur Lokalisation sicher":
             ausgabe += `Die Lokalisation von Geräuschen gelang ${vorname} sicher. ${Seine_Ihre} Fähigkeit zur Identifikation von Geräuschen allerdings noch nicht.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -432,8 +416,6 @@ const App = () => {
          case "nicht altersentsprechend":
             ausgabe += `Die auditive Merkspanne war noch nicht altersentsprechend.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -452,8 +434,6 @@ const App = () => {
          case "nicht ausreichend reguliert":
             ausgabe += `Der orofaziale Tonus erschien noch nicht ausreichend reguliert.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -469,8 +449,6 @@ const App = () => {
          case "offen":
             ausgabe += `Es wurde eine offene Mundhaltung beobachtet.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -486,8 +464,6 @@ const App = () => {
          case "[ keine Angabe ]":
             ausgabe += ``;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -506,8 +482,6 @@ const App = () => {
          case "[ keine Angabe ]":
             ausgabe += ``;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -526,8 +500,6 @@ const App = () => {
          case "[ keine Angabe ]":
             ausgabe += ``;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -546,8 +518,6 @@ const App = () => {
          case "[ keine Angabe ]":
             ausgabe += ``;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -566,8 +536,6 @@ const App = () => {
          case "[ keine Angabe ]":
             ausgabe += ``;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -586,8 +554,6 @@ const App = () => {
          case "[ keine Angabe ]":
             ausgabe += ``;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -603,8 +569,6 @@ const App = () => {
          case "auffällig":
             ausgabe += `${Sein_Ihr} Ess- und Trinkverhalten war auffällig.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -626,8 +590,6 @@ const App = () => {
          case "Freitext eingeben...":
             ausgabe += `${kdkFreitext}`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -646,8 +608,6 @@ const App = () => {
          case "[ keine Angabe ]":
             ausgabe += ``;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -666,8 +626,6 @@ const App = () => {
          case "bis zum...":
             ausgabe += `Bis zum ${schnullerFreitext} habe ${er_sie} einen Schnuller erhalten.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -683,8 +641,6 @@ const App = () => {
          case "[ keine Angabe ]":
             ausgabe += ``;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -700,8 +656,6 @@ const App = () => {
          case "[ keine Angabe ]":
             ausgabe += ``;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -717,8 +671,6 @@ const App = () => {
          case "[ keine Angabe ]":
             ausgabe += ``;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -737,8 +689,6 @@ const App = () => {
          case "Stillen bis zum (s.u.), dann Flaschennahrung":
             ausgabe += `${vorname} sei erst bis zum ${SUVFreitext} gestillt worden und habe danach Flaschennahrung erhalten.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -754,8 +704,6 @@ const App = () => {
          case "auffällig (+ Freitext)":
             ausgabe += `${Sein_Ihr} Zahn- und Gebissstatus war auffällig. ${ZUGFreitext}`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -774,8 +722,6 @@ const App = () => {
          case "mehrsprachig (Sprachen s.u.)":
             ausgabe += `${Er_Sie} wurde mehrsprachig (${EoMFreitext}) erzogen.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -797,8 +743,6 @@ const App = () => {
          case "undeutlich":
             ausgabe += `Die Aussprache von ${vorname} ist undeutlich.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -814,8 +758,6 @@ const App = () => {
          case "Lautveränderungen (phonetisch)":
             ausgabe += `Es werden Lautveränderungen (betroffene Laute: ${AAA_L1_Freitext}) beobachtet.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -831,8 +773,6 @@ const App = () => {
          case "nicht altersentsprechend":
             ausgabe += `${Seine_Ihre} Aussprachefähigkeiten waren noch nicht altersentsprechend.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -849,8 +789,6 @@ const App = () => {
          case "[ keine Angabe ]":
             ausgabe += ``;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -874,8 +812,6 @@ const App = () => {
          case "kein Sprachverständnis":
             ausgabe += `Es erfolgte noch keine entsprechende Reaktion auf einzelne Wörter, kurze Anweisungen und / oder Fragestellungen.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -896,8 +832,6 @@ const App = () => {
          case "[ keine Angabe ]":
             ausgabe += ``;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -912,8 +846,6 @@ const App = () => {
          case "nicht altersentsprechend":
             ausgabe += `Das Sprachverständnis war noch nicht altersentsprechend.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -952,8 +884,6 @@ const App = () => {
          case "eigene Sprache":
             ausgabe += `${vorname} verwendete ${seine_ihre} "eigene Sprache", die für Außenstehende nicht zu verstehen war.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -969,8 +899,6 @@ const App = () => {
          case "nicht altersentsprechend / gering / wenig differenziert":
             ausgabe += `Der expressive Wortschatz von ${vorname} war nicht altersentsprechend. Er war noch gering und wenig differenziert.`;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -1004,8 +932,6 @@ const App = () => {
          case "[ keine Angabe ]":
             ausgabe += ``;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -1027,8 +953,6 @@ const App = () => {
          case "[ keine Angabe ]":
             ausgabe += ``;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -1050,8 +974,6 @@ const App = () => {
          case "[ keine Angabe ]":
             ausgabe += ``;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -1086,8 +1008,6 @@ const App = () => {
          case "[ keine Angabe ]":
             ausgabe += ``;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
@@ -1109,8 +1029,6 @@ const App = () => {
          case "[ keine Angabe ]":
             ausgabe += ``;
             break;
-         default:
-            ausgabe += ``;
       }
    }
 
