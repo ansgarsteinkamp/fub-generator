@@ -252,6 +252,7 @@ const App = () => {
    ];
 
    if (begleitetVon && vorname) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (begleitetVon) {
          case "Mutter":
             ausgabe += `${vorname} wurde von ${seiner_ihrer} Mutter begleitet.`;
@@ -366,6 +367,7 @@ const App = () => {
    const auswahlRAA = ["reagiert", "reagiert nicht"];
 
    if (raa) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (raa) {
          case "reagiert":
             ausgabe += `Auf Ansprache reagierte ${vorname}.`;
@@ -442,6 +444,7 @@ const App = () => {
    const auswahlOFT = ["reguliert", "nicht ausreichend reguliert"];
 
    if (oft) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (oft) {
          case "reguliert":
             ausgabe += `Der orofaziale Tonus erschien ausreichend reguliert.`;
@@ -475,9 +478,9 @@ const App = () => {
    const auswahlSpeichelfluss = ["vermehrter Speichelfluss", "[ keine Angabe ]"];
 
    if (speichelfluss) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (speichelfluss) {
          case "vermehrter Speichelfluss":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Es trat ein vermehrter Speichelfluss auf.`;
             break;
          case "[ keine Angabe ]":
@@ -492,13 +495,12 @@ const App = () => {
    const auswahlPusten = ["möglich", "nicht möglich", "[ keine Angabe ]"];
 
    if (pusten) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (pusten) {
          case "möglich":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} pustete Seifenblasen mit dosiertem Luftstrom.`;
             break;
          case "nicht möglich":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} konnte noch keine Seifenblasen mit dosiertem Luftstrom pusten.`;
             break;
          case "[ keine Angabe ]":
@@ -513,13 +515,12 @@ const App = () => {
    const auswahlAnsaugen = ["möglich", "nicht möglich", "[ keine Angabe ]"];
 
    if (ansaugen) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (ansaugen) {
          case "möglich":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Das Ansaugen mit einem Strohhalm gelang ${ihm_ihr}.`;
             break;
          case "nicht möglich":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Das Ansaugen mit einem Strohhalm gelang ${ihm_ihr} noch nicht.`;
             break;
          case "[ keine Angabe ]":
@@ -534,13 +535,12 @@ const App = () => {
    const auswahlZungenruhelage = ["möglich", "nicht möglich", "[ keine Angabe ]"];
 
    if (zungenruhelage) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (zungenruhelage) {
          case "möglich":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${Er_Sie} konnte die Zungenruhelage einnehmen und kurz halten.`;
             break;
          case "nicht möglich":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${Er_Sie} konnte die Zungenruhelage noch nicht einnehmen und halten.`;
             break;
          case "[ keine Angabe ]":
@@ -555,13 +555,12 @@ const App = () => {
    const auswahlZBUK = ["unauffällig", "eingeschränkt", "[ keine Angabe ]"];
 
    if (zubk) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (zubk) {
          case "unauffällig":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Die Zungenbeweglichkeit und -koordination war unauffällig.`;
             break;
          case "eingeschränkt":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Die Zungenbeweglichkeit und -koordination war eingeschränkt.`;
             break;
          case "[ keine Angabe ]":
@@ -576,13 +575,12 @@ const App = () => {
    const auswahlLBUK = ["unauffällig", "eingeschränkt", "[ keine Angabe ]"];
 
    if (lbuk) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (lbuk) {
          case "unauffällig":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Eine ausreichende Lippenbeweglichkeit und -koordination war gegeben.`;
             break;
          case "eingeschränkt":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Die Lippenbeweglichkeit und -koordination war eingeschränkt.`;
             break;
          case "[ keine Angabe ]":
@@ -637,13 +635,12 @@ const App = () => {
    const auswahlOraleHabits = ["nicht vorhanden", "vorhanden"];
 
    if (oraleHabits) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (oraleHabits) {
          case "nicht vorhanden":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Orale Habits seien nicht vorhanden.`;
             break;
          case "vorhanden":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Orale Habits seien vorhanden.`;
             break;
          case "[ keine Angabe ]":
@@ -678,9 +675,9 @@ const App = () => {
    const auswahlTMS = ["trinkt noch aus einer", "[ keine Angabe ]"];
 
    if (tms) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (tms) {
          case "trinkt noch aus einer":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${Er_Sie} trinke noch aus einer Trinkflasche mit Sauger.`;
             break;
          case "[ keine Angabe ]":
@@ -695,9 +692,9 @@ const App = () => {
    const auswahlDaumenlutschen = ["wird beobachtet", "[ keine Angabe ]"];
 
    if (daumenlutschen) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (daumenlutschen) {
          case "wird beobachtet":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Es werde Daumenlutschen beobachtet.`;
             break;
          case "[ keine Angabe ]":
@@ -712,9 +709,9 @@ const App = () => {
    const auswahlFNK = ["wird beobachtet", "[ keine Angabe ]"];
 
    if (fnk) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (fnk) {
          case "wird beobachtet":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Es werde Fingernägelkauen beobachtet.`;
             break;
          case "[ keine Angabe ]":
@@ -769,6 +766,7 @@ const App = () => {
    const auswahlEoM = ["einsprachig (Sprache s.u.)", "mehrsprachig (Sprachen s.u.)"];
 
    if (eom) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (eom) {
          case "einsprachig (Sprache s.u.)":
             ausgabe += `${Er_Sie} wurde einsprachig (${EoMFreitext}) erzogen.`;
@@ -782,15 +780,16 @@ const App = () => {
    }
 
    // Überschrift hinzufügen
-   ausgabe += `\nSprachkompetenzen in der Erstsprache (L1)\n`;
+   ausgabe += `\nSprachkompetenzen in der Erstsprache (L1)`;
 
    // Überschrift hinzufügen
-   ausgabe += `Aussprache\n`;
+   ausgabe += `\nAussprache\n`;
 
    // Aussprache: Verständlichkeit
    const auswahlAV_L1 = ["deutlich", "undeutlich"];
 
    if (av_L1) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (av_L1) {
          case "deutlich":
             ausgabe += `Die Aussprache von ${vorname} ist deutlich.`;
@@ -841,10 +840,11 @@ const App = () => {
    const auswahlPIIS_L1 = ["Phonetisch / Phonologische Abweichungen (Prozesse s.u.)", "[ keine Angabe ]"];
 
    if (pIIs_L1) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (pIIs_L1) {
          case "Phonetisch / Phonologische Abweichungen (Prozesse s.u.)":
             ausgabe += `\nTestergebnisse PLAKSS-II-Screening (Fox-Boyer)\n`; // Überschrift hinzufügen
-            ausgabe += `Es wurden folgende phonetisch / phonologische Abweichungen beobachtet: ${PIIS_L1_Freitext}.`;
+            ausgabe += `Es wurden folgende phonetisch / phonologische Abweichungen beobachtet: ${PIIS_L1_Freitext}`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -860,6 +860,7 @@ const App = () => {
    // Rezeptiver Wortschatz: Komplexität der Anweisungen
    const auswahlRWKA_L1 = ["komplexere Anweisungen", "kurze Anweisungen", "Schlüsselwörter", "kein Sprachverständnis"];
    if (rwka_L1) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (rwka_L1) {
          case "komplexere Anweisungen":
             ausgabe += `${Er_Sie} zeigte ein sicheres Verständnis für komplexere Anweisungen.`;
@@ -881,17 +882,15 @@ const App = () => {
    // L1 Rezeptiver Wortschatz: Frageformen
    const auswahlRWF_L1 = ["W-Fragen", "Alternativfragen", "Ja- / Nein-Fragen", "[ keine Angabe ]"];
    if (rwf_L1) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (rwf_L1) {
          case "W-Fragen":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `W-Fragen wurden von ${vorname} verstanden.`;
             break;
          case "Alternativfragen":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Alternativfragen wurden von ${vorname} verstanden. Ein Verständnis von W-Fragen war allerdings noch nicht zu beobachten.`;
             break;
          case "Ja- / Nein-Fragen":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} antwortete auf Ja- / Nein-Fragen. Eine Reaktion auf weitere Frageformen zeigte ${er_sie} noch nicht.`;
             break;
          case "[ keine Angabe ]":
@@ -988,6 +987,7 @@ const App = () => {
    ];
 
    if (ss_L1) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (ss_L1) {
          case "Satzbau korrekt (Verbzweitstellung und Verbendstellung)":
             ausgabe += `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz, sowie die Verbendstellung im Nebensatz wurden von ${ihm_ihr} beachtet.`;
@@ -1013,17 +1013,15 @@ const App = () => {
    const auswahlMG_L1 = ["sicher", "unsicher", "keine Artikelverwendung", "[ keine Angabe ]"];
 
    if (mg_L1) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (mg_L1) {
          case "sicher":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Die Artikelverwendung war sicher.`;
             break;
          case "unsicher":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Die Artikelverwendung war noch unsicher.`;
             break;
          case "keine Artikelverwendung":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} verwendete noch gar keine Artikel.`;
             break;
          case "[ keine Angabe ]":
@@ -1038,17 +1036,15 @@ const App = () => {
    const auswahlMN_L1 = ["erworben", "unsicher", "nicht erworben", "[ keine Angabe ]"];
 
    if (mn_L1) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (mn_L1) {
          case "erworben":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} konnte Pluralformen regelgeleitet bilden.`;
             break;
          case "unsicher":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} zeigte eine noch unsichere Bildung des Plurals.`;
             break;
          case "nicht erworben":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} bildete noch gar keine Pluralformen.`;
             break;
          case "[ keine Angabe ]":
@@ -1070,25 +1066,21 @@ const App = () => {
    ];
 
    if (mk_L1) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (mk_L1) {
          case "vollständig erworben":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${Er_Sie} war in der Lage, die Kasus Akkusativ und Dativ korrekt zu markieren.`;
             break;
          case "Akkusativ erworben / Dativ unsicher (nicht markiert)":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${Er_Sie} hatte den Akkusativ bereits sicher erworben. Der Dativ wurde noch nicht (sicher) markiert.`;
             break;
          case "Akkusativ unsicher":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${Er_Sie} zeigte noch Unsicherheiten in der Verwendung des Akkusativ.`;
             break;
          case "Dativ unsicher":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${Er_Sie} zeigte noch Unsicherheiten in der Verwendung des Dativ.`;
             break;
          case "nicht erworben":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${Er_Sie} hatte das Kasussystem (Akkusativ und / oder Dativ) noch gar nicht erworben.`;
             break;
          case "[ keine Angabe ]":
@@ -1103,17 +1095,15 @@ const App = () => {
    const auswahlMP_L1 = ["erworben (-st)", "nur Infinitivform", "unsicher", "[ keine Angabe ]"];
 
    if (mp_L1) {
+      ausgabe += ` `; // Leerzeichen hinzufügen
       switch (mp_L1) {
          case "erworben (-st)":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Die Subjekt-Verb-Kongruenz wurde durchgängig von ${ihm_ihr} beachtet.`;
             break;
          case "nur Infinitivform":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `${vorname} verwendete noch aussschließlich die Infinitivform des Verbs.`;
             break;
          case "unsicher":
-            ausgabe += ` `; // Leerzeichen hinzufügen
             ausgabe += `Im Ansatz war zu beobachten, dass ${vorname} die Subjekt-Verb-Kongruenz beachtete. ${Seine_Ihre} diesbezüglichen morphologischen Fähigkeiten waren allerdings noch sehr unsicher.`;
             break;
          case "[ keine Angabe ]":
@@ -1133,6 +1123,19 @@ const App = () => {
    // ########################################################################################################################
    // ########################################################################################################################
    // ########################################################################################################################
+
+   ausgabe = ausgabe.replaceAll("\n    ", "\n");
+   ausgabe = ausgabe.replaceAll("\n   ", "\n");
+   ausgabe = ausgabe.replaceAll("\n  ", "\n");
+   ausgabe = ausgabe.replaceAll("\n ", "\n");
+   ausgabe = ausgabe.replaceAll("    \n", "\n");
+   ausgabe = ausgabe.replaceAll("   \n", "\n");
+   ausgabe = ausgabe.replaceAll("  \n", "\n");
+   ausgabe = ausgabe.replaceAll(" \n", "\n");
+   ausgabe = ausgabe.replaceAll("     ", " ");
+   ausgabe = ausgabe.replaceAll("    ", " ");
+   ausgabe = ausgabe.replaceAll("   ", " ");
+   ausgabe = ausgabe.replaceAll("  ", " ");
 
    // ###############################################
    // ###############################################
