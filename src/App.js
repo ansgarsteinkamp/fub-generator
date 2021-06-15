@@ -97,6 +97,22 @@ const titelMAG = ++i + ".) Audiogerät";
 const titelMSK = ++i + ".) Spielekonsole";
 const titelMBB = ++i + ".) Bilderbücher";
 const titelMLC = ++i + ".) Lerncomputer";
+const titelWInf = ++i + ".) Weitere Informationen";
+const titelEF = ++i + ".) Erwartungen / Fragen";
+const titelIfL = ++i + ".) Indikation für Logopädie";
+const titelWiedervorstellung = ++i + ".) Wiedervorstellung";
+const titelKRF = ++i + ".) Kontrolluntersuchung im Rahmen der Frühförderung";
+const titelLB = ++i + ".) Logopädische Begleitung";
+const titelZielKomF = ++i + ".) Kommunikative Fähigkeiten";
+const titelZielBvS = ++i + ".) Bedeutung von Sprache";
+const titelZielSpF = ++i + ".) Sprechfreude";
+const titelZielREW = ++i + ".) Rezeptiver / Expressiver Wortschatz";
+const titelZielGF = ++i + ".) Grammatikalische Fähigkeiten";
+const titelZielAussprache = ++i + ".) Aussprache";
+const titelZielAW = ++i + ".) Auditive Wahrnehmung";
+const titelZielOT = ++i + ".) Orofazialer Tonus";
+const titelZielOW = ++i + ".) Orofaziale Wahrnehmung";
+const titelZielOF = ++i + ".) Orofaziale Fähigkeiten";
 
 const App = () => {
    // ######################################################
@@ -183,6 +199,22 @@ const App = () => {
    const [msk, setMSK] = useState(localStorage.getItem(titelMSK));
    const [mbb, setMBB] = useState(localStorage.getItem(titelMBB));
    const [mlc, setMLC] = useState(localStorage.getItem(titelMLC));
+   const [winf, setWInf] = useState(localStorage.getItem(titelWInf));
+   const [ef, setEF] = useState(localStorage.getItem(titelEF));
+   const [ifl, setIfL] = useState(localStorage.getItem(titelIfL));
+   const [wiedervorstellung, setWiedervorstellung] = useState(localStorage.getItem(titelWiedervorstellung));
+   const [krf, setKRF] = useState(localStorage.getItem(titelKRF));
+   const [lb, setLB] = useState(localStorage.getItem(titelLB));
+   const [zielKomf, setZielKomF] = useState(localStorage.getItem(titelZielKomF));
+   const [zielBvs, setZielBvS] = useState(localStorage.getItem(titelZielBvS));
+   const [zielSpf, setZielSpF] = useState(localStorage.getItem(titelZielSpF));
+   const [zielRew, setZielREW] = useState(localStorage.getItem(titelZielREW));
+   const [zielGf, setZielGF] = useState(localStorage.getItem(titelZielGF));
+   const [zielAussprache, setZielAussprache] = useState(localStorage.getItem(titelZielAussprache));
+   const [zielAW, setZielAW] = useState(localStorage.getItem(titelZielAW));
+   const [zielOT, setZielOT] = useState(localStorage.getItem(titelZielOT));
+   const [zielOW, setZielOW] = useState(localStorage.getItem(titelZielOW));
+   const [zielOF, setZielOF] = useState(localStorage.getItem(titelZielOF));
 
    // ###################################################
    // ###################################################
@@ -208,6 +240,8 @@ const App = () => {
    const [SLE_L2_Freitext, setSLE_L2_Freitext] = useState(localStorage.getItem(titelSLE_L2 + " (Freitext)") || "");
    const [SME_L2_Freitext, setSME_L2_Freitext] = useState(localStorage.getItem(titelSME_L2 + " (Freitext)") || "");
    const [MedienkonsumFreitext, setMedienkonsumFreitext] = useState(localStorage.getItem(titelMedienkonsum + " (Freitext)") || "");
+   const [WInfFreitext, setWInfFreitext] = useState(localStorage.getItem(titelWInf + " (Freitext)") || "");
+   const [EFFreitext, setEFFreitext] = useState(localStorage.getItem(titelEF + " (Freitext)") || "");
 
    // ####################################################################################################
    // ####################################################################################################
@@ -301,6 +335,23 @@ const App = () => {
       setMAG(null);
       setMSK(null);
       setMLC(null);
+      setMBB(null);
+      setWInf(null);
+      setEF(null);
+      setIfL(null);
+      setWiedervorstellung(null);
+      setKRF(null);
+      setLB(null);
+      setZielKomF(null);
+      setZielBvS(null);
+      setZielSpF(null);
+      setZielREW(null);
+      setZielGF(null);
+      setZielAussprache(null);
+      setZielAW(null);
+      setZielOT(null);
+      setZielOW(null);
+      setZielOF(null);
 
       setBegleitetVonFreitext("");
       setKdkFreitext("");
@@ -319,7 +370,8 @@ const App = () => {
       setSLE_L2_Freitext("");
       setSME_L2_Freitext("");
       setMedienkonsumFreitext("");
-      setMBB(null);
+      setWInfFreitext("");
+      setEFFreitext("");
 
       setShowL2(true);
 
@@ -1833,8 +1885,284 @@ const App = () => {
       }
    }
 
+   // // Entfernen des letzten Kommas mit ggf. diversen Leerzeichen am Ende
    ausgabe += `@#`;
+   // ausgabe = ausgabe.replace(",     @#", "");
+   // ausgabe = ausgabe.replace(",    @#", "");
+   // ausgabe = ausgabe.replace(",   @#", "");
+   // ausgabe = ausgabe.replace(",  @#", "");
+   // ausgabe = ausgabe.replace(", @#", "");
+   // ausgabe = ausgabe.replace(",@#", "");
+   // ausgabe = ausgabe.replace("@#", "");
 
+   // Überschrift hinzufügen
+   ausgabe += `\nSonstiges\n`;
+
+   // Weitere Informationen
+   const auswahlWInf = ["Freitext eingeben...", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (winf) {
+      switch (winf) {
+         case "Freitext eingeben...":
+            ausgabe += `\nWeitere Informationen\n`; // Überschrift hinzufügen
+            ausgabe += `${WInfFreitext}`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Erwartungen / Fragen
+   const auswahlEF = ["Freitext eingeben...", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (ef) {
+      switch (ef) {
+         case "Freitext eingeben...":
+            ausgabe += `\nErwartungen / Fragen\n`; // Überschrift hinzufügen
+            ausgabe += `${EFFreitext}`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Überschrift hinzufügen
+   ausgabe += `\nFazit\n`;
+
+   // Indikation für Logopädie
+   const auswahlIfL = [
+      "indiziert (mit Testergebnissen)",
+      "indiziert (ohne Testergebnisse)",
+      "nicht indiziert (mit Testergebnissen)",
+      "nicht indiziert (ohne Testergebnisse)"
+   ];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (ifl) {
+      switch (ifl) {
+         case "indiziert (mit Testergebnissen)":
+            ausgabe += `Aufgrund der Beobachtungen und Testergebnisse ist eine logopädische Behandlung indiziert.`;
+            break;
+         case "indiziert (ohne Testergebnisse)":
+            ausgabe += `Aufgrund der Beobachtungen und der anamnestischen Informationen ist eine logopädische Behandlung indiziert.`;
+            break;
+         case "nicht indiziert (mit Testergebnissen)":
+            ausgabe += `Aufgrund der Beobachtungen und Testergebnisse ist eine logopädische Behandlung derzeit nicht indiziert.`;
+            break;
+         case "nicht indiziert (ohne Testergebnisse)":
+            ausgabe += `Aufgrund der Beobachtungen und der anamnestischen Informationen ist eine logopädische Behandlung derzeit nicht indiziert.`;
+            break;
+      }
+   }
+
+   // Wiedervorstellung
+   const auswahlWiedervorstellung = ["ja", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (wiedervorstellung) {
+      switch (wiedervorstellung) {
+         case "ja":
+            ausgabe += `Eine Wiedervorstellung in unserer Einrichtung oder in einer logopädischen Praxis wird angeraten.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Kontrolluntersuchung im Rahmen der Frühförderung
+   const auswahlKRF = ["ja", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (krf) {
+      switch (krf) {
+         case "ja":
+            ausgabe += `Die Durchführung einer erneuten logopädischen Diagnostik erscheint im Rahmen der Frühförderung sinnvoll.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Logopädische Begleitung
+   const auswahlLB = ["ja", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (lb) {
+      switch (lb) {
+         case "ja":
+            ausgabe += `Eine logopädische Begleitung ${seiner_ihrer} Sprachentwicklung in größeren, zeitlichen Abständen mit wenigen Therapieeinheiten erscheint ratsam ("watchful waiting").`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   ausgabe += `\nZiele der Therapie\n`;
+
+   // Kommunikative Fähigkeiten
+   const auswahlZielKomF = ["Ziel", "kein Ziel"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (zielKomf) {
+      switch (zielKomf) {
+         case "Ziel":
+            ausgabe += `Verbesserung der kommunikativen Fähigkeiten (u.a. dialogischer / triangulärer Blickkontakt, TurnTaking, Imitation, Gestik), `;
+            break;
+         case "nicht Ziel":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Bedeutung von Sprache
+   const auswahlZielBvS = ["Ziel", "kein Ziel"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (zielBvs) {
+      switch (zielBvs) {
+         case "Ziel":
+            ausgabe += `Erkennen der Bedeutung von Sprache, `;
+            break;
+         case "kein Ziel":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Sprechfreude
+   const auswahlZielSpF = ["Ziel", "kein Ziel"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (zielSpf) {
+      switch (zielSpf) {
+         case "Ziel":
+            ausgabe += `Steigerung der Sprechfreude, `;
+            break;
+         case "kein Ziel":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Rezeptiver / Expressiver Wortschatz
+   const auswahlZielREW = ["Ziel", "kein Ziel"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (zielRew) {
+      switch (zielRew) {
+         case "Ziel":
+            ausgabe += `Erweiterung des rezeptiven und expressiven Wortschatzes, `;
+            break;
+         case "kein Ziel":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Grammatikalische Fähigkeiten
+   const auswahlZielGF = ["Ziel", "kein Ziel"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (zielGf) {
+      switch (zielGf) {
+         case "Ziel":
+            ausgabe += `Verbesserung der grammatikalischen Fähigkeiten, `;
+            break;
+         case "kein Ziel":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Aussprache
+   const auswahlZielAussprache = ["Ziel", "kein Ziel"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (zielAussprache) {
+      switch (zielAussprache) {
+         case "Ziel":
+            ausgabe += `Verbesserung der Aussprache, `;
+            break;
+         case "kein Ziel":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Auditive Wahrnehmung
+   const auswahlZielAW = ["Ziel", "kein Ziel"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (zielAW) {
+      switch (zielAW) {
+         case "Ziel":
+            ausgabe += `Verbesserung der auditiven Wahrnehmung, `;
+            break;
+         case "kein Ziel":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Orofazialer Tonus
+   const auswahlZielOT = ["Ziel", "kein Ziel"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (zielOT) {
+      switch (zielOT) {
+         case "Ziel":
+            ausgabe += `Regulation des orofazialen Tonus, `;
+            break;
+         case "kein Ziel":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Orofaziale Wahrnehmung
+   const auswahlZielOW = ["Ziel", "kein Ziel"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (zielOW) {
+      switch (zielOW) {
+         case "Ziel":
+            ausgabe += `Sensibilisierung der orofazialen Wahrnehmung, `;
+            break;
+         case "kein Ziel":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Orofaziale Fähigkeiten
+   const auswahlZielOF = ["Ziel", "kein Ziel"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (zielOF) {
+      switch (zielOF) {
+         case "Ziel":
+            ausgabe += `Verbesserung der orofazialen Fähigkeiten, `;
+            break;
+         case "kein Ziel":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Entfernen des letzten Kommas mit ggf. diversen Leerzeichen am Ende
+   ausgabe += `@#`;
+   ausgabe = ausgabe.replaceAll(",          @#", "");
+   ausgabe = ausgabe.replaceAll(",         @#", "");
+   ausgabe = ausgabe.replaceAll(",        @#", "");
+   ausgabe = ausgabe.replaceAll(",       @#", "");
+   ausgabe = ausgabe.replaceAll(",      @#", "");
    ausgabe = ausgabe.replaceAll(",     @#", "");
    ausgabe = ausgabe.replaceAll(",    @#", "");
    ausgabe = ausgabe.replaceAll(",   @#", "");
@@ -1843,9 +2171,6 @@ const App = () => {
    ausgabe = ausgabe.replaceAll(",@#", "");
    ausgabe = ausgabe.replaceAll("@#", "");
 
-   // Überschrift hinzufügen
-   ausgabe += `\nSonstiges\n`;
-
    // ######
    // ######   Ende Ausgabe füllen
    // ######
@@ -1853,7 +2178,6 @@ const App = () => {
    // ########################################################################################################################
    // ########################################################################################################################
 
-   ausgabe = ausgabe.replaceAll("\n     ", "\n");
    ausgabe = ausgabe.replaceAll("\n    ", "\n");
    ausgabe = ausgabe.replaceAll("\n   ", "\n");
    ausgabe = ausgabe.replaceAll("\n  ", "\n");
@@ -1863,10 +2187,6 @@ const App = () => {
    ausgabe = ausgabe.replaceAll("   \n", "\n");
    ausgabe = ausgabe.replaceAll("  \n", "\n");
    ausgabe = ausgabe.replaceAll(" \n", "\n");
-   ausgabe = ausgabe.replaceAll("             ", " ");
-   ausgabe = ausgabe.replaceAll("            ", " ");
-   ausgabe = ausgabe.replaceAll("           ", " ");
-   ausgabe = ausgabe.replaceAll("          ", " ");
    ausgabe = ausgabe.replaceAll("         ", " ");
    ausgabe = ausgabe.replaceAll("        ", " ");
    ausgabe = ausgabe.replaceAll("       ", " ");
@@ -1981,7 +2301,23 @@ ${titelMST}: ${mst || "---"}
 ${titelMAG}: ${mag || "---"}
 ${titelMSK}: ${msk || "---"}
 ${titelMBB}: ${mbb || "---"}
-${titelMLC}: ${mlc || "---"}`;
+${titelMLC}: ${mlc || "---"}
+${titelWInf}: ${winf ? winf.replace("Freitext eingeben...", WInfFreitext) : "---"}
+${titelEF}: ${ef ? ef.replace("Freitext eingeben...", EFFreitext) : "---"}
+${titelIfL}: ${ifl || "---"}
+${titelWiedervorstellung}: ${wiedervorstellung || "---"}
+${titelKRF}: ${krf || "---"}
+${titelLB}: ${lb || "---"}
+${titelZielKomF}: ${zielKomf || "---"}
+${titelZielBvS}: ${zielBvs || "---"}
+${titelZielSpF}: ${zielSpf || "---"}
+${titelZielREW}: ${zielRew || "---"}
+${titelZielGF}: ${zielGf || "---"}
+${titelZielAussprache}: ${zielAussprache || "---"}
+${titelZielAW}: ${zielAW || "---"}
+${titelZielOT}: ${zielOT || "---"}
+${titelZielOW}: ${zielOW || "---"}
+${titelZielOF}: ${zielOF || "---"}`;
 
    // #################################################
    // #################################################
@@ -2126,53 +2462,55 @@ ${titelMLC}: ${mlc || "---"}`;
                <Radio value={rs_L1} onChange={setRS_L1} title={titelRS_L1} auswahl={auswahlRS_L1} />
                <Radio value={rp_L1} onChange={setRP_L1} title={titelRP_L1} auswahl={auswahlRP_L1} />
             </Hauptblock>
-            <Hauptblock text="Sprachkompetenzen in der Zweitsprache (L2)" show={showL2} onToggle={toggleL2Handler}>
-               <Radio value={av_L2} onChange={setAV_L2} title={titelAV_L2} auswahl={auswahlAV_L2} />
-               <Radio value={aaa_L2} onChange={setAAA_L2} title={titelAAA_L2} auswahl={auswahlAAA_L2} />
-               <InputFreitext
-                  value={AAA_L2_Freitext}
-                  onChange={setAAA_L2_Freitext}
-                  title={titelAAA_L2 + " (Freitext)"}
-                  placeholder={aaa_L2 === "Lautersetzungen / -auslassungen (phonologisch)" ? "Prozesse" : "betroffene Laute"}
-                  width="w-8/12"
-               />
-               <Radio value={aan_L2} onChange={setAAN_L2} title={titelAAN_L2} auswahl={auswahlAAN_L2} />
-               <Radio value={pIIs_L2} onChange={setPIIS_L2} title={titelPIIS_L2} auswahl={auswahlPIIS_L2} />
-               {pIIs_L2 === "Phonetisch / Phonologische Abweichungen (Prozesse s.u.)" && (
+            {eom === "mehrsprachig (Sprachen s.u.)" && (
+               <Hauptblock text="Sprachkompetenzen in der Zweitsprache (L2)" show={showL2} onToggle={toggleL2Handler}>
+                  <Radio value={av_L2} onChange={setAV_L2} title={titelAV_L2} auswahl={auswahlAV_L2} />
+                  <Radio value={aaa_L2} onChange={setAAA_L2} title={titelAAA_L2} auswahl={auswahlAAA_L2} />
                   <InputFreitext
-                     value={PIIS_L2_Freitext}
-                     onChange={setPIIS_L2_Freitext}
-                     title={titelPIIS_L2 + " (Freitext)"}
-                     placeholder="Beispiel: Vorverlagerung /sch/ (phonologische Störung)"
+                     value={AAA_L2_Freitext}
+                     onChange={setAAA_L2_Freitext}
+                     title={titelAAA_L2 + " (Freitext)"}
+                     placeholder={aaa_L2 === "Lautersetzungen / -auslassungen (phonologisch)" ? "Prozesse" : "betroffene Laute"}
                      width="w-8/12"
                   />
-               )}
-               <Radio value={rwka_L2} onChange={setRWKA_L2} title={titelRWKA_L2} auswahl={auswahlRWKA_L2} />
-               <Radio value={rwf_L2} onChange={setRWF_L2} title={titelRWF_L2} auswahl={auswahlRWF_L2} />
-               <Radio value={rwa_L2} onChange={setRWA_L2} title={titelRWA_L2} auswahl={auswahlRWA_L2} />
-               <Radio value={ewau_L2} onChange={setEWAU_L2} title={titelEWAU_L2} auswahl={auswahlEWAU_L2} />
-               <Radio value={ewda_L2} onChange={setEWDA_L2} title={titelEWDA_L2} auswahl={auswahlEWDA_L2} />
-               <Radio value={ss_L2} onChange={setSS_L2} title={titelSS_L2} auswahl={auswahlSS_L2} />
-               <Radio value={mg_L2} onChange={setMG_L2} title={titelMG_L2} auswahl={auswahlMG_L2} />
-               <Radio value={mn_L2} onChange={setMN_L2} title={titelMN_L2} auswahl={auswahlMN_L2} />
-               <Radio value={mk_L2} onChange={setMK_L2} title={titelMK_L2} auswahl={auswahlMK_L2} />
-               <Radio value={mp_L2} onChange={setMP_L2} title={titelMP_L2} auswahl={auswahlMP_L2} />
-               <Radio value={pdss_L2} onChange={setPDSS_L2} title={titelPDSS_L2} auswahl={auswahlPDSS_L2} />
-               <Radio value={ppe_L2} onChange={setPPE_L2} title={titelPPE_L2} auswahl={auswahlPPE_L2} />
-               {ppe_L2 === "durchgeführt (Testergebnisse s.u.)" && (
-                  <InputFreitext value={PPE_L2_Freitext} onChange={setPPE_L2_Freitext} title={titelPPE_L2 + " (Freitext)"} placeholder="Testergebnisse" />
-               )}
-               <Radio value={sle_L2} onChange={setSLE_L2} title={titelSLE_L2} auswahl={auswahlSLE_L2} />
-               {sle_L2 === "durchgeführt (Testergebnisse s.u.)" && (
-                  <InputFreitext value={SLE_L2_Freitext} onChange={setSLE_L2_Freitext} title={titelSLE_L2 + " (Freitext)"} placeholder="Testergebnisse" />
-               )}
-               <Radio value={sme_L2} onChange={setSME_L2} title={titelSME_L2} auswahl={auswahlSME_L2} />
-               {sme_L2 === "durchgeführt (Testergebnisse s.u.)" && (
-                  <InputFreitext value={SME_L2_Freitext} onChange={setSME_L2_Freitext} title={titelSME_L2 + " (Freitext)"} placeholder="Testergebnisse" />
-               )}
-               <Radio value={rs_L2} onChange={setRS_L2} title={titelRS_L2} auswahl={auswahlRS_L2} />
-               <Radio value={rp_L2} onChange={setRP_L2} title={titelRP_L2} auswahl={auswahlRP_L2} />
-            </Hauptblock>
+                  <Radio value={aan_L2} onChange={setAAN_L2} title={titelAAN_L2} auswahl={auswahlAAN_L2} />
+                  <Radio value={pIIs_L2} onChange={setPIIS_L2} title={titelPIIS_L2} auswahl={auswahlPIIS_L2} />
+                  {pIIs_L2 === "Phonetisch / Phonologische Abweichungen (Prozesse s.u.)" && (
+                     <InputFreitext
+                        value={PIIS_L2_Freitext}
+                        onChange={setPIIS_L2_Freitext}
+                        title={titelPIIS_L2 + " (Freitext)"}
+                        placeholder="Beispiel: Vorverlagerung /sch/ (phonologische Störung)"
+                        width="w-8/12"
+                     />
+                  )}
+                  <Radio value={rwka_L2} onChange={setRWKA_L2} title={titelRWKA_L2} auswahl={auswahlRWKA_L2} />
+                  <Radio value={rwf_L2} onChange={setRWF_L2} title={titelRWF_L2} auswahl={auswahlRWF_L2} />
+                  <Radio value={rwa_L2} onChange={setRWA_L2} title={titelRWA_L2} auswahl={auswahlRWA_L2} />
+                  <Radio value={ewau_L2} onChange={setEWAU_L2} title={titelEWAU_L2} auswahl={auswahlEWAU_L2} />
+                  <Radio value={ewda_L2} onChange={setEWDA_L2} title={titelEWDA_L2} auswahl={auswahlEWDA_L2} />
+                  <Radio value={ss_L2} onChange={setSS_L2} title={titelSS_L2} auswahl={auswahlSS_L2} />
+                  <Radio value={mg_L2} onChange={setMG_L2} title={titelMG_L2} auswahl={auswahlMG_L2} />
+                  <Radio value={mn_L2} onChange={setMN_L2} title={titelMN_L2} auswahl={auswahlMN_L2} />
+                  <Radio value={mk_L2} onChange={setMK_L2} title={titelMK_L2} auswahl={auswahlMK_L2} />
+                  <Radio value={mp_L2} onChange={setMP_L2} title={titelMP_L2} auswahl={auswahlMP_L2} />
+                  <Radio value={pdss_L2} onChange={setPDSS_L2} title={titelPDSS_L2} auswahl={auswahlPDSS_L2} />
+                  <Radio value={ppe_L2} onChange={setPPE_L2} title={titelPPE_L2} auswahl={auswahlPPE_L2} />
+                  {ppe_L2 === "durchgeführt (Testergebnisse s.u.)" && (
+                     <InputFreitext value={PPE_L2_Freitext} onChange={setPPE_L2_Freitext} title={titelPPE_L2 + " (Freitext)"} placeholder="Testergebnisse" />
+                  )}
+                  <Radio value={sle_L2} onChange={setSLE_L2} title={titelSLE_L2} auswahl={auswahlSLE_L2} />
+                  {sle_L2 === "durchgeführt (Testergebnisse s.u.)" && (
+                     <InputFreitext value={SLE_L2_Freitext} onChange={setSLE_L2_Freitext} title={titelSLE_L2 + " (Freitext)"} placeholder="Testergebnisse" />
+                  )}
+                  <Radio value={sme_L2} onChange={setSME_L2} title={titelSME_L2} auswahl={auswahlSME_L2} />
+                  {sme_L2 === "durchgeführt (Testergebnisse s.u.)" && (
+                     <InputFreitext value={SME_L2_Freitext} onChange={setSME_L2_Freitext} title={titelSME_L2 + " (Freitext)"} placeholder="Testergebnisse" />
+                  )}
+                  <Radio value={rs_L2} onChange={setRS_L2} title={titelRS_L2} auswahl={auswahlRS_L2} />
+                  <Radio value={rp_L2} onChange={setRP_L2} title={titelRP_L2} auswahl={auswahlRP_L2} />
+               </Hauptblock>
+            )}
             <Hauptblock text="Stimmgebung">
                <Radio value={stimmgebung} onChange={setStimmgebung} title={titelStimmgebung} auswahl={auswahlStimmgebung} />
             </Hauptblock>
@@ -2190,6 +2528,46 @@ ${titelMLC}: ${mlc || "---"}`;
                <Radio value={msk} onChange={setMSK} title={titelMSK} auswahl={auswahlMSK} />
                <Radio value={mbb} onChange={setMBB} title={titelMBB} auswahl={auswahlMBB} />
                <Radio value={mlc} onChange={setMLC} title={titelMLC} auswahl={auswahlMLC} />
+            </Hauptblock>
+            <Hauptblock text="Sonstiges">
+               <Radio value={winf} onChange={setWInf} title={titelWInf} auswahl={auswahlWInf} />
+               {winf === "Freitext eingeben..." && (
+                  <InputFreitext
+                     value={WInfFreitext}
+                     onChange={setWInfFreitext}
+                     title={titelWInf + " (Freitext)"}
+                     placeholder="Weitere Informationen"
+                     width="w-10/12"
+                  />
+               )}
+               <Radio value={ef} onChange={setEF} title={titelEF} auswahl={auswahlEF} />
+               {ef === "Freitext eingeben..." && (
+                  <InputFreitext
+                     value={EFFreitext}
+                     onChange={setEFFreitext}
+                     title={titelEF + " (Freitext)"}
+                     placeholder="Erwartungen / Fragen"
+                     width="w-10/12"
+                  />
+               )}
+            </Hauptblock>
+            <Hauptblock text="Fazit">
+               <Radio value={ifl} onChange={setIfL} title={titelIfL} auswahl={auswahlIfL} />
+               <Radio value={wiedervorstellung} onChange={setWiedervorstellung} title={titelWiedervorstellung} auswahl={auswahlWiedervorstellung} />
+               <Radio value={krf} onChange={setKRF} title={titelKRF} auswahl={auswahlKRF} />
+               <Radio value={lb} onChange={setLB} title={titelLB} auswahl={auswahlLB} />
+            </Hauptblock>
+            <Hauptblock text="Ziele der Therapie">
+               <Radio value={zielKomf} onChange={setZielKomF} title={titelZielKomF} auswahl={auswahlZielKomF} />
+               <Radio value={zielBvs} onChange={setZielBvS} title={titelZielBvS} auswahl={auswahlZielBvS} />
+               <Radio value={zielSpf} onChange={setZielSpF} title={titelZielSpF} auswahl={auswahlZielSpF} />
+               <Radio value={zielRew} onChange={setZielREW} title={titelZielREW} auswahl={auswahlZielREW} />
+               <Radio value={zielGf} onChange={setZielGF} title={titelZielGF} auswahl={auswahlZielGF} />
+               <Radio value={zielAussprache} onChange={setZielAussprache} title={titelZielAussprache} auswahl={auswahlZielAussprache} />
+               <Radio value={zielAW} onChange={setZielAW} title={titelZielAW} auswahl={auswahlZielAW} />
+               <Radio value={zielOT} onChange={setZielOT} title={titelZielOT} auswahl={auswahlZielOT} />
+               <Radio value={zielOW} onChange={setZielOW} title={titelZielOW} auswahl={auswahlZielOW} />
+               <Radio value={zielOF} onChange={setZielOF} title={titelZielOF} auswahl={auswahlZielOF} />
             </Hauptblock>
          </div>
 
