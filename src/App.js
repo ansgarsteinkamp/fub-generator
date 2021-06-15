@@ -726,7 +726,9 @@ const App = () => {
    }
 
    // Überschrift hinzufügen
-   ausgabe += `\nSprachkompetenzen in der Erstsprache (L1)`;
+   if (eom === "mehrsprachig (Sprachen s.u.)") {
+      ausgabe += `\nSprachkompetenzen in der Erstsprache (L1)`;
+   }
 
    // Überschrift hinzufügen
    ausgabe += `\nAussprache\n`;

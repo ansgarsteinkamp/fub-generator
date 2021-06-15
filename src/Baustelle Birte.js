@@ -2,155 +2,294 @@
 ausgabe += `\nTestergebnisse PDSS (Kauschke & Siegmüller)\n`;
 
 // Testergebnisse PDSS (Kauschke & Siegmüller)
-if (XXXXXXX) {
-   switch (XXXXXXX) {
+const XXXXX = ["anteilig durchgeführt", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (XXXXX) {
+   switch (XXXXX) {
       case "anteilig durchgeführt":
          ausgabe += `Es wurden ausgewählte Untertests der Diagnostik durchgeführt.`;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
          break;
-      default:
-         ausgabe += ``;
    }
 }
 
-// "Phonetisch-phonologische Ebene:" (Freitext)
-// [ keine Angabe ]
-// ausgabe += `\nPhonetisch-phonologische Ebene: (Freitext)`;
+// Achtung offene Fragestellung
+// Frage an dich: "Freitext eingeben..." als case ODER "durchgeführt (Testergebnisse s.u.)"?, bezieht sich auf alle mit "Ebene"
 
-// "Semantisch-lexikalische Ebene:" (Freitext)
-// [ keine Angabe ]
-// ausgabe += `\nSemantisch-lexikalische Ebene: (Freitext)`;
+// Phonetisch-phonologische Ebene
+const XXXXX = ["Freitext eingeben...", "nicht durchgeführt"];
+ausgabe += ` `; // Leerzeichen hinzufügen
 
-// "Syntaktisch-morphologische Ebene:" (Freitext)
-// [ keine Angabe ]
-// ausgabe += `\nSyntaktisch-morphologische Ebene: (Freitext)`;
+if (XXXXX) {
+   switch (XXXXX) {
+      case "durchgeführt (Testergebnisse s.u.)":
+         ausgabe += `\nPhonetisch-phonologische Ebene: ${Freitext}.`; // Placeholder: Testergebnisse
+         break;
+      case "nicht durchgeführt":
+         ausgabe += ``;
+         break;
+   }
+}
 
-// Redefluss
-// ["nicht unterbrochen", "Wiederholungen", "Dehnungen", "Blockaden", "Auslassungen und Verschmelzungen von Lauten und Silbenfolgen", "Laut-, Silben-, Wort- und Satzteilwiederholungen", "erhöhtes Sprechtempo"]
+// Semantisch-lexikalische Ebene
+const XXXXX = ["Freitext eingeben...", "nicht durchgeführt"];
+ausgabe += ` `; // Leerzeichen hinzufügen
 
-if (XXXXXXX) {
-   switch (XXXXXXX) {
+if (XXXXX) {
+   switch (XXXXX) {
+      case "durchgeführt (Testergebnisse s.u.)":
+         ausgabe += `\nSemantisch-lexikalische Ebene: ${Freitext}.`; // Placeholder: Testergebnisse
+         break;
+      case "nicht durchgeführt":
+         ausgabe += ``;
+         break;
+   }
+}
+
+// Syntaktisch-morphologische Ebene
+const XXXXX = ["Freitext eingeben...", "nicht durchgeführt"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (XXXXX) {
+   switch (XXXXX) {
+      case "durchgeführt (Testergebnisse s.u.)":
+         ausgabe += `\nSyntaktisch-morphologische Ebene: ${Freitext}.\n`; // Placeholder: Testergebnisse
+         break;
+      case "nicht durchgeführt":
+         ausgabe += ``;
+         break;
+   }
+}
+
+// Redefluss (Stottern)
+const XXXXX = ["nicht unterbrochen", "Wiederholungen", "Dehnungen", "Blockaden"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (XXXXX) {
+   switch (XXXXX) {
       case "nicht unterbrochen":
-         ausgabe += `${Sein_Ihr} Redefluss war nicht unterbrochen.`;
+         ausgabe += ``;
          break;
       case "Wiederholungen":
-         ausgabe += `Beim Sprechen zeigten sich Unflüssigkeiten in Form von Wiederholungen.`;
+         ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Wiederholungen.`;
          break;
       case "Dehnungen":
-         ausgabe += `Beim Sprechen zeigten sich Unflüssigkeiten in Form von Dehnungen.`;
+         ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Dehnungen.`;
          break;
       case "Blockaden":
-         ausgabe += `Beim Sprechen zeigten sich Unflüssigkeiten in Form von Blockaden.`;
+         ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Blockaden.`;
+         break;
+   }
+}
+
+// Redefluss (Poltern)
+const XXXXX = [
+   "nicht verändert",
+   "Auslassungen / Verschmelzungen / Lautersetzungen und -veränderungen gehäuft",
+   "Laut-, Silben-, Wort- und Satzteilwiederholungen",
+   "erhöhtes Sprechtempo"
+];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (XXXXX) {
+   switch (XXXXX) {
+      case "nicht verändert":
+         ausgabe += ``;
          break;
       case "Auslassungen / Verschmelzungen / Lautersetzungen und -veränderungen gehäuft":
-         ausgabe += `Beim Sprechen zeigten sich gehäuft Auslassungen und Verschmelzungen von Lauten und Silben, sowie Lautersetzungen und -veränderungen bei erhöhter und / oder irregulärer Artikulationsrate.`;
+         ausgabe += `Der Redefluss war verändert. Beim Sprechen zeigten sich gehäuft Auslassungen und Verschmelzungen von Lauten und Silben, sowie Lautersetzungen und -veränderungen bei erhöhter und / oder irregulärer Artikulationsrate.`;
          break;
       case "Laut-, Silben-, Wort- und Satzteilwiederholungen":
-         ausgabe += `Es traten Unflüssigkeiten in Form von Laut-, Silben-, Wort- und Satzteilwiederholungen.`;
+         ausgabe += `Der Redefluss war unterbrochen. Es traten Unflüssigkeiten in Form von Laut-, Silben-, Wort- und Satzteilwiederholungen.`;
          break;
       case "erhöhtes Sprechtempo":
-         ausgabe += `${Sein_Ihr} Sprechtempo war erhöht und / oder irregulär.`;
+         ausgabe += `Der Redefluss war verändert. ${Sein_Ihr} Sprechtempo war erhöht und / oder irregulär.`;
          break;
-      case "[ keine Angabe ]":
-         ausgabe += ``;
-         break;
-      default:
-         ausgabe += ``;
    }
 }
 
-// Stimmgebung
-// ["unauffällig", "auffällig", "hoch", "tief", "verhaucht / heiser"]
+// Überschrift hinzufügen
+ausgabe += `\nStimmgebung\n`;
 
-if (XXXXXXX) {
-   switch (XXXXXXX) {
+//Stimmgebung
+const XXXXX = ["unauffällig", "hoch", "tief", "verhaucht / heiser"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (XXXXX) {
+   switch (XXXXX) {
       case "unauffällig":
-         ausgabe += `Die Stimmgebung von ${vorname} war unauffällig.`;
-         break;
-      case "auffällig":
-         ausgabe += `Die Stimmgebung von ${vorname} war auffällig.`;
+         ausgabe += ``;
          break;
       case "hoch":
-         ausgabe += `Die Stimme von ${vorname} klang hoch.`;
+         ausgabe += `Die Stimmgebung von ${vorname} war auffällig, da die Stimme ungewöhnlich hoch klang.`;
          break;
       case "tief":
-         ausgabe += `Die Stimme von ${vorname} klang tief.`;
+         ausgabe += `Die Stimmgebung von ${vorname} war auffällig, da die Stimme ungewöhnlich tief klang.`;
          break;
       case "verhaucht / heiser":
-         ausgabe += `Die Stimme von ${vorname} klang verhaucht / heiser.`;
+         ausgabe += `Die Stimmgebung von ${vorname} war auffällig, da die Stimme verhaucht / heiser klang.`;
          break;
-      case "[ keine Angabe ]":
-         ausgabe += ``;
-         break;
-      default:
-         ausgabe += ``;
    }
 }
 
-// Hauptüberschrift: "Medienkonsum"
+// Überschrift hinzufügen
+ausgabe += `\nMedienkonsum\n`;
 
-// Gesamtdauer pro Tag
-// ["angemessen (< 1 Std. / Tag)", "erhöht (>1 Std. / Tag)"]
+// Medienkonsum: Dauer
+const XXXXX = ["angemessen", "erhöht", "Freitext eingeben..."];
+ausgabe += ` `; // Leerzeichen hinzufügen
 
-if (XXXXXXX) {
-   switch (XXXXXXX) {
-      case "angemessen (< 1 Std. / Tag)":
-         ausgabe += `In Bezug auf ${sein_ihr} Alter war der Medienkonsum angemessen.`;
+if (XXXXX) {
+   switch (XXXXX) {
+      case "angemessen (< 1 Std. / Tag, Gesamtnutzungsdauer s.u.)":
+         ausgabe += `In Bezug auf ${sein_ihr} Alter war der Medienkonsum angemessen (Gesamtnutzungsdauer aller Medien pro Tag: ${Freitext}).`; // Placeholder: Gesamtnutzungsdauer aller Medien pro Tag
          break;
-      case "erhöht (>1 Std. / Tag)":
-         ausgabe += `In Bezug auf ${sein_ihr} Alter war der Medienkonsum erhöht.`;
+      case "erhöht (> 1 Std. / Tag, Gesamtnutzungsdauer s.u.)":
+         ausgabe += `In Bezug auf ${sein_ihr} Alter war der Medienkonsum erhöht (Gesamtnutzungsdauer aller Medien pro Tag: ${Freitext}).`; // Placeholder: Gesamtnutzungsdauer aller Medien pro Tag
          break;
-      // (Freitext)
-      // ausgabe += `Gesamtnutzungsdauer aller Medien pro Tag: (Freitext)`;
-      default:
-         ausgabe += ``;
    }
 }
 
-// Art der Medien
-// ["Fernsehen / Filme", "Smartphone / Tablet", "Audiogerät", "Spielekonsole", "Bilderbücher", "Lerncomputer"]
+// Achtung offene Fragestellung
+// Art der Medien (Mehrfachnennung) sollen nur hintereinander aufgelistet werden, eigentlich nicht überall komplette Sätze in ausgabe
 
-if (XXXXXXX) {
-   switch (XXXXXXX) {
+// Medienkonsum: Art der Medien
+const XXXXX = ["Fernsehen / Filme", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (XXXXX) {
+   switch (XXXXX) {
       case "Fernsehen / Filme":
          ausgabe += `${vorname} sehe sich Fersehsendungen und -filme an.`;
          break;
-      case "Smartphone / Tablet":
-         ausgabe += `${vorname} dürfe ein Smartphone / Tablet nutzen.`;
-         break;
-      case "Audiogerät":
-         ausgabe += `${vorname} höre sich Hörbücher und / oder Lieder an.`;
-         break;
-      case "Spielekonsole":
-         ausgabe += `${vorname} habe Zugang zu seiner Spielekonsole.`;
-         break;
-      case "Bilderbücher":
-         ausgabe += `${vorname} habe Interesse an der Bilderbuchbetrachtung.`;
-         break;
-      case "Lerncomputer":
-         ausgabe += `${vorname} nutze einen Lerncomputer.`;
-         break;
-      default:
+      case "[ keine Angabe ]":
          ausgabe += ``;
+         break;
    }
 }
 
-// Hauptüberschrift: "Weitere Informationen, Erwartungen / Fragen der Gesprächsbeteiligten"
+// Medienkonsum: Art der Medien
+const XXXXX = ["Smartphone / Tablet", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
 
-// Weitere Informationen der Gesprächsbeteiligten
-// (Freitext)
-// ausgabe += `(Freitext)`;
+if (XXXXX) {
+   switch (XXXXX) {
+      case "Smartphone / Tablet":
+         ausgabe += `${Er_Sie} dürfe ein Smartphone / Tablet nutzen.`;
+         break;
+      case "[ keine Angabe ]":
+         ausgabe += ``;
+         break;
+   }
+}
+
+// Medienkonsum: Art der Medien
+const XXXXX = ["Audiogerät", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (XXXXX) {
+   switch (XXXXX) {
+      case "Audiogerät":
+         ausgabe += `${vorname} höre sich Hörbücher und / oder Lieder an.`;
+         break;
+      case "[ keine Angabe ]":
+         ausgabe += ``;
+         break;
+   }
+}
+
+// Medienkonsum: Art der Medien
+const XXXXX = ["Spielekonsole", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (XXXXX) {
+   switch (XXXXX) {
+      case "Spielekonsole":
+         ausgabe += `${Er_Sie} habe Zugang zu seiner Spielekonsole.`;
+         break;
+      case "[ keine Angabe ]":
+         ausgabe += ``;
+         break;
+   }
+}
+
+// Medienkonsum: Art der Medien
+const XXXXX = ["Bilderbücher", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (XXXXX) {
+   switch (XXXXX) {
+      case "Bilderbücher":
+         ausgabe += `${vorname} habe Interesse an der Bilderbuchbetrachtung.`;
+         break;
+      case "[ keine Angabe ]":
+         ausgabe += ``;
+         break;
+   }
+}
+
+// Medienkonsum: Art der Medien
+const XXXXX = ["Lerncomputer", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (XXXXX) {
+   switch (XXXXX) {
+      case "Lerncomputer":
+         ausgabe += `${Er_Sie} nutze einen Lerncomputer.`;
+         break;
+      case "[ keine Angabe ]":
+         ausgabe += ``;
+         break;
+   }
+}
+
+// Überschrift hinzufügen
+ausgabe += `\nSonstiges\n`;
+
+// Weitere Informationen
+const xxxxxxx = ["Freitext eingeben...", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (xxxxxxx) {
+   switch (xxxxxxx) {
+      case "Freitext eingeben...":
+         ausgabe += `${Freitext}`; // Placeholder: Weitere Informationen
+         break;
+      case "[ keine Angabe ]":
+         ausgabe += ``;
+         break;
+   }
+}
 
 // Erwartungen / Fragen
-// (Freitext)
-// ausgabe += `(Freitext)`;
+const xxxxxxx = ["Freitext eingeben...", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
 
-// Hauptüberschrift: "Indikation für Logopädie, Wiedervorstellung, logopädische Begleitung, Ziele der Logopädie, Beratungsinhalte"
+if (xxxxxxx) {
+   switch (xxxxxxx) {
+      case "Freitext eingeben...":
+         ausgabe += `${Freitext}`; // Placeholder: Erwartungen / Fragen
+         break;
+      case "[ keine Angabe ]":
+         ausgabe += ``;
+         break;
+   }
+}
+
+// Überschrift hinzufügen
+ausgabe += `\nFazit / Ziele der Therapie\n`;
 
 // Indikation für Logopädie
-// ["indiziert", "nicht indiziert"]
+const xxxxxxx = [
+   "indiziert (mit Testergebnissen)",
+   "indiziert (ohne Testergebnisse)",
+   "nicht indiziert (mit Testergebnissen)",
+   "nicht indiziert (ohne Testergebnisse)"
+];
+ausgabe += ` `; // Leerzeichen hinzufügen
 
 if (XXXXXXX) {
    switch (XXXXXXX) {
@@ -166,90 +305,209 @@ if (XXXXXXX) {
       case "nicht indiziert (ohne Testergebnisse)":
          ausgabe += `Aufgrund der Beobachtungen und der anamnestischen Informationen ist eine logopädische Behandlung derzeit nicht indiziert.`;
          break;
-      default:
-         ausgabe += ``;
    }
 }
 
 // Wiedervorstellung
-// ["ja", "[ keine Angabe ]"]
+const XXXXX = ["ja", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
 
-if (XXXXXXX) {
-   switch (XXXXXXX) {
+if (XXXXX) {
+   switch (XXXXX) {
       case "ja":
          ausgabe += `Eine Wiedervorstellung in unserer Einrichtung oder in einer logopädischen Praxis wird angeraten.`;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
          break;
-      default:
-         ausgabe += ``;
    }
 }
 
 // Kontrolluntersuchung im Rahmen der Frühförderung
-// ["ja", "[ keine Angabe ]"]
+const XXXXX = ["ja", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
 
-if (XXXXXXX) {
-   switch (XXXXXXX) {
+if (XXXXX) {
+   switch (XXXXX) {
       case "ja":
          ausgabe += `Die Durchführung einer erneuten logopädischen Diagnostik erscheint im Rahmen der Frühförderung sinnvoll.`;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
          break;
-      default:
-         ausgabe += ``;
    }
 }
 
 // Logopädische Begleitung
-// ["ja", "[ keine Angabe ]"]
+const XXXXX = ["ja", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
 
-if (XXXXXXX) {
-   switch (XXXXXXX) {
+if (XXXXX) {
+   switch (XXXXX) {
       case "ja":
-         ausgabe += `Eine logopädische Begleitung ${seiner_ihrer} Sprachentwicklung in größeren, zeitlichen Abständen mit wenigen Therapieeinheiten erscheint ratsam.`;
+         ausgabe += `Eine logopädische Begleitung ${seiner_ihrer} Sprachentwicklung in größeren, zeitlichen Abständen mit wenigen Therapieeinheiten erscheint ratsam ("watchful waiting").`;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
          break;
-      default:
+   }
+}
+
+// Noch keine Lösung gefunden für:
+// Ziele der Logopädie
+// ausgabe Einleitender Satz "Ziele der Therapie: ${Freitext} (u.a. Ziele als reine Aulistung getrennt durch Kommata angedacht)
+
+// Ziele der Logopädie
+const xxxxxxx = ["Kommunikative Fähigkeiten", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (xxxxxxx) {
+   switch (xxxxxxx) {
+      case "Kommunikative Fähigkeiten":
+         ausgabe += `Verbesserung der kommunikativen Fähigkeiten (u.a. dialogischer / triangulärer Blickkontakt, TurnTaking, Imitation, Gestik)`;
+         break;
+      case "[ keine Angabe ]":
          ausgabe += ``;
+         break;
    }
 }
 
 // Ziele der Logopädie
-// ["Kommunkative Fähigkeiten", "Bedeutung von Sprache", "Sprechfreude", "Rezeptiver / Expressiver Wortschatz", "Grammatikalische Fähigkeiten", "Aussprache", "Auditive Wahrnehmung", "Orofazialer Tonus", "Orofaziale Wahrnehmung", "Orofaziale Fähigkeiten"],
-// ausgabe `Ziele der Therapie: (Freitext)`
-// Anmerkung: Mehrfachnennung möglich
+const xxxxxxx = ["Bedeutung von Sprache", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
 
-// Kopie
-
-// Überschrift
-// ["", ""]
-
-if (XXXXXXX) {
-   switch (XXXXXXX) {
-      case "":
-         ausgabe += ``;
-         break;
-      case "":
-         ausgabe += ``;
-         break;
-      case "":
-         ausgabe += ``;
-         break;
-      case "":
-         ausgabe += ``;
-         break;
-      case "":
-         ausgabe += ``;
+if (xxxxxxx) {
+   switch (xxxxxxx) {
+      case "Bedeutung von Sprache":
+         ausgabe += `Erkennen der Bedeutung von Sprache`;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
          break;
-      default:
-         ausgabe += ``;
    }
 }
+
+// Ziele der Logopädie
+const xxxxxxx = ["Sprechfreude", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (xxxxxxx) {
+   switch (xxxxxxx) {
+      case "Sprechfreude":
+         ausgabe += `Steigerung der Sprechfreude`;
+         break;
+      case "[ keine Angabe ]":
+         ausgabe += ``;
+         break;
+   }
+}
+
+// Ziele der Logopädie
+const xxxxxxx = ["Rezeptiver / Expressiver Wortschatz", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (xxxxxxx) {
+   switch (xxxxxxx) {
+      case "Rezeptiver / Expressiver Wortschatz":
+         ausgabe += `Erweiterung des rezeptiven und expressiven Wortschatzes`;
+         break;
+      case "[ keine Angabe ]":
+         ausgabe += ``;
+         break;
+   }
+}
+
+// Ziele der Logopädie
+const xxxxxxx = ["Grammatikalische Fähigkeiten", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (xxxxxxx) {
+   switch (xxxxxxx) {
+      case "Grammatikalische Fähigkeiten":
+         ausgabe += `Verbesserung der grammatikalischen Fähigkeiten`;
+         break;
+      case "[ keine Angabe ]":
+         ausgabe += ``;
+         break;
+   }
+}
+
+// Ziele der Logopädie
+const xxxxxxx = ["Aussprache", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (xxxxxxx) {
+   switch (xxxxxxx) {
+      case "Aussprache":
+         ausgabe += `Verbesserung der Aussprache`;
+         break;
+      case "[ keine Angabe ]":
+         ausgabe += ``;
+         break;
+   }
+}
+
+// Ziele der Logopädie
+const xxxxxxx = ["Auditive Wahrnehmung", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (xxxxxxx) {
+   switch (xxxxxxx) {
+      case "Auditive Wahrnehmung":
+         ausgabe += `Verbesserung der auditiven Wahrnehmung`;
+         break;
+      case "[ keine Angabe ]":
+         ausgabe += ``;
+         break;
+   }
+}
+
+// Ziele der Logopädie
+const xxxxxxx = ["Orofazialer Tonus", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (xxxxxxx) {
+   switch (xxxxxxx) {
+      case "Orofazialer Tonus":
+         ausgabe += `Regulation des orofazialen Tonus`;
+         break;
+      case "[ keine Angabe ]":
+         ausgabe += ``;
+         break;
+   }
+}
+
+// Ziele der Logopädie
+const xxxxxxx = ["Orofaziale Wahrnehmung", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (xxxxxxx) {
+   switch (xxxxxxx) {
+      case "Orofaziale Wahrnehmung":
+         ausgabe += `Sensibilisierung der orofazialen Wahrnehmung`;
+         break;
+      case "[ keine Angabe ]":
+         ausgabe += ``;
+         break;
+   }
+}
+
+// Ziele der Logopädie
+const xxxxxxx = ["Orofaziale Fähigkeiten", "[ keine Angabe ]"];
+ausgabe += ` `; // Leerzeichen hinzufügen
+
+if (xxxxxxx) {
+   switch (xxxxxxx) {
+      case "Orofaziale Fähigkeiten":
+         ausgabe += `Verbesserung der orofazialen Fähigkeiten`;
+         break;
+      case "[ keine Angabe ]":
+         ausgabe += ``;
+         break;
+   }
+}
+
+// ###
+// ###  Bis hierhin ist alles fertig!
+// ###
+// ##################################
