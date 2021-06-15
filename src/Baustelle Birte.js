@@ -159,11 +159,12 @@ if (XXXXX) {
 // Medienkonsum: Art der Medien
 const XXXXX = ["Fernsehen / Filme", "[ keine Angabe ]"];
 ausgabe += ` `; // Leerzeichen hinzufügen
+ausgabe += `Art der Medien: `;
 
 if (XXXXX) {
    switch (XXXXX) {
       case "Fernsehen / Filme":
-         ausgabe += `${vorname} sehe sich Fersehsendungen und -filme an.`;
+         ausgabe += `Fersehsendungen und -filme, `;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
@@ -178,7 +179,7 @@ ausgabe += ` `; // Leerzeichen hinzufügen
 if (XXXXX) {
    switch (XXXXX) {
       case "Smartphone / Tablet":
-         ausgabe += `${Er_Sie} dürfe ein Smartphone / Tablet nutzen.`;
+         ausgabe += `Smartphone / Tablet, `;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
@@ -193,7 +194,7 @@ ausgabe += ` `; // Leerzeichen hinzufügen
 if (XXXXX) {
    switch (XXXXX) {
       case "Audiogerät":
-         ausgabe += `${vorname} höre sich Hörbücher und / oder Lieder an.`;
+         ausgabe += `Audiogerät (Hörbücher und / oder Lieder), `;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
@@ -208,7 +209,7 @@ ausgabe += ` `; // Leerzeichen hinzufügen
 if (XXXXX) {
    switch (XXXXX) {
       case "Spielekonsole":
-         ausgabe += `${Er_Sie} habe Zugang zu seiner Spielekonsole.`;
+         ausgabe += `Spielekonsole, `;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
@@ -223,7 +224,7 @@ ausgabe += ` `; // Leerzeichen hinzufügen
 if (XXXXX) {
    switch (XXXXX) {
       case "Bilderbücher":
-         ausgabe += `${vorname} habe Interesse an der Bilderbuchbetrachtung.`;
+         ausgabe += `Bilderbücher, `;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
@@ -238,13 +239,15 @@ ausgabe += ` `; // Leerzeichen hinzufügen
 if (XXXXX) {
    switch (XXXXX) {
       case "Lerncomputer":
-         ausgabe += `${Er_Sie} nutze einen Lerncomputer.`;
+         ausgabe += `Lerncomputer, `;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
          break;
    }
 }
+
+// Hier muss das letzte ", " entfernt werden.
 
 // Überschrift hinzufügen
 ausgabe += `\nSonstiges\n`;
@@ -355,7 +358,7 @@ if (XXXXX) {
 
 // Noch keine Lösung gefunden für:
 // Ziele der Logopädie
-// ausgabe Einleitender Satz "Ziele der Therapie: ${Freitext} (u.a. Ziele als reine Aulistung getrennt durch Kommata angedacht)
+ausgabe += `Ziele der Therapie: `;
 
 // Ziele der Logopädie
 const xxxxxxx = ["Kommunikative Fähigkeiten", "[ keine Angabe ]"];
@@ -364,7 +367,7 @@ ausgabe += ` `; // Leerzeichen hinzufügen
 if (xxxxxxx) {
    switch (xxxxxxx) {
       case "Kommunikative Fähigkeiten":
-         ausgabe += `Verbesserung der kommunikativen Fähigkeiten (u.a. dialogischer / triangulärer Blickkontakt, TurnTaking, Imitation, Gestik)`;
+         ausgabe += `Verbesserung der kommunikativen Fähigkeiten (u.a. dialogischer / triangulärer Blickkontakt, TurnTaking, Imitation, Gestik), `;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
@@ -379,7 +382,7 @@ ausgabe += ` `; // Leerzeichen hinzufügen
 if (xxxxxxx) {
    switch (xxxxxxx) {
       case "Bedeutung von Sprache":
-         ausgabe += `Erkennen der Bedeutung von Sprache`;
+         ausgabe += `Erkennen der Bedeutung von Sprache, `;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
@@ -394,7 +397,7 @@ ausgabe += ` `; // Leerzeichen hinzufügen
 if (xxxxxxx) {
    switch (xxxxxxx) {
       case "Sprechfreude":
-         ausgabe += `Steigerung der Sprechfreude`;
+         ausgabe += `Steigerung der Sprechfreude, `;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
@@ -409,7 +412,7 @@ ausgabe += ` `; // Leerzeichen hinzufügen
 if (xxxxxxx) {
    switch (xxxxxxx) {
       case "Rezeptiver / Expressiver Wortschatz":
-         ausgabe += `Erweiterung des rezeptiven und expressiven Wortschatzes`;
+         ausgabe += `Erweiterung des rezeptiven und expressiven Wortschatzes, `;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
@@ -424,7 +427,7 @@ ausgabe += ` `; // Leerzeichen hinzufügen
 if (xxxxxxx) {
    switch (xxxxxxx) {
       case "Grammatikalische Fähigkeiten":
-         ausgabe += `Verbesserung der grammatikalischen Fähigkeiten`;
+         ausgabe += `Verbesserung der grammatikalischen Fähigkeiten, `;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
@@ -439,7 +442,7 @@ ausgabe += ` `; // Leerzeichen hinzufügen
 if (xxxxxxx) {
    switch (xxxxxxx) {
       case "Aussprache":
-         ausgabe += `Verbesserung der Aussprache`;
+         ausgabe += `Verbesserung der Aussprache, `;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
@@ -454,7 +457,7 @@ ausgabe += ` `; // Leerzeichen hinzufügen
 if (xxxxxxx) {
    switch (xxxxxxx) {
       case "Auditive Wahrnehmung":
-         ausgabe += `Verbesserung der auditiven Wahrnehmung`;
+         ausgabe += `Verbesserung der auditiven Wahrnehmung, `;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
@@ -469,7 +472,7 @@ ausgabe += ` `; // Leerzeichen hinzufügen
 if (xxxxxxx) {
    switch (xxxxxxx) {
       case "Orofazialer Tonus":
-         ausgabe += `Regulation des orofazialen Tonus`;
+         ausgabe += `Regulation des orofazialen Tonus, `;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
@@ -484,7 +487,7 @@ ausgabe += ` `; // Leerzeichen hinzufügen
 if (xxxxxxx) {
    switch (xxxxxxx) {
       case "Orofaziale Wahrnehmung":
-         ausgabe += `Sensibilisierung der orofazialen Wahrnehmung`;
+         ausgabe += `Sensibilisierung der orofazialen Wahrnehmung, `;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
@@ -499,13 +502,15 @@ ausgabe += ` `; // Leerzeichen hinzufügen
 if (xxxxxxx) {
    switch (xxxxxxx) {
       case "Orofaziale Fähigkeiten":
-         ausgabe += `Verbesserung der orofazialen Fähigkeiten`;
+         ausgabe += `Verbesserung der orofazialen Fähigkeiten, `;
          break;
       case "[ keine Angabe ]":
          ausgabe += ``;
          break;
    }
 }
+
+// Hier muss das letzte ", " entfernt werden.
 
 // ###
 // ###  Bis hierhin ist alles fertig!
