@@ -408,7 +408,7 @@ const App = () => {
    let ausgabe = ``;
 
    // Überschrift hinzufügen
-   ausgabe += `Allgemeines / Kontaktverhalten\n`;
+   ausgabe += `Allgemeines / Kontaktverhalten:`;
 
    // Begleitet von
    const auswahlBegleitetVon = [
@@ -523,7 +523,7 @@ const App = () => {
    }
 
    // Überschrift hinzufügen
-   ausgabe += `\nAuditive Wahrnehmung\n`;
+   ausgabe += `\nAuditive Wahrnehmung:`;
 
    // Reaktion auf Ansprache
    const auswahlRAA = ["reagiert", "reagiert nicht"];
@@ -592,7 +592,7 @@ const App = () => {
    }
 
    // Überschrift hinzufügen
-   ausgabe += `\nMundmotorik\n`;
+   ausgabe += `\nMundmotorik:`;
 
    // Orofazialer Tonus
    const auswahlOFT = ["reguliert", "nicht ausreichend reguliert"];
@@ -880,7 +880,7 @@ const App = () => {
    }
 
    // Überschrift hinzufügen
-   ausgabe += `\nSprachen\n`;
+   ausgabe += `\nSprachen:`;
 
    // Ein- oder mehrsprachige Erziehung
    const auswahlEoM = ["einsprachig (Sprache s.u.)", "mehrsprachig (Sprachen s.u.)"];
@@ -903,7 +903,7 @@ const App = () => {
    }
 
    // Überschrift hinzufügen
-   ausgabe += `\nAussprache\n`;
+   ausgabe += `\nAussprache:`;
 
    // Aussprache: Verständlichkeit
    const auswahlAV_L1 = ["deutlich", "undeutlich"];
@@ -967,7 +967,7 @@ const App = () => {
    }
 
    // Überschrift hinzufügen
-   ausgabe += `\nRezeptiver und expressiver Wortschatz\n`;
+   ausgabe += `\nRezeptiver und expressiver Wortschatz:`;
 
    // Rezeptiver Wortschatz: Komplexität der Anweisungen
    const auswahlRWKA_L1 = ["komplexere Anweisungen", "kurze Anweisungen", "Schlüsselwörter", "kein Sprachverständnis"];
@@ -1080,7 +1080,7 @@ const App = () => {
    }
 
    // Überschrift hinzufügen
-   ausgabe += `\nSatzbau und Wortbildung\n`;
+   ausgabe += `\nSatzbau und Wortbildung:`;
 
    // L1 Syntax (Satzbau)
    const auswahlSS_L1 = [
@@ -1271,7 +1271,7 @@ const App = () => {
    }
 
    // Überschrift hinzufügen
-   ausgabe += `\nRedefluss\n`;
+   ausgabe += `\nRedefluss:`;
 
    // L1 Redefluss (Stottern)
    const auswahlRS_L1 = ["nicht unterbrochen", "Wiederholungen", "Dehnungen", "Blockaden"];
@@ -1327,7 +1327,7 @@ const App = () => {
 
    if (eom === "mehrsprachig (Sprachen s.u.)") {
       // Überschrift hinzufügen
-      ausgabe += `\nAussprache\n`;
+      ausgabe += `\nAussprache:`;
    }
 
    // Aussprache: Verständlichkeit
@@ -1393,7 +1393,7 @@ const App = () => {
 
    if (eom === "mehrsprachig (Sprachen s.u.)") {
       // Überschrift hinzufügen
-      ausgabe += `\nRezeptiver und expressiver Wortschatz\n`;
+      ausgabe += `\nRezeptiver und expressiver Wortschatz:`;
    }
 
    // Rezeptiver Wortschatz: Komplexität der Anweisungen
@@ -1508,7 +1508,7 @@ const App = () => {
 
    if (eom === "mehrsprachig (Sprachen s.u.)") {
       // Überschrift hinzufügen
-      ausgabe += `\nSatzbau und Wortbildung\n`;
+      ausgabe += `\nSatzbau und Wortbildung:`;
    }
 
    // L2 Syntax (Satzbau)
@@ -1701,7 +1701,7 @@ const App = () => {
 
    if (eom === "mehrsprachig (Sprachen s.u.)") {
       // Überschrift hinzufügen
-      ausgabe += `\nRedefluss\n`;
+      ausgabe += `\nRedefluss:`;
    }
 
    // L2 Redefluss (Stottern)
@@ -1752,7 +1752,7 @@ const App = () => {
    }
 
    // Überschrift hinzufügen
-   ausgabe += `\nStimmgebung\n`;
+   ausgabe += `\nStimmgebung:`;
 
    // Stimmgebung
    const auswahlStimmgebung = ["unauffällig", "hoch", "tief", "verhaucht / heiser"];
@@ -1776,7 +1776,7 @@ const App = () => {
    }
 
    // Überschrift hinzufügen
-   ausgabe += `\nMedienkonsum\n`;
+   ausgabe += `\nMedienkonsum:`;
 
    // Medienkonsum: Dauer
    const auswahlMedienkonsum = ["angemessen (< 1 Std. / Tag, Gesamtnutzungsdauer pro Tag s.u.)", "erhöht (> 1 Std. / Tag, Gesamtnutzungsdauer pro Tag s.u.)"];
@@ -1792,8 +1792,6 @@ const App = () => {
             break;
       }
    }
-
-   ausgabe += `\nArt der Medien:`;
 
    // Fernsehen / Filme
    const auswahlMFF = ["Nutzung", "keine Nutzung"];
@@ -1896,7 +1894,7 @@ const App = () => {
    // ausgabe = ausgabe.replace("@#", "");
 
    // Überschrift hinzufügen
-   ausgabe += `\nSonstiges\n`;
+   ausgabe += `\nSonstiges:`;
 
    // Weitere Informationen
    const auswahlWInf = ["Freitext eingeben...", "[ keine Angabe ]"];
@@ -1931,7 +1929,7 @@ const App = () => {
    }
 
    // Überschrift hinzufügen
-   ausgabe += `\nFazit\n`;
+   ausgabe += `\nFazit / Ziele der Therapie:`;
 
    // Indikation für Logopädie
    const auswahlIfL = [
@@ -2003,8 +2001,6 @@ const App = () => {
             break;
       }
    }
-
-   ausgabe += `\nZiele der Therapie\n`;
 
    // Kommunikative Fähigkeiten
    const auswahlZielKomF = ["Ziel", "kein Ziel"];
