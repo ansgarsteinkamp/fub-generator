@@ -228,7 +228,7 @@ const App = () => {
    const [schnullerFreitext, setSchnullerFreitext] = useState(localStorage.getItem(titelSchnuller + " (Freitext)") || "");
    const [SUVFreitext, setSUVFreitext] = useState(localStorage.getItem(titelSUV + " (Freitext)") || "");
    const [ZUGFreitext, setZUGFreitext] = useState(localStorage.getItem(titelZUG + " (Freitext)") || "");
-   const [EoMFreitext, setEoMFreitext] = useState(localStorage.getItem(titelEoM + " (Freitext)") || "");
+   const [EoMFreitext, setEoMFreitext] = useState(localStorage.getItem(titelEoM + " (Freitext)") || "L1: , L2: ");
    const [AAA_L1_Freitext, setAAA_L1_Freitext] = useState(localStorage.getItem(titelAAA_L1 + " (Freitext)") || "");
    const [PIIS_L1_Freitext, setPIIS_L1_Freitext] = useState(localStorage.getItem(titelPIIS_L1 + " (Freitext)") || "");
    const [PPE_L1_Freitext, setPPE_L1_Freitext] = useState(localStorage.getItem(titelPPE_L1 + " (Freitext)") || "");
@@ -358,7 +358,7 @@ const App = () => {
       setSchnullerFreitext("");
       setSUVFreitext("");
       setZUGFreitext("");
-      setEoMFreitext("");
+      setEoMFreitext("L1: , L2: ");
       setAAA_L1_Freitext("");
       setPIIS_L1_Freitext("");
       setPPE_L1_Freitext("");
@@ -568,10 +568,10 @@ const App = () => {
             ausgabe += `${Seine_Ihre} Fähigkeit zur Lokalisation und Identifikation von Geräuschen konnte noch nicht ausreichend beurteilt werden.`;
             break;
          case "nur Identifikation sicher":
-            ausgabe += `${vorname} identifizierte Geräusche sicher. ${Seine_Ihre} Fähigkeit zur Lokalisation von Geräuschen war aber noch nicht ausreichend zu beurteilen.`;
+            ausgabe += `${vorname} identifizierte Geräusche sicher. Die Lokalisation von Geräuschen war noch unsicher.`;
             break;
          case "nur Lokalisation sicher":
-            ausgabe += `Die Lokalisation von Geräuschen gelang ${vorname} sicher. ${Seine_Ihre} Fähigkeit zur Identifikation von Geräuschen allerdings noch nicht.`;
+            ausgabe += `Die Lokalisation von Geräuschen gelang ${vorname} sicher. Die Identifikation von Geräuschen war noch unsicher.`;
             break;
       }
    }
@@ -912,10 +912,10 @@ const App = () => {
    if (av_L1) {
       switch (av_L1) {
          case "deutlich":
-            ausgabe += `Die Aussprache von ${vorname} ist deutlich.`;
+            ausgabe += `Die Aussprache von ${vorname} war deutlich.`;
             break;
          case "undeutlich":
-            ausgabe += `Die Aussprache von ${vorname} ist undeutlich.`;
+            ausgabe += `Die Aussprache von ${vorname} war undeutlich.`;
             break;
       }
    }
@@ -1101,7 +1101,7 @@ const App = () => {
             ausgabe += `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz wurde von ${ihm_ihr} beachtet.`;
             break;
          case "Satzbau korrekt / unflexible Satzstrukturen":
-            ausgabe += `${vorname} beachtete zwar die Verbzweitstellung im Hauptsatz, allerdings waren die Satzstrukturen insgesamt noch wenig flexibel.`;
+            ausgabe += `${vorname} beachtete die Verbzweitstellung im Hauptsatz, allerdings waren die Satzstrukturen insgesamt noch wenig flexibel.`;
             break;
          case "Satzbau nicht korrekt (Verbendstellung)":
             ausgabe += `Der Satzbau war nicht korrekt. ${vorname} verwendete noch die Verbendstellung im Hauptsatz.`;
@@ -1337,10 +1337,10 @@ const App = () => {
    if (av_L2) {
       switch (av_L2) {
          case "deutlich":
-            ausgabe += `Die Aussprache von ${vorname} ist deutlich.`;
+            ausgabe += `Die Aussprache von ${vorname} war deutlich.`;
             break;
          case "undeutlich":
-            ausgabe += `Die Aussprache von ${vorname} ist undeutlich.`;
+            ausgabe += `Die Aussprache von ${vorname} war undeutlich.`;
             break;
       }
    }
@@ -1530,7 +1530,7 @@ const App = () => {
             ausgabe += `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz wurde von ${ihm_ihr} beachtet.`;
             break;
          case "Satzbau korrekt / unflexible Satzstrukturen":
-            ausgabe += `${vorname} beachtete zwar die Verbzweitstellung im Hauptsatz, allerdings waren die Satzstrukturen insgesamt noch wenig flexibel.`;
+            ausgabe += `${vorname} beachtete die Verbzweitstellung im Hauptsatz, allerdings waren die Satzstrukturen insgesamt noch wenig flexibel.`;
             break;
          case "Satzbau nicht korrekt (Verbendstellung)":
             ausgabe += `Der Satzbau war nicht korrekt. ${vorname} verwendete noch die Verbendstellung im Hauptsatz.`;
@@ -2411,7 +2411,7 @@ ${titelZielOF}: ${zielOF || "---"}`;
                   value={EoMFreitext}
                   onChange={setEoMFreitext}
                   title={titelEoM + " (Freitext)"}
-                  placeholder="Beispiel: deutsch, englisch"
+                  placeholder="L1: englisch, L2: deutsch"
                   width="w-8/12"
                />
             </Hauptblock>
