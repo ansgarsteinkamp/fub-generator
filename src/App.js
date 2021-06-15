@@ -1210,7 +1210,7 @@ const App = () => {
    }
 
    // L1 Testergebnisse PDSS (Kauschke & Siegmüller)
-   const auswahlPDSS_L1 = ["anteilig durchgeführt", "nicht durchgeführt"];
+   const auswahlPDSS_L1 = ["anteilig durchgeführt", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (pdss_L1) {
@@ -1219,14 +1219,14 @@ const App = () => {
             ausgabe += `\nTestergebnisse PDSS (Kauschke & Siegmüller)\n`; // Überschrift hinzufügen
             ausgabe += `Es wurden ausgewählte Untertests der Diagnostik durchgeführt.\n`;
             break;
-         case "nicht durchgeführt":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // L1 Phonetisch-phonologische Ebene
-   const auswahlPPE_L1 = ["durchgeführt (Testergebnisse s.u.)", "nicht durchgeführt"];
+   const auswahlPPE_L1 = ["durchgeführt (Testergebnisse s.u.)", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (ppe_L1) {
@@ -1234,14 +1234,14 @@ const App = () => {
          case "durchgeführt (Testergebnisse s.u.)":
             ausgabe += `Phonetisch-phonologische Ebene: ${PPE_L1_Freitext}\n`;
             break;
-         case "nicht durchgeführt":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // L1 Semantisch-lexikalische Ebene
-   const auswahlSLE_L1 = ["durchgeführt (Testergebnisse s.u.)", "nicht durchgeführt"];
+   const auswahlSLE_L1 = ["durchgeführt (Testergebnisse s.u.)", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (sle_L1) {
@@ -1249,14 +1249,14 @@ const App = () => {
          case "durchgeführt (Testergebnisse s.u.)":
             ausgabe += `Semantisch-lexikalische Ebene: ${SLE_L1_Freitext}\n`;
             break;
-         case "nicht durchgeführt":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // L1 Syntaktisch-morphologische Ebene
-   const auswahlSME_L1 = ["durchgeführt (Testergebnisse s.u.)", "nicht durchgeführt"];
+   const auswahlSME_L1 = ["durchgeführt (Testergebnisse s.u.)", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (sme_L1) {
@@ -1264,24 +1264,24 @@ const App = () => {
          case "durchgeführt (Testergebnisse s.u.)":
             ausgabe += `Syntaktisch-morphologische Ebene: ${SME_L1_Freitext}\n`;
             break;
-         case "nicht durchgeführt":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
-   // Überschrift hinzufügen
+   // if ((rs_L1 || rs_L1) && (rs_L1 !== "[ keine Angabe ]" || rp_L1 !== "[ keine Angabe ]")) {
+   //    // Überschrift hinzufügen
+   //    ausgabe += `\nRedefluss:`;
+   // }
    ausgabe += `\nRedefluss:`;
 
    // L1 Redefluss (Stottern)
-   const auswahlRS_L1 = ["nicht unterbrochen", "Wiederholungen", "Dehnungen", "Blockaden"];
+   const auswahlRS_L1 = ["Wiederholungen", "Dehnungen", "Blockaden", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (rs_L1) {
       switch (rs_L1) {
-         case "nicht unterbrochen":
-            ausgabe += ``;
-            break;
          case "Wiederholungen":
             ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Wiederholungen.`;
             break;
@@ -1291,23 +1291,23 @@ const App = () => {
          case "Blockaden":
             ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Blockaden.`;
             break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
       }
    }
 
    // L1 Redefluss (Poltern)
    const auswahlRP_L1 = [
-      "nicht verändert",
       "Auslassungen / Verschmelzungen / Lautersetzungen und -veränderungen gehäuft",
       "Laut-, Silben-, Wort- und Satzteilwiederholungen",
-      "erhöhtes Sprechtempo"
+      "erhöhtes Sprechtempo",
+      "[ keine Angabe ]"
    ];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (rp_L1) {
       switch (rp_L1) {
-         case "nicht verändert":
-            ausgabe += ``;
-            break;
          case "Auslassungen / Verschmelzungen / Lautersetzungen und -veränderungen gehäuft":
             ausgabe += `Der Redefluss war verändert. Beim Sprechen zeigten sich gehäuft Auslassungen und Verschmelzungen von Lauten und Silben, sowie Lautersetzungen und -veränderungen bei erhöhter und / oder irregulärer Artikulationsrate.`;
             break;
@@ -1316,6 +1316,9 @@ const App = () => {
             break;
          case "erhöhtes Sprechtempo":
             ausgabe += `Der Redefluss war verändert. ${Sein_Ihr} Sprechtempo war erhöht und / oder irregulär.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
             break;
       }
    }
@@ -1639,7 +1642,7 @@ const App = () => {
    }
 
    // L2 Testergebnisse PDSS (Kauschke & Siegmüller)
-   const auswahlPDSS_L2 = ["anteilig durchgeführt", "nicht durchgeführt"];
+   const auswahlPDSS_L2 = ["anteilig durchgeführt", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (pdss_L2) {
@@ -1648,14 +1651,14 @@ const App = () => {
             ausgabe += `\nTestergebnisse PDSS (Kauschke & Siegmüller)\n`; // Überschrift hinzufügen
             ausgabe += `Es wurden ausgewählte Untertests der Diagnostik durchgeführt.\n`;
             break;
-         case "nicht durchgeführt":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // L2 Phonetisch-phonologische Ebene
-   const auswahlPPE_L2 = ["durchgeführt (Testergebnisse s.u.)", "nicht durchgeführt"];
+   const auswahlPPE_L2 = ["durchgeführt (Testergebnisse s.u.)", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (ppe_L2) {
@@ -1663,14 +1666,14 @@ const App = () => {
          case "durchgeführt (Testergebnisse s.u.)":
             ausgabe += `Phonetisch-phonologische Ebene: ${PPE_L2_Freitext}\n`;
             break;
-         case "nicht durchgeführt":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // L2 Semantisch-lexikalische Ebene
-   const auswahlSLE_L2 = ["durchgeführt (Testergebnisse s.u.)", "nicht durchgeführt"];
+   const auswahlSLE_L2 = ["durchgeführt (Testergebnisse s.u.)", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (sle_L2) {
@@ -1678,14 +1681,14 @@ const App = () => {
          case "durchgeführt (Testergebnisse s.u.)":
             ausgabe += `Semantisch-lexikalische Ebene: ${SLE_L2_Freitext}\n`;
             break;
-         case "nicht durchgeführt":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // L2 Syntaktisch-morphologische Ebene
-   const auswahlSME_L2 = ["durchgeführt (Testergebnisse s.u.)", "nicht durchgeführt"];
+   const auswahlSME_L2 = ["durchgeführt (Testergebnisse s.u.)", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (sme_L2) {
@@ -1693,26 +1696,24 @@ const App = () => {
          case "durchgeführt (Testergebnisse s.u.)":
             ausgabe += `Syntaktisch-morphologische Ebene: ${SME_L2_Freitext}\n`;
             break;
-         case "nicht durchgeführt":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
-   if (eom === "mehrsprachig (Sprachen s.u.)") {
-      // Überschrift hinzufügen
-      ausgabe += `\nRedefluss:`;
-   }
+   // if (eom === "mehrsprachig (Sprachen s.u.)" && (rs_L2 || rs_L2) && (rs_L2 !== "[ keine Angabe ]" || rp_L2 !== "[ keine Angabe ]")) {
+   //    // Überschrift hinzufügen
+   //    ausgabe += `\nRedefluss:`;
+   // }
+   ausgabe += `\nRedefluss:`;
 
    // L2 Redefluss (Stottern)
-   const auswahlRS_L2 = ["nicht unterbrochen", "Wiederholungen", "Dehnungen", "Blockaden"];
+   const auswahlRS_L2 = ["Wiederholungen", "Dehnungen", "Blockaden", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (rs_L2) {
       switch (rs_L2) {
-         case "nicht unterbrochen":
-            ausgabe += ``;
-            break;
          case "Wiederholungen":
             ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Wiederholungen.`;
             break;
@@ -1722,23 +1723,23 @@ const App = () => {
          case "Blockaden":
             ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Blockaden.`;
             break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
       }
    }
 
    // L2 Redefluss (Poltern)
    const auswahlRP_L2 = [
-      "nicht verändert",
       "Auslassungen / Verschmelzungen / Lautersetzungen und -veränderungen gehäuft",
       "Laut-, Silben-, Wort- und Satzteilwiederholungen",
-      "erhöhtes Sprechtempo"
+      "erhöhtes Sprechtempo",
+      "[ keine Angabe ]"
    ];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (rp_L2) {
       switch (rp_L2) {
-         case "nicht verändert":
-            ausgabe += ``;
-            break;
          case "Auslassungen / Verschmelzungen / Lautersetzungen und -veränderungen gehäuft":
             ausgabe += `Der Redefluss war verändert. Beim Sprechen zeigten sich gehäuft Auslassungen und Verschmelzungen von Lauten und Silben, sowie Lautersetzungen und -veränderungen bei erhöhter und / oder irregulärer Artikulationsrate.`;
             break;
@@ -1748,6 +1749,9 @@ const App = () => {
          case "erhöhtes Sprechtempo":
             ausgabe += `Der Redefluss war verändert. ${Sein_Ihr} Sprechtempo war erhöht und / oder irregulär.`;
             break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
       }
    }
 
@@ -1755,14 +1759,11 @@ const App = () => {
    ausgabe += `\nStimmgebung:`;
 
    // Stimmgebung
-   const auswahlStimmgebung = ["unauffällig", "hoch", "tief", "verhaucht / heiser"];
+   const auswahlStimmgebung = ["hoch", "tief", "verhaucht / heiser", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (stimmgebung) {
       switch (stimmgebung) {
-         case "unauffällig":
-            ausgabe += ``;
-            break;
          case "hoch":
             ausgabe += `Die Stimmgebung von ${vorname} war auffällig, da die Stimme ungewöhnlich hoch klang.`;
             break;
@@ -1771,6 +1772,9 @@ const App = () => {
             break;
          case "verhaucht / heiser":
             ausgabe += `Die Stimmgebung von ${vorname} war auffällig, da die Stimme verhaucht / heiser klang.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
             break;
       }
    }
@@ -1785,16 +1789,18 @@ const App = () => {
    if (medienkonsum) {
       switch (medienkonsum) {
          case "angemessen (< 1 Std. / Tag, Gesamtnutzungsdauer pro Tag s.u.)":
-            ausgabe += `In Bezug auf ${sein_ihr} Alter war der Medienkonsum angemessen (Gesamtnutzungsdauer aller Medien pro Tag: ${MedienkonsumFreitext}).`; // Placeholder: Gesamtnutzungsdauer aller Medien pro Tag
+            ausgabe += `In Bezug auf ${sein_ihr} Alter war der Medienkonsum angemessen (Gesamtnutzungsdauer aller Medien pro Tag: ${MedienkonsumFreitext}).`;
             break;
          case "erhöht (> 1 Std. / Tag, Gesamtnutzungsdauer pro Tag s.u.)":
-            ausgabe += `In Bezug auf ${sein_ihr} Alter war der Medienkonsum erhöht (Gesamtnutzungsdauer aller Medien pro Tag: ${MedienkonsumFreitext}).`; // Placeholder: Gesamtnutzungsdauer aller Medien pro Tag
+            ausgabe += `In Bezug auf ${sein_ihr} Alter war der Medienkonsum erhöht (Gesamtnutzungsdauer aller Medien pro Tag: ${MedienkonsumFreitext}).`;
             break;
       }
    }
+   ausgabe += ` `; // Leerzeichen hinzufügen
+   ausgabe += `Art der Medien:`;
 
    // Fernsehen / Filme
-   const auswahlMFF = ["Nutzung", "keine Nutzung"];
+   const auswahlMFF = ["Nutzung", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (mff) {
@@ -1802,14 +1808,14 @@ const App = () => {
          case "Nutzung":
             ausgabe += `Fersehsendungen und -filme,`;
             break;
-         case "keine Nutzung":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // Smartphone / Tablet
-   const auswahlMST = ["Nutzung", "keine Nutzung"];
+   const auswahlMST = ["Nutzung", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (mst) {
@@ -1817,14 +1823,14 @@ const App = () => {
          case "Nutzung":
             ausgabe += `Smartphone / Tablet,`;
             break;
-         case "keine Nutzung":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // Audiogerät
-   const auswahlMAG = ["Nutzung", "keine Nutzung"];
+   const auswahlMAG = ["Nutzung", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (mag) {
@@ -1832,14 +1838,14 @@ const App = () => {
          case "Nutzung":
             ausgabe += `Audiogerät (Hörbücher und / oder Lieder),`;
             break;
-         case "keine Nutzung":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // Spielekonsole
-   const auswahlMSK = ["Nutzung", "keine Nutzung"];
+   const auswahlMSK = ["Nutzung", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (msk) {
@@ -1847,14 +1853,14 @@ const App = () => {
          case "Nutzung":
             ausgabe += `Spielekonsole,`;
             break;
-         case "keine Nutzung":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // Bilderbücher
-   const auswahlMBB = ["Nutzung", "keine Nutzung"];
+   const auswahlMBB = ["Nutzung", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (mbb) {
@@ -1862,14 +1868,14 @@ const App = () => {
          case "Nutzung":
             ausgabe += `Bilderbücher,`;
             break;
-         case "keine Nutzung":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // Lerncomputer
-   const auswahlMLC = ["Nutzung", "keine Nutzung"];
+   const auswahlMLC = ["Nutzung", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (mlc) {
@@ -1877,7 +1883,7 @@ const App = () => {
          case "Nutzung":
             ausgabe += `Lerncomputer,`;
             break;
-         case "keine Nutzung":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
@@ -2003,12 +2009,12 @@ const App = () => {
    }
 
    // Kommunikative Fähigkeiten
-   const auswahlZielKomF = ["Ziel", "kein Ziel"];
+   const auswahlZielKomF = ["ja", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (zielKomf) {
       switch (zielKomf) {
-         case "Ziel":
+         case "ja":
             ausgabe += `Verbesserung der kommunikativen Fähigkeiten (u.a. dialogischer / triangulärer Blickkontakt, TurnTaking, Imitation, Gestik), `;
             break;
          case "nicht Ziel":
@@ -2018,135 +2024,135 @@ const App = () => {
    }
 
    // Bedeutung von Sprache
-   const auswahlZielBvS = ["Ziel", "kein Ziel"];
+   const auswahlZielBvS = ["ja", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (zielBvs) {
       switch (zielBvs) {
-         case "Ziel":
+         case "ja":
             ausgabe += `Erkennen der Bedeutung von Sprache, `;
             break;
-         case "kein Ziel":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // Sprechfreude
-   const auswahlZielSpF = ["Ziel", "kein Ziel"];
+   const auswahlZielSpF = ["ja", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (zielSpf) {
       switch (zielSpf) {
-         case "Ziel":
+         case "ja":
             ausgabe += `Steigerung der Sprechfreude, `;
             break;
-         case "kein Ziel":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // Rezeptiver / Expressiver Wortschatz
-   const auswahlZielREW = ["Ziel", "kein Ziel"];
+   const auswahlZielREW = ["ja", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (zielRew) {
       switch (zielRew) {
-         case "Ziel":
+         case "ja":
             ausgabe += `Erweiterung des rezeptiven und expressiven Wortschatzes, `;
             break;
-         case "kein Ziel":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // Grammatikalische Fähigkeiten
-   const auswahlZielGF = ["Ziel", "kein Ziel"];
+   const auswahlZielGF = ["ja", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (zielGf) {
       switch (zielGf) {
-         case "Ziel":
+         case "ja":
             ausgabe += `Verbesserung der grammatikalischen Fähigkeiten, `;
             break;
-         case "kein Ziel":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // Aussprache
-   const auswahlZielAussprache = ["Ziel", "kein Ziel"];
+   const auswahlZielAussprache = ["ja", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (zielAussprache) {
       switch (zielAussprache) {
-         case "Ziel":
+         case "ja":
             ausgabe += `Verbesserung der Aussprache, `;
             break;
-         case "kein Ziel":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // Auditive Wahrnehmung
-   const auswahlZielAW = ["Ziel", "kein Ziel"];
+   const auswahlZielAW = ["ja", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (zielAW) {
       switch (zielAW) {
-         case "Ziel":
+         case "ja":
             ausgabe += `Verbesserung der auditiven Wahrnehmung, `;
             break;
-         case "kein Ziel":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // Orofazialer Tonus
-   const auswahlZielOT = ["Ziel", "kein Ziel"];
+   const auswahlZielOT = ["ja", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (zielOT) {
       switch (zielOT) {
-         case "Ziel":
+         case "ja":
             ausgabe += `Regulation des orofazialen Tonus, `;
             break;
-         case "kein Ziel":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // Orofaziale Wahrnehmung
-   const auswahlZielOW = ["Ziel", "kein Ziel"];
+   const auswahlZielOW = ["ja", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (zielOW) {
       switch (zielOW) {
-         case "Ziel":
+         case "ja":
             ausgabe += `Sensibilisierung der orofazialen Wahrnehmung, `;
             break;
-         case "kein Ziel":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
    }
 
    // Orofaziale Fähigkeiten
-   const auswahlZielOF = ["Ziel", "kein Ziel"];
+   const auswahlZielOF = ["ja", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (zielOF) {
       switch (zielOF) {
-         case "Ziel":
+         case "ja":
             ausgabe += `Verbesserung der orofazialen Fähigkeiten, `;
             break;
-         case "kein Ziel":
+         case "[ keine Angabe ]":
             ausgabe += ``;
             break;
       }
