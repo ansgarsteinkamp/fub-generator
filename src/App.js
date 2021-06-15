@@ -63,6 +63,40 @@ const titelMG_L1 = ++i + ".) L1 Morphologie (Wortbildung): Genus";
 const titelMN_L1 = ++i + ".) L1 Morphologie (Wortbildung): Numerus";
 const titelMK_L1 = ++i + ".) L1 Morphologie (Wortbildung): Kasus (Akkusativ, Dativ)";
 const titelMP_L1 = ++i + ".) L1 Morphologie (Wortbildung): Personalformen (Subjekt-Verb-Kongruenz, Verbflexion)";
+const titelPDSS_L1 = ++i + ".) L1 Testergebnisse PDSS (Kauschke & Siegmüller)";
+const titelPPE_L1 = ++i + ".) L1 Phonetisch-phonologische Ebene";
+const titelSLE_L1 = ++i + ".) L1 Semantisch-lexikalische Ebene";
+const titelSME_L1 = ++i + ".) L1 Syntaktisch-morphologische Ebene";
+const titelRS_L1 = ++i + ".) L1 Redefluss (Stottern)";
+const titelRP_L1 = ++i + ".) L1 Redefluss (Poltern)";
+const titelAV_L2 = ++i + ".) L2 Aussprache: Verständlichkeit";
+const titelAAA_L2 = ++i + ".) L2 Aussprache: Art der Abweichung";
+const titelAAN_L2 = ++i + ".) L2 Aussprache: Altersnorm";
+const titelPIIS_L2 = ++i + ".) L2 Testergebnisse PLAKSS-II-Screening (Fox-Boyer)";
+const titelRWKA_L2 = ++i + ".) L2 Rezeptiver Wortschatz: Komplexität der Anweisungen";
+const titelRWF_L2 = ++i + ".) L2 Rezeptiver Wortschatz: Frageformen";
+const titelRWA_L2 = ++i + ".) L2 Rezeptiver Wortschatz: Altersnorm";
+const titelEWAU_L2 = ++i + ".) L2 Expressiver Wortschatz: Art und Umfang";
+const titelEWDA_L2 = ++i + ".) L2 Expressiver Wortschatz: Differenziertheit / Altersnorm";
+const titelSS_L2 = ++i + ".) L2 Syntax (Satzbau)";
+const titelMG_L2 = ++i + ".) L2 Morphologie (Wortbildung): Genus";
+const titelMN_L2 = ++i + ".) L2 Morphologie (Wortbildung): Numerus";
+const titelMK_L2 = ++i + ".) L2 Morphologie (Wortbildung): Kasus (Akkusativ, Dativ)";
+const titelMP_L2 = ++i + ".) L2 Morphologie (Wortbildung): Personalformen (Subjekt-Verb-Kongruenz, Verbflexion)";
+const titelPDSS_L2 = ++i + ".) L2 Testergebnisse PDSS (Kauschke & Siegmüller)";
+const titelPPE_L2 = ++i + ".) L2 Phonetisch-phonologische Ebene";
+const titelSLE_L2 = ++i + ".) L2 Semantisch-lexikalische Ebene";
+const titelSME_L2 = ++i + ".) L2 Syntaktisch-morphologische Ebene";
+const titelRS_L2 = ++i + ".) L2 Redefluss (Stottern)";
+const titelRP_L2 = ++i + ".) L2 Redefluss (Poltern)";
+const titelStimmgebung = ++i + ".) Stimmgebung";
+const titelMedienkonsum = ++i + ".) Medienkonsum: Dauer";
+const titelMFF = ++i + ".) Fernsehen / Filme";
+const titelMST = ++i + ".) Smartphone / Tablet";
+const titelMAG = ++i + ".) Audiogerät";
+const titelMSK = ++i + ".) Spielekonsole";
+const titelMBB = ++i + ".) Bilderbücher";
+const titelMLC = ++i + ".) Lerncomputer";
 
 const App = () => {
    // ######################################################
@@ -115,6 +149,40 @@ const App = () => {
    const [mn_L1, setMN_L1] = useState(localStorage.getItem(titelMN_L1));
    const [mk_L1, setMK_L1] = useState(localStorage.getItem(titelMK_L1));
    const [mp_L1, setMP_L1] = useState(localStorage.getItem(titelMP_L1));
+   const [pdss_L1, setPDSS_L1] = useState(localStorage.getItem(titelPDSS_L1));
+   const [ppe_L1, setPPE_L1] = useState(localStorage.getItem(titelPPE_L1));
+   const [sle_L1, setSLE_L1] = useState(localStorage.getItem(titelSLE_L1));
+   const [sme_L1, setSME_L1] = useState(localStorage.getItem(titelSME_L1));
+   const [rs_L1, setRS_L1] = useState(localStorage.getItem(titelRS_L1));
+   const [rp_L1, setRP_L1] = useState(localStorage.getItem(titelRP_L1));
+   const [av_L2, setAV_L2] = useState(localStorage.getItem(titelAV_L2));
+   const [aaa_L2, setAAA_L2] = useState(localStorage.getItem(titelAAA_L2));
+   const [aan_L2, setAAN_L2] = useState(localStorage.getItem(titelAAN_L2));
+   const [pIIs_L2, setPIIS_L2] = useState(localStorage.getItem(titelPIIS_L2));
+   const [rwka_L2, setRWKA_L2] = useState(localStorage.getItem(titelRWKA_L2));
+   const [rwf_L2, setRWF_L2] = useState(localStorage.getItem(titelRWF_L2));
+   const [rwa_L2, setRWA_L2] = useState(localStorage.getItem(titelRWA_L2));
+   const [ewau_L2, setEWAU_L2] = useState(localStorage.getItem(titelEWAU_L2));
+   const [ewda_L2, setEWDA_L2] = useState(localStorage.getItem(titelEWDA_L2));
+   const [ss_L2, setSS_L2] = useState(localStorage.getItem(titelSS_L2));
+   const [mg_L2, setMG_L2] = useState(localStorage.getItem(titelMG_L2));
+   const [mn_L2, setMN_L2] = useState(localStorage.getItem(titelMN_L2));
+   const [mk_L2, setMK_L2] = useState(localStorage.getItem(titelMK_L2));
+   const [mp_L2, setMP_L2] = useState(localStorage.getItem(titelMP_L2));
+   const [pdss_L2, setPDSS_L2] = useState(localStorage.getItem(titelPDSS_L2));
+   const [ppe_L2, setPPE_L2] = useState(localStorage.getItem(titelPPE_L2));
+   const [sle_L2, setSLE_L2] = useState(localStorage.getItem(titelSLE_L2));
+   const [sme_L2, setSME_L2] = useState(localStorage.getItem(titelSME_L2));
+   const [rs_L2, setRS_L2] = useState(localStorage.getItem(titelRS_L2));
+   const [rp_L2, setRP_L2] = useState(localStorage.getItem(titelRP_L2));
+   const [stimmgebung, setStimmgebung] = useState(localStorage.getItem(titelStimmgebung));
+   const [medienkonsum, setMedienkonsum] = useState(localStorage.getItem(titelMedienkonsum));
+   const [mff, setMFF] = useState(localStorage.getItem(titelMFF));
+   const [mst, setMST] = useState(localStorage.getItem(titelMST));
+   const [mag, setMAG] = useState(localStorage.getItem(titelMAG));
+   const [msk, setMSK] = useState(localStorage.getItem(titelMSK));
+   const [mbb, setMBB] = useState(localStorage.getItem(titelMBB));
+   const [mlc, setMLC] = useState(localStorage.getItem(titelMLC));
 
    // ###################################################
    // ###################################################
@@ -131,6 +199,15 @@ const App = () => {
    const [EoMFreitext, setEoMFreitext] = useState(localStorage.getItem(titelEoM + " (Freitext)") || "");
    const [AAA_L1_Freitext, setAAA_L1_Freitext] = useState(localStorage.getItem(titelAAA_L1 + " (Freitext)") || "");
    const [PIIS_L1_Freitext, setPIIS_L1_Freitext] = useState(localStorage.getItem(titelPIIS_L1 + " (Freitext)") || "");
+   const [PPE_L1_Freitext, setPPE_L1_Freitext] = useState(localStorage.getItem(titelPPE_L1 + " (Freitext)") || "");
+   const [SLE_L1_Freitext, setSLE_L1_Freitext] = useState(localStorage.getItem(titelSLE_L1 + " (Freitext)") || "");
+   const [SME_L1_Freitext, setSME_L1_Freitext] = useState(localStorage.getItem(titelSME_L1 + " (Freitext)") || "");
+   const [AAA_L2_Freitext, setAAA_L2_Freitext] = useState(localStorage.getItem(titelAAA_L2 + " (Freitext)") || "");
+   const [PIIS_L2_Freitext, setPIIS_L2_Freitext] = useState(localStorage.getItem(titelPIIS_L2 + " (Freitext)") || "");
+   const [PPE_L2_Freitext, setPPE_L2_Freitext] = useState(localStorage.getItem(titelPPE_L2 + " (Freitext)") || "");
+   const [SLE_L2_Freitext, setSLE_L2_Freitext] = useState(localStorage.getItem(titelSLE_L2 + " (Freitext)") || "");
+   const [SME_L2_Freitext, setSME_L2_Freitext] = useState(localStorage.getItem(titelSME_L2 + " (Freitext)") || "");
+   const [MedienkonsumFreitext, setMedienkonsumFreitext] = useState(localStorage.getItem(titelMedienkonsum + " (Freitext)") || "");
 
    // ####################################################################################################
    // ####################################################################################################
@@ -191,6 +268,39 @@ const App = () => {
       setMN_L1(null);
       setMK_L1(null);
       setMP_L1(null);
+      setPDSS_L1(null);
+      setPPE_L1(null);
+      setSLE_L1(null);
+      setSME_L1(null);
+      setRS_L1(null);
+      setRP_L1(null);
+      setAV_L2(null);
+      setAAA_L2(null);
+      setAAN_L2(null);
+      setPIIS_L2(null);
+      setRWKA_L2(null);
+      setRWF_L2(null);
+      setRWA_L2(null);
+      setEWAU_L2(null);
+      setEWDA_L2(null);
+      setSS_L2(null);
+      setMG_L2(null);
+      setMN_L2(null);
+      setMK_L2(null);
+      setMP_L2(null);
+      setPDSS_L2(null);
+      setPPE_L2(null);
+      setSLE_L2(null);
+      setSME_L2(null);
+      setRS_L2(null);
+      setRP_L2(null);
+      setStimmgebung(null);
+      setMedienkonsum(null);
+      setMFF(null);
+      setMST(null);
+      setMAG(null);
+      setMSK(null);
+      setMLC(null);
 
       setBegleitetVonFreitext("");
       setKdkFreitext("");
@@ -200,6 +310,16 @@ const App = () => {
       setEoMFreitext("");
       setAAA_L1_Freitext("");
       setPIIS_L1_Freitext("");
+      setPPE_L1_Freitext("");
+      setSLE_L1_Freitext("");
+      setSME_L1_Freitext("");
+      setAAA_L2_Freitext("");
+      setPIIS_L2_Freitext("");
+      setPPE_L2_Freitext("");
+      setSLE_L2_Freitext("");
+      setSME_L2_Freitext("");
+      setMedienkonsumFreitext("");
+      setMBB(null);
 
       setShowL2(true);
 
@@ -1037,8 +1157,694 @@ const App = () => {
       }
    }
 
+   // L1 Testergebnisse PDSS (Kauschke & Siegmüller)
+   const auswahlPDSS_L1 = ["anteilig durchgeführt", "nicht durchgeführt"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (pdss_L1) {
+      switch (pdss_L1) {
+         case "anteilig durchgeführt":
+            ausgabe += `\nTestergebnisse PDSS (Kauschke & Siegmüller)\n`; // Überschrift hinzufügen
+            ausgabe += `Es wurden ausgewählte Untertests der Diagnostik durchgeführt.\n`;
+            break;
+         case "nicht durchgeführt":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // L1 Phonetisch-phonologische Ebene
+   const auswahlPPE_L1 = ["durchgeführt (Testergebnisse s.u.)", "nicht durchgeführt"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (ppe_L1) {
+      switch (ppe_L1) {
+         case "durchgeführt (Testergebnisse s.u.)":
+            ausgabe += `Phonetisch-phonologische Ebene: ${PPE_L1_Freitext}\n`;
+            break;
+         case "nicht durchgeführt":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // L1 Semantisch-lexikalische Ebene
+   const auswahlSLE_L1 = ["durchgeführt (Testergebnisse s.u.)", "nicht durchgeführt"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (sle_L1) {
+      switch (sle_L1) {
+         case "durchgeführt (Testergebnisse s.u.)":
+            ausgabe += `Semantisch-lexikalische Ebene: ${SLE_L1_Freitext}\n`;
+            break;
+         case "nicht durchgeführt":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // L1 Syntaktisch-morphologische Ebene
+   const auswahlSME_L1 = ["durchgeführt (Testergebnisse s.u.)", "nicht durchgeführt"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (sme_L1) {
+      switch (sme_L1) {
+         case "durchgeführt (Testergebnisse s.u.)":
+            ausgabe += `Syntaktisch-morphologische Ebene: ${SME_L1_Freitext}\n`;
+            break;
+         case "nicht durchgeführt":
+            ausgabe += ``;
+            break;
+      }
+   }
+
    // Überschrift hinzufügen
-   // ausgabe += `\nSprachkompetenzen in der Zweitsprache (L2)\n`;
+   ausgabe += `\nRedefluss\n`;
+
+   // L1 Redefluss (Stottern)
+   const auswahlRS_L1 = ["nicht unterbrochen", "Wiederholungen", "Dehnungen", "Blockaden"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (rs_L1) {
+      switch (rs_L1) {
+         case "nicht unterbrochen":
+            ausgabe += ``;
+            break;
+         case "Wiederholungen":
+            ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Wiederholungen.`;
+            break;
+         case "Dehnungen":
+            ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Dehnungen.`;
+            break;
+         case "Blockaden":
+            ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Blockaden.`;
+            break;
+      }
+   }
+
+   // L1 Redefluss (Poltern)
+   const auswahlRP_L1 = [
+      "nicht verändert",
+      "Auslassungen / Verschmelzungen / Lautersetzungen und -veränderungen gehäuft",
+      "Laut-, Silben-, Wort- und Satzteilwiederholungen",
+      "erhöhtes Sprechtempo"
+   ];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (rp_L1) {
+      switch (rp_L1) {
+         case "nicht verändert":
+            ausgabe += ``;
+            break;
+         case "Auslassungen / Verschmelzungen / Lautersetzungen und -veränderungen gehäuft":
+            ausgabe += `Der Redefluss war verändert. Beim Sprechen zeigten sich gehäuft Auslassungen und Verschmelzungen von Lauten und Silben, sowie Lautersetzungen und -veränderungen bei erhöhter und / oder irregulärer Artikulationsrate.`;
+            break;
+         case "Laut-, Silben-, Wort- und Satzteilwiederholungen":
+            ausgabe += `Der Redefluss war unterbrochen. Es traten Unflüssigkeiten in Form von Laut-, Silben-, Wort- und Satzteilwiederholungen.`;
+            break;
+         case "erhöhtes Sprechtempo":
+            ausgabe += `Der Redefluss war verändert. ${Sein_Ihr} Sprechtempo war erhöht und / oder irregulär.`;
+            break;
+      }
+   }
+
+   // Überschrift hinzufügen
+   if (eom === "mehrsprachig (Sprachen s.u.)") {
+      ausgabe += `\nSprachkompetenzen in der Zweitsprache (L2)`;
+   }
+
+   if (eom === "mehrsprachig (Sprachen s.u.)") {
+      // Überschrift hinzufügen
+      ausgabe += `\nAussprache\n`;
+   }
+
+   // Aussprache: Verständlichkeit
+   const auswahlAV_L2 = ["deutlich", "undeutlich"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (av_L2) {
+      switch (av_L2) {
+         case "deutlich":
+            ausgabe += `Die Aussprache von ${vorname} ist deutlich.`;
+            break;
+         case "undeutlich":
+            ausgabe += `Die Aussprache von ${vorname} ist undeutlich.`;
+            break;
+      }
+   }
+
+   // Aussprache: Art der Abweichung
+   const auswahlAAA_L2 = ["Lautersetzungen / -auslassungen (phonologisch)", "Lautveränderungen (phonetisch)"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (aaa_L2) {
+      switch (aaa_L2) {
+         case "Lautersetzungen / -auslassungen (phonologisch)":
+            ausgabe += `Es werden Lautersetzungen und -auslassungen (Prozesse: ${AAA_L2_Freitext}) beobachtet.`;
+            break;
+         case "Lautveränderungen (phonetisch)":
+            ausgabe += `Es werden Lautveränderungen (betroffene Laute: ${AAA_L2_Freitext}) beobachtet.`;
+            break;
+      }
+   }
+
+   // Aussprache: Altersnorm
+   const auswahlAAN_L2 = ["altersentsprechend", "nicht altersentsprechend"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (aan_L2) {
+      switch (aan_L2) {
+         case "altersentsprechend":
+            ausgabe += `${Seine_Ihre} Aussprachefähigkeiten waren altersentsprechend.`;
+            break;
+         case "nicht altersentsprechend":
+            ausgabe += `${Seine_Ihre} Aussprachefähigkeiten waren noch nicht altersentsprechend.`;
+            break;
+      }
+   }
+
+   // Testergebnisse PLAKSS-II-Screening (Fox-Boyer)
+   const auswahlPIIS_L2 = ["Phonetisch / Phonologische Abweichungen (Prozesse s.u.)", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (pIIs_L2) {
+      switch (pIIs_L2) {
+         case "Phonetisch / Phonologische Abweichungen (Prozesse s.u.)":
+            ausgabe += `\nTestergebnisse PLAKSS-II-Screening (Fox-Boyer)\n`; // Überschrift hinzufügen
+            ausgabe += `Es wurden folgende phonetisch / phonologische Abweichungen beobachtet: ${PIIS_L2_Freitext}`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   if (eom === "mehrsprachig (Sprachen s.u.)") {
+      // Überschrift hinzufügen
+      ausgabe += `\nRezeptiver und expressiver Wortschatz\n`;
+   }
+
+   // Rezeptiver Wortschatz: Komplexität der Anweisungen
+   const auswahlRWKA_L2 = ["komplexere Anweisungen", "kurze Anweisungen", "Schlüsselwörter", "kein Sprachverständnis"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (rwka_L2) {
+      switch (rwka_L2) {
+         case "komplexere Anweisungen":
+            ausgabe += `${Er_Sie} zeigte ein sicheres Verständnis für komplexere Anweisungen.`;
+            break;
+         case "kurze Anweisungen":
+            ausgabe += `${Er_Sie} reagierte auf kurze Anweisungen. Ein Verständnis für komplexere Anweisungen war noch nicht zu beobachten.`;
+            break;
+         case "Schlüsselwörter":
+            ausgabe += `${Er_Sie} zeigte ein Verständnis für Schlüsselwörter (d.h. bekannter Wörter in einem Satz). Das Satzverständnis war noch eingeschränkt.`;
+            break;
+         case "kein Sprachverständnis":
+            ausgabe += `Es erfolgte noch keine entsprechende Reaktion auf einzelne Wörter, kurze Anweisungen und / oder Fragestellungen.`;
+            break;
+      }
+   }
+
+   // L2 Rezeptiver Wortschatz: Frageformen
+   const auswahlRWF_L2 = ["W-Fragen", "Alternativfragen", "Ja- / Nein-Fragen", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (rwf_L2) {
+      switch (rwf_L2) {
+         case "W-Fragen":
+            ausgabe += `W-Fragen wurden von ${vorname} verstanden.`;
+            break;
+         case "Alternativfragen":
+            ausgabe += `Alternativfragen wurden von ${vorname} verstanden. Ein Verständnis von W-Fragen war allerdings noch nicht zu beobachten.`;
+            break;
+         case "Ja- / Nein-Fragen":
+            ausgabe += `${vorname} antwortete auf Ja- / Nein-Fragen. Eine Reaktion auf weitere Frageformen zeigte ${er_sie} noch nicht.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // L2 Rezeptiver Wortschatz: Altersnorm
+   const auswahlRWA_L2 = ["altersentsprechend", "nicht altersentsprechend"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (rwa_L2) {
+      switch (rwa_L2) {
+         case "altersentsprechend":
+            ausgabe += `Das Sprachverständnis war altersentsprechend.`;
+            break;
+         case "nicht altersentsprechend":
+            ausgabe += `Das Sprachverständnis war noch nicht altersentsprechend.`;
+            break;
+      }
+   }
+
+   // L2 Expressiver Wortschatz: Art und Umfang
+   const auswahlEWAU_L2 = [
+      "Mehrwortäußerungen",
+      "Zweiwortäußerungen",
+      "einzelne Wörter",
+      "keine 50 Wörter / keine Zweiwortkombinationen",
+      "Lautmalereien und einzelne Wörter",
+      "Laute / Lautmalereien",
+      "eigene Sprache"
+   ];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (ewau_L2) {
+      switch (ewau_L2) {
+         case "Mehrwortäußerungen":
+            ausgabe += `${Er_Sie} verwendete Mehrwortäußerungen.`;
+            break;
+         case "Zweiwortäußerungen":
+            ausgabe += `${Er_Sie} verwendete Zweiwortäußerungen.`;
+            break;
+         case "einzelne Wörter":
+            ausgabe += `${vorname} äußerte einzelne Wörter.`;
+            break;
+         case "keine 50 Wörter / keine Zweiwortkombinationen":
+            ausgabe += `${Er_Sie} äußerte einzelne Wörter, aber noch keine Zweiwortkombinationen.`;
+            break;
+         case "Lautmalereien und einzelne Wörter":
+            ausgabe += `${Er_Sie} äußerte Lautmalereien und einzelne Wörter.`;
+            break;
+         case "Laute / Lautmalereien":
+            ausgabe += `${Er_Sie} äußerte Laute / Lautmalereien.`;
+            break;
+         case "eigene Sprache":
+            ausgabe += `${vorname} verwendete ${seine_ihre} "eigene Sprache", die für Außenstehende nicht zu verstehen war.`;
+            break;
+      }
+   }
+
+   // L2 Expressiver Wortschatz: Differenziertheit / Altersnorm
+   const auswahlEWDA_L2 = ["altersentsprechend / ausreichend differenziert", "nicht altersentsprechend / gering / wenig differenziert"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (ewda_L2) {
+      switch (ewda_L2) {
+         case "altersentsprechend / ausreichend differenziert":
+            ausgabe += `Der expressive Wortschatz von ${vorname} war altersentsprechend und ausreichend differenziert.`;
+            break;
+         case "nicht altersentsprechend / gering / wenig differenziert":
+            ausgabe += `Der expressive Wortschatz von ${vorname} war nicht altersentsprechend. Er war noch gering und wenig differenziert.`;
+            break;
+      }
+   }
+
+   if (eom === "mehrsprachig (Sprachen s.u.)") {
+      // Überschrift hinzufügen
+      ausgabe += `\nSatzbau und Wortbildung\n`;
+   }
+
+   // L2 Syntax (Satzbau)
+   const auswahlSS_L2 = [
+      "Satzbau korrekt (Verbzweitstellung und Verbendstellung)",
+      "Satzbau korrekt (Verbzweitstellung)",
+      "Satzbau korrekt / unflexible Satzstrukturen",
+      "Satzbau nicht korrekt (Verbendstellung)",
+      "[ keine Angabe ]"
+   ];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (ss_L2) {
+      switch (ss_L2) {
+         case "Satzbau korrekt (Verbzweitstellung und Verbendstellung)":
+            ausgabe += `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz, sowie die Verbendstellung im Nebensatz wurden von ${ihm_ihr} beachtet.`;
+            break;
+         case "Satzbau korrekt (Verbzweitstellung)":
+            ausgabe += `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz wurde von ${ihm_ihr} beachtet.`;
+            break;
+         case "Satzbau korrekt / unflexible Satzstrukturen":
+            ausgabe += `${vorname} beachtete zwar die Verbzweitstellung im Hauptsatz, allerdings waren die Satzstrukturen insgesamt noch wenig flexibel.`;
+            break;
+         case "Satzbau nicht korrekt (Verbendstellung)":
+            ausgabe += `Der Satzbau war nicht korrekt. ${vorname} verwendete noch die Verbendstellung im Hauptsatz.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // L2 Morphologie (Wortbildung): Genus
+   const auswahlMG_L2 = ["sicher", "unsicher", "keine Artikelverwendung", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (mg_L2) {
+      switch (mg_L2) {
+         case "sicher":
+            ausgabe += `Die Artikelverwendung war sicher.`;
+            break;
+         case "unsicher":
+            ausgabe += `Die Artikelverwendung war noch unsicher.`;
+            break;
+         case "keine Artikelverwendung":
+            ausgabe += `${vorname} verwendete noch gar keine Artikel.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // L2 Morphologie (Wortbildung): Numerus
+   const auswahlMN_L2 = ["erworben", "unsicher", "nicht erworben", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (mn_L2) {
+      switch (mn_L2) {
+         case "erworben":
+            ausgabe += `${vorname} konnte Pluralformen regelgeleitet bilden.`;
+            break;
+         case "unsicher":
+            ausgabe += `${vorname} zeigte eine noch unsichere Bildung des Plurals.`;
+            break;
+         case "nicht erworben":
+            ausgabe += `${vorname} bildete noch gar keine Pluralformen.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // L2 Morphologie (Wortbildung): Kasus (Akkusativ, Dativ)
+   const auswahlMK_L2 = [
+      "vollständig erworben",
+      "Akkusativ erworben / Dativ unsicher (nicht markiert)",
+      "Akkusativ unsicher",
+      "Dativ unsicher",
+      "nicht erworben",
+      "[ keine Angabe ]"
+   ];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (mk_L2) {
+      switch (mk_L2) {
+         case "vollständig erworben":
+            ausgabe += `${Er_Sie} war in der Lage, die Kasus Akkusativ und Dativ korrekt zu markieren.`;
+            break;
+         case "Akkusativ erworben / Dativ unsicher (nicht markiert)":
+            ausgabe += `${Er_Sie} hatte den Akkusativ bereits sicher erworben. Der Dativ wurde noch nicht (sicher) markiert.`;
+            break;
+         case "Akkusativ unsicher":
+            ausgabe += `${Er_Sie} zeigte noch Unsicherheiten in der Verwendung des Akkusativ.`;
+            break;
+         case "Dativ unsicher":
+            ausgabe += `${Er_Sie} zeigte noch Unsicherheiten in der Verwendung des Dativ.`;
+            break;
+         case "nicht erworben":
+            ausgabe += `${Er_Sie} hatte das Kasussystem (Akkusativ und / oder Dativ) noch gar nicht erworben.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // L2 Morphologie (Wortbildung): Personalformen (Subjekt-Verb-Kongruenz, Verbflexion)
+   const auswahlMP_L2 = ["erworben (-st)", "nur Infinitivform", "unsicher", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (mp_L2) {
+      switch (mp_L2) {
+         case "erworben (-st)":
+            ausgabe += `Die Subjekt-Verb-Kongruenz wurde durchgängig von ${ihm_ihr} beachtet.`;
+            break;
+         case "nur Infinitivform":
+            ausgabe += `${vorname} verwendete noch aussschließlich die Infinitivform des Verbs.`;
+            break;
+         case "unsicher":
+            ausgabe += `Im Ansatz war zu beobachten, dass ${vorname} die Subjekt-Verb-Kongruenz beachtete. ${Seine_Ihre} diesbezüglichen morphologischen Fähigkeiten waren allerdings noch sehr unsicher.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // L2 Testergebnisse PDSS (Kauschke & Siegmüller)
+   const auswahlPDSS_L2 = ["anteilig durchgeführt", "nicht durchgeführt"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (pdss_L2) {
+      switch (pdss_L2) {
+         case "anteilig durchgeführt":
+            ausgabe += `\nTestergebnisse PDSS (Kauschke & Siegmüller)\n`; // Überschrift hinzufügen
+            ausgabe += `Es wurden ausgewählte Untertests der Diagnostik durchgeführt.\n`;
+            break;
+         case "nicht durchgeführt":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // L2 Phonetisch-phonologische Ebene
+   const auswahlPPE_L2 = ["durchgeführt (Testergebnisse s.u.)", "nicht durchgeführt"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (ppe_L2) {
+      switch (ppe_L2) {
+         case "durchgeführt (Testergebnisse s.u.)":
+            ausgabe += `Phonetisch-phonologische Ebene: ${PPE_L2_Freitext}\n`;
+            break;
+         case "nicht durchgeführt":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // L2 Semantisch-lexikalische Ebene
+   const auswahlSLE_L2 = ["durchgeführt (Testergebnisse s.u.)", "nicht durchgeführt"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (sle_L2) {
+      switch (sle_L2) {
+         case "durchgeführt (Testergebnisse s.u.)":
+            ausgabe += `Semantisch-lexikalische Ebene: ${SLE_L2_Freitext}\n`;
+            break;
+         case "nicht durchgeführt":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // L2 Syntaktisch-morphologische Ebene
+   const auswahlSME_L2 = ["durchgeführt (Testergebnisse s.u.)", "nicht durchgeführt"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (sme_L2) {
+      switch (sme_L2) {
+         case "durchgeführt (Testergebnisse s.u.)":
+            ausgabe += `Syntaktisch-morphologische Ebene: ${SME_L2_Freitext}\n`;
+            break;
+         case "nicht durchgeführt":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   if (eom === "mehrsprachig (Sprachen s.u.)") {
+      // Überschrift hinzufügen
+      ausgabe += `\nRedefluss\n`;
+   }
+
+   // L2 Redefluss (Stottern)
+   const auswahlRS_L2 = ["nicht unterbrochen", "Wiederholungen", "Dehnungen", "Blockaden"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (rs_L2) {
+      switch (rs_L2) {
+         case "nicht unterbrochen":
+            ausgabe += ``;
+            break;
+         case "Wiederholungen":
+            ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Wiederholungen.`;
+            break;
+         case "Dehnungen":
+            ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Dehnungen.`;
+            break;
+         case "Blockaden":
+            ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Blockaden.`;
+            break;
+      }
+   }
+
+   // L2 Redefluss (Poltern)
+   const auswahlRP_L2 = [
+      "nicht verändert",
+      "Auslassungen / Verschmelzungen / Lautersetzungen und -veränderungen gehäuft",
+      "Laut-, Silben-, Wort- und Satzteilwiederholungen",
+      "erhöhtes Sprechtempo"
+   ];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (rp_L2) {
+      switch (rp_L2) {
+         case "nicht verändert":
+            ausgabe += ``;
+            break;
+         case "Auslassungen / Verschmelzungen / Lautersetzungen und -veränderungen gehäuft":
+            ausgabe += `Der Redefluss war verändert. Beim Sprechen zeigten sich gehäuft Auslassungen und Verschmelzungen von Lauten und Silben, sowie Lautersetzungen und -veränderungen bei erhöhter und / oder irregulärer Artikulationsrate.`;
+            break;
+         case "Laut-, Silben-, Wort- und Satzteilwiederholungen":
+            ausgabe += `Der Redefluss war unterbrochen. Es traten Unflüssigkeiten in Form von Laut-, Silben-, Wort- und Satzteilwiederholungen.`;
+            break;
+         case "erhöhtes Sprechtempo":
+            ausgabe += `Der Redefluss war verändert. ${Sein_Ihr} Sprechtempo war erhöht und / oder irregulär.`;
+            break;
+      }
+   }
+
+   // Überschrift hinzufügen
+   ausgabe += `\nStimmgebung\n`;
+
+   // Stimmgebung
+   const auswahlStimmgebung = ["unauffällig", "hoch", "tief", "verhaucht / heiser"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (stimmgebung) {
+      switch (stimmgebung) {
+         case "unauffällig":
+            ausgabe += ``;
+            break;
+         case "hoch":
+            ausgabe += `Die Stimmgebung von ${vorname} war auffällig, da die Stimme ungewöhnlich hoch klang.`;
+            break;
+         case "tief":
+            ausgabe += `Die Stimmgebung von ${vorname} war auffällig, da die Stimme ungewöhnlich tief klang.`;
+            break;
+         case "verhaucht / heiser":
+            ausgabe += `Die Stimmgebung von ${vorname} war auffällig, da die Stimme verhaucht / heiser klang.`;
+            break;
+      }
+   }
+
+   // Überschrift hinzufügen
+   ausgabe += `\nMedienkonsum\n`;
+
+   // Medienkonsum: Dauer
+   const auswahlMedienkonsum = ["angemessen (< 1 Std. / Tag, Gesamtnutzungsdauer pro Tag s.u.)", "erhöht (> 1 Std. / Tag, Gesamtnutzungsdauer pro Tag s.u.)"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (medienkonsum) {
+      switch (medienkonsum) {
+         case "angemessen (< 1 Std. / Tag, Gesamtnutzungsdauer pro Tag s.u.)":
+            ausgabe += `In Bezug auf ${sein_ihr} Alter war der Medienkonsum angemessen (Gesamtnutzungsdauer aller Medien pro Tag: ${MedienkonsumFreitext}).`; // Placeholder: Gesamtnutzungsdauer aller Medien pro Tag
+            break;
+         case "erhöht (> 1 Std. / Tag, Gesamtnutzungsdauer pro Tag s.u.)":
+            ausgabe += `In Bezug auf ${sein_ihr} Alter war der Medienkonsum erhöht (Gesamtnutzungsdauer aller Medien pro Tag: ${MedienkonsumFreitext}).`; // Placeholder: Gesamtnutzungsdauer aller Medien pro Tag
+            break;
+      }
+   }
+
+   ausgabe += `\nArt der Medien:`;
+
+   // Fernsehen / Filme
+   const auswahlMFF = ["Nutzung", "keine Nutzung"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (mff) {
+      switch (mff) {
+         case "Nutzung":
+            ausgabe += `Fersehsendungen und -filme,`;
+            break;
+         case "keine Nutzung":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Smartphone / Tablet
+   const auswahlMST = ["Nutzung", "keine Nutzung"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (mst) {
+      switch (mst) {
+         case "Nutzung":
+            ausgabe += `Smartphone / Tablet,`;
+            break;
+         case "keine Nutzung":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Audiogerät
+   const auswahlMAG = ["Nutzung", "keine Nutzung"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (mag) {
+      switch (mag) {
+         case "Nutzung":
+            ausgabe += `Audiogerät (Hörbücher und / oder Lieder),`;
+            break;
+         case "keine Nutzung":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Spielekonsole
+   const auswahlMSK = ["Nutzung", "keine Nutzung"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (msk) {
+      switch (msk) {
+         case "Nutzung":
+            ausgabe += `Spielekonsole,`;
+            break;
+         case "keine Nutzung":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Bilderbücher
+   const auswahlMBB = ["Nutzung", "keine Nutzung"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (mbb) {
+      switch (mbb) {
+         case "Nutzung":
+            ausgabe += `Bilderbücher,`;
+            break;
+         case "keine Nutzung":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Lerncomputer
+   const auswahlMLC = ["Nutzung", "keine Nutzung"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (mlc) {
+      switch (mlc) {
+         case "Nutzung":
+            ausgabe += `Lerncomputer,`;
+            break;
+         case "keine Nutzung":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   ausgabe += `@#`;
+
+   ausgabe = ausgabe.replaceAll(",     @#", "");
+   ausgabe = ausgabe.replaceAll(",    @#", "");
+   ausgabe = ausgabe.replaceAll(",   @#", "");
+   ausgabe = ausgabe.replaceAll(",  @#", "");
+   ausgabe = ausgabe.replaceAll(", @#", "");
+   ausgabe = ausgabe.replaceAll(",@#", "");
+   ausgabe = ausgabe.replaceAll("@#", "");
+
+   // Überschrift hinzufügen
+   ausgabe += `\nSonstiges\n`;
 
    // ######
    // ######   Ende Ausgabe füllen
@@ -1047,18 +1853,28 @@ const App = () => {
    // ########################################################################################################################
    // ########################################################################################################################
 
+   ausgabe = ausgabe.replaceAll("\n     ", "\n");
    ausgabe = ausgabe.replaceAll("\n    ", "\n");
    ausgabe = ausgabe.replaceAll("\n   ", "\n");
    ausgabe = ausgabe.replaceAll("\n  ", "\n");
    ausgabe = ausgabe.replaceAll("\n ", "\n");
+   ausgabe = ausgabe.replaceAll("     \n", "\n");
    ausgabe = ausgabe.replaceAll("    \n", "\n");
    ausgabe = ausgabe.replaceAll("   \n", "\n");
    ausgabe = ausgabe.replaceAll("  \n", "\n");
    ausgabe = ausgabe.replaceAll(" \n", "\n");
+   ausgabe = ausgabe.replaceAll("             ", " ");
+   ausgabe = ausgabe.replaceAll("            ", " ");
+   ausgabe = ausgabe.replaceAll("           ", " ");
+   ausgabe = ausgabe.replaceAll("          ", " ");
+   ausgabe = ausgabe.replaceAll("         ", " ");
+   ausgabe = ausgabe.replaceAll("        ", " ");
+   ausgabe = ausgabe.replaceAll("       ", " ");
    ausgabe = ausgabe.replaceAll("     ", " ");
    ausgabe = ausgabe.replaceAll("    ", " ");
    ausgabe = ausgabe.replaceAll("   ", " ");
    ausgabe = ausgabe.replaceAll("  ", " ");
+   ausgabe = ausgabe.replaceAll("\n\n", "\n");
 
    // ###############################################
    // ###############################################
@@ -1111,7 +1927,61 @@ ${titelSS_L1}: ${ss_L1 || "---"}
 ${titelMG_L1}: ${mg_L1 || "---"}
 ${titelMN_L1}: ${mn_L1 || "---"}
 ${titelMK_L1}: ${mk_L1 || "---"}
-${titelMP_L1}: ${mp_L1 || "---"}`;
+${titelMP_L1}: ${mp_L1 || "---"}
+${titelPDSS_L1}: ${pdss_L1 || "---"}
+${titelPPE_L1}: ${
+      ppe_L1 === "durchgeführt (Testergebnisse s.u.)" ? ppe_L1.replace("Testergebnisse s.u.", "Testergebnisse: " + PPE_L1_Freitext) : ppe_L1 || "---"
+   }
+${titelSLE_L1}: ${
+      sle_L1 === "durchgeführt (Testergebnisse s.u.)" ? sle_L1.replace("Testergebnisse s.u.", "Testergebnisse: " + SLE_L1_Freitext) : sle_L1 || "---"
+   }
+${titelSME_L1}: ${
+      sme_L1 === "durchgeführt (Testergebnisse s.u.)" ? sme_L1.replace("Testergebnisse s.u.", "Testergebnisse: " + SME_L1_Freitext) : sme_L1 || "---"
+   }
+${titelRS_L1}: ${rs_L1 || "---"}
+${titelRP_L1}: ${rp_L1 || "---"}`;
+
+   if (eom === "mehrsprachig (Sprachen s.u.)") {
+      ausgabe += `
+${titelAV_L2}: ${av_L2 || "---"}
+${titelAAA_L2}: ${aaa_L2 ? aaa_L2 + ": " + AAA_L2_Freitext : "---"}
+${titelAAN_L2}: ${aan_L2 || "---"}
+${titelPIIS_L2}: ${
+         pIIs_L2 === "Phonetisch / Phonologische Abweichungen (Prozesse s.u.)" ? pIIs_L2.replace("Prozesse s.u.", PIIS_L2_Freitext) : pIIs_L2 || "---"
+      }
+${titelRWKA_L2}: ${rwka_L2 || "---"}
+${titelRWF_L2}: ${rwf_L2 || "---"}
+${titelRWA_L2}: ${rwa_L2 || "---"}
+${titelEWAU_L2}: ${ewau_L2 || "---"}
+${titelEWDA_L2}: ${ewda_L2 || "---"}
+${titelSS_L2}: ${ss_L2 || "---"}
+${titelMG_L2}: ${mg_L2 || "---"}
+${titelMN_L2}: ${mn_L2 || "---"}
+${titelMK_L2}: ${mk_L2 || "---"}
+${titelMP_L2}: ${mp_L2 || "---"}
+${titelPDSS_L2}: ${pdss_L2 || "---"}
+${titelPPE_L2}: ${
+         ppe_L2 === "durchgeführt (Testergebnisse s.u.)" ? ppe_L2.replace("Testergebnisse s.u.", "Testergebnisse: " + PPE_L2_Freitext) : ppe_L2 || "---"
+      }
+${titelSLE_L2}: ${
+         sle_L2 === "durchgeführt (Testergebnisse s.u.)" ? sle_L2.replace("Testergebnisse s.u.", "Testergebnisse: " + SLE_L2_Freitext) : sle_L2 || "---"
+      }
+${titelSME_L2}: ${
+         sme_L2 === "durchgeführt (Testergebnisse s.u.)" ? sme_L2.replace("Testergebnisse s.u.", "Testergebnisse: " + SME_L2_Freitext) : sme_L2 || "---"
+      }
+${titelRS_L2}: ${rs_L2 || "---"}
+${titelRP_L2}: ${rp_L2 || "---"}`;
+   }
+
+   ausgabe += `
+${titelStimmgebung}: ${stimmgebung || "---"}
+${titelMedienkonsum}: ${medienkonsum ? medienkonsum.replace(" s.u.", ": " + MedienkonsumFreitext) : "---"}
+${titelMFF}: ${mff || "---"}
+${titelMST}: ${mst || "---"}
+${titelMAG}: ${mag || "---"}
+${titelMSK}: ${msk || "---"}
+${titelMBB}: ${mbb || "---"}
+${titelMLC}: ${mlc || "---"}`;
 
    // #################################################
    // #################################################
@@ -1240,8 +2110,87 @@ ${titelMP_L1}: ${mp_L1 || "---"}`;
                <Radio value={mn_L1} onChange={setMN_L1} title={titelMN_L1} auswahl={auswahlMN_L1} />
                <Radio value={mk_L1} onChange={setMK_L1} title={titelMK_L1} auswahl={auswahlMK_L1} />
                <Radio value={mp_L1} onChange={setMP_L1} title={titelMP_L1} auswahl={auswahlMP_L1} />
+               <Radio value={pdss_L1} onChange={setPDSS_L1} title={titelPDSS_L1} auswahl={auswahlPDSS_L1} />
+               <Radio value={ppe_L1} onChange={setPPE_L1} title={titelPPE_L1} auswahl={auswahlPPE_L1} />
+               {ppe_L1 === "durchgeführt (Testergebnisse s.u.)" && (
+                  <InputFreitext value={PPE_L1_Freitext} onChange={setPPE_L1_Freitext} title={titelPPE_L1 + " (Freitext)"} placeholder="Testergebnisse" />
+               )}
+               <Radio value={sle_L1} onChange={setSLE_L1} title={titelSLE_L1} auswahl={auswahlSLE_L1} />
+               {sle_L1 === "durchgeführt (Testergebnisse s.u.)" && (
+                  <InputFreitext value={SLE_L1_Freitext} onChange={setSLE_L1_Freitext} title={titelSLE_L1 + " (Freitext)"} placeholder="Testergebnisse" />
+               )}
+               <Radio value={sme_L1} onChange={setSME_L1} title={titelSME_L1} auswahl={auswahlSME_L1} />
+               {sme_L1 === "durchgeführt (Testergebnisse s.u.)" && (
+                  <InputFreitext value={SME_L1_Freitext} onChange={setSME_L1_Freitext} title={titelSME_L1 + " (Freitext)"} placeholder="Testergebnisse" />
+               )}
+               <Radio value={rs_L1} onChange={setRS_L1} title={titelRS_L1} auswahl={auswahlRS_L1} />
+               <Radio value={rp_L1} onChange={setRP_L1} title={titelRP_L1} auswahl={auswahlRP_L1} />
             </Hauptblock>
-            <Hauptblock text="Sprachkompetenzen in der Zweitsprache (L2)" show={showL2} onToggle={toggleL2Handler}></Hauptblock>
+            <Hauptblock text="Sprachkompetenzen in der Zweitsprache (L2)" show={showL2} onToggle={toggleL2Handler}>
+               <Radio value={av_L2} onChange={setAV_L2} title={titelAV_L2} auswahl={auswahlAV_L2} />
+               <Radio value={aaa_L2} onChange={setAAA_L2} title={titelAAA_L2} auswahl={auswahlAAA_L2} />
+               <InputFreitext
+                  value={AAA_L2_Freitext}
+                  onChange={setAAA_L2_Freitext}
+                  title={titelAAA_L2 + " (Freitext)"}
+                  placeholder={aaa_L2 === "Lautersetzungen / -auslassungen (phonologisch)" ? "Prozesse" : "betroffene Laute"}
+                  width="w-8/12"
+               />
+               <Radio value={aan_L2} onChange={setAAN_L2} title={titelAAN_L2} auswahl={auswahlAAN_L2} />
+               <Radio value={pIIs_L2} onChange={setPIIS_L2} title={titelPIIS_L2} auswahl={auswahlPIIS_L2} />
+               {pIIs_L2 === "Phonetisch / Phonologische Abweichungen (Prozesse s.u.)" && (
+                  <InputFreitext
+                     value={PIIS_L2_Freitext}
+                     onChange={setPIIS_L2_Freitext}
+                     title={titelPIIS_L2 + " (Freitext)"}
+                     placeholder="Beispiel: Vorverlagerung /sch/ (phonologische Störung)"
+                     width="w-8/12"
+                  />
+               )}
+               <Radio value={rwka_L2} onChange={setRWKA_L2} title={titelRWKA_L2} auswahl={auswahlRWKA_L2} />
+               <Radio value={rwf_L2} onChange={setRWF_L2} title={titelRWF_L2} auswahl={auswahlRWF_L2} />
+               <Radio value={rwa_L2} onChange={setRWA_L2} title={titelRWA_L2} auswahl={auswahlRWA_L2} />
+               <Radio value={ewau_L2} onChange={setEWAU_L2} title={titelEWAU_L2} auswahl={auswahlEWAU_L2} />
+               <Radio value={ewda_L2} onChange={setEWDA_L2} title={titelEWDA_L2} auswahl={auswahlEWDA_L2} />
+               <Radio value={ss_L2} onChange={setSS_L2} title={titelSS_L2} auswahl={auswahlSS_L2} />
+               <Radio value={mg_L2} onChange={setMG_L2} title={titelMG_L2} auswahl={auswahlMG_L2} />
+               <Radio value={mn_L2} onChange={setMN_L2} title={titelMN_L2} auswahl={auswahlMN_L2} />
+               <Radio value={mk_L2} onChange={setMK_L2} title={titelMK_L2} auswahl={auswahlMK_L2} />
+               <Radio value={mp_L2} onChange={setMP_L2} title={titelMP_L2} auswahl={auswahlMP_L2} />
+               <Radio value={pdss_L2} onChange={setPDSS_L2} title={titelPDSS_L2} auswahl={auswahlPDSS_L2} />
+               <Radio value={ppe_L2} onChange={setPPE_L2} title={titelPPE_L2} auswahl={auswahlPPE_L2} />
+               {ppe_L2 === "durchgeführt (Testergebnisse s.u.)" && (
+                  <InputFreitext value={PPE_L2_Freitext} onChange={setPPE_L2_Freitext} title={titelPPE_L2 + " (Freitext)"} placeholder="Testergebnisse" />
+               )}
+               <Radio value={sle_L2} onChange={setSLE_L2} title={titelSLE_L2} auswahl={auswahlSLE_L2} />
+               {sle_L2 === "durchgeführt (Testergebnisse s.u.)" && (
+                  <InputFreitext value={SLE_L2_Freitext} onChange={setSLE_L2_Freitext} title={titelSLE_L2 + " (Freitext)"} placeholder="Testergebnisse" />
+               )}
+               <Radio value={sme_L2} onChange={setSME_L2} title={titelSME_L2} auswahl={auswahlSME_L2} />
+               {sme_L2 === "durchgeführt (Testergebnisse s.u.)" && (
+                  <InputFreitext value={SME_L2_Freitext} onChange={setSME_L2_Freitext} title={titelSME_L2 + " (Freitext)"} placeholder="Testergebnisse" />
+               )}
+               <Radio value={rs_L2} onChange={setRS_L2} title={titelRS_L2} auswahl={auswahlRS_L2} />
+               <Radio value={rp_L2} onChange={setRP_L2} title={titelRP_L2} auswahl={auswahlRP_L2} />
+            </Hauptblock>
+            <Hauptblock text="Stimmgebung">
+               <Radio value={stimmgebung} onChange={setStimmgebung} title={titelStimmgebung} auswahl={auswahlStimmgebung} />
+            </Hauptblock>
+            <Hauptblock text="Medienkonsum">
+               <Radio value={medienkonsum} onChange={setMedienkonsum} title={titelMedienkonsum} auswahl={auswahlMedienkonsum} />
+               <InputFreitext
+                  value={MedienkonsumFreitext}
+                  onChange={setMedienkonsumFreitext}
+                  title={titelMedienkonsum + " (Freitext)"}
+                  placeholder="Beispiel: drei Stunden"
+               />
+               <Radio value={mff} onChange={setMFF} title={titelMFF} auswahl={auswahlMFF} />
+               <Radio value={mst} onChange={setMST} title={titelMST} auswahl={auswahlMST} />
+               <Radio value={mag} onChange={setMAG} title={titelMAG} auswahl={auswahlMAG} />
+               <Radio value={msk} onChange={setMSK} title={titelMSK} auswahl={auswahlMSK} />
+               <Radio value={mbb} onChange={setMBB} title={titelMBB} auswahl={auswahlMBB} />
+               <Radio value={mlc} onChange={setMLC} title={titelMLC} auswahl={auswahlMLC} />
+            </Hauptblock>
          </div>
 
          <Ausgabebereich ausgabe={ausgabe} resetAll={resetAll} />
