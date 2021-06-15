@@ -97,8 +97,7 @@ const titelMAG = ++i + ".) Audiogerät";
 const titelMSK = ++i + ".) Spielekonsole";
 const titelMBB = ++i + ".) Bilderbücher";
 const titelMLC = ++i + ".) Lerncomputer";
-const titelWInf = ++i + ".) Weitere Informationen";
-const titelEF = ++i + ".) Erwartungen / Fragen";
+const titelWInf = ++i + ".) Weitere Informationen, Erwartungen / Fragen";
 const titelIfL = ++i + ".) Indikation für Logopädie";
 const titelWiedervorstellung = ++i + ".) Wiedervorstellung";
 const titelKRF = ++i + ".) Kontrolluntersuchung im Rahmen der Frühförderung";
@@ -200,7 +199,6 @@ const App = () => {
    const [mbb, setMBB] = useState(localStorage.getItem(titelMBB));
    const [mlc, setMLC] = useState(localStorage.getItem(titelMLC));
    const [winf, setWInf] = useState(localStorage.getItem(titelWInf));
-   const [ef, setEF] = useState(localStorage.getItem(titelEF));
    const [ifl, setIfL] = useState(localStorage.getItem(titelIfL));
    const [wiedervorstellung, setWiedervorstellung] = useState(localStorage.getItem(titelWiedervorstellung));
    const [krf, setKRF] = useState(localStorage.getItem(titelKRF));
@@ -241,7 +239,6 @@ const App = () => {
    const [SME_L2_Freitext, setSME_L2_Freitext] = useState(localStorage.getItem(titelSME_L2 + " (Freitext)") || "");
    const [MedienkonsumFreitext, setMedienkonsumFreitext] = useState(localStorage.getItem(titelMedienkonsum + " (Freitext)") || "");
    const [WInfFreitext, setWInfFreitext] = useState(localStorage.getItem(titelWInf + " (Freitext)") || "");
-   const [EFFreitext, setEFFreitext] = useState(localStorage.getItem(titelEF + " (Freitext)") || "");
 
    // ####################################################################################################
    // ####################################################################################################
@@ -337,7 +334,6 @@ const App = () => {
       setMLC(null);
       setMBB(null);
       setWInf(null);
-      setEF(null);
       setIfL(null);
       setWiedervorstellung(null);
       setKRF(null);
@@ -371,7 +367,6 @@ const App = () => {
       setSME_L2_Freitext("");
       setMedienkonsumFreitext("");
       setWInfFreitext("");
-      setEFFreitext("");
 
       setShowL2(true);
 
@@ -927,10 +922,10 @@ const App = () => {
    if (aaa_L1) {
       switch (aaa_L1) {
          case "Lautersetzungen / -auslassungen (phonologisch)":
-            ausgabe += `Es werden Lautersetzungen und -auslassungen (Prozesse: ${AAA_L1_Freitext}) beobachtet.`;
+            ausgabe += `Es wurden Lautersetzungen und -auslassungen (Prozesse: ${AAA_L1_Freitext}) beobachtet.`;
             break;
          case "Lautveränderungen (phonetisch)":
-            ausgabe += `Es werden Lautveränderungen (betroffene Laute: ${AAA_L1_Freitext}) beobachtet.`;
+            ausgabe += `Es wurden Lautveränderungen (betroffene Laute: ${AAA_L1_Freitext}) beobachtet.`;
             break;
       }
    }
@@ -1352,10 +1347,10 @@ const App = () => {
    if (aaa_L2) {
       switch (aaa_L2) {
          case "Lautersetzungen / -auslassungen (phonologisch)":
-            ausgabe += `Es werden Lautersetzungen und -auslassungen (Prozesse: ${AAA_L2_Freitext}) beobachtet.`;
+            ausgabe += `Es wurden Lautersetzungen und -auslassungen (Prozesse: ${AAA_L2_Freitext}) beobachtet.`;
             break;
          case "Lautveränderungen (phonetisch)":
-            ausgabe += `Es werden Lautveränderungen (betroffene Laute: ${AAA_L2_Freitext}) beobachtet.`;
+            ausgabe += `Es wurden Lautveränderungen (betroffene Laute: ${AAA_L2_Freitext}) beobachtet.`;
             break;
       }
    }
@@ -1409,7 +1404,7 @@ const App = () => {
             ausgabe += `${Er_Sie} reagierte auf kurze Anweisungen. Ein Verständnis für komplexere Anweisungen war noch nicht zu beobachten.`;
             break;
          case "Schlüsselwörter":
-            ausgabe += `${Er_Sie} zeigte ein Verständnis für Schlüsselwörter (d.h. bekannter Wörter in einem Satz). Das Satzverständnis war noch eingeschränkt.`;
+            ausgabe += `${Er_Sie} zeigte ein Verständnis für Schlüsselwörter (d.h. bekannter Wörter in einem Satz).`;
             break;
          case "kein Sprachverständnis":
             ausgabe += `Es erfolgte noch keine entsprechende Reaktion auf einzelne Wörter, kurze Anweisungen und / oder Fragestellungen.`;
@@ -1896,31 +1891,14 @@ const App = () => {
    // Überschrift hinzufügen
    ausgabe += `\nSonstiges:`;
 
-   // Weitere Informationen
+   // Weitere Informationen, Erwartungen / Fragen
    const auswahlWInf = ["Freitext eingeben...", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (winf) {
       switch (winf) {
          case "Freitext eingeben...":
-            ausgabe += `\nWeitere Informationen\n`; // Überschrift hinzufügen
             ausgabe += `${WInfFreitext}`;
-            break;
-         case "[ keine Angabe ]":
-            ausgabe += ``;
-            break;
-      }
-   }
-
-   // Erwartungen / Fragen
-   const auswahlEF = ["Freitext eingeben...", "[ keine Angabe ]"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
-
-   if (ef) {
-      switch (ef) {
-         case "Freitext eingeben...":
-            ausgabe += `\nErwartungen / Fragen\n`; // Überschrift hinzufügen
-            ausgabe += `${EFFreitext}`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -2299,7 +2277,6 @@ ${titelMSK}: ${msk || "---"}
 ${titelMBB}: ${mbb || "---"}
 ${titelMLC}: ${mlc || "---"}
 ${titelWInf}: ${winf ? winf.replace("Freitext eingeben...", WInfFreitext) : "---"}
-${titelEF}: ${ef ? ef.replace("Freitext eingeben...", EFFreitext) : "---"}
 ${titelIfL}: ${ifl || "---"}
 ${titelWiedervorstellung}: ${wiedervorstellung || "---"}
 ${titelKRF}: ${krf || "---"}
@@ -2532,17 +2509,7 @@ ${titelZielOF}: ${zielOF || "---"}`;
                      value={WInfFreitext}
                      onChange={setWInfFreitext}
                      title={titelWInf + " (Freitext)"}
-                     placeholder="Weitere Informationen"
-                     width="w-10/12"
-                  />
-               )}
-               <Radio value={ef} onChange={setEF} title={titelEF} auswahl={auswahlEF} />
-               {ef === "Freitext eingeben..." && (
-                  <InputFreitext
-                     value={EFFreitext}
-                     onChange={setEFFreitext}
-                     title={titelEF + " (Freitext)"}
-                     placeholder="Erwartungen / Fragen"
+                     placeholder="Weitere Informationen, Erwartungen / Fragen"
                      width="w-10/12"
                   />
                )}
