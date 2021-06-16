@@ -11,11 +11,12 @@ import Radio from "./components/Radio.js";
 import Ausgabebereich from "./components/Ausgabebereich.js";
 import Hauptblock from "./components/Hauptblock.js";
 
-// ######################################################
-// ######################################################
+// ########################################################
+// ########################################################
 // ###
 // ###   Titel der Unterblöcke
-// ###   = Überschriften auf der linken Seite der GUI
+// ###
+// ###   d.h. Überschriften auf der linken Seite der GUI
 // ###
 
 let i = 0; // Zähler der Unterblöcke
@@ -226,7 +227,8 @@ const App = () => {
    const [schnullerFreitext, setSchnullerFreitext] = useState(localStorage.getItem(titelSchnuller + " (Freitext)") || "");
    const [SUVFreitext, setSUVFreitext] = useState(localStorage.getItem(titelSUV + " (Freitext)") || "");
    const [ZUGFreitext, setZUGFreitext] = useState(localStorage.getItem(titelZUG + " (Freitext)") || "");
-   const [EoMFreitext, setEoMFreitext] = useState(localStorage.getItem(titelEoM + " (Freitext)") || "L1: , L2: ");
+   const [EoM_L1_Freitext, setEoM_L1_Freitext] = useState(localStorage.getItem(titelEoM + " (Freitext L1)") || "");
+   const [EoM_L2_Freitext, setEoM_L2_Freitext] = useState(localStorage.getItem(titelEoM + " (Freitext L2)") || "");
    const [AAA_L1_Freitext, setAAA_L1_Freitext] = useState(localStorage.getItem(titelAAA_L1 + " (Freitext)") || "");
    const [PIIS_L1_Freitext, setPIIS_L1_Freitext] = useState(localStorage.getItem(titelPIIS_L1 + " (Freitext)") || "");
    const [PPE_L1_Freitext, setPPE_L1_Freitext] = useState(localStorage.getItem(titelPPE_L1 + " (Freitext)") || "");
@@ -354,7 +356,8 @@ const App = () => {
       setSchnullerFreitext("");
       setSUVFreitext("");
       setZUGFreitext("");
-      setEoMFreitext("L1: , L2: ");
+      setEoM_L1_Freitext("");
+      setEoM_L2_Freitext("");
       setAAA_L1_Freitext("");
       setPIIS_L1_Freitext("");
       setPPE_L1_Freitext("");
@@ -884,17 +887,20 @@ const App = () => {
    if (eom) {
       switch (eom) {
          case "einsprachig (Sprache s.u.)":
-            ausgabe += `${Er_Sie} wurde einsprachig (${EoMFreitext}) erzogen.`;
+            ausgabe += `${Er_Sie} wurde einsprachig (${EoM_L1_Freitext}) erzogen.`;
             break;
          case "mehrsprachig (Sprachen s.u.)":
-            ausgabe += `${Er_Sie} wurde mehrsprachig (${EoMFreitext}) erzogen.`;
+            ausgabe += `${Er_Sie} wurde mehrsprachig (L1: ${EoM_L1_Freitext}, L2: ${EoM_L2_Freitext}) erzogen.`;
             break;
       }
    }
 
+   // mehrsprachig erzogen?
+   const mehrsprachig = eom === "mehrsprachig (Sprachen s.u.)";
+
    // Überschrift hinzufügen
-   if (eom === "mehrsprachig (Sprachen s.u.)") {
-      ausgabe += `\nSprachkompetenzen in der Erstsprache (L1)`;
+   if (mehrsprachig) {
+      ausgabe += `\nSprachkompetenzen in der Erstsprache (${EoM_L1_Freitext})`;
    }
 
    // Überschrift hinzufügen
@@ -907,10 +913,10 @@ const App = () => {
    if (av_L1) {
       switch (av_L1) {
          case "deutlich":
-            ausgabe += `Die Aussprache von ${vorname} war deutlich.`;
+            ausgabe += mehrsprachig ? `Die Aussprache von ${vorname} sei deutlich.` : `Die Aussprache von ${vorname} war deutlich.`;
             break;
          case "undeutlich":
-            ausgabe += `Die Aussprache von ${vorname} war undeutlich.`;
+            ausgabe += mehrsprachig ? `Die Aussprache von ${vorname} sei undeutlich.` : `Die Aussprache von ${vorname} war undeutlich.`;
             break;
       }
    }
@@ -1265,29 +1271,27 @@ const App = () => {
       }
    }
 
-   // if ((rs_L1 || rs_L1) && (rs_L1 !== "[ keine Angabe ]" || rp_L1 !== "[ keine Angabe ]")) {
-   //    // Überschrift hinzufügen
-   //    ausgabe += `\nRedefluss:`;
-   // }
-   ausgabe += `\nRedefluss:`;
+   // Sammeln der Ausgabe für den Redefluss
+   // Falls diese Sammlung leer bleibt (weil überall [ keine Angabe ] geklickt wurde), soll die Überschrift "Redefluss:" entfallen.
+   let ausgabeTEMP = ``;
 
    // L1 Redefluss (Stottern)
    const auswahlRS_L1 = ["Wiederholungen", "Dehnungen", "Blockaden", "[ keine Angabe ]"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
+   ausgabeTEMP += ` `; // Leerzeichen hinzufügen
 
    if (rs_L1) {
       switch (rs_L1) {
          case "Wiederholungen":
-            ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Wiederholungen.`;
+            ausgabeTEMP += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Wiederholungen.`;
             break;
          case "Dehnungen":
-            ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Dehnungen.`;
+            ausgabeTEMP += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Dehnungen.`;
             break;
          case "Blockaden":
-            ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Blockaden.`;
+            ausgabeTEMP += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Blockaden.`;
             break;
          case "[ keine Angabe ]":
-            ausgabe += ``;
+            ausgabeTEMP += ``;
             break;
       }
    }
@@ -1299,31 +1303,35 @@ const App = () => {
       "erhöhtes Sprechtempo",
       "[ keine Angabe ]"
    ];
-   ausgabe += ` `; // Leerzeichen hinzufügen
+   ausgabeTEMP += ` `; // Leerzeichen hinzufügen
 
    if (rp_L1) {
       switch (rp_L1) {
          case "Auslassungen / Verschmelzungen / Lautersetzungen und -veränderungen gehäuft":
-            ausgabe += `Der Redefluss war verändert. Beim Sprechen zeigten sich gehäuft Auslassungen und Verschmelzungen von Lauten und Silben, sowie Lautersetzungen und -veränderungen bei erhöhter und / oder irregulärer Artikulationsrate.`;
+            ausgabeTEMP += `Der Redefluss war verändert. Beim Sprechen zeigten sich gehäuft Auslassungen und Verschmelzungen von Lauten und Silben, sowie Lautersetzungen und -veränderungen bei erhöhter und / oder irregulärer Artikulationsrate.`;
             break;
          case "Laut-, Silben-, Wort- und Satzteilwiederholungen":
-            ausgabe += `Der Redefluss war unterbrochen. Es traten Unflüssigkeiten in Form von Laut-, Silben-, Wort- und Satzteilwiederholungen.`;
+            ausgabeTEMP += `Der Redefluss war unterbrochen. Es traten Unflüssigkeiten in Form von Laut-, Silben-, Wort- und Satzteilwiederholungen auf.`;
             break;
          case "erhöhtes Sprechtempo":
-            ausgabe += `Der Redefluss war verändert. ${Sein_Ihr} Sprechtempo war erhöht und / oder irregulär.`;
+            ausgabeTEMP += `Der Redefluss war verändert. ${Sein_Ihr} Sprechtempo war erhöht und / oder irregulär.`;
             break;
          case "[ keine Angabe ]":
-            ausgabe += ``;
+            ausgabeTEMP += ``;
             break;
       }
    }
 
-   // Überschrift hinzufügen
-   if (eom === "mehrsprachig (Sprachen s.u.)") {
-      ausgabe += `\nSprachkompetenzen in der Zweitsprache (L2)`;
+   if (ausgabeTEMP.trim() !== ``) {
+      ausgabe += `\nRedefluss:` + ausgabeTEMP;
    }
 
-   if (eom === "mehrsprachig (Sprachen s.u.)") {
+   // Überschrift hinzufügen
+   if (mehrsprachig) {
+      ausgabe += `\nSprachkompetenzen in der Zweitsprache (${EoM_L2_Freitext})`;
+   }
+
+   if (mehrsprachig) {
       // Überschrift hinzufügen
       ausgabe += `\nAussprache:`;
    }
@@ -1389,7 +1397,7 @@ const App = () => {
       }
    }
 
-   if (eom === "mehrsprachig (Sprachen s.u.)") {
+   if (mehrsprachig) {
       // Überschrift hinzufügen
       ausgabe += `\nRezeptiver und expressiver Wortschatz:`;
    }
@@ -1504,7 +1512,7 @@ const App = () => {
       }
    }
 
-   if (eom === "mehrsprachig (Sprachen s.u.)") {
+   if (mehrsprachig) {
       // Überschrift hinzufügen
       ausgabe += `\nSatzbau und Wortbildung:`;
    }
@@ -1697,29 +1705,27 @@ const App = () => {
       }
    }
 
-   // if (eom === "mehrsprachig (Sprachen s.u.)" && (rs_L2 || rs_L2) && (rs_L2 !== "[ keine Angabe ]" || rp_L2 !== "[ keine Angabe ]")) {
-   //    // Überschrift hinzufügen
-   //    ausgabe += `\nRedefluss:`;
-   // }
-   ausgabe += `\nRedefluss:`;
+   // Sammeln der Ausgabe für den Redefluss
+   // Falls diese Sammlung leer bleibt (weil überall [ keine Angabe ] geklickt wurde), soll die Überschrift "Redefluss:" entfallen.
+   ausgabeTEMP = ``;
 
    // L2 Redefluss (Stottern)
    const auswahlRS_L2 = ["Wiederholungen", "Dehnungen", "Blockaden", "[ keine Angabe ]"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
+   ausgabeTEMP += ` `; // Leerzeichen hinzufügen
 
    if (rs_L2) {
       switch (rs_L2) {
          case "Wiederholungen":
-            ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Wiederholungen.`;
+            ausgabeTEMP += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Wiederholungen.`;
             break;
          case "Dehnungen":
-            ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Dehnungen.`;
+            ausgabeTEMP += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Dehnungen.`;
             break;
          case "Blockaden":
-            ausgabe += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Blockaden.`;
+            ausgabeTEMP += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Blockaden.`;
             break;
          case "[ keine Angabe ]":
-            ausgabe += ``;
+            ausgabeTEMP += ``;
             break;
       }
    }
@@ -1731,27 +1737,28 @@ const App = () => {
       "erhöhtes Sprechtempo",
       "[ keine Angabe ]"
    ];
-   ausgabe += ` `; // Leerzeichen hinzufügen
+   ausgabeTEMP += ` `; // Leerzeichen hinzufügen
 
    if (rp_L2) {
       switch (rp_L2) {
          case "Auslassungen / Verschmelzungen / Lautersetzungen und -veränderungen gehäuft":
-            ausgabe += `Der Redefluss war verändert. Beim Sprechen zeigten sich gehäuft Auslassungen und Verschmelzungen von Lauten und Silben, sowie Lautersetzungen und -veränderungen bei erhöhter und / oder irregulärer Artikulationsrate.`;
+            ausgabeTEMP += `Der Redefluss war verändert. Beim Sprechen zeigten sich gehäuft Auslassungen und Verschmelzungen von Lauten und Silben, sowie Lautersetzungen und -veränderungen bei erhöhter und / oder irregulärer Artikulationsrate.`;
             break;
          case "Laut-, Silben-, Wort- und Satzteilwiederholungen":
-            ausgabe += `Der Redefluss war unterbrochen. Es traten Unflüssigkeiten in Form von Laut-, Silben-, Wort- und Satzteilwiederholungen.`;
+            ausgabeTEMP += `Der Redefluss war unterbrochen. Es traten Unflüssigkeiten in Form von Laut-, Silben-, Wort- und Satzteilwiederholungen auf.`;
             break;
          case "erhöhtes Sprechtempo":
-            ausgabe += `Der Redefluss war verändert. ${Sein_Ihr} Sprechtempo war erhöht und / oder irregulär.`;
+            ausgabeTEMP += `Der Redefluss war verändert. ${Sein_Ihr} Sprechtempo war erhöht und / oder irregulär.`;
             break;
          case "[ keine Angabe ]":
-            ausgabe += ``;
+            ausgabeTEMP += ``;
             break;
       }
    }
 
-   // Überschrift hinzufügen
-   ausgabe += `\nStimmgebung:`;
+   if (mehrsprachig && ausgabeTEMP.trim() !== ``) {
+      ausgabe += `\nRedefluss:` + ausgabeTEMP;
+   }
 
    // Stimmgebung
    const auswahlStimmgebung = ["hoch", "tief", "verhaucht / heiser", "[ keine Angabe ]"];
@@ -1760,13 +1767,13 @@ const App = () => {
    if (stimmgebung) {
       switch (stimmgebung) {
          case "hoch":
-            ausgabe += `Die Stimmgebung von ${vorname} war auffällig, da die Stimme ungewöhnlich hoch klang.`;
+            ausgabe += `\nStimmgebung: Die Stimmgebung von ${vorname} war auffällig, da die Stimme ungewöhnlich hoch klang.`;
             break;
          case "tief":
-            ausgabe += `Die Stimmgebung von ${vorname} war auffällig, da die Stimme ungewöhnlich tief klang.`;
+            ausgabe += `\nStimmgebung: Die Stimmgebung von ${vorname} war auffällig, da die Stimme ungewöhnlich tief klang.`;
             break;
          case "verhaucht / heiser":
-            ausgabe += `Die Stimmgebung von ${vorname} war auffällig, da die Stimme verhaucht / heiser klang.`;
+            ausgabe += `\nStimmgebung: Die Stimmgebung von ${vorname} war auffällig, da die Stimme verhaucht / heiser klang.`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -1792,110 +1799,104 @@ const App = () => {
       }
    }
    ausgabe += ` `; // Leerzeichen hinzufügen
-   ausgabe += `Art der Medien:`;
+
+   // Sammeln der Ausgabe für die Art der Medien
+   // Falls diese Sammlung leer bleibt (weil überall [ keine Angabe ] geklickt wurde), soll die Überschrift "Art der Medien:" entfallen.
+   ausgabeTEMP = ``;
 
    // Fernsehen / Filme
    const auswahlMFF = ["Nutzung", "[ keine Angabe ]"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
+   ausgabeTEMP += ` `; // Leerzeichen hinzufügen
 
    if (mff) {
       switch (mff) {
          case "Nutzung":
-            ausgabe += `Fersehsendungen und -filme,`;
+            ausgabeTEMP += `Fersehsendungen und -filme,`;
             break;
          case "[ keine Angabe ]":
-            ausgabe += ``;
+            ausgabeTEMP += ``;
             break;
       }
    }
 
    // Smartphone / Tablet
    const auswahlMST = ["Nutzung", "[ keine Angabe ]"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
+   ausgabeTEMP += ` `; // Leerzeichen hinzufügen
 
    if (mst) {
       switch (mst) {
          case "Nutzung":
-            ausgabe += `Smartphone / Tablet,`;
+            ausgabeTEMP += `Smartphone / Tablet,`;
             break;
          case "[ keine Angabe ]":
-            ausgabe += ``;
+            ausgabeTEMP += ``;
             break;
       }
    }
 
    // Audiogerät
    const auswahlMAG = ["Nutzung", "[ keine Angabe ]"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
+   ausgabeTEMP += ` `; // Leerzeichen hinzufügen
 
    if (mag) {
       switch (mag) {
          case "Nutzung":
-            ausgabe += `Audiogerät (Hörbücher und / oder Lieder),`;
+            ausgabeTEMP += `Audiogerät (Hörbücher und / oder Lieder),`;
             break;
          case "[ keine Angabe ]":
-            ausgabe += ``;
+            ausgabeTEMP += ``;
             break;
       }
    }
 
    // Spielekonsole
    const auswahlMSK = ["Nutzung", "[ keine Angabe ]"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
+   ausgabeTEMP += ` `; // Leerzeichen hinzufügen
 
    if (msk) {
       switch (msk) {
          case "Nutzung":
-            ausgabe += `Spielekonsole,`;
+            ausgabeTEMP += `Spielekonsole,`;
             break;
          case "[ keine Angabe ]":
-            ausgabe += ``;
+            ausgabeTEMP += ``;
             break;
       }
    }
 
    // Bilderbücher
    const auswahlMBB = ["Nutzung", "[ keine Angabe ]"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
+   ausgabeTEMP += ` `; // Leerzeichen hinzufügen
 
    if (mbb) {
       switch (mbb) {
          case "Nutzung":
-            ausgabe += `Bilderbücher,`;
+            ausgabeTEMP += `Bilderbücher,`;
             break;
          case "[ keine Angabe ]":
-            ausgabe += ``;
+            ausgabeTEMP += ``;
             break;
       }
    }
 
    // Lerncomputer
    const auswahlMLC = ["Nutzung", "[ keine Angabe ]"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
+   ausgabeTEMP += ` `; // Leerzeichen hinzufügen
 
    if (mlc) {
       switch (mlc) {
          case "Nutzung":
-            ausgabe += `Lerncomputer,`;
+            ausgabeTEMP += `Lerncomputer,`;
             break;
          case "[ keine Angabe ]":
-            ausgabe += ``;
+            ausgabeTEMP += ``;
             break;
       }
    }
 
-   // // Entfernen des letzten Kommas mit ggf. diversen Leerzeichen am Ende
-   ausgabe += `@#`;
-   // ausgabe = ausgabe.replace(",     @#", "");
-   // ausgabe = ausgabe.replace(",    @#", "");
-   // ausgabe = ausgabe.replace(",   @#", "");
-   // ausgabe = ausgabe.replace(",  @#", "");
-   // ausgabe = ausgabe.replace(", @#", "");
-   // ausgabe = ausgabe.replace(",@#", "");
-   // ausgabe = ausgabe.replace("@#", "");
-
-   // Überschrift hinzufügen
-   ausgabe += `\nSonstiges:`;
+   if (ausgabeTEMP.trim() !== ``) {
+      ausgabe += `Art der Medien:` + ausgabeTEMP.trimEnd().slice(0, -1); // Überflüssige Leerzeichen und das Komma am Ende löschen
+   }
 
    // Weitere Informationen, Erwartungen / Fragen
    const auswahlWInf = ["Freitext eingeben...", "[ keine Angabe ]"];
@@ -1904,7 +1905,7 @@ const App = () => {
    if (winf) {
       switch (winf) {
          case "Freitext eingeben...":
-            ausgabe += `${WInfFreitext}`;
+            ausgabe += `\nSonstiges: ${WInfFreitext}`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -1913,7 +1914,7 @@ const App = () => {
    }
 
    // Überschrift hinzufügen
-   ausgabe += `\nFazit / Ziele der Therapie:`;
+   ausgabe += `\nFazit:`;
 
    // Indikation für Logopädie
    const auswahlIfL = [
@@ -1989,11 +1990,12 @@ const App = () => {
    // Kommunikative Fähigkeiten
    const auswahlZielKomF = ["ja", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
+   ausgabe += `Ziele der Therapie: `;
 
    if (zielKomf) {
       switch (zielKomf) {
          case "ja":
-            ausgabe += `Verbesserung der kommunikativen Fähigkeiten (u.a. dialogischer / triangulärer Blickkontakt, TurnTaking, Imitation, Gestik), `;
+            ausgabe += `Verbesserung der kommunikativen Fähigkeiten (u.a. dialogischer / triangulärer Blickkontakt, TurnTaking, Imitation, Gestik),`;
             break;
          case "nicht Ziel":
             ausgabe += ``;
@@ -2008,7 +2010,7 @@ const App = () => {
    if (zielBvs) {
       switch (zielBvs) {
          case "ja":
-            ausgabe += `Erkennen der Bedeutung von Sprache, `;
+            ausgabe += `Erkennen der Bedeutung von Sprache,`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -2023,7 +2025,7 @@ const App = () => {
    if (zielSpf) {
       switch (zielSpf) {
          case "ja":
-            ausgabe += `Steigerung der Sprechfreude, `;
+            ausgabe += `Steigerung der Sprechfreude,`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -2038,7 +2040,7 @@ const App = () => {
    if (zielRew) {
       switch (zielRew) {
          case "ja":
-            ausgabe += `Erweiterung des rezeptiven und expressiven Wortschatzes, `;
+            ausgabe += `Erweiterung des rezeptiven und expressiven Wortschatzes,`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -2053,7 +2055,7 @@ const App = () => {
    if (zielGf) {
       switch (zielGf) {
          case "ja":
-            ausgabe += `Verbesserung der grammatikalischen Fähigkeiten, `;
+            ausgabe += `Verbesserung der grammatikalischen Fähigkeiten,`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -2068,7 +2070,7 @@ const App = () => {
    if (zielAussprache) {
       switch (zielAussprache) {
          case "ja":
-            ausgabe += `Verbesserung der Aussprache, `;
+            ausgabe += `Verbesserung der Aussprache,`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -2083,7 +2085,7 @@ const App = () => {
    if (zielAW) {
       switch (zielAW) {
          case "ja":
-            ausgabe += `Verbesserung der auditiven Wahrnehmung, `;
+            ausgabe += `Verbesserung der auditiven Wahrnehmung,`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -2098,7 +2100,7 @@ const App = () => {
    if (zielOT) {
       switch (zielOT) {
          case "ja":
-            ausgabe += `Regulation des orofazialen Tonus, `;
+            ausgabe += `Regulation des orofazialen Tonus,`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -2113,7 +2115,7 @@ const App = () => {
    if (zielOW) {
       switch (zielOW) {
          case "ja":
-            ausgabe += `Sensibilisierung der orofazialen Wahrnehmung, `;
+            ausgabe += `Sensibilisierung der orofazialen Wahrnehmung,`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -2128,7 +2130,7 @@ const App = () => {
    if (zielOF) {
       switch (zielOF) {
          case "ja":
-            ausgabe += `Verbesserung der orofazialen Fähigkeiten, `;
+            ausgabe += `Verbesserung der orofazialen Fähigkeiten,`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -2136,20 +2138,7 @@ const App = () => {
       }
    }
 
-   // Entfernen des letzten Kommas mit ggf. diversen Leerzeichen am Ende
-   ausgabe += `@#`;
-   ausgabe = ausgabe.replaceAll(",          @#", "");
-   ausgabe = ausgabe.replaceAll(",         @#", "");
-   ausgabe = ausgabe.replaceAll(",        @#", "");
-   ausgabe = ausgabe.replaceAll(",       @#", "");
-   ausgabe = ausgabe.replaceAll(",      @#", "");
-   ausgabe = ausgabe.replaceAll(",     @#", "");
-   ausgabe = ausgabe.replaceAll(",    @#", "");
-   ausgabe = ausgabe.replaceAll(",   @#", "");
-   ausgabe = ausgabe.replaceAll(",  @#", "");
-   ausgabe = ausgabe.replaceAll(", @#", "");
-   ausgabe = ausgabe.replaceAll(",@#", "");
-   ausgabe = ausgabe.replaceAll("@#", "");
+   ausgabe = ausgabe.trimEnd().slice(0, -1); // Überflüssige Leerzeichen und das Komma am Ende löschen
 
    // ######
    // ######   Ende Ausgabe füllen
@@ -2158,22 +2147,9 @@ const App = () => {
    // ########################################################################################################################
    // ########################################################################################################################
 
-   ausgabe = ausgabe.replaceAll("\n    ", "\n");
-   ausgabe = ausgabe.replaceAll("\n   ", "\n");
-   ausgabe = ausgabe.replaceAll("\n  ", "\n");
-   ausgabe = ausgabe.replaceAll("\n ", "\n");
-   ausgabe = ausgabe.replaceAll("     \n", "\n");
-   ausgabe = ausgabe.replaceAll("    \n", "\n");
-   ausgabe = ausgabe.replaceAll("   \n", "\n");
-   ausgabe = ausgabe.replaceAll("  \n", "\n");
+   ausgabe = ausgabe.replaceAll("    ", " ").replaceAll("   ", " ").replaceAll("  ", " ");
    ausgabe = ausgabe.replaceAll(" \n", "\n");
-   ausgabe = ausgabe.replaceAll("         ", " ");
-   ausgabe = ausgabe.replaceAll("        ", " ");
-   ausgabe = ausgabe.replaceAll("       ", " ");
-   ausgabe = ausgabe.replaceAll("     ", " ");
-   ausgabe = ausgabe.replaceAll("    ", " ");
-   ausgabe = ausgabe.replaceAll("   ", " ");
-   ausgabe = ausgabe.replaceAll("  ", " ");
+   ausgabe = ausgabe.replaceAll("\n ", "\n");
    ausgabe = ausgabe.replaceAll("\n\n", "\n");
 
    // #################################################
@@ -2264,13 +2240,8 @@ const App = () => {
             </Hauptblock>
             <Hauptblock text="Sprachen">
                <Radio value={eom} onChange={setEoM} title={titelEoM} auswahl={auswahlEoM} />
-               <InputFreitext
-                  value={EoMFreitext}
-                  onChange={setEoMFreitext}
-                  title={titelEoM + " (Freitext)"}
-                  placeholder="L1: englisch, L2: deutsch"
-                  width="w-8/12"
-               />
+               <InputFreitext value={EoM_L1_Freitext} onChange={setEoM_L1_Freitext} title={titelEoM + " (Freitext L1)"} placeholder="L1" />
+               {mehrsprachig && <InputFreitext value={EoM_L2_Freitext} onChange={setEoM_L2_Freitext} title={titelEoM + " (Freitext L2)"} placeholder="L2" />}
             </Hauptblock>
             <Hauptblock text="Sprachkompetenzen in der Erstsprache (L1)">
                <Radio value={av_L1} onChange={setAV_L1} title={titelAV_L1} auswahl={auswahlAV_L1} />
@@ -2319,7 +2290,7 @@ const App = () => {
                <Radio value={rs_L1} onChange={setRS_L1} title={titelRS_L1} auswahl={auswahlRS_L1} />
                <Radio value={rp_L1} onChange={setRP_L1} title={titelRP_L1} auswahl={auswahlRP_L1} />
             </Hauptblock>
-            {eom === "mehrsprachig (Sprachen s.u.)" && (
+            {mehrsprachig && (
                <Hauptblock text="Sprachkompetenzen in der Zweitsprache (L2)" show={showL2} onToggle={toggleL2Handler}>
                   <Radio value={av_L2} onChange={setAV_L2} title={titelAV_L2} auswahl={auswahlAV_L2} />
                   <Radio value={aaa_L2} onChange={setAAA_L2} title={titelAAA_L2} auswahl={auswahlAAA_L2} />
