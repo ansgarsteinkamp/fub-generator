@@ -898,6 +898,9 @@ const App = () => {
    // mehrsprachig erzogen?
    const mehrsprachig = eom === "mehrsprachig (Sprachen s.u.)";
 
+   // Erstsprache deutsch?
+   const erstspracheDeutsch = !mehrsprachig;
+
    // Überschrift hinzufügen
    if (mehrsprachig) {
       ausgabe += `\nSprachkompetenzen in der Erstsprache (${EoM_L1_Freitext})`;
@@ -913,10 +916,10 @@ const App = () => {
    if (av_L1) {
       switch (av_L1) {
          case "deutlich":
-            ausgabe += mehrsprachig ? `Die Aussprache von ${vorname} sei deutlich.` : `Die Aussprache von ${vorname} war deutlich.`;
+            ausgabe += erstspracheDeutsch ? `Die Aussprache von ${vorname} war deutlich.` : `Die Aussprache von ${vorname} sei deutlich.`;
             break;
          case "undeutlich":
-            ausgabe += mehrsprachig ? `Die Aussprache von ${vorname} sei undeutlich.` : `Die Aussprache von ${vorname} war undeutlich.`;
+            ausgabe += erstspracheDeutsch ? `Die Aussprache von ${vorname} war undeutlich.` : `Die Aussprache von ${vorname} sei undeutlich.`;
             break;
       }
    }
@@ -928,10 +931,14 @@ const App = () => {
    if (aaa_L1) {
       switch (aaa_L1) {
          case "Lautersetzungen / -auslassungen (phonologisch)":
-            ausgabe += `Es wurden Lautersetzungen und -auslassungen (Prozesse: ${AAA_L1_Freitext}) beobachtet.`;
+            ausgabe += erstspracheDeutsch
+               ? `Es wurden Lautersetzungen und -auslassungen ${AAA_L1_Freitext ? "(Prozesse: " + AAA_L1_Freitext + ") " : ""}beobachtet.`
+               : `Es seien Lautersetzungen und -auslassungen ${AAA_L1_Freitext ? "(Prozesse: " + AAA_L1_Freitext + ") " : ""}beobachtet worden.`;
             break;
          case "Lautveränderungen (phonetisch)":
-            ausgabe += `Es wurden Lautveränderungen (betroffene Laute: ${AAA_L1_Freitext}) beobachtet.`;
+            ausgabe += erstspracheDeutsch
+               ? `Es wurden Lautveränderungen ${AAA_L1_Freitext ? "(betroffene Laute: " + AAA_L1_Freitext + ") " : ""}beobachtet.`
+               : `Es seien Lautveränderungen ${AAA_L1_Freitext ? "(betroffene Laute: " + AAA_L1_Freitext + ") " : ""}beobachtet worden.`;
             break;
       }
    }
@@ -1358,10 +1365,10 @@ const App = () => {
    if (aaa_L2) {
       switch (aaa_L2) {
          case "Lautersetzungen / -auslassungen (phonologisch)":
-            ausgabe += `Es wurden Lautersetzungen und -auslassungen (Prozesse: ${AAA_L2_Freitext}) beobachtet.`;
+            ausgabe += `Es wurden Lautersetzungen und -auslassungen ${AAA_L2_Freitext ? "(Prozesse: " + AAA_L2_Freitext + ") " : ""}beobachtet.`;
             break;
          case "Lautveränderungen (phonetisch)":
-            ausgabe += `Es wurden Lautveränderungen (betroffene Laute: ${AAA_L2_Freitext}) beobachtet.`;
+            ausgabe += `Es wurden Lautveränderungen ${AAA_L2_Freitext ? "(betroffene Laute: " + AAA_L2_Freitext + ") " : ""}beobachtet.`;
             break;
       }
    }
