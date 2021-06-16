@@ -491,11 +491,14 @@ const App = () => {
    }
 
    // Spielformen
-   const auswahlSpielformen = ["Funktionsspiel", "Symbolspiel"];
+   const auswahlSpielformen = ["Explorationsspiel", "Funktionsspiel", "Symbolspiel"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (spielformen) {
       switch (spielformen) {
+         case "Explorationsspiel":
+            ausgabe += `Es war ein Explorationsspiel zu beobachten.`;
+            break;
          case "Funktionsspiel":
             ausgabe += `Das Spiel war funktionsorientiert.`;
             break;
@@ -575,7 +578,7 @@ const App = () => {
    }
 
    // Auditive Merkspanne
-   const auswahlAMS = ["altersentsprechend", "nicht altersentsprechend"];
+   const auswahlAMS = ["altersentsprechend", "nicht altersentsprechend", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (ams) {
@@ -585,6 +588,9 @@ const App = () => {
             break;
          case "nicht altersentsprechend":
             ausgabe += `Die auditive Merkspanne war noch nicht altersentsprechend.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
             break;
       }
    }
@@ -618,6 +624,21 @@ const App = () => {
             break;
          case "offen":
             ausgabe += `Es wurde eine offene Mundhaltung beobachtet.`;
+            break;
+      }
+   }
+
+   //Orale Erkundung
+   const auswahlxxxxxxx = ["verstärkt", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (xxxxxxx) {
+      switch (xxxxxxx) {
+         case "verstärkt":
+            ausgabe += `${vorname} erkundete Gegenstände noch häufig oral.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
             break;
       }
    }
@@ -782,7 +803,7 @@ const App = () => {
    }
 
    // Schnuller
-   const auswahlSchnuller = ["noch nie", "bis heute", "bis zum..."];
+   const auswahlSchnuller = ["noch nie", "bis heute", "bis zum...", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (schnuller) {
@@ -795,6 +816,9 @@ const App = () => {
             break;
          case "bis zum...":
             ausgabe += `Bis zum ${schnullerFreitext} habe ${er_sie} einen Schnuller erhalten.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
             break;
       }
    }
@@ -845,7 +869,7 @@ const App = () => {
    }
 
    // Stillen und Flaschennahrung
-   const auswahlSUV = ["Stillen bis zum (s.u.)", "Flaschennahrung bis zum (s.u.)", "Stillen bis zum (s.u.), dann Flaschennahrung"];
+   const auswahlSUV = ["Stillen bis zum (s.u.)", "Flaschennahrung bis zum (s.u.)", "Stillen bis zum (s.u.), dann Flaschennahrung", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (suv) {
@@ -858,6 +882,9 @@ const App = () => {
             break;
          case "Stillen bis zum (s.u.), dann Flaschennahrung":
             ausgabe += `${vorname} sei erst bis zum ${SUVFreitext} gestillt worden und habe danach Flaschennahrung erhalten.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
             break;
       }
    }
@@ -899,7 +926,7 @@ const App = () => {
    const mehrsprachig = eom === "mehrsprachig (Sprachen s.u.)";
 
    // Erstsprache deutsch?
-   const erstspracheDeutsch = !mehrsprachig;
+   const erstspracheDeutsch = EoM_L1_Freitext === "deutsch";
 
    // Überschrift hinzufügen
    if (mehrsprachig) {
@@ -950,10 +977,14 @@ const App = () => {
    if (aan_L1) {
       switch (aan_L1) {
          case "altersentsprechend":
-            ausgabe += `${Seine_Ihre} Aussprachefähigkeiten waren altersentsprechend.`;
+            ausgabe += erstspracheDeutsch
+               ? `${Seine_Ihre} Aussprachefähigkeiten waren altersentsprechend.`
+               : `${Seine_Ihre} Aussprachefähigkeiten seien altersentsprechend.`;
             break;
          case "nicht altersentsprechend":
-            ausgabe += `${Seine_Ihre} Aussprachefähigkeiten waren noch nicht altersentsprechend.`;
+            ausgabe += erstspracheDeutsch
+               ? `${Seine_Ihre} Aussprachefähigkeiten waren noch nicht altersentsprechend.`
+               : `${Seine_Ihre} Aussprachefähigkeiten seien noch nicht altersentsprechend.`;
             break;
       }
    }
@@ -984,16 +1015,24 @@ const App = () => {
    if (rwka_L1) {
       switch (rwka_L1) {
          case "komplexere Anweisungen":
-            ausgabe += `${Er_Sie} zeigte ein sicheres Verständnis für komplexere Anweisungen.`;
+            ausgabe += erstspracheDeutsch
+               ? `${Er_Sie} zeigte ein sicheres Verständnis für komplexere Anweisungen.`
+               : `${Er_Sie} zeige ein sicheres Verständnis für komplexere Anweisungen.`;
             break;
          case "kurze Anweisungen":
-            ausgabe += `${Er_Sie} reagierte auf kurze Anweisungen. Ein Verständnis für komplexere Anweisungen war noch nicht zu beobachten.`;
+            ausgabe += erstspracheDeutsch
+               ? `${Er_Sie} reagierte auf kurze Anweisungen. Ein Verständnis für komplexere Anweisungen war noch nicht zu beobachten.`
+               : `${Er_Sie} reagiere auf kurze Anweisungen. Ein Verständnis für komplexere Anweisungen sei noch nicht zu beobachten.`;
             break;
          case "Schlüsselwörter":
-            ausgabe += `${Er_Sie} zeigte ein Verständnis für Schlüsselwörter (d.h. bekannter Wörter in einem Satz). Das Satzverständnis war noch eingeschränkt.`;
+            ausgabe += erstspracheDeutsch
+               ? `${Er_Sie} zeigte ein Verständnis für Schlüsselwörter (d.h. bekannter Wörter in einem Satz).`
+               : `${Er_Sie} zeige ein Verständnis für Schlüsselwörter (d.h. bekannter Wörter in einem Satz).`;
             break;
          case "kein Sprachverständnis":
-            ausgabe += `Es erfolgte noch keine entsprechende Reaktion auf einzelne Wörter, kurze Anweisungen und / oder Fragestellungen.`;
+            ausgabe += erstspracheDeutsch
+               ? `Es erfolgte noch keine entsprechende Reaktion auf einzelne Wörter, kurze Anweisungen und / oder Fragestellungen.`
+               : `Es erfolge noch keine entsprechende Reaktion auf einzelne Wörter, kurze Anweisungen und / oder Fragestellungen.`;
             break;
       }
    }
@@ -1005,13 +1044,17 @@ const App = () => {
    if (rwf_L1) {
       switch (rwf_L1) {
          case "W-Fragen":
-            ausgabe += `W-Fragen wurden von ${vorname} verstanden.`;
+            ausgabe += erstspracheDeutsch ? `W-Fragen wurden von ${vorname} verstanden.` : `W-Fragen würden von ${vorname} verstanden werden.`;
             break;
          case "Alternativfragen":
-            ausgabe += `Alternativfragen wurden von ${vorname} verstanden. Ein Verständnis von W-Fragen war allerdings noch nicht zu beobachten.`;
+            ausgabe += erstspracheDeutsch
+               ? `Alternativfragen wurden von ${vorname} verstanden. Ein Verständnis von W-Fragen war allerdings noch nicht zu beobachten.`
+               : `Alternativfragen würden von ${vorname} verstanden werden. Ein Verständnis von W-Fragen sei allerdings noch nicht zu beobachten.`;
             break;
          case "Ja- / Nein-Fragen":
-            ausgabe += `${vorname} antwortete auf Ja- / Nein-Fragen. Eine Reaktion auf weitere Frageformen zeigte ${er_sie} noch nicht.`;
+            ausgabe += erstspracheDeutsch
+               ? `${vorname} antwortete auf Ja- / Nein-Fragen. Eine Reaktion auf weitere Frageformen zeigte ${er_sie} noch nicht.`
+               : `${vorname} antworte auf Ja- / Nein-Fragen. Eine Reaktion auf weitere Frageformen zeige ${er_sie} noch nicht.`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -1026,10 +1069,12 @@ const App = () => {
    if (rwa_L1) {
       switch (rwa_L1) {
          case "altersentsprechend":
-            ausgabe += `Das Sprachverständnis war altersentsprechend.`;
+            ausgabe += erstspracheDeutsch ? `Das Sprachverständnis war altersentsprechend.` : `Das Sprachverständnis sei altersentsprechend.`;
             break;
          case "nicht altersentsprechend":
-            ausgabe += `Das Sprachverständnis war noch nicht altersentsprechend.`;
+            ausgabe += erstspracheDeutsch
+               ? `Das Sprachverständnis war noch nicht altersentsprechend.`
+               : `Das Sprachverständnis sei noch nicht altersentsprechend.`;
             break;
       }
    }
@@ -1049,25 +1094,29 @@ const App = () => {
    if (ewau_L1) {
       switch (ewau_L1) {
          case "Mehrwortäußerungen":
-            ausgabe += `${Er_Sie} verwendete Mehrwortäußerungen.`;
+            ausgabe += erstspracheDeutsch ? `${Er_Sie} verwendete Mehrwortäußerungen.` : `${Er_Sie} verwende Mehrwortäußerungen.`;
             break;
          case "Zweiwortäußerungen":
-            ausgabe += `${Er_Sie} verwendete Zweiwortäußerungen.`;
+            ausgabe += erstspracheDeutsch ? `${Er_Sie} verwendete Zweiwortäußerungen.` : `${Er_Sie} verwende Zweiwortäußerungen.`;
             break;
          case "einzelne Wörter":
-            ausgabe += `${vorname} äußerte einzelne Wörter.`;
+            ausgabe += erstspracheDeutsch ? `${vorname} äußerte einzelne Wörter.` : `${vorname} äußere einzelne Wörter.`;
             break;
          case "keine 50 Wörter / keine Zweiwortkombinationen":
-            ausgabe += `${Er_Sie} äußerte einzelne Wörter, aber noch keine Zweiwortkombinationen.`;
+            ausgabe += erstspracheDeutsch
+               ? `${Er_Sie} äußerte einzelne Wörter, aber noch keine Zweiwortkombinationen.`
+               : `${Er_Sie} äußere einzelne Wörter, aber noch keine Zweiwortkombinationen.`;
             break;
          case "Lautmalereien und einzelne Wörter":
-            ausgabe += `${Er_Sie} äußerte Lautmalereien und einzelne Wörter.`;
+            ausgabe += erstspracheDeutsch ? `${Er_Sie} äußerte Lautmalereien und einzelne Wörter.` : `${Er_Sie} äußere Lautmalereien und einzelne Wörter.`;
             break;
          case "Laute / Lautmalereien":
-            ausgabe += `${Er_Sie} äußerte Laute / Lautmalereien.`;
+            ausgabe += erstspracheDeutsch ? `${Er_Sie} äußerte Laute / Lautmalereien.` : `${Er_Sie} äußere Laute / Lautmalereien.`;
             break;
          case "eigene Sprache":
-            ausgabe += `${vorname} verwendete ${seine_ihre} "eigene Sprache", die für Außenstehende nicht zu verstehen war.`;
+            ausgabe += erstspracheDeutsch
+               ? `${vorname} verwendete ${seine_ihre} "eigene Sprache", die für Außenstehende nicht zu verstehen war.`
+               : `${vorname} verwende ${seine_ihre} "eigene Sprache", die für Außenstehende nicht zu verstehen sei.`;
             break;
       }
    }
@@ -1079,10 +1128,14 @@ const App = () => {
    if (ewda_L1) {
       switch (ewda_L1) {
          case "altersentsprechend / ausreichend differenziert":
-            ausgabe += `Der expressive Wortschatz von ${vorname} war altersentsprechend und ausreichend differenziert.`;
+            ausgabe += erstspracheDeutsch
+               ? `Der expressive Wortschatz von ${vorname} war altersentsprechend und ausreichend differenziert.`
+               : `Der expressive Wortschatz von ${vorname} sei altersentsprechend und ausreichend differenziert.`;
             break;
          case "nicht altersentsprechend / gering / wenig differenziert":
-            ausgabe += `Der expressive Wortschatz von ${vorname} war nicht altersentsprechend. Er war noch gering und wenig differenziert.`;
+            ausgabe += erstspracheDeutsch
+               ? `Der expressive Wortschatz von ${vorname} war noch nicht altersentsprechend. Er war noch gering und wenig differenziert.`
+               : `Der expressive Wortschatz von ${vorname} sei noch nicht altersentsprechend. Er sei noch gering und wenig differenziert.`;
             break;
       }
    }
@@ -1102,17 +1155,25 @@ const App = () => {
 
    if (ss_L1) {
       switch (ss_L1) {
-         case "Satzbau korrekt (Verbzweitstellung und Verbendstellung)":
-            ausgabe += `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz, sowie die Verbendstellung im Nebensatz wurden von ${ihm_ihr} beachtet.`;
+         case "Satzbau korrekt (vollständig, Verbzweitstellung und Verbendstellung)":
+            ausgabe += erstspracheDeutsch
+               ? `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz, sowie die Verbendstellung im Nebensatz wurden von ${ihm_ihr} beachtet.`
+               : `Der Satzbau sei korrekt.`;
             break;
-         case "Satzbau korrekt (Verbzweitstellung)":
-            ausgabe += `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz wurde von ${ihm_ihr} beachtet.`;
+         case "Satzbau korrekt (teilweise, Verbzweitstellung)":
+            ausgabe += erstspracheDeutsch
+               ? `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz wurde von ${ihm_ihr} beachtet.`
+               : `Der Satzbau sei überwiegend korrekt.`;
             break;
          case "Satzbau korrekt / unflexible Satzstrukturen":
-            ausgabe += `${vorname} beachtete die Verbzweitstellung im Hauptsatz, allerdings waren die Satzstrukturen insgesamt noch wenig flexibel.`;
+            ausgabe += erstspracheDeutsch
+               ? `${vorname} beachtete die Verbzweitstellung im Hauptsatz, allerdings waren die Satzstrukturen insgesamt noch wenig flexibel.`
+               : `Der Satzbau sei korrekt, aber die Satzstrukturen seien insgesamt noch wenig flexibel.`;
             break;
          case "Satzbau nicht korrekt (Verbendstellung)":
-            ausgabe += `Der Satzbau war nicht korrekt. ${vorname} verwendete noch die Verbendstellung im Hauptsatz.`;
+            ausgabe += erstspracheDeutsch
+               ? `Der Satzbau war nicht korrekt. ${vorname} verwendete noch die Verbendstellung im Hauptsatz.`
+               : `Der Satzbau sei noch nicht korrekt.`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -1127,13 +1188,13 @@ const App = () => {
    if (mg_L1) {
       switch (mg_L1) {
          case "sicher":
-            ausgabe += `Die Artikelverwendung war sicher.`;
+            ausgabe += erstspracheDeutsch ? `Die Artikelverwendung war sicher.` : `Die Artikelverwendung sei sicher.`;
             break;
          case "unsicher":
-            ausgabe += `Die Artikelverwendung war noch unsicher.`;
+            ausgabe += erstspracheDeutsch ? `Die Artikelverwendung war noch unsicher.` : `Die Artikelverwendung sei noch unsicher.`;
             break;
          case "keine Artikelverwendung":
-            ausgabe += `${vorname} verwendete noch gar keine Artikel.`;
+            ausgabe += erstspracheDeutsch ? `${vorname} verwendete noch gar keine Artikel.` : `${vorname} verwende noch gar keine Artikel.`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -1148,13 +1209,15 @@ const App = () => {
    if (mn_L1) {
       switch (mn_L1) {
          case "erworben":
-            ausgabe += `${vorname} konnte Pluralformen regelgeleitet bilden.`;
+            ausgabe += erstspracheDeutsch ? `${vorname} konnte Pluralformen regelgeleitet bilden.` : `${vorname} könne Pluralformen regelgeleitet bilden.`;
             break;
          case "unsicher":
-            ausgabe += `${vorname} zeigte eine noch unsichere Bildung des Plurals.`;
+            ausgabe += erstspracheDeutsch
+               ? `${vorname} zeigte eine noch unsichere Bildung des Plurals.`
+               : `${vorname} zeige eine noch unsichere Bildung des Plurals.`;
             break;
          case "nicht erworben":
-            ausgabe += `${vorname} bildete noch gar keine Pluralformen.`;
+            ausgabe += erstspracheDeutsch ? `${vorname} bildete noch gar keine Pluralformen.` : `${vorname} bilde noch gar keine Pluralformen.`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -1176,19 +1239,23 @@ const App = () => {
    if (mk_L1) {
       switch (mk_L1) {
          case "vollständig erworben":
-            ausgabe += `${Er_Sie} war in der Lage, die Kasus Akkusativ und Dativ korrekt zu markieren.`;
+            ausgabe += erstspracheDeutsch
+               ? `${Er_Sie} war in der Lage, die Kasus Akkusativ und Dativ korrekt zu markieren.`
+               : `${Er_Sie} war in der Lage die Kasus korrekt zu markieren.`;
             break;
-         case "Akkusativ erworben / Dativ unsicher (nicht markiert)":
+         case "Akkusativ erworben / Dativ unsicher (nicht markiert / nur wenn L1: deutsch)":
             ausgabe += `${Er_Sie} hatte den Akkusativ bereits sicher erworben. Der Dativ wurde noch nicht (sicher) markiert.`;
             break;
-         case "Akkusativ unsicher":
+         case "Akkusativ unsicher (nur wenn L1: deutsch)":
             ausgabe += `${Er_Sie} zeigte noch Unsicherheiten in der Verwendung des Akkusativ.`;
             break;
-         case "Dativ unsicher":
+         case "Dativ unsicher (nur wenn L1: deutsch)":
             ausgabe += `${Er_Sie} zeigte noch Unsicherheiten in der Verwendung des Dativ.`;
             break;
          case "nicht erworben":
-            ausgabe += `${Er_Sie} hatte das Kasussystem (Akkusativ und / oder Dativ) noch gar nicht erworben.`;
+            ausgabe += erstspracheDeutsch
+               ? `${Er_Sie} hatte das Kasussystem (Akkusativ und / oder Dativ) noch gar nicht erworben.`
+               : `${Er_Sie} habe das Kasussystem noch gar nicht erworben.`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -1203,13 +1270,17 @@ const App = () => {
    if (mp_L1) {
       switch (mp_L1) {
          case "erworben (-st)":
-            ausgabe += `Die Subjekt-Verb-Kongruenz wurde durchgängig von ${ihm_ihr} beachtet.`;
+            ausgabe += erstspracheDeutsch
+               ? `Die Subjekt-Verb-Kongruenz wurde durchgängig von ${ihm_ihr} beachtet.`
+               : `Die Subjekt-Verb-Kongruenz werde durchgängig von ${ihm_ihr} beachtet.`;
             break;
-         case "nur Infinitivform":
+         case "nur Infinitivform (nur wenn L1: deutsch)":
             ausgabe += `${vorname} verwendete noch aussschließlich die Infinitivform des Verbs.`;
             break;
          case "unsicher":
-            ausgabe += `Im Ansatz war zu beobachten, dass ${vorname} die Subjekt-Verb-Kongruenz beachtete. ${Seine_Ihre} diesbezüglichen morphologischen Fähigkeiten waren allerdings noch sehr unsicher.`;
+            ausgabe += erstspracheDeutsch
+               ? `${Seine_Ihre} morphologischen Fähigkeiten waren noch unsicher.`
+               : `${Seine_Ihre} morphologischen Fähigkeiten seien noch unsicher.`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -1289,13 +1360,19 @@ const App = () => {
    if (rs_L1) {
       switch (rs_L1) {
          case "Wiederholungen":
-            ausgabeTEMP += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Wiederholungen.`;
+            ausgabeTEMP += erstspracheDeutsch
+               ? `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Wiederholungen.`
+               : `Der Redefluss sei unterbrochen. Beim Sprechen würden sich Unflüssigkeiten in Form von Wiederholungen zeigen.`;
             break;
          case "Dehnungen":
-            ausgabeTEMP += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Dehnungen.`;
+            ausgabeTEMP += erstspracheDeutsch
+               ? `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Dehnungen.`
+               : `Der Redefluss sei unterbrochen. Beim Sprechen würden sich Unflüssigkeiten in Form von Dehnungen zeigen.`;
             break;
          case "Blockaden":
-            ausgabeTEMP += `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Blockaden.`;
+            ausgabeTEMP += erstspracheDeutsch
+               ? `Der Redefluss war unterbrochen. Beim Sprechen zeigten sich Unflüssigkeiten in Form von Blockaden.`
+               : `Der Redefluss sei unterbrochen. Beim Sprechen würden sich Unflüssigkeiten in Form von Blockaden zeigen.`;
             break;
          case "[ keine Angabe ]":
             ausgabeTEMP += ``;
@@ -1315,13 +1392,19 @@ const App = () => {
    if (rp_L1) {
       switch (rp_L1) {
          case "Auslassungen / Verschmelzungen / Lautersetzungen und -veränderungen gehäuft":
-            ausgabeTEMP += `Der Redefluss war verändert. Beim Sprechen zeigten sich gehäuft Auslassungen und Verschmelzungen von Lauten und Silben, sowie Lautersetzungen und -veränderungen bei erhöhter und / oder irregulärer Artikulationsrate.`;
+            ausgabeTEMP += erstspracheDeutsch
+               ? `Der Redefluss war verändert. Beim Sprechen zeigten sich gehäuft Auslassungen und Verschmelzungen von Lauten und Silben, sowie Lautersetzungen und -veränderungen bei erhöhter und / oder irregulärer Artikulationsrate.`
+               : `Der Redefluss sei verändert. Beim Sprechen würden sich gehäuft Auslassungen und Verschmelzungen von Lauten und Silben, sowie Lautersetzungen und -veränderungen bei erhöhter und / oder irregulärer Artikulationsrate zeigen.`;
             break;
          case "Laut-, Silben-, Wort- und Satzteilwiederholungen":
-            ausgabeTEMP += `Der Redefluss war unterbrochen. Es traten Unflüssigkeiten in Form von Laut-, Silben-, Wort- und Satzteilwiederholungen auf.`;
+            ausgabeTEMP += erstspracheDeutsch
+               ? `Der Redefluss war unterbrochen. Es traten Unflüssigkeiten in Form von Laut-, Silben-, Wort- und Satzteilwiederholungen auf.`
+               : `Der Redefluss sei unterbrochen. Es würden Unflüssigkeiten in Form von Laut-, Silben-, Wort- und Satzteilwiederholungen auftreten.`;
             break;
          case "erhöhtes Sprechtempo":
-            ausgabeTEMP += `Der Redefluss war verändert. ${Sein_Ihr} Sprechtempo war erhöht und / oder irregulär.`;
+            ausgabeTEMP += erstspracheDeutsch
+               ? `Der Redefluss war verändert. ${Sein_Ihr} Sprechtempo war erhöht und / oder irregulär.`
+               : `Der Redefluss sei verändert. ${Sein_Ihr} Sprechtempo sei erhöht und / oder irregulär.`;
             break;
          case "[ keine Angabe ]":
             ausgabeTEMP += ``;
@@ -1792,7 +1875,11 @@ const App = () => {
    ausgabe += `\nMedienkonsum:`;
 
    // Medienkonsum: Dauer
-   const auswahlMedienkonsum = ["angemessen (< 1 Std. / Tag, Gesamtnutzungsdauer pro Tag s.u.)", "erhöht (> 1 Std. / Tag, Gesamtnutzungsdauer pro Tag s.u.)"];
+   const auswahlMedienkonsum = [
+      "angemessen (< 1 Std. / Tag, Gesamtnutzungsdauer pro Tag s.u.)",
+      "erhöht (> 1 Std. / Tag, Gesamtnutzungsdauer pro Tag s.u.)",
+      "[ keine Angabe ]"
+   ];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (medienkonsum) {
@@ -1802,6 +1889,9 @@ const App = () => {
             break;
          case "erhöht (> 1 Std. / Tag, Gesamtnutzungsdauer pro Tag s.u.)":
             ausgabe += `In Bezug auf ${sein_ihr} Alter war der Medienkonsum erhöht (Gesamtnutzungsdauer aller Medien pro Tag: ${MedienkonsumFreitext}).`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
             break;
       }
    }
@@ -1818,7 +1908,7 @@ const App = () => {
    if (mff) {
       switch (mff) {
          case "Nutzung":
-            ausgabeTEMP += `Fersehsendungen und -filme,`;
+            ausgabeTEMP += `Fernsehsendungen und -filme,`;
             break;
          case "[ keine Angabe ]":
             ausgabeTEMP += ``;
@@ -2002,7 +2092,7 @@ const App = () => {
    if (zielKomf) {
       switch (zielKomf) {
          case "ja":
-            ausgabe += `Verbesserung der kommunikativen Fähigkeiten (u.a. dialogischer / triangulärer Blickkontakt, TurnTaking, Imitation, Gestik),`;
+            ausgabe += `Verbesserung der kommunikativen Fähigkeiten (u.a. dialogischer / triangulärer Blickkontakt, turn taking, Imitation, Gestik),`;
             break;
          case "nicht Ziel":
             ausgabe += ``;
