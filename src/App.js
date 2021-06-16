@@ -628,20 +628,20 @@ const App = () => {
       }
    }
 
-   //Orale Erkundung
-   const auswahlxxxxxxx = ["verstärkt", "[ keine Angabe ]"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
+   // //Orale Erkundung
+   // const auswahlxxxxxxx = ["verstärkt", "[ keine Angabe ]"];
+   // ausgabe += ` `; // Leerzeichen hinzufügen
 
-   if (xxxxxxx) {
-      switch (xxxxxxx) {
-         case "verstärkt":
-            ausgabe += `${vorname} erkundete Gegenstände noch häufig oral.`;
-            break;
-         case "[ keine Angabe ]":
-            ausgabe += ``;
-            break;
-      }
-   }
+   // if (xxxxxxx) {
+   //    switch (xxxxxxx) {
+   //       case "verstärkt":
+   //          ausgabe += `${vorname} erkundete Gegenstände noch häufig oral.`;
+   //          break;
+   //       case "[ keine Angabe ]":
+   //          ausgabe += ``;
+   //          break;
+   //    }
+   // }
 
    // Speichelfluss
    const auswahlSpeichelfluss = ["vermehrter Speichelfluss", "[ keine Angabe ]"];
@@ -1145,8 +1145,8 @@ const App = () => {
 
    // L1 Syntax (Satzbau)
    const auswahlSS_L1 = [
-      "Satzbau korrekt (Verbzweitstellung und Verbendstellung)",
-      "Satzbau korrekt (Verbzweitstellung)",
+      "Satzbau korrekt (vollständig, Verbzweitstellung und Verbendstellung)",
+      "Satzbau korrekt (teilweise, Verbzweitstellung)",
       "Satzbau korrekt / unflexible Satzstrukturen",
       "Satzbau nicht korrekt (Verbendstellung)",
       "[ keine Angabe ]"
@@ -1228,9 +1228,9 @@ const App = () => {
    // L1 Morphologie (Wortbildung): Kasus (Akkusativ, Dativ)
    const auswahlMK_L1 = [
       "vollständig erworben",
-      "Akkusativ erworben / Dativ unsicher (nicht markiert)",
-      "Akkusativ unsicher",
-      "Dativ unsicher",
+      "Akkusativ erworben / Dativ unsicher (nicht markiert / nur wenn L1: deutsch)",
+      "Akkusativ unsicher (nur wenn L1: deutsch)",
+      "Dativ unsicher (nur wenn L1: deutsch)",
       "nicht erworben",
       "[ keine Angabe ]"
    ];
@@ -1241,7 +1241,7 @@ const App = () => {
          case "vollständig erworben":
             ausgabe += erstspracheDeutsch
                ? `${Er_Sie} war in der Lage, die Kasus Akkusativ und Dativ korrekt zu markieren.`
-               : `${Er_Sie} war in der Lage die Kasus korrekt zu markieren.`;
+               : `${Er_Sie} sei in der Lage die Kasus korrekt zu markieren.`;
             break;
          case "Akkusativ erworben / Dativ unsicher (nicht markiert / nur wenn L1: deutsch)":
             ausgabe += `${Er_Sie} hatte den Akkusativ bereits sicher erworben. Der Dativ wurde noch nicht (sicher) markiert.`;
@@ -1264,7 +1264,7 @@ const App = () => {
    }
 
    // L1 Morphologie (Wortbildung): Personalformen (Subjekt-Verb-Kongruenz, Verbflexion)
-   const auswahlMP_L1 = ["erworben (-st)", "nur Infinitivform", "unsicher", "[ keine Angabe ]"];
+   const auswahlMP_L1 = ["erworben (-st)", "nur Infinitivform (nur wenn L1: deutsch)", "unsicher", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (mp_L1) {
@@ -2461,7 +2461,7 @@ const App = () => {
                      value={WInfFreitext}
                      onChange={setWInfFreitext}
                      title={titelWInf + " (Freitext)"}
-                     placeholder="Weitere Informationen, Erwartungen / Fragen"
+                     placeholder="Infos, Erwartungen, Fragen, fam. Disposition, Hörf., erste Wörter, Kontakt zu Bekannten / Unbekannten"
                      width="w-10/12"
                   />
                )}
