@@ -34,6 +34,7 @@ const titelLUIVG = ++i + ".) Lokalisation und Identifikation von Geräuschen";
 const titelAMS = ++i + ".) Auditive Merkspanne";
 const titelOFT = ++i + ".) Orofazialer Tonus";
 const titelMundschluss = ++i + ".) Mundschluss";
+const titelOraleErkundung = ++i + ".) Orale Erkundung";
 const titelSpeichelfluss = ++i + ".) Speichelfluss";
 const titelPusten = ++i + ".) Pusten";
 const titelAnsaugen = ++i + ".) Ansaugen";
@@ -135,6 +136,7 @@ const App = () => {
    const [ams, setAMS] = useState(localStorage.getItem(titelAMS));
    const [oft, setOFT] = useState(localStorage.getItem(titelOFT));
    const [mundschluss, setMundschluss] = useState(localStorage.getItem(titelMundschluss));
+   const [oraleErkundung, setOraleErkundung] = useState(localStorage.getItem(titelOraleErkundung));
    const [speichelfluss, setSpeichelfluss] = useState(localStorage.getItem(titelSpeichelfluss));
    const [pusten, setPusten] = useState(localStorage.getItem(titelPusten));
    const [ansaugen, setAnsaugen] = useState(localStorage.getItem(titelAnsaugen));
@@ -271,6 +273,7 @@ const App = () => {
       setAMS(null);
       setOFT(null);
       setMundschluss(null);
+      setOraleErkundung(null);
       setSpeichelfluss(null);
       setPusten(null);
       setAnsaugen(null);
@@ -628,20 +631,20 @@ const App = () => {
       }
    }
 
-   // //Orale Erkundung
-   // const auswahlxxxxxxx = ["verstärkt", "[ keine Angabe ]"];
-   // ausgabe += ` `; // Leerzeichen hinzufügen
+   //Orale Erkundung
+   const auswahlOraleErkundung = ["verstärkt", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
 
-   // if (xxxxxxx) {
-   //    switch (xxxxxxx) {
-   //       case "verstärkt":
-   //          ausgabe += `${vorname} erkundete Gegenstände noch häufig oral.`;
-   //          break;
-   //       case "[ keine Angabe ]":
-   //          ausgabe += ``;
-   //          break;
-   //    }
-   // }
+   if (oraleErkundung) {
+      switch (oraleErkundung) {
+         case "verstärkt":
+            ausgabe += `${vorname} erkundete Gegenstände noch häufig oral.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
 
    // Speichelfluss
    const auswahlSpeichelfluss = ["vermehrter Speichelfluss", "[ keine Angabe ]"];
@@ -2288,6 +2291,7 @@ const App = () => {
             <Hauptblock text="Mundmotorik">
                <Radio value={oft} onChange={setOFT} title={titelOFT} auswahl={auswahlOFT} />
                <Radio value={mundschluss} onChange={setMundschluss} title={titelMundschluss} auswahl={auswahlMundschluss} />
+               <Radio value={oraleErkundung} onChange={setOraleErkundung} title={titelOraleErkundung} auswahl={auswahlOraleErkundung} />
                <Radio value={speichelfluss} onChange={setSpeichelfluss} title={titelSpeichelfluss} auswahl={auswahlSpeichelfluss} />
                <Radio value={pusten} onChange={setPusten} title={titelPusten} auswahl={auswahlPusten} />
                <Radio value={ansaugen} onChange={setAnsaugen} title={titelAnsaugen} auswahl={auswahlAnsaugen} />
