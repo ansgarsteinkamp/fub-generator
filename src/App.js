@@ -758,10 +758,10 @@ const App = () => {
    if (eutv) {
       switch (eutv) {
          case "unauffällig":
-            ausgabe += `${Sein_Ihr} Ess- und Trinkverhalten war unauffällig.`;
+            ausgabe += `${Sein_Ihr} Ess- und Trinkverhalten sei unauffällig.`;
             break;
          case "auffällig":
-            ausgabe += `${Sein_Ihr} Ess- und Trinkverhalten war auffällig.`;
+            ausgabe += `${Sein_Ihr} Ess- und Trinkverhalten sei auffällig.`;
             break;
       }
    }
