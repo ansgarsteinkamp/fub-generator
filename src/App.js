@@ -2458,10 +2458,11 @@ const App = () => {
                <Radio value={winf} onChange={setWInf} title={titelWInf} auswahl={auswahlWInf} />
                {winf === "Freitext eingeben..." && (
                   <InputFreitext
+                     type="textarea"
                      value={WInfFreitext}
                      onChange={setWInfFreitext}
                      title={titelWInf + " (Freitext)"}
-                     placeholder="Infos, Erwartungen, Fragen, fam. Disposition, Hörf., erste Wörter, Kontakt zu Bekannten / Unbekannten"
+                     placeholder="Weitere Informationen, Erwartungen / Fragen, familiäre Disposition, Hörf., erste Wörter, Kontakt zu Bekannten / Unbekannten"
                      width="w-10/12"
                   />
                )}
