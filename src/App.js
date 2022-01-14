@@ -566,7 +566,7 @@ const App = () => {
    if (luivg) {
       switch (luivg) {
          case "sicher":
-            ausgabe += `Die Lokalisation und Identifikation von Geräuschen gelang ${ihm_ihr} sicher.`;
+            ausgabe += `Die Lokalisation und Identifikation von Geräuschen gelangen ${ihm_ihr} sicher.`;
             break;
          case "nicht ausreichend zu beurteilen":
             ausgabe += `${Seine_Ihre} Fähigkeit zur Lokalisation und Identifikation von Geräuschen konnte noch nicht ausreichend beurteilt werden.`;
@@ -899,10 +899,10 @@ const App = () => {
    if (zug) {
       switch (zug) {
          case "unauffällig":
-            ausgabe += `${Sein_Ihr} Zahn- und Gebissstatus war unauffällig.`;
+            ausgabe += `${Sein_Ihr} Zahn- und Gebissstatus sei unauffällig.`;
             break;
          case "auffällig (+ Freitext)":
-            ausgabe += `${Sein_Ihr} Zahn- und Gebissstatus war auffällig. ${ZUGFreitext}`;
+            ausgabe += `${Sein_Ihr} Zahn- und Gebissstatus sei auffällig. ${ZUGFreitext}`;
             break;
       }
    }
@@ -1025,7 +1025,7 @@ const App = () => {
          case "kurze Anweisungen":
             ausgabe += erstspracheDeutsch
                ? `${Er_Sie} reagierte auf kurze Anweisungen. Ein Verständnis für komplexere Anweisungen war noch nicht zu beobachten.`
-               : `${Er_Sie} reagiere auf kurze Anweisungen. Ein Verständnis für komplexere Anweisungen sei noch nicht zu beobachten.`;
+               : `${Er_Sie} reagiere auf kurze Anweisungen.`;
             break;
          case "Schlüsselwörter":
             ausgabe += erstspracheDeutsch
@@ -1041,7 +1041,7 @@ const App = () => {
    }
 
    // L1 Rezeptiver Wortschatz: Frageformen
-   const auswahlRWF_L1 = ["W-Fragen", "Alternativfragen", "Ja- / Nein-Fragen", "[ keine Angabe ]"];
+   const auswahlRWF_L1 = ["W-Fragen", "Alternativfragen", "Ja- / Nein-Fragen", "kein Verständnis", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (rwf_L1) {
@@ -1052,12 +1052,17 @@ const App = () => {
          case "Alternativfragen":
             ausgabe += erstspracheDeutsch
                ? `Alternativfragen wurden von ${vorname} verstanden. Ein Verständnis von W-Fragen war allerdings noch nicht zu beobachten.`
-               : `Alternativfragen würden von ${vorname} verstanden werden. Ein Verständnis von W-Fragen sei allerdings noch nicht zu beobachten.`;
+               : `Alternativfragen würden von ${vorname} verstanden werden.`;
             break;
          case "Ja- / Nein-Fragen":
             ausgabe += erstspracheDeutsch
                ? `${vorname} antwortete auf Ja- / Nein-Fragen. Eine Reaktion auf weitere Frageformen zeigte ${er_sie} noch nicht.`
                : `${vorname} antworte auf Ja- / Nein-Fragen. Eine Reaktion auf weitere Frageformen zeige ${er_sie} noch nicht.`;
+            break;
+         case "kein Verständnis":
+            ausgabe += erstspracheDeutsch
+               ? `Eine Reaktion auf geschlossene und / oder offene Frageformen zeigte ${er_sie} noch nicht.`
+               : `Eine Reaktion auf geschlossene und / oder offene Frageformen zeige ${er_sie} noch nicht.`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -1089,7 +1094,7 @@ const App = () => {
       "einzelne Wörter",
       "keine 50 Wörter / keine Zweiwortkombinationen",
       "Lautmalereien und einzelne Wörter",
-      "Laute / Lautmalereien",
+      "Laute",
       "eigene Sprache"
    ];
    ausgabe += ` `; // Leerzeichen hinzufügen
@@ -1113,8 +1118,8 @@ const App = () => {
          case "Lautmalereien und einzelne Wörter":
             ausgabe += erstspracheDeutsch ? `${Er_Sie} äußerte Lautmalereien und einzelne Wörter.` : `${Er_Sie} äußere Lautmalereien und einzelne Wörter.`;
             break;
-         case "Laute / Lautmalereien":
-            ausgabe += erstspracheDeutsch ? `${Er_Sie} äußerte Laute / Lautmalereien.` : `${Er_Sie} äußere Laute / Lautmalereien.`;
+         case "Laute":
+            ausgabe += erstspracheDeutsch ? `${Er_Sie} äußerte einzelne Laute.` : `${Er_Sie} äußere einzelne Laute.`;
             break;
          case "eigene Sprache":
             ausgabe += erstspracheDeutsch
@@ -1125,20 +1130,20 @@ const App = () => {
    }
 
    // L1 Expressiver Wortschatz: Differenziertheit / Altersnorm
-   const auswahlEWDA_L1 = ["altersentsprechend / ausreichend differenziert", "nicht altersentsprechend / gering / wenig differenziert"];
+   const auswahlEWDA_L1 = ["ausreichend differenziert / altersentsprechend", "gering / nicht altersentsprechend"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (ewda_L1) {
       switch (ewda_L1) {
-         case "altersentsprechend / ausreichend differenziert":
+         case "ausreichend differenziert / altersentsprechend":
             ausgabe += erstspracheDeutsch
-               ? `Der expressive Wortschatz von ${vorname} war altersentsprechend und ausreichend differenziert.`
-               : `Der expressive Wortschatz von ${vorname} sei altersentsprechend und ausreichend differenziert.`;
+               ? `Der expressive Wortschatz von ${vorname} war ausreichend differenziert und altersentsprechend.`
+               : `Der expressive Wortschatz von ${vorname} sei ausreichend differenziert und altersentsprechend.`;
             break;
-         case "nicht altersentsprechend / gering / wenig differenziert":
+         case "gering / nicht altersentsprechend":
             ausgabe += erstspracheDeutsch
-               ? `Der expressive Wortschatz von ${vorname} war noch nicht altersentsprechend. Er war noch gering und wenig differenziert.`
-               : `Der expressive Wortschatz von ${vorname} sei noch nicht altersentsprechend. Er sei noch gering und wenig differenziert.`;
+               ? `Der expressive Wortschatz von ${vorname} war noch gering und nicht altersentsprechend.`
+               : `Der expressive Wortschatz von ${vorname} sei noch gering und nicht altersentsprechend.`;
             break;
       }
    }
@@ -1148,35 +1153,37 @@ const App = () => {
 
    // L1 Syntax (Satzbau)
    const auswahlSS_L1 = [
-      "Satzbau korrekt (vollständig, Verbzweitstellung und Verbendstellung)",
-      "Satzbau korrekt (teilweise, Verbzweitstellung)",
-      "Satzbau korrekt / unflexible Satzstrukturen",
-      "Satzbau nicht korrekt (Verbendstellung)",
+      "Satzbau korrekt",
+      "Satzbau und Wortbildung korrekt (insbesondere, wenn L1: nicht deutsch",
+      "Satzbau nicht korrekt",
+      "Satzbau und Wortbildung nicht korrekt (insbesondere, wenn L1: nicht deutsch",
+      "keine Wortkombinationen",
       "[ keine Angabe ]"
    ];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (ss_L1) {
       switch (ss_L1) {
-         case "Satzbau korrekt (vollständig, Verbzweitstellung und Verbendstellung)":
+         case "Satzbau korrekt":
             ausgabe += erstspracheDeutsch
                ? `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz, sowie die Verbendstellung im Nebensatz wurden von ${ihm_ihr} beachtet.`
                : `Der Satzbau sei korrekt.`;
             break;
-         case "Satzbau korrekt (teilweise, Verbzweitstellung)":
-            ausgabe += erstspracheDeutsch
-               ? `Der Satzbau war korrekt. Die Verbzweitstellung im Hauptsatz wurde von ${ihm_ihr} beachtet.`
-               : `Der Satzbau sei überwiegend korrekt.`;
+         case "Satzbau und Wortbildung korrekt (insbesondere, wenn L1: nicht deutsch":
+            ausgabe += erstspracheDeutsch ? `Der Satzbau und die Wortbildung waren korrekt.` : `Der Satzbau und die Wortbildung seien korrekt.`;
             break;
-         case "Satzbau korrekt / unflexible Satzstrukturen":
-            ausgabe += erstspracheDeutsch
-               ? `${vorname} beachtete die Verbzweitstellung im Hauptsatz, allerdings waren die Satzstrukturen insgesamt noch wenig flexibel.`
-               : `Der Satzbau sei korrekt, aber die Satzstrukturen seien insgesamt noch wenig flexibel.`;
-            break;
-         case "Satzbau nicht korrekt (Verbendstellung)":
+         case "Satzbau nicht korrekt":
             ausgabe += erstspracheDeutsch
                ? `Der Satzbau war nicht korrekt. ${vorname} verwendete noch die Verbendstellung im Hauptsatz.`
                : `Der Satzbau sei noch nicht korrekt.`;
+            break;
+         case "Satzbau und Wortbildung nicht korrekt (insbesondere, wenn L1: nicht deutsch":
+            ausgabe += erstspracheDeutsch
+               ? `Der Satzbau und die Wortbildung waren noch nicht korrekt.`
+               : `Der Satzbau und die Wortbildung seien noch nicht korrekt.`;
+            break;
+         case "keine Wortkombinationen":
+            ausgabe += erstspracheDeutsch ? `${Er_Sie} verwendete noch keine Wortkombinationen.` : `${Er_Sie} verwende noch keine Wortkombinationen.`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -1505,7 +1512,7 @@ const App = () => {
             ausgabe += `${Er_Sie} zeigte ein sicheres Verständnis für komplexere Anweisungen.`;
             break;
          case "kurze Anweisungen":
-            ausgabe += `${Er_Sie} reagierte auf kurze Anweisungen. Ein Verständnis für komplexere Anweisungen war noch nicht zu beobachten.`;
+            ausgabe += `${Er_Sie} reagierte auf kurze Anweisungen.`;
             break;
          case "Schlüsselwörter":
             ausgabe += `${Er_Sie} zeigte ein Verständnis für Schlüsselwörter (d.h. bekannter Wörter in einem Satz).`;
@@ -1517,7 +1524,7 @@ const App = () => {
    }
 
    // L2 Rezeptiver Wortschatz: Frageformen
-   const auswahlRWF_L2 = ["W-Fragen", "Alternativfragen", "Ja- / Nein-Fragen", "[ keine Angabe ]"];
+   const auswahlRWF_L2 = ["W-Fragen", "Alternativfragen", "Ja- / Nein-Fragen", "kein Verständnis", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (rwf_L2) {
@@ -1529,7 +1536,10 @@ const App = () => {
             ausgabe += `Alternativfragen wurden von ${vorname} verstanden. Ein Verständnis von W-Fragen war allerdings noch nicht zu beobachten.`;
             break;
          case "Ja- / Nein-Fragen":
-            ausgabe += `${vorname} antwortete auf Ja- / Nein-Fragen. Eine Reaktion auf weitere Frageformen zeigte ${er_sie} noch nicht.`;
+            ausgabe += `${vorname} antwortete auf Ja- / Nein-Fragen.`;
+            break;
+         case "kein Verständnis":
+            ausgabe += `Eine Reaktion auf geschlossene und / oder offene Frageformen zeigte ${er_sie} noch nicht.`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -1559,7 +1569,7 @@ const App = () => {
       "einzelne Wörter",
       "keine 50 Wörter / keine Zweiwortkombinationen",
       "Lautmalereien und einzelne Wörter",
-      "Laute / Lautmalereien",
+      "Laute",
       "eigene Sprache"
    ];
    ausgabe += ` `; // Leerzeichen hinzufügen
@@ -1581,8 +1591,8 @@ const App = () => {
          case "Lautmalereien und einzelne Wörter":
             ausgabe += `${Er_Sie} äußerte Lautmalereien und einzelne Wörter.`;
             break;
-         case "Laute / Lautmalereien":
-            ausgabe += `${Er_Sie} äußerte Laute / Lautmalereien.`;
+         case "Laute":
+            ausgabe += `${Er_Sie} äußerte einzelne Laute.`;
             break;
          case "eigene Sprache":
             ausgabe += `${vorname} verwendete ${seine_ihre} "eigene Sprache", die für Außenstehende nicht zu verstehen war.`;
@@ -1591,16 +1601,20 @@ const App = () => {
    }
 
    // L2 Expressiver Wortschatz: Differenziertheit / Altersnorm
-   const auswahlEWDA_L2 = ["altersentsprechend / ausreichend differenziert", "nicht altersentsprechend / gering / wenig differenziert"];
+   const auswahlEWDA_L2 = ["ausreichend differenziert / altersentsprechend", "gering / nicht altersentsprechend"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (ewda_L2) {
       switch (ewda_L2) {
-         case "altersentsprechend / ausreichend differenziert":
-            ausgabe += `Der expressive Wortschatz von ${vorname} war altersentsprechend und ausreichend differenziert.`;
+         case "ausreichend differenziert / altersentsprechend":
+            ausgabe += erstspracheDeutsch
+               ? `Der expressive Wortschatz von ${vorname} war ausreichend differenziert und altersentsprechend.`
+               : `Der expressive Wortschatz von ${vorname} war ausreichend differenziert und altersentsprechend.`;
             break;
-         case "nicht altersentsprechend / gering / wenig differenziert":
-            ausgabe += `Der expressive Wortschatz von ${vorname} war nicht altersentsprechend. Er war noch gering und wenig differenziert.`;
+         case "gering / nicht altersentsprechend":
+            ausgabe += erstspracheDeutsch
+               ? `Der expressive Wortschatz von ${vorname} war noch gering und nicht altersentsprechend.`
+               : `Der expressive Wortschatz von ${vorname} war noch gering und nicht altersentsprechend.`;
             break;
       }
    }
@@ -1717,7 +1731,7 @@ const App = () => {
    }
 
    // L2 Morphologie (Wortbildung): Personalformen (Subjekt-Verb-Kongruenz, Verbflexion)
-   const auswahlMP_L2 = ["erworben (-st)", "nur Infinitivform", "unsicher", "[ keine Angabe ]"];
+   const auswahlMP_L2 = ["erworben (-st)", "nur Infinitivform", "unsicher (V2 im Ansatz)", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (mp_L2) {
@@ -1728,7 +1742,7 @@ const App = () => {
          case "nur Infinitivform":
             ausgabe += `${vorname} verwendete noch aussschließlich die Infinitivform des Verbs.`;
             break;
-         case "unsicher":
+         case "unsicher (V2 im Ansatz)":
             ausgabe += `Im Ansatz war zu beobachten, dass ${vorname} die Subjekt-Verb-Kongruenz beachtete. ${Seine_Ihre} diesbezüglichen morphologischen Fähigkeiten waren allerdings noch sehr unsicher.`;
             break;
          case "[ keine Angabe ]":
@@ -1854,7 +1868,7 @@ const App = () => {
    }
 
    // Stimmgebung
-   const auswahlStimmgebung = ["hoch", "tief", "verhaucht / heiser", "[ keine Angabe ]"];
+   const auswahlStimmgebung = ["hoch", "tief", "verhaucht / heiser", "laut", "leise", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (stimmgebung) {
@@ -1867,6 +1881,12 @@ const App = () => {
             break;
          case "verhaucht / heiser":
             ausgabe += `\nStimmgebung: Die Stimmgebung von ${vorname} war auffällig, da die Stimme verhaucht / heiser klang.`;
+            break;
+         case "laut":
+            ausgabe += `\nStimmgebung: ${vorname} sprach sehr laut.`;
+            break;
+         case "leise":
+            ausgabe += `\nStimmgebung: ${vorname} sprach sehr leise.`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -2072,14 +2092,14 @@ const App = () => {
       }
    }
 
-   // Logopädische Begleitung
+   // Logopädische Begleitung ("watchful waiting")
    const auswahlLB = ["ja", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (lb) {
       switch (lb) {
          case "ja":
-            ausgabe += `Eine logopädische Begleitung ${seiner_ihrer} Sprachentwicklung in größeren, zeitlichen Abständen mit wenigen Therapieeinheiten erscheint ratsam ("watchful waiting").`;
+            ausgabe += `Eine logopädische Begleitung ${seiner_ihrer} Sprachentwicklung in größeren, zeitlichen Abständen mit Beratung der Eltern, im Hinblick auf das sprachförderliche Verhalten, erscheint ratsam ("watchful waiting").`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
