@@ -32,6 +32,15 @@ const titelRAA = ++i + ".) Reaktion auf Ansprache";
 const titelRAG = ++i + ".) Reaktion auf Geräusche";
 const titelLUIVG = ++i + ".) Lokalisation und Identifikation von Geräuschen";
 const titelAMS = ++i + ".) Auditive Merkspanne";
+const titelSUV = ++i + ".) Stillen und Flaschennahrung";
+const titelSchnuller = ++i + ".) Schnuller";
+const titelEUTV = ++i + ".) Ess- und Trinkverhalten";
+const titelTMS = ++i + ".) Trinkflasche mit Sauger";
+const titelKDK = ++i + ".) Konsistenzen der Kost";
+// const titelOraleHabits = ++i + ".) Orale Habits";
+const titelDaumenlutschen = ++i + ".) Daumenlutschen";
+const titelFNK = ++i + ".) Fingernägelkauen";
+const titelZUG = ++i + ".) Zahn- und Gebissstatus";
 const titelOFT = ++i + ".) Orofazialer Tonus";
 const titelMundschluss = ++i + ".) Mundschluss";
 const titelOraleErkundung = ++i + ".) Orale Erkundung";
@@ -41,16 +50,8 @@ const titelAnsaugen = ++i + ".) Ansaugen";
 const titelZungenruhelage = ++i + ".) Zungenruhelage";
 const titelZBUK = ++i + ".) Zungenbeweglichkeit und -koordination";
 const titelLBUK = ++i + ".) Lippenbeweglichkeit und -koordination";
-const titelEUTV = ++i + ".) Ess- und Trinkverhalten";
-const titelKDK = ++i + ".) Konsistenzen der Kost";
-const titelOraleHabits = ++i + ".) Orale Habits";
-const titelSchnuller = ++i + ".) Schnuller";
-const titelTMS = ++i + ".) Trinkflasche mit Sauger";
-const titelDaumenlutschen = ++i + ".) Daumenlutschen";
-const titelFNK = ++i + ".) Fingernägelkauen";
-const titelSUV = ++i + ".) Stillen und Flaschennahrung";
-const titelZUG = ++i + ".) Zahn- und Gebissstatus";
 const titelEoM = ++i + ".) Ein- oder mehrsprachige Erziehung";
+const titelSasde_L1 = ++i + ".) Erstsprache aus Sicht der Eltern";
 const titelAV_L1 = ++i + ".) L1 Aussprache: Verständlichkeit";
 const titelAAA_L1 = ++i + ".) L1 Aussprache: Art der Abweichung";
 const titelAAN_L1 = ++i + ".) L1 Aussprache: Altersnorm";
@@ -145,7 +146,7 @@ const App = () => {
    const [lbuk, setLBUK] = useState(localStorage.getItem(titelLBUK));
    const [eutv, setEUTV] = useState(localStorage.getItem(titelEUTV));
    const [kdk, setKDK] = useState(localStorage.getItem(titelKDK));
-   const [oraleHabits, setOraleHabits] = useState(localStorage.getItem(titelOraleHabits));
+   // const [oraleHabits, setOraleHabits] = useState(localStorage.getItem(titelOraleHabits));
    const [schnuller, setSchnuller] = useState(localStorage.getItem(titelSchnuller));
    const [tms, setTMS] = useState(localStorage.getItem(titelTMS));
    const [daumenlutschen, setDaumenlutschen] = useState(localStorage.getItem(titelDaumenlutschen));
@@ -153,6 +154,7 @@ const App = () => {
    const [suv, setSUV] = useState(localStorage.getItem(titelSUV));
    const [zug, setZUG] = useState(localStorage.getItem(titelZUG));
    const [eom, setEoM] = useState(localStorage.getItem(titelEoM));
+   const [sasde_L1, setSasde_L1] = useState(localStorage.getItem(titelSasde_L1));
    const [av_L1, setAV_L1] = useState(localStorage.getItem(titelAV_L1));
    const [aaa_L1, setAAA_L1] = useState(localStorage.getItem(titelAAA_L1));
    const [aan_L1, setAAN_L1] = useState(localStorage.getItem(titelAAN_L1));
@@ -229,6 +231,7 @@ const App = () => {
    const [schnullerFreitext, setSchnullerFreitext] = useState(localStorage.getItem(titelSchnuller + " (Freitext)") || "");
    const [SUVFreitext, setSUVFreitext] = useState(localStorage.getItem(titelSUV + " (Freitext)") || "");
    const [ZUGFreitext, setZUGFreitext] = useState(localStorage.getItem(titelZUG + " (Freitext)") || "");
+   const [sasde_L1_Freitext, setSasde_L1_Freitext] = useState(localStorage.getItem(titelSasde_L1 + " (Freitext)") || "");
    const [EoM_L1_Freitext, setEoM_L1_Freitext] = useState(localStorage.getItem(titelEoM + " (Freitext L1)") || "");
    const [EoM_L2_Freitext, setEoM_L2_Freitext] = useState(localStorage.getItem(titelEoM + " (Freitext L2)") || "");
    const [AAA_L1_Freitext, setAAA_L1_Freitext] = useState(localStorage.getItem(titelAAA_L1 + " (Freitext)") || "");
@@ -282,7 +285,7 @@ const App = () => {
       setLBUK(null);
       setEUTV(null);
       setKDK(null);
-      setOraleHabits(null);
+      // setOraleHabits(null);
       setSchnuller(null);
       setTMS(null);
       setDaumenlutschen(null);
@@ -601,9 +604,165 @@ const App = () => {
    // Überschrift hinzufügen
    ausgabe += `\nMundmotorik:`;
 
+   // Stillen und Flaschennahrung
+   const auswahlSUV = ["Stillen bis zum (s.u.)", "Flaschennahrung bis zum (s.u.)", "Stillen bis zum (s.u.), dann Flaschennahrung", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (suv) {
+      switch (suv) {
+         case "Stillen bis zum (s.u.)":
+            ausgabe += `${vorname} sei bis zum ${SUVFreitext} gestillt worden.`;
+            break;
+         case "Flaschennahrung bis zum (s.u.)":
+            ausgabe += `${vorname} habe bis zum ${SUVFreitext} Flaschennahrung erhalten.`;
+            break;
+         case "Stillen bis zum (s.u.), dann Flaschennahrung":
+            ausgabe += `${vorname} sei erst bis zum ${SUVFreitext} gestillt worden und habe danach Flaschennahrung erhalten.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Schnuller
+   const auswahlSchnuller = ["noch nie", "bis heute", "bis zum...", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (schnuller) {
+      switch (schnuller) {
+         case "noch nie":
+            ausgabe += `${Er_Sie} habe noch nie einen Schnuller erhalten.`;
+            break;
+         case "bis heute":
+            ausgabe += `${Er_Sie} erhalte noch einen Schnuller.`;
+            break;
+         case "bis zum...":
+            ausgabe += `Bis zum ${schnullerFreitext} habe ${er_sie} einen Schnuller erhalten.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Ess- und Trinkverhalten
+   const auswahlEUTV = ["unauffällig", "auffällig"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (eutv) {
+      switch (eutv) {
+         case "unauffällig":
+            ausgabe += `${Sein_Ihr} Ess- und Trinkverhalten sei unauffällig.`;
+            break;
+         case "auffällig":
+            ausgabe += `${Sein_Ihr} Ess- und Trinkverhalten sei auffällig.`;
+            break;
+      }
+   }
+
+   // Trinkflasche mit Sauger
+   const auswahlTMS = ["trinkt noch aus einer", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (tms) {
+      switch (tms) {
+         case "trinkt noch aus einer":
+            ausgabe += `${Er_Sie} trinke noch aus einer Trinkflasche mit Sauger.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Konsistenzen der Kost
+   const auswahlKDK = ["alle Konsistenzen", "v.a. weiche/breiige Kost", "v.a. harte Kost", "Freitext eingeben..."];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (kdk) {
+      switch (kdk) {
+         case "alle Konsistenzen":
+            ausgabe += `${vorname} esse alle Konsistenzen (harte und weiche Kost).`;
+            break;
+         case "v.a. weiche/breiige Kost":
+            ausgabe += `${vorname} bevorzuge weiche Kost.`;
+            break;
+         case "v.a. harte Kost":
+            ausgabe += `${vorname} bevorzuge harte Kost.`;
+            break;
+         case "Freitext eingeben...":
+            ausgabe += `${kdkFreitext}`;
+            break;
+      }
+   }
+
+   // Orale Habits
+   // const auswahlOraleHabits = ["nicht vorhanden", "vorhanden"];
+   // ausgabe += ` `; // Leerzeichen hinzufügen
+
+   // if (oraleHabits) {
+   //    switch (oraleHabits) {
+   //       case "nicht vorhanden":
+   //          ausgabe += `Orale Habits seien nicht vorhanden.`;
+   //          break;
+   //       case "vorhanden":
+   //          ausgabe += `Orale Habits seien vorhanden.`;
+   //          break;
+   //       case "[ keine Angabe ]":
+   //          ausgabe += ``;
+   //          break;
+   //    }
+   // }
+
+   // Daumenlutschen
+   const auswahlDaumenlutschen = ["wird beobachtet", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (daumenlutschen) {
+      switch (daumenlutschen) {
+         case "wird beobachtet":
+            ausgabe += `Es werde Daumenlutschen beobachtet.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Fingernägelkauen
+   const auswahlFNK = ["wird beobachtet", "[ keine Angabe ]"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (fnk) {
+      switch (fnk) {
+         case "wird beobachtet":
+            ausgabe += `Es werde Fingernägelkauen beobachtet.`;
+            break;
+         case "[ keine Angabe ]":
+            ausgabe += ``;
+            break;
+      }
+   }
+
+   // Zahn- und Gebissstatus
+   const auswahlZUG = ["unauffällig", "auffällig (+ Freitext)"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (zug) {
+      switch (zug) {
+         case "unauffällig":
+            ausgabe += `${Sein_Ihr} Zahn- und Gebissstatus sei unauffällig.`;
+            break;
+         case "auffällig (+ Freitext)":
+            ausgabe += `${Sein_Ihr} Zahn- und Gebissstatus sei auffällig. ${ZUGFreitext}`;
+            break;
+      }
+   }
+
    // Orofazialer Tonus
    const auswahlOFT = ["reguliert", "nicht ausreichend reguliert"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
+   ausgabe += "\n"; // Zeilenumbruch hinzufügen
 
    if (oft) {
       switch (oft) {
@@ -631,7 +790,7 @@ const App = () => {
       }
    }
 
-   //Orale Erkundung
+   // Orale Erkundung
    const auswahlOraleErkundung = ["verstärkt", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
@@ -751,162 +910,6 @@ const App = () => {
       }
    }
 
-   // Ess- und Trinkverhalten
-   const auswahlEUTV = ["unauffällig", "auffällig"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
-
-   if (eutv) {
-      switch (eutv) {
-         case "unauffällig":
-            ausgabe += `${Sein_Ihr} Ess- und Trinkverhalten sei unauffällig.`;
-            break;
-         case "auffällig":
-            ausgabe += `${Sein_Ihr} Ess- und Trinkverhalten sei auffällig.`;
-            break;
-      }
-   }
-
-   // Konsistenzen der Kost
-   const auswahlKDK = ["alle Konsistenzen", "v.a. weiche/breiige Kost", "v.a. harte Kost", "Freitext eingeben..."];
-   ausgabe += ` `; // Leerzeichen hinzufügen
-
-   if (kdk) {
-      switch (kdk) {
-         case "alle Konsistenzen":
-            ausgabe += `${vorname} esse alle Konsistenzen (harte und weiche Kost).`;
-            break;
-         case "v.a. weiche/breiige Kost":
-            ausgabe += `${vorname} bevorzuge weiche Kost.`;
-            break;
-         case "v.a. harte Kost":
-            ausgabe += `${vorname} bevorzuge harte Kost.`;
-            break;
-         case "Freitext eingeben...":
-            ausgabe += `${kdkFreitext}`;
-            break;
-      }
-   }
-
-   // Orale Habits
-   const auswahlOraleHabits = ["nicht vorhanden", "vorhanden"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
-
-   if (oraleHabits) {
-      switch (oraleHabits) {
-         case "nicht vorhanden":
-            ausgabe += `Orale Habits seien nicht vorhanden.`;
-            break;
-         case "vorhanden":
-            ausgabe += `Orale Habits seien vorhanden.`;
-            break;
-         case "[ keine Angabe ]":
-            ausgabe += ``;
-            break;
-      }
-   }
-
-   // Schnuller
-   const auswahlSchnuller = ["noch nie", "bis heute", "bis zum...", "[ keine Angabe ]"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
-
-   if (schnuller) {
-      switch (schnuller) {
-         case "noch nie":
-            ausgabe += `${Er_Sie} habe noch nie einen Schnuller erhalten.`;
-            break;
-         case "bis heute":
-            ausgabe += `${Er_Sie} erhalte noch einen Schnuller.`;
-            break;
-         case "bis zum...":
-            ausgabe += `Bis zum ${schnullerFreitext} habe ${er_sie} einen Schnuller erhalten.`;
-            break;
-         case "[ keine Angabe ]":
-            ausgabe += ``;
-            break;
-      }
-   }
-
-   // Trinkflasche mit Sauger
-   const auswahlTMS = ["trinkt noch aus einer", "[ keine Angabe ]"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
-
-   if (tms) {
-      switch (tms) {
-         case "trinkt noch aus einer":
-            ausgabe += `${Er_Sie} trinke noch aus einer Trinkflasche mit Sauger.`;
-            break;
-         case "[ keine Angabe ]":
-            ausgabe += ``;
-            break;
-      }
-   }
-
-   // Daumenlutschen
-   const auswahlDaumenlutschen = ["wird beobachtet", "[ keine Angabe ]"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
-
-   if (daumenlutschen) {
-      switch (daumenlutschen) {
-         case "wird beobachtet":
-            ausgabe += `Es werde Daumenlutschen beobachtet.`;
-            break;
-         case "[ keine Angabe ]":
-            ausgabe += ``;
-            break;
-      }
-   }
-
-   // Fingernägelkauen
-   const auswahlFNK = ["wird beobachtet", "[ keine Angabe ]"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
-
-   if (fnk) {
-      switch (fnk) {
-         case "wird beobachtet":
-            ausgabe += `Es werde Fingernägelkauen beobachtet.`;
-            break;
-         case "[ keine Angabe ]":
-            ausgabe += ``;
-            break;
-      }
-   }
-
-   // Stillen und Flaschennahrung
-   const auswahlSUV = ["Stillen bis zum (s.u.)", "Flaschennahrung bis zum (s.u.)", "Stillen bis zum (s.u.), dann Flaschennahrung", "[ keine Angabe ]"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
-
-   if (suv) {
-      switch (suv) {
-         case "Stillen bis zum (s.u.)":
-            ausgabe += `${vorname} sei bis zum ${SUVFreitext} gestillt worden.`;
-            break;
-         case "Flaschennahrung bis zum (s.u.)":
-            ausgabe += `${vorname} habe bis zum ${SUVFreitext} Flaschennahrung erhalten.`;
-            break;
-         case "Stillen bis zum (s.u.), dann Flaschennahrung":
-            ausgabe += `${vorname} sei erst bis zum ${SUVFreitext} gestillt worden und habe danach Flaschennahrung erhalten.`;
-            break;
-         case "[ keine Angabe ]":
-            ausgabe += ``;
-            break;
-      }
-   }
-
-   // Zahn- und Gebissstatus
-   const auswahlZUG = ["unauffällig", "auffällig (+ Freitext)"];
-   ausgabe += ` `; // Leerzeichen hinzufügen
-
-   if (zug) {
-      switch (zug) {
-         case "unauffällig":
-            ausgabe += `${Sein_Ihr} Zahn- und Gebissstatus sei unauffällig.`;
-            break;
-         case "auffällig (+ Freitext)":
-            ausgabe += `${Sein_Ihr} Zahn- und Gebissstatus sei auffällig. ${ZUGFreitext}`;
-            break;
-      }
-   }
-
    // Überschrift hinzufügen
    ausgabe += `\nSprachen:`;
 
@@ -936,8 +939,25 @@ const App = () => {
       ausgabe += `\nSprachkompetenzen in der Erstsprache (${EoM_L1_Freitext})`;
    }
 
+   // Aussprache: Art der Abweichung
+   const auswahlSasde_L1 = ["unauffällig", "auffällig"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (sasde_L1 && mehrsprachig) {
+      switch (sasde_L1) {
+         case "unauffällig":
+            ausgabe += "Die Sprachkompetenzen in der Erstsprache seien unauffällig.";
+            break;
+         case "auffällig":
+            ausgabe += "Die Sprachkompetenzen in der Erstsprache seien auffällig (betroffene Bereiche: " + sasde_L1_Freitext + ").";
+            break;
+      }
+   }
+
    // Überschrift hinzufügen
-   ausgabe += `\nAussprache:`;
+   if (!mehrsprachig) {
+      ausgabe += `\nAussprache:`;
+   }
 
    // Aussprache: Verständlichkeit
    const auswahlAV_L1 = ["deutlich", "undeutlich"];
@@ -958,7 +978,7 @@ const App = () => {
    const auswahlAAA_L1 = ["Lautersetzungen / -auslassungen (phonologisch)", "Lautveränderungen (phonetisch)"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
-   if (aaa_L1) {
+   if (aaa_L1 && !mehrsprachig) {
       switch (aaa_L1) {
          case "Lautersetzungen / -auslassungen (phonologisch)":
             ausgabe += erstspracheDeutsch
@@ -1009,7 +1029,9 @@ const App = () => {
    }
 
    // Überschrift hinzufügen
-   ausgabe += `\nRezeptiver und expressiver Wortschatz:`;
+   if (!mehrsprachig) {
+      ausgabe += `\nRezeptiver und expressiver Wortschatz:`;
+   }
 
    // Rezeptiver Wortschatz: Komplexität der Anweisungen
    const auswahlRWKA_L1 = ["komplexere Anweisungen", "kurze Anweisungen", "Schlüsselwörter", "kein Sprachverständnis"];
@@ -1149,7 +1171,9 @@ const App = () => {
    }
 
    // Überschrift hinzufügen
-   ausgabe += `\nSatzbau und Wortbildung:`;
+   if (!mehrsprachig) {
+      ausgabe += `\nSatzbau und Wortbildung:`;
+   }
 
    // L1 Syntax (Satzbau)
    const auswahlSS_L1 = [
@@ -2279,8 +2303,8 @@ const App = () => {
    // ###
 
    return (
-      <div className="h-screen grid md:grid-cols-2 gap-3 md:gap-5 p-4 md:p-6 max-w-screen-2xl mx-auto">
-         <div className="h-full overflow-auto bg-white shadow-lg rounded-md p-3 border border-gray-300">
+      <div className="grid h-screen gap-3 p-4 mx-auto md:grid-cols-2 md:gap-5 md:p-6 max-w-screen-2xl">
+         <div className="h-full p-3 overflow-auto bg-white border border-gray-300 rounded-md shadow-lg">
             <Hauptblock text="Allgemeines">
                <Input value={vorname} onChange={setVorname} title={titelVorname} />
                <Radio value={geschlecht} onChange={setGeschlecht} title={titelGeschlecht} auswahl={auswahlGeschlecht} />
@@ -2308,18 +2332,19 @@ const App = () => {
                <Radio value={luivg} onChange={setLUIVG} title={titelLUIVG} auswahl={auswahlLUIVG} />
                <Radio value={ams} onChange={setAMS} title={titelAMS} auswahl={auswahlAMS} />
             </Hauptblock>
-            <Hauptblock text="Mundmotorik">
-               <Radio value={oft} onChange={setOFT} title={titelOFT} auswahl={auswahlOFT} />
-               <Radio value={mundschluss} onChange={setMundschluss} title={titelMundschluss} auswahl={auswahlMundschluss} />
-               <Radio value={oraleErkundung} onChange={setOraleErkundung} title={titelOraleErkundung} auswahl={auswahlOraleErkundung} />
-               <Radio value={speichelfluss} onChange={setSpeichelfluss} title={titelSpeichelfluss} auswahl={auswahlSpeichelfluss} />
-               <Radio value={pusten} onChange={setPusten} title={titelPusten} auswahl={auswahlPusten} />
-               <Radio value={ansaugen} onChange={setAnsaugen} title={titelAnsaugen} auswahl={auswahlAnsaugen} />
-               <Radio value={zungenruhelage} onChange={setZungenruhelage} title={titelZungenruhelage} auswahl={auswahlZungenruhelage} />
-               <Radio value={zubk} onChange={setZBUK} title={titelZBUK} auswahl={auswahlZBUK} />
-               <Radio value={lbuk} onChange={setLBUK} title={titelLBUK} auswahl={auswahlLBUK} />
-            </Hauptblock>
-            <Hauptblock text="Essen und Trinken">
+            <Hauptblock text="Mundmotorik aus Sicht der Eltern">
+               <Radio value={suv} onChange={setSUV} title={titelSUV} auswahl={auswahlSUV} />
+               <InputFreitext value={SUVFreitext} onChange={setSUVFreitext} title={titelSUV + " (Freitext)"} placeholder="Beispiel: zehnten Monat" />
+               <Radio value={schnuller} onChange={setSchnuller} title={titelSchnuller} auswahl={auswahlSchnuller} />
+               {schnuller === "bis zum..." && (
+                  <InputFreitext
+                     value={schnullerFreitext}
+                     onChange={setSchnullerFreitext}
+                     title={titelSchnuller + " (Freitext)"}
+                     placeholder="Beispiel: zehnten Monat"
+                  />
+               )}
+               <Radio value={tms} onChange={setTMS} title={titelTMS} auswahl={auswahlTMS} />
                <Radio value={eutv} onChange={setEUTV} title={titelEUTV} auswahl={auswahlEUTV} />
                <Radio value={kdk} onChange={setKDK} title={titelKDK} auswahl={auswahlKDK} />
                {kdk === "Freitext eingeben..." && (
@@ -2331,23 +2356,9 @@ const App = () => {
                      width="w-10/12"
                   />
                )}
-            </Hauptblock>
-            <Hauptblock text="Orale Habits">
-               <Radio value={oraleHabits} onChange={setOraleHabits} title={titelOraleHabits} auswahl={auswahlOraleHabits} />
-               <Radio value={schnuller} onChange={setSchnuller} title={titelSchnuller} auswahl={auswahlSchnuller} />
-               {schnuller === "bis zum..." && (
-                  <InputFreitext
-                     value={schnullerFreitext}
-                     onChange={setSchnullerFreitext}
-                     title={titelSchnuller + " (Freitext)"}
-                     placeholder="Beispiel: zehnten Monat"
-                  />
-               )}
-               <Radio value={tms} onChange={setTMS} title={titelTMS} auswahl={auswahlTMS} />
+               {/* <Radio value={oraleHabits} onChange={setOraleHabits} title={titelOraleHabits} auswahl={auswahlOraleHabits} /> */}
                <Radio value={daumenlutschen} onChange={setDaumenlutschen} title={titelDaumenlutschen} auswahl={auswahlDaumenlutschen} />
                <Radio value={fnk} onChange={setFNK} title={titelFNK} auswahl={auswahlFNK} />
-               <Radio value={suv} onChange={setSUV} title={titelSUV} auswahl={auswahlSUV} />
-               <InputFreitext value={SUVFreitext} onChange={setSUVFreitext} title={titelSUV + " (Freitext)"} placeholder="Beispiel: zehnten Monat" />
                <Radio value={zug} onChange={setZUG} title={titelZUG} auswahl={auswahlZUG} />
                {zug === "auffällig (+ Freitext)" && (
                   <InputFreitext
@@ -2359,57 +2370,82 @@ const App = () => {
                   />
                )}
             </Hauptblock>
+            <Hauptblock text="Mundmotorik">
+               <Radio value={oft} onChange={setOFT} title={titelOFT} auswahl={auswahlOFT} />
+               <Radio value={mundschluss} onChange={setMundschluss} title={titelMundschluss} auswahl={auswahlMundschluss} />
+               <Radio value={oraleErkundung} onChange={setOraleErkundung} title={titelOraleErkundung} auswahl={auswahlOraleErkundung} />
+               <Radio value={speichelfluss} onChange={setSpeichelfluss} title={titelSpeichelfluss} auswahl={auswahlSpeichelfluss} />
+               <Radio value={pusten} onChange={setPusten} title={titelPusten} auswahl={auswahlPusten} />
+               <Radio value={ansaugen} onChange={setAnsaugen} title={titelAnsaugen} auswahl={auswahlAnsaugen} />
+               <Radio value={zungenruhelage} onChange={setZungenruhelage} title={titelZungenruhelage} auswahl={auswahlZungenruhelage} />
+               <Radio value={zubk} onChange={setZBUK} title={titelZBUK} auswahl={auswahlZBUK} />
+               <Radio value={lbuk} onChange={setLBUK} title={titelLBUK} auswahl={auswahlLBUK} />
+            </Hauptblock>
             <Hauptblock text="Sprachen">
                <Radio value={eom} onChange={setEoM} title={titelEoM} auswahl={auswahlEoM} />
                <InputFreitext value={EoM_L1_Freitext} onChange={setEoM_L1_Freitext} title={titelEoM + " (Freitext L1)"} placeholder="L1" />
                {mehrsprachig && <InputFreitext value={EoM_L2_Freitext} onChange={setEoM_L2_Freitext} title={titelEoM + " (Freitext L2)"} placeholder="L2" />}
             </Hauptblock>
             <Hauptblock text="Sprachkompetenzen in der Erstsprache (L1)">
-               <Radio value={av_L1} onChange={setAV_L1} title={titelAV_L1} auswahl={auswahlAV_L1} />
-               <Radio value={aaa_L1} onChange={setAAA_L1} title={titelAAA_L1} auswahl={auswahlAAA_L1} />
-               <InputFreitext
-                  value={AAA_L1_Freitext}
-                  onChange={setAAA_L1_Freitext}
-                  title={titelAAA_L1 + " (Freitext)"}
-                  placeholder={aaa_L1 === "Lautersetzungen / -auslassungen (phonologisch)" ? "Prozesse" : "betroffene Laute"}
-                  width="w-8/12"
-               />
-               <Radio value={aan_L1} onChange={setAAN_L1} title={titelAAN_L1} auswahl={auswahlAAN_L1} />
-               <Radio value={pIIs_L1} onChange={setPIIS_L1} title={titelPIIS_L1} auswahl={auswahlPIIS_L1} />
-               {pIIs_L1 === "Phonetisch / Phonologische Abweichungen (Prozesse s.u.)" && (
+               {mehrsprachig && <Radio value={sasde_L1} onChange={setSasde_L1} title={titelSasde_L1} auswahl={auswahlSasde_L1} />}
+               {mehrsprachig && (
                   <InputFreitext
-                     value={PIIS_L1_Freitext}
-                     onChange={setPIIS_L1_Freitext}
-                     title={titelPIIS_L1 + " (Freitext)"}
-                     placeholder="Beispiel: Vorverlagerung /sch/ (phonologische Störung)"
+                     value={sasde_L1_Freitext}
+                     onChange={setSasde_L1_Freitext}
+                     title={titelSasde_L1 + " (Freitext)"}
+                     placeholder="betroffene Bereiche"
                      width="w-8/12"
                   />
                )}
-               <Radio value={rwka_L1} onChange={setRWKA_L1} title={titelRWKA_L1} auswahl={auswahlRWKA_L1} />
-               <Radio value={rwf_L1} onChange={setRWF_L1} title={titelRWF_L1} auswahl={auswahlRWF_L1} />
-               <Radio value={rwa_L1} onChange={setRWA_L1} title={titelRWA_L1} auswahl={auswahlRWA_L1} />
-               <Radio value={ewau_L1} onChange={setEWAU_L1} title={titelEWAU_L1} auswahl={auswahlEWAU_L1} />
-               <Radio value={ewda_L1} onChange={setEWDA_L1} title={titelEWDA_L1} auswahl={auswahlEWDA_L1} />
-               <Radio value={ss_L1} onChange={setSS_L1} title={titelSS_L1} auswahl={auswahlSS_L1} />
-               <Radio value={mg_L1} onChange={setMG_L1} title={titelMG_L1} auswahl={auswahlMG_L1} />
-               <Radio value={mn_L1} onChange={setMN_L1} title={titelMN_L1} auswahl={auswahlMN_L1} />
-               <Radio value={mk_L1} onChange={setMK_L1} title={titelMK_L1} auswahl={auswahlMK_L1} />
-               <Radio value={mp_L1} onChange={setMP_L1} title={titelMP_L1} auswahl={auswahlMP_L1} />
-               <Radio value={pdss_L1} onChange={setPDSS_L1} title={titelPDSS_L1} auswahl={auswahlPDSS_L1} />
-               <Radio value={ppe_L1} onChange={setPPE_L1} title={titelPPE_L1} auswahl={auswahlPPE_L1} />
-               {ppe_L1 === "durchgeführt (Testergebnisse s.u.)" && (
-                  <InputFreitext value={PPE_L1_Freitext} onChange={setPPE_L1_Freitext} title={titelPPE_L1 + " (Freitext)"} placeholder="Testergebnisse" />
+               {!mehrsprachig && (
+                  <>
+                     <Radio value={av_L1} onChange={setAV_L1} title={titelAV_L1} auswahl={auswahlAV_L1} />
+                     <Radio value={aaa_L1} onChange={setAAA_L1} title={titelAAA_L1} auswahl={auswahlAAA_L1} />
+                     <InputFreitext
+                        value={AAA_L1_Freitext}
+                        onChange={setAAA_L1_Freitext}
+                        title={titelAAA_L1 + " (Freitext)"}
+                        placeholder={aaa_L1 === "Lautersetzungen / -auslassungen (phonologisch)" ? "Prozesse" : "betroffene Laute"}
+                        width="w-8/12"
+                     />
+                     <Radio value={aan_L1} onChange={setAAN_L1} title={titelAAN_L1} auswahl={auswahlAAN_L1} />
+                     <Radio value={pIIs_L1} onChange={setPIIS_L1} title={titelPIIS_L1} auswahl={auswahlPIIS_L1} />
+                     {pIIs_L1 === "Phonetisch / Phonologische Abweichungen (Prozesse s.u.)" && (
+                        <InputFreitext
+                           value={PIIS_L1_Freitext}
+                           onChange={setPIIS_L1_Freitext}
+                           title={titelPIIS_L1 + " (Freitext)"}
+                           placeholder="Beispiel: Vorverlagerung /sch/ (phonologische Störung)"
+                           width="w-8/12"
+                        />
+                     )}
+                     <Radio value={rwka_L1} onChange={setRWKA_L1} title={titelRWKA_L1} auswahl={auswahlRWKA_L1} />
+                     <Radio value={rwf_L1} onChange={setRWF_L1} title={titelRWF_L1} auswahl={auswahlRWF_L1} />
+                     <Radio value={rwa_L1} onChange={setRWA_L1} title={titelRWA_L1} auswahl={auswahlRWA_L1} />
+                     <Radio value={ewau_L1} onChange={setEWAU_L1} title={titelEWAU_L1} auswahl={auswahlEWAU_L1} />
+                     <Radio value={ewda_L1} onChange={setEWDA_L1} title={titelEWDA_L1} auswahl={auswahlEWDA_L1} />
+                     <Radio value={ss_L1} onChange={setSS_L1} title={titelSS_L1} auswahl={auswahlSS_L1} />
+                     <Radio value={mg_L1} onChange={setMG_L1} title={titelMG_L1} auswahl={auswahlMG_L1} />
+                     <Radio value={mn_L1} onChange={setMN_L1} title={titelMN_L1} auswahl={auswahlMN_L1} />
+                     <Radio value={mk_L1} onChange={setMK_L1} title={titelMK_L1} auswahl={auswahlMK_L1} />
+                     <Radio value={mp_L1} onChange={setMP_L1} title={titelMP_L1} auswahl={auswahlMP_L1} />
+                     <Radio value={pdss_L1} onChange={setPDSS_L1} title={titelPDSS_L1} auswahl={auswahlPDSS_L1} />
+                     <Radio value={ppe_L1} onChange={setPPE_L1} title={titelPPE_L1} auswahl={auswahlPPE_L1} />
+                     {ppe_L1 === "durchgeführt (Testergebnisse s.u.)" && (
+                        <InputFreitext value={PPE_L1_Freitext} onChange={setPPE_L1_Freitext} title={titelPPE_L1 + " (Freitext)"} placeholder="Testergebnisse" />
+                     )}
+                     <Radio value={sle_L1} onChange={setSLE_L1} title={titelSLE_L1} auswahl={auswahlSLE_L1} />
+                     {sle_L1 === "durchgeführt (Testergebnisse s.u.)" && (
+                        <InputFreitext value={SLE_L1_Freitext} onChange={setSLE_L1_Freitext} title={titelSLE_L1 + " (Freitext)"} placeholder="Testergebnisse" />
+                     )}
+                     <Radio value={sme_L1} onChange={setSME_L1} title={titelSME_L1} auswahl={auswahlSME_L1} />
+                     {sme_L1 === "durchgeführt (Testergebnisse s.u.)" && (
+                        <InputFreitext value={SME_L1_Freitext} onChange={setSME_L1_Freitext} title={titelSME_L1 + " (Freitext)"} placeholder="Testergebnisse" />
+                     )}
+                     <Radio value={rs_L1} onChange={setRS_L1} title={titelRS_L1} auswahl={auswahlRS_L1} />
+                     <Radio value={rp_L1} onChange={setRP_L1} title={titelRP_L1} auswahl={auswahlRP_L1} />
+                  </>
                )}
-               <Radio value={sle_L1} onChange={setSLE_L1} title={titelSLE_L1} auswahl={auswahlSLE_L1} />
-               {sle_L1 === "durchgeführt (Testergebnisse s.u.)" && (
-                  <InputFreitext value={SLE_L1_Freitext} onChange={setSLE_L1_Freitext} title={titelSLE_L1 + " (Freitext)"} placeholder="Testergebnisse" />
-               )}
-               <Radio value={sme_L1} onChange={setSME_L1} title={titelSME_L1} auswahl={auswahlSME_L1} />
-               {sme_L1 === "durchgeführt (Testergebnisse s.u.)" && (
-                  <InputFreitext value={SME_L1_Freitext} onChange={setSME_L1_Freitext} title={titelSME_L1 + " (Freitext)"} placeholder="Testergebnisse" />
-               )}
-               <Radio value={rs_L1} onChange={setRS_L1} title={titelRS_L1} auswahl={auswahlRS_L1} />
-               <Radio value={rp_L1} onChange={setRP_L1} title={titelRP_L1} auswahl={auswahlRP_L1} />
             </Hauptblock>
             {mehrsprachig && (
                <Hauptblock text="Sprachkompetenzen in der Zweitsprache (L2)" show={showL2} onToggle={toggleL2Handler}>
