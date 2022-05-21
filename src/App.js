@@ -24,7 +24,9 @@ let i = 0; // Zähler der Unterblöcke
 const titelVorname = ++i + ".) Vorname";
 const titelGeschlecht = ++i + ".) Geschlecht";
 const titelBegleitetVon = ++i + ".) Begleitet von";
+const titelPersoenlichkeit = ++i + ".) Persönlichkeit";
 const titelBlickkontakt = ++i + ".) Blickkontakt";
+const titelArtDerDiagnostik = ++i + ".) Art der Diagnostik";
 const titelSpielverhalten = ++i + ".) Spielverhalten";
 const titelSpielformen = ++i + ".) Spielformen";
 const titelKonzentration = ++i + ".) Konzentrationsfähigkeit und Aufmerksamkeitslenkung";
@@ -127,7 +129,9 @@ const App = () => {
    const [vorname, setVorname] = useState(localStorage.getItem(titelVorname) || "");
    const [geschlecht, setGeschlecht] = useState(localStorage.getItem(titelGeschlecht));
    const [begleitetVon, setBegleitetVon] = useState(localStorage.getItem(titelBegleitetVon));
+   const [persoenlichkeit, setPersoenlichkeit] = useState(localStorage.getItem(titelPersoenlichkeit));
    const [blickkontakt, setBlickkontakt] = useState(localStorage.getItem(titelBlickkontakt));
+   const [artDerDiagnostik, setArtDerDiagnostik] = useState(localStorage.getItem(titelArtDerDiagnostik));
    const [spielverhalten, setSpielverhalten] = useState(localStorage.getItem(titelSpielverhalten));
    const [spielformen, setSpielformen] = useState(localStorage.getItem(titelSpielformen));
    const [konzentration, setKonzentration] = useState(localStorage.getItem(titelKonzentration));
@@ -460,6 +464,24 @@ const App = () => {
       }
    }
 
+   // Persönlichkeit
+   const auswahlPersoenlichkeit = ["aufgeschlossen", "zurückhaltend", "im Verlauf aufgeschlossener"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (persoenlichkeit) {
+      switch (persoenlichkeit) {
+         case "aufgeschlossen":
+            ausgabe += `${Er_Sie} wirkte aufgeschlossen`;
+            break;
+         case "zurückhaltend":
+            ausgabe += `${Er_Sie} wirkte zurückhaltend`;
+            break;
+         case "im Verlauf aufgeschlossener":
+            ausgabe += `${Er_Sie} wurde im Verlauf der Diagnostik aufgeschlossener`;
+            break;
+      }
+   }
+
    // Blickkontakt
    const auswahlBlickkontakt = ["dialogisch", "dialogisch und triangulär", "kein Blickkontakt"];
    ausgabe += ` `; // Leerzeichen hinzufügen
@@ -467,13 +489,28 @@ const App = () => {
    if (blickkontakt) {
       switch (blickkontakt) {
          case "dialogisch":
-            ausgabe += `${Er_Sie} zeigte einen dialogischen Blickkontakt.`;
+            ausgabe += `und zeigte einen dialogischen Blickkontakt.`;
             break;
          case "dialogisch und triangulär":
-            ausgabe += `${Er_Sie} zeigte einen dialogischen und triangulären Blickkontakt.`;
+            ausgabe += `und zeigte einen dialogischen und triangulären Blickkontakt.`;
             break;
          case "kein Blickkontakt":
-            ausgabe += `${Er_Sie} nahm noch keinen Blickkontakt auf.`;
+            ausgabe += `und nahm noch keinen Blickkontakt auf.`;
+            break;
+      }
+   }
+
+   // Art der Diagnostik
+   const auswahlArtDerDiagnostik = ["standardisierte Diagnostik", "Spontansprachbeurteilung im Freispiel"];
+   ausgabe += ` `; // Leerzeichen hinzufügen
+
+   if (artDerDiagnostik) {
+      switch (artDerDiagnostik) {
+         case "Spontansprachbeurteilung im Freispiel":
+            ausgabe += `Entwicklungsbedingt wurde eine Spontansprachbeurteilung im Freispiel durchgeführt.`;
+            break;
+         case "standardisierte Diagnostik":
+            ausgabe += ``;
             break;
       }
    }
@@ -936,7 +973,7 @@ const App = () => {
 
    // Überschrift hinzufügen
    if (mehrsprachig) {
-      ausgabe += `\nSprachkompetenzen in der Erstsprache (${EoM_L1_Freitext})`;
+      ausgabe += `\nSprachkompetenzen in der Erstsprache (${EoM_L1_Freitext})\n`;
    }
 
    // Aussprache: Art der Abweichung
@@ -1309,7 +1346,7 @@ const App = () => {
                : `Die Subjekt-Verb-Kongruenz werde durchgängig von ${ihm_ihr} beachtet.`;
             break;
          case "nur Infinitivform (nur wenn L1: deutsch)":
-            ausgabe += `${vorname} verwendete noch aussschließlich die Infinitivform des Verbs.`;
+            ausgabe += `${vorname} verwendete noch ausschließlich die Infinitivform des Verbs.`;
             break;
          case "unsicher":
             ausgabe += erstspracheDeutsch
@@ -1764,7 +1801,7 @@ const App = () => {
             ausgabe += `Die Subjekt-Verb-Kongruenz wurde durchgängig von ${ihm_ihr} beachtet.`;
             break;
          case "nur Infinitivform":
-            ausgabe += `${vorname} verwendete noch aussschließlich die Infinitivform des Verbs.`;
+            ausgabe += `${vorname} verwendete noch ausschließlich die Infinitivform des Verbs.`;
             break;
          case "unsicher (V2 im Ansatz)":
             ausgabe += `Im Ansatz war zu beobachten, dass ${vorname} die Subjekt-Verb-Kongruenz beachtete. ${Seine_Ihre} diesbezüglichen morphologischen Fähigkeiten waren allerdings noch sehr unsicher.`;
@@ -2319,7 +2356,11 @@ const App = () => {
                )}
             </Hauptblock>
             <Hauptblock text="Kontaktverhalten">
+               <Radio value={persoenlichkeit} onChange={setPersoenlichkeit} title={titelPersoenlichkeit} auswahl={auswahlPersoenlichkeit} />
                <Radio value={blickkontakt} onChange={setBlickkontakt} title={titelBlickkontakt} auswahl={auswahlBlickkontakt} />
+            </Hauptblock>
+            <Hauptblock text="Art der Diagnostik">
+               <Radio value={artDerDiagnostik} onChange={setArtDerDiagnostik} title={titelArtDerDiagnostik} auswahl={auswahlArtDerDiagnostik} />
             </Hauptblock>
             <Hauptblock text="Spiel und Konzentration">
                <Radio value={spielverhalten} onChange={setSpielverhalten} title={titelSpielverhalten} auswahl={auswahlSpielverhalten} />
