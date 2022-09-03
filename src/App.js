@@ -270,7 +270,9 @@ const App = () => {
       setVorname("");
       setGeschlecht(null);
       setBegleitetVon(null);
+      setPersoenlichkeit(null);
       setBlickkontakt(null);
+      setArtDerDiagnostik(null);
       setSpielverhalten(null);
       setSpielformen(null);
       setKonzentration(null);
@@ -297,6 +299,7 @@ const App = () => {
       setSUV(null);
       setZUG(null);
       setEoM(null);
+      setSasde_L1(null);
       setAV_L1(null);
       setAAA_L1(null);
       setAAN_L1(null);
@@ -366,6 +369,7 @@ const App = () => {
       setSchnullerFreitext("");
       setSUVFreitext("");
       setZUGFreitext("");
+      setSasde_L1_Freitext("");
       setEoM_L1_Freitext("");
       setEoM_L2_Freitext("");
       setAAA_L1_Freitext("");
