@@ -1339,7 +1339,7 @@ const App = () => {
    }
 
    // L1 Morphologie (Wortbildung): Personalformen (Subjekt-Verb-Kongruenz, Verbflexion)
-   const auswahlMP_L1 = ["erworben (-st)", "nur Infinitivform (nur wenn L1: deutsch)", "unsicher", "[ keine Angabe ]"];
+   const auswahlMP_L1 = ["erworben (-st)", "nur Infinitivform (nur wenn L1: deutsch)", "unsicher", "nicht erworben", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (mp_L1) {
@@ -1356,6 +1356,11 @@ const App = () => {
             ausgabe += erstspracheDeutsch
                ? `${Seine_Ihre} morphologischen Fähigkeiten waren noch unsicher.`
                : `${Seine_Ihre} morphologischen Fähigkeiten seien noch unsicher.`;
+            break;
+         case "nicht erworben":
+            ausgabe += erstspracheDeutsch
+               ? `Die Subjekt-Verb-Kongruenz wurde von ${ihm_ihr} nicht beachtet.`
+               : `Die Subjekt-Verb-Kongruenz werde von ${ihm_ihr} nicht beachtet.`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
@@ -1796,7 +1801,7 @@ const App = () => {
    }
 
    // L2 Morphologie (Wortbildung): Personalformen (Subjekt-Verb-Kongruenz, Verbflexion)
-   const auswahlMP_L2 = ["erworben (-st)", "nur Infinitivform", "unsicher (V2 im Ansatz)", "[ keine Angabe ]"];
+   const auswahlMP_L2 = ["erworben (-st)", "nur Infinitivform", "unsicher (V2 im Ansatz)", "nicht erworben", "[ keine Angabe ]"];
    ausgabe += ` `; // Leerzeichen hinzufügen
 
    if (mp_L2) {
@@ -1809,6 +1814,11 @@ const App = () => {
             break;
          case "unsicher (V2 im Ansatz)":
             ausgabe += `Im Ansatz war zu beobachten, dass ${vorname} die Subjekt-Verb-Kongruenz beachtete. ${Seine_Ihre} diesbezüglichen morphologischen Fähigkeiten waren allerdings noch sehr unsicher.`;
+            break;
+         case "nicht erworben":
+            ausgabe += erstspracheDeutsch
+               ? `Die Subjekt-Verb-Kongruenz wurde von ${ihm_ihr} nicht beachtet.`
+               : `Die Subjekt-Verb-Kongruenz werde von ${ihm_ihr} nicht beachtet.`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
