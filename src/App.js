@@ -1816,9 +1816,7 @@ const App = () => {
             ausgabe += `Im Ansatz war zu beobachten, dass ${vorname} die Subjekt-Verb-Kongruenz beachtete. ${Seine_Ihre} diesbezüglichen morphologischen Fähigkeiten waren allerdings noch sehr unsicher.`;
             break;
          case "nicht erworben":
-            ausgabe += erstspracheDeutsch
-               ? `Die Subjekt-Verb-Kongruenz wurde von ${ihm_ihr} nicht beachtet.`
-               : `Die Subjekt-Verb-Kongruenz werde von ${ihm_ihr} nicht beachtet.`;
+            ausgabe += `Die Subjekt-Verb-Kongruenz wurde von ${ihm_ihr} nicht beachtet.`;
             break;
          case "[ keine Angabe ]":
             ausgabe += ``;
